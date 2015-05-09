@@ -16,6 +16,8 @@
             android:layout_height="40dip"
             android:orientation="horizontal" />
 
+        <include layout="@layout/item_line"></include>
+
         <FrameLayout
             android:id="@android:id/tabcontent"
             android:layout_width="0dp"

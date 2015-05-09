@@ -27,4 +27,8 @@
 	<color name="blue_bt_login">#132F4B</color>
 	<color name="blue_topbar">#0A95CC</color>
 
+	<color name="grey_tabs_normal">#ededed</color>
+	<color name="grey_tabs_select">#e2e2e2</color>
+
+
 </resources>

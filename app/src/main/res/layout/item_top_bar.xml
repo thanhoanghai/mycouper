@@ -13,7 +13,7 @@
         android:id="@+id/item_topbar_bt_leftmenu"
         android:layout_width="@dimen/item_topbar_icon_size"
         android:layout_height="@dimen/item_topbar_icon_size"
-        android:background="@drawable/icon_logo_small"
+        android:src="@drawable/icon_logo_small"
         android:contentDescription="@string/empty" />
 
     <com.nct.customview.TfTextView
@@ -33,7 +33,7 @@
         android:id="@+id/item_topbar_bt_rightmenu"
         android:layout_width="@dimen/item_topbar_icon_size"
         android:layout_height="@dimen/item_topbar_icon_size"
-        android:background="@drawable/icon_menu"
+        android:src="@drawable/icon_menu"
         android:contentDescription="@string/empty" />
 
 </LinearLayout>
