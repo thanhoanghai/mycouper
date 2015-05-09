@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.LinearLayout;
 
+import com.nct.fragment.FragCreateCardSearch;
 import com.nct.fragment.FragHome;
 import com.nct.utils.Utils;
 
@@ -16,7 +17,7 @@ public class AtCreateCard extends AtBase {
 	private int TYPE_CREATE_CARD_SEARCH = 0;
 	private int typeFragment = 0;
 
-	private FragHome fragCreateCard;
+	private FragCreateCardSearch fragCreateCard;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class AtCreateCard extends AtBase {
 				FragmentTransaction fragmentTransaction = getSupportFragmentManager()
 						.beginTransaction();
 				if(fragCreateCard == null)
-					fragCreateCard = new FragHome();
+					fragCreateCard = new FragCreateCardSearch();
 				fragmentTransaction.replace(R.id.at_create_card_linear,
 						fragCreateCard);
 				fragmentTransaction.commit();

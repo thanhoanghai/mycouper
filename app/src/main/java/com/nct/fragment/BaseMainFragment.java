@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.application.MVapplication;
@@ -141,4 +142,38 @@ abstract class BaseMainFragment extends Fragment {
 
 	public void DelayTimeFinish() {
 	}
+
+	/////////TOP BAR ///////////////////
+	private TextView topBartitle;
+	private ImageView topBarbtLeft,topBarBtRight;
+	public void initTopbar(View v,String title)
+	{
+		topBartitle = (TextView) v.findViewById(R.id.item_topbar_tv_title);
+		topBartitle.setText(title);
+		topBarbtLeft = (ImageView) v.findViewById(R.id.item_topbar_bt_leftmenu);
+		topBarBtRight = (ImageView) v.findViewById(R.id.item_topbar_bt_rightmenu);
+	}
+	public void setTopbarTitle(String text)
+	{
+		topBartitle.setText(text);
+	}
+	public void setTopbarLeftBtListener(View.OnClickListener listener){
+		topBarbtLeft.setOnClickListener(listener);
+	}
+	public void setTopbarBtLeftImage(int resource)
+	{
+		topBarbtLeft.setImageResource(resource);
+	}
+	public void setTopbarRighttBtListener(View.OnClickListener listener){
+		topBarBtRight.setOnClickListener(listener);
+	}
+	public void setTopbarBtRightImage(int resource)
+	{
+		topBarBtRight.setImageResource(resource);
+	}
+	public void setTopBarbtRightVisible(int visi)
+	{
+		topBarBtRight.setVisibility(visi);
+	}
+
 }

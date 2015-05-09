@@ -14,7 +14,8 @@
     <string name="account_test">hoang.test.001@gmail.com</string>
 
     <!-- FRAG CREATE NEW CARD -->
-    <string name="frag_create_new_card">CREATE NEW CARD</string>
+    <string name="frag_createcard">CREATE NEW CARD</string>
+    <string name="frag_createcard_other">Other (not in list)</string>
 
 
     <!-- FRAG MEMBER CARD -->

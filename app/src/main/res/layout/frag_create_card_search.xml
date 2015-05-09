@@ -1,23 +1,30 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <include layout="@layout/item_top_bar"></include>
 
-    <include layout="@layout/nct_layout_base_listview"></include>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/nct_layout_base_listview"></include>
 
 
-    <Button
-        android:id="@+id/frag_membercard_bt_admore"
-        android:background="@drawable/login_bt_face_bg"
-        android:layout_width="@dimen/frag_membercard_bt_w"
-        android:text="@string/frag_membercard_addmore"
-        android:alpha="0.7"
-        android:layout_gravity="bottom|center_horizontal" android:textColor="@color/white"
-        android:layout_height="@dimen/frag_membercard_bt_h"
-        android:layout_marginBottom="@dimen/frag_membercard_bt_marinbottom"
-        tools:ignore="UnusedAttribute" />
+        <Button
+            android:id="@+id/frag_create_card_bt_other"
+            android:layout_width="@dimen/frag_membercard_bt_w"
+            android:layout_height="@dimen/frag_membercard_bt_h"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/frag_membercard_bt_marinbottom"
+            android:alpha="0.7"
+            android:background="@drawable/login_bt_face_bg"
+            android:text="@string/frag_createcard_other"
+            android:textColor="@color/white"
+            tools:ignore="UnusedAttribute" />
 
-</FrameLayout>
+    </FrameLayout>
+
+</LinearLayout>

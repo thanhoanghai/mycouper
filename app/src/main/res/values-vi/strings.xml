@@ -15,7 +15,8 @@
 
 
     <!-- FRAG CREATE NEW CARD -->
-    <string name="frag_create_new_card">TẠO THẺ MỚI</string>
+    <string name="frag_createcard">TẠO THẺ MỚI</string>
+    <string name="frag_createcard_other">Thẻ khác</string>
 
     <!-- FRAG MEMBER CARD -->
     <string name="frag_membercard_addmore">+     Add more card</string>
