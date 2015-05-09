@@ -2,48 +2,6 @@
 <items version="2" >
 
     <item
-        jar="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/libs/android-async-http-1.4.5.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
-        <dex dex="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-b60663a266073e990b021292c4bb970aaffed24b.jar" />
-    </item>
-    <item
-        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/gson-2.2.4.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
-        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/gson-2.2.4-35f228d93907208a0ea1c9aedcd5646ced8d5fbe.jar" />
-    </item>
-    <item
-        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
-        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-57b85b5f8895d99c9971d150cc0094bd18f26c55.jar" />
-    </item>
-    <item
-        jar="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/libs/universal-image-loader-1.9.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="9e025bc5b84968e7d6ac765e660a70b3e5a87432">
-        <dex dex="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.2-552bca3464c8da5290ae7e56aa33c7db78e3e450.jar" />
-    </item>
-    <item
-        jar="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/libs/glide-3.4.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="82552712133e094bbb565289fb2bc2d2952ba551">
-        <dex dex="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/build/intermediates/pre-dexed/debug/glide-3.4.0-8efe084757272e4cb0349129d7f682174313ef11.jar" />
-    </item>
-    <item
-        jar="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/libs/internal_impl-22.1.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
-        <dex dex="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-590667a82c84717dbdfd6f52a140c3198f8bfcbc.jar" />
-    </item>
-    <item
         jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/android-async-http-1.4.5.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -51,25 +9,11 @@
         <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-a0284cb886862c4851cb45df2a17a336e521dccb.jar" />
     </item>
     <item
-        jar="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/libs/gson-2.2.4.jar"
+        jar="/Users/admin/Desktop/DEV/sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
-        <dex dex="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/build/intermediates/pre-dexed/debug/gson-2.2.4-fdabf8f706dc5ba6181745c48dcc735b153d14c7.jar" />
-    </item>
-    <item
-        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/glide-3.4.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="82552712133e094bbb565289fb2bc2d2952ba551">
-        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/glide-3.4.0-2f9605d011d43811605d18838a63b0d524d1fcb5.jar" />
-    </item>
-    <item
-        jar="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
-        <dex dex="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/build/intermediates/pre-dexed/debug/classes-7cdd4e8463c0672e423f8c32bbdcad677b6e15de.jar" />
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-ba15a28481cc039e1dbfc518475fb37d37f4584b.jar" />
     </item>
     <item
         jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/libs/internal_impl-22.1.1.jar"
@@ -79,6 +23,13 @@
         <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-e60f9b63c6418d0a0113d628e26e434c17094706.jar" />
     </item>
     <item
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/gson-2.2.4-35f228d93907208a0ea1c9aedcd5646ced8d5fbe.jar" />
+    </item>
+    <item
         jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/universal-image-loader-1.9.2.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -86,11 +37,18 @@
         <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.2-20b3374616c7d1ee6c6f3d987919f79599d4399d.jar" />
     </item>
     <item
-        jar="/Users/admin/Desktop/DEV/sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/glide-3.4.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
-        <dex dex="/Users/admin/Desktop/NCT/Mycouper/MyCouper/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-ba15a28481cc039e1dbfc518475fb37d37f4584b.jar" />
+        sha1="82552712133e094bbb565289fb2bc2d2952ba551">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/glide-3.4.0-2f9605d011d43811605d18838a63b0d524d1fcb5.jar" />
+    </item>
+    <item
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-57b85b5f8895d99c9971d150cc0094bd18f26c55.jar" />
     </item>
 
 </items>

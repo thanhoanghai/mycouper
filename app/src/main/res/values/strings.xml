@@ -15,12 +15,16 @@
 
 
     <string name="cancel">Cancel</string>
+    <string name="scan">Scan</string>
 
 
     <!-- FRAG CREATE NEW CARD -->
     <string name="frag_createcard">CREATE NEW CARD</string>
     <string name="frag_createcard_other">Other (not in list)</string>
     <string name="frag_createcard_findinlist">Find in list (Viet Nam)</string>
+    <string name="frag_createcard_store">Store:</string>
+    <string name="frag_createcard_company_name">Company name:</string>
+    <string name="frag_createcard_cardinformation">Card information:</string>
 
 
     <!-- FRAG MEMBER CARD -->

@@ -16,13 +16,16 @@
 
 
     <string name="cancel">Huỷ</string>
+    <string name="scan">Quét mã thẻ</string>
 
 
     <!-- FRAG CREATE NEW CARD -->
     <string name="frag_createcard">TẠO THẺ MỚI</string>
     <string name="frag_createcard_other">Thẻ khác</string>
     <string name="frag_createcard_findinlist">Tìm trong danh sách (Việt Nam)</string>
-
+    <string name="frag_createcard_store">Cửa hàng:</string>
+    <string name="frag_createcard_company_name">Tên công ty:</string>
+    <string name="frag_createcard_cardinformation">Thông tin thẻ:</string>
 
     <!-- FRAG MEMBER CARD -->
     <string name="frag_membercard_addmore">+     Add more card</string>

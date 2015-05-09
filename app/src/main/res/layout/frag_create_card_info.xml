@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/item_top_bar"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical">
+
+            <com.nct.customview.TfTextView
+                android:layout_marginTop="@dimen/frag_createcard_info_title_marintop"
+                android:layout_width="wrap_content" android:layout_marginLeft="@dimen/frag_createcard_info_title_marinleft"
+                android:layout_height="wrap_content"
+                android:text="@string/frag_createcard_store"
+                android:textColor="@color/blue_topbar"
+                android:textSize="@dimen/frag_createcard_info_title_size"
+                app:typeface_name="@string/font_roboto_regular"
+                />
+            <include layout="@layout/item_line"/>
+
+            <LinearLayout android:id="@+id/frag_create_card_info_linear_img"
+                android:layout_width="match_parent" android:orientation="horizontal" android:padding="10dp" android:gravity="center_vertical"
+                android:layout_height="wrap_content" >
+                <ImageView
+                    android:id="@+id/frag_create_card_info_img"
+                    android:layout_width="@dimen/item_member_card_icon_size"
+                    android:layout_height="@dimen/item_member_card_icon_size"
+                    android:background="@color/black" />
+
+                <com.nct.customview.TfTextView android:layout_marginLeft="5dp"
+                    android:id="@+id/frag_create_card_info_tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:ellipsize="end"
+                    android:lines="1" android:text="@string/app_name" android:textColor="@color/black"
+                    android:textSize="@dimen/item_member_card_text_size"
+                    app:typeface_name="@string/font_roboto_regular"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent" android:orientation="horizontal" android:paddingTop="5dp" android:paddingBottom="5dp"
+                android:background="@color/grey_tabs_normal" android:gravity="center_vertical"
+                android:layout_height="@dimen/frag_createcard_info_edittext_h">
+                    <com.nct.customview.TfTextView android:layout_marginLeft="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/frag_createcard_company_name" android:textColor="@color/black"
+                    android:textSize="@dimen/item_member_card_text_size"
+                    app:typeface_name="@string/font_roboto_regular"
+                    />
+
+            </LinearLayout>
+
+
+            <com.nct.customview.TfTextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content" android:layout_marginLeft="@dimen/frag_createcard_info_title_marinleft"
+                android:layout_height="wrap_content"
+                android:text="@string/frag_createcard_cardinformation"
+                android:textColor="@color/blue_topbar"
+                android:textSize="@dimen/frag_createcard_info_title_size"
+                app:typeface_name="@string/font_roboto_regular"
+                />
+            <include layout="@layout/item_line"/>
+
+            <Button
+                android:id="@+id/frag_create_card_info_bt_"
+                android:layout_width="@dimen/frag_membercard_bt_w"
+                android:layout_height="@dimen/frag_membercard_bt_h"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="20dp"
+                android:alpha="0.7"
+                android:background="@drawable/login_bt_face_bg"
+                android:text="@string/scan"
+                android:textColor="@color/white"
+                tools:ignore="UnusedAttribute" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

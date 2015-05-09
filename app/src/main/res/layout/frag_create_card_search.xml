@@ -14,16 +14,27 @@
         android:layout_height="wrap_content">
 
         <FrameLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp" android:layout_weight="1"
             android:layout_height="wrap_content">
             <EditText
                 android:hint="@string/frag_createcard_findinlist"
                 android:paddingLeft="@dimen/frag_createcard_search_bar_paddingleft"
-                android:layout_width="0dp" android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:background="@drawable/search_bar_bg"
                 android:textSize="@dimen/frag_createcard_search_textsize"
                 android:layout_marginRight="@dimen/frag_createcard_search_padding"
                 android:layout_height="@dimen/frag_createcard_search_h" />
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_width="20dp" android:layout_marginLeft="7dp"
+                android:layout_height="20dp" android:src="@drawable/icon_search" />
+
+            <ImageView
+                android:layout_gravity="center_vertical|right"
+                android:layout_width="25dp" android:layout_marginRight="10dp"
+                android:layout_height="25dp" android:src="@drawable/selector_bt_delete_circle" />
+
         </FrameLayout>
 
 
