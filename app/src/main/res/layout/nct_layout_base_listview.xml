@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.nct.gridview.SuperListview xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:nct="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nct_base_abslist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    nct:superlv__empty="@layout/nct_view_empty"
+    nct:superlv__listClipToPadding="false"
+    nct:superlv__listDivider="@android:color/transparent"
+    nct:superlv__listDividerHeight="0dp"
+    nct:superlv__listPaddingBottom="0dp"
+    nct:superlv__listPaddingLeft="0dp"
+    nct:superlv__listPaddingRight="0dp"
+    nct:superlv__listPaddingTop="0dp"
+    nct:superlv__scrollbarStyle="outsideOverlay" />

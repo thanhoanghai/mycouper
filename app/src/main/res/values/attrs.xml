@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TypefaceTextView">
+        <attr name="typeface_name" format="string" />
+        <attr name="typeface_style">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="superlistview">
+        <attr name="superlv__listSelector" format="reference" />
+        <attr name="superlv__empty" format="reference" />
+        <attr name="superlv__moreProgress" format="reference" />
+        <attr name="superlv__progress" format="reference" />
+        <attr name="superlv__disconnect" format="reference" />
+        <attr name="superlv__listDivider" format="reference" />
+        <attr name="superlv__listbackround" format="reference" />
+        <attr name="superlv__listDividerHeight" format="dimension" />
+        <attr name="superlv__listClipToPadding" format="boolean" />
+        <attr name="superlv__listPadding" format="dimension" />
+        <attr name="superlv__listPaddingTop" format="dimension" />
+        <attr name="superlv__listPaddingBottom" format="dimension" />
+        <attr name="superlv__listPaddingLeft" format="dimension" />
+        <attr name="superlv__listPaddingRight" format="dimension" />
+        <attr name="superlv__scrollbarStyle">
+            <flag name="insideOverlay" value="0x0" />
+            <flag name="insideInset" value="0x01000000" />
+            <flag name="outsideOverlay" value="0x02000000" />
+            <flag name="outsideInset" value="0x03000000" />
+        </attr>
+
+        <!--
+         Layout to build a superList. Default values are  @layout/view_progress_listview for a list and
+         @layout/view_progress_gridview for a grid
+        -->
+        <attr name="superlv_mainLayoutID" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="supergridview">
+        <attr name="supergv__columns" format="integer" />
+        <attr name="supergv__verticalSpacing" format="dimension" />
+        <attr name="supergv__horizontalSpacing" format="dimension" />
+    </declare-styleable>
+    
+    
+   <declare-styleable name="PagerSlidingTabStrip">
+        <attr name="indicatorColor" format="color" />
+        <attr name="underlineColor" format="color" />
+        <attr name="dividerColor" format="color" />
+        <attr name="indicatorHeight" format="dimension" />
+        <attr name="underlineHeight" format="dimension" />
+        <attr name="dividerPadding" format="dimension" />
+        <attr name="tabPaddingLeftRight" format="dimension" />
+        <attr name="scrollOffset" format="dimension" />
+        <attr name="tabBackground" format="reference" />
+        <attr name="shouldExpand" format="boolean" />
+        <attr name="textAllCaps" format="boolean" />
+    </declare-styleable>
+
+    
+    
+     <!-- Defines the custom XML attributes supported for a HorizontalListView -->
+    <declare-styleable name="HorizontalListView">
+        <attr name="dividerWidth" format="dimension" />
+        <attr name="android:divider" />
+        <attr name="android:requiresFadingEdge" />
+        <attr name="android:fadingEdgeLength" />
+    </declare-styleable>
+    
+    
+    <declare-styleable name="ExpandableTextView">
+		<attr name="trimLength" format="integer"/>
+	</declare-styleable>
+    
+</resources>

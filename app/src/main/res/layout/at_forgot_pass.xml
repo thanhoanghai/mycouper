@@ -1,0 +1,116 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <include layout="@layout/item_icon_mycouper" />
+
+            <com.nct.customview.TfTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/forgot_text_forgot_marintop"
+                android:text="@string/forgot_password"
+                android:textColor="@color/white"
+                android:textSize="@dimen/forgot_text_forgot_size"
+                app:typeface_name="@string/font_roboto_regular"
+                app:typeface_style="bold" />
+
+            <com.nct.customview.TfTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forgot_please_enter_your"
+                android:textColor="@color/white"
+                android:textSize="@dimen/forgot_text_please_size"
+                app:typeface_name="@string/font_roboto_italic" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_textfield_h"
+                android:layout_marginTop="@dimen/login_textfield_marintop"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/login_textfield_icon_w"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/login_textfield_icon_marinleft"
+                    android:src="@drawable/icon_email" />
+
+                <EditText
+                    android:id="@+id/forgot_edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+                    android:background="@color/transparent"
+                    android:hint="@string/forgot_email"
+                    android:textSize="@dimen/login_textfield_textsize" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/forgot_bt_resend"
+                android:layout_width="@dimen/login_bt_w"
+                android:layout_height="@dimen/login_bt_h"
+                android:layout_marginTop="@dimen/forgot_bt_resend_marintop"
+                android:background="@drawable/login_bt_face_bg"
+                android:text="@string/forgot_resend_pass"
+                android:textColor="@color/white"
+                android:textSize="@dimen/login_bt_textsize"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/login_bt_marinbottom"
+                android:layout_marginTop="@dimen/login_bt_marintop"
+                android:orientation="horizontal">
+
+                <com.nct.customview.TfTextView
+                    android:id="@+id/forgot_bt_already"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/item_copywright_marinbottom"
+                    android:text="@string/forgot_already_have"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/login_text_sign_size"
+                    app:typeface_name="@string/font_roboto_regular"
+                    app:typeface_style="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="23dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/white" />
+
+                <com.nct.customview.TfTextView
+                    android:id="@+id/forgot_bt_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/item_copywright_marinbottom"
+                    android:text="@string/forgot_login"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/login_text_sign_size"
+                    app:typeface_name="@string/font_roboto_regular"
+                    app:typeface_style="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

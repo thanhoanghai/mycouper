@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "thh.com.mycouper"
+        minSdkVersion 8
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v4:+'
+//    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile files('libs/universal-image-loader-1.9.2.jar')
+    compile files('libs/gson-2.2.4.jar')
+    compile files('libs/glide-3.4.0.jar')
+    compile files('libs/android-async-http-1.4.5.jar')
+
+}

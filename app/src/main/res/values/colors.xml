@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+    <color name="background_tab_pressed">#6633B5E5</color>
+	<color name="transparent">#00000000</color>
+	<color name="blue">#00bcd4</color>
+	<color name="blue_select">#296c74</color>
+
+	<color name="black">#000000</color>
+	<color name="white">#ffffff</color>
+	<color name="grey">#7E7E7E</color>
+	<color name="grey_event">#f5f5f5</color>
+	<color name="yellow">#ffc30d</color>
+	<color name="orange">#e65100</color>
+
+	<color name="blue_bg">#00adef</color>
+	<color name="pink">#DDff4081</color>
+
+	<color name="store_green">#00bcd4</color>
+	<color name="store_blue_face">#DD3b5998</color>
+
+	<color name="item_app_detail_grey">#f5f5f5</color>
+	<color name="grey_divider">#cfcfcf</color>
+	<color name="blue50">#8000bcd4</color>
+
+	<color name="blue_bt_face">#0A95CC</color>
+	<color name="blue_bt_login">#132F4B</color>
+	<color name="blue_topbar">#0A95CC</color>
+
+</resources>

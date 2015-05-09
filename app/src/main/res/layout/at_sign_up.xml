@@ -1,0 +1,133 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@drawable/bg_main"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp" android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent" android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+        <include layout="@layout/item_icon_mycouper" />
+
+        <com.nct.customview.TfTextView
+            android:gravity="center"
+            android:layout_marginTop="@dimen/signup_text_marinTop"
+            android:layout_marginRight="@dimen/signup_text_marinLeft"
+            android:layout_marginLeft="@dimen/signup_text_marinLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_couper_will_help"
+            android:textColor="@color/white"
+            android:textSize="@dimen/forgot_text_please_size"
+            app:typeface_name="@string/font_roboto_italic" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
+            android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/white"
+            android:gravity="center_vertical" android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_email" />
+
+            <EditText android:id="@+id/signup_edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+                android:background="@color/transparent" android:hint="@string/forgot_email"
+                android:textSize="@dimen/login_textfield_textsize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
+            android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/white"
+            android:gravity="center_vertical" android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_lock" />
+
+            <EditText android:id="@+id/signup_edt_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+                android:background="@color/transparent"
+                android:hint="@string/signup_password" android:textSize="@dimen/login_textfield_textsize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
+            android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/white"
+            android:gravity="center_vertical" android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_lock"/>
+
+            <EditText android:id="@+id/signup_edt_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+                android:background="@color/transparent"
+                android:hint="@string/signup_confirmpass" android:textSize="@dimen/login_textfield_textsize" />
+        </LinearLayout>
+
+
+        <Button
+            android:layout_marginTop="@dimen/signup_bt_sign_marinTop"
+            android:id="@+id/signup_bt_signup" android:layout_width="@dimen/login_bt_w"
+            android:layout_height="@dimen/login_bt_h" android:textColor="@color/white" android:textStyle="bold"
+            android:background="@drawable/login_bt_face_bg" android:text="@string/login_signup"
+            android:textSize="@dimen/login_bt_textsize"
+            />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/signup_text_already_marinTop"
+                android:layout_marginBottom="@dimen/login_bt_marinbottom"
+                android:orientation="horizontal">
+
+                <com.nct.customview.TfTextView
+                    android:id="@+id/signup_bt_already"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/item_copywright_marinbottom"
+                    android:text="@string/forgot_already_have"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/login_text_sign_size"
+                    app:typeface_name="@string/font_roboto_regular"
+                    app:typeface_style="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="23dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/white" />
+
+                <com.nct.customview.TfTextView
+                    android:id="@+id/signup_bt_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/item_copywright_marinbottom"
+                    android:text="@string/forgot_login"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/login_text_sign_size"
+                    app:typeface_name="@string/font_roboto_regular"
+                    app:typeface_style="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/item_copywright" />
+
+</LinearLayout>

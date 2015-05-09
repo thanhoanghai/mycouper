@@ -1,0 +1,113 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_main"
+    android:orientation="vertical" >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp" android:layout_weight="1">
+
+        <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+            <include layout="@layout/item_icon_mycouper"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
+                android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/white"
+                android:gravity="center_vertical" android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="wrap_content"
+                    android:src="@drawable/icon_email"
+                    android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" />
+
+                <EditText android:id="@+id/login_edt_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+                    android:background="@color/transparent" android:text="@string/account_test"
+                    android:textSize="@dimen/login_textfield_textsize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
+                android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/white"
+                android:gravity="center_vertical" android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="@dimen/login_textfield_icon_w"
+                    android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_lock" />
+
+                <EditText android:id="@+id/login_edt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+                    android:background="@color/transparent" android:password="true"
+                    android:text="@string/account_test" android:textSize="@dimen/login_textfield_textsize" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/login_bt_login" android:layout_marginBottom="@dimen/login_bt_marin_bt"
+                android:layout_width="@dimen/login_bt_w"
+                android:layout_height="@dimen/login_bt_h" android:textColor="@color/white" android:textStyle="bold"
+                android:layout_marginTop="@dimen/login_bt_marintop" android:background="@drawable/login_bt_bg"
+                android:text="@string/login_login" android:textSize="@dimen/login_bt_textsize" />
+
+            <Button
+                android:id="@+id/login_bt_login_fb" android:layout_width="@dimen/login_bt_w"
+                android:layout_height="@dimen/login_bt_h" android:textColor="@color/white" android:textStyle="bold"
+                android:layout_marginBottom="@dimen/login_bt_marintop"
+                android:background="@drawable/login_bt_face_bg" android:text="@string/login_login_with_facebook"
+                android:textSize="@dimen/login_bt_textsize"
+                />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/login_bt_marinbottom"
+                android:orientation="horizontal">
+
+                <com.nct.customview.TfTextView
+                    android:id="@+id/login_bt_forgotpass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/item_copywright_marinbottom"
+                    android:text="@string/login_forgot_pass"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/login_text_sign_size"
+                    app:typeface_name="@string/font_roboto_regular"
+                    app:typeface_style="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="23dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/white" />
+
+                <com.nct.customview.TfTextView
+                    android:id="@+id/login_bt_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/item_copywright_marinbottom"
+                    android:text="@string/login_signup"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/login_text_sign_size"
+                    app:typeface_name="@string/font_roboto_regular"
+                    app:typeface_style="bold" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/item_copywright"  />
+
+</LinearLayout>

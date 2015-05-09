@@ -1,0 +1,73 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- SPLASH -->
+    <dimen name="splash_icon_size">140dp</dimen>
+
+
+    <!-- SIGN UP -->
+    <dimen name="signup_text_marinTop">20dp</dimen>
+    <dimen name="signup_text_marinLeft">10dp</dimen>
+    <dimen name="signup_bt_sign_marinTop">30dp</dimen>
+    <dimen name="signup_text_already_marinTop">30dp</dimen>
+
+
+    <!-- LOGIN -->
+    <dimen name="login_textfield_h">40dp</dimen>
+    <dimen name="login_textfield_marintop">20dp</dimen>
+    <dimen name="login_textfield_icon_w">30dp</dimen>
+    <dimen name="login_textfield_icon_marinleft">15dp</dimen>
+    <dimen name="login_textfield_marin_with_icon">10dp</dimen>
+    <dimen name="login_textfield_textsize">14sp</dimen>
+    <dimen name="login_bt_w">190dp</dimen>
+    <dimen name="login_bt_h">40dp</dimen>
+    <dimen name="login_bt_textsize">15sp</dimen>
+    <dimen name="login_bt_marinbottom">20dp</dimen>
+    <dimen name="login_bt_marintop">30dp</dimen>
+    <dimen name="login_bt_marin_bt">10dp</dimen>
+    <dimen name="login_bt_radius_corner">20dp</dimen>
+
+    <dimen name="login_text_sign_size">14sp</dimen>
+
+    <!-- FORGOT PASS -->
+    <dimen name="forgot_text_forgot_marintop">30dp</dimen>
+    <dimen name="forgot_text_forgot_size">20sp</dimen>
+    <dimen name="forgot_text_please_size">14sp</dimen>
+    <dimen name="forgot_bt_resend_marintop">20dp</dimen>
+
+    <!-- FRAG MEMBER CARD -->
+    <dimen name="frag_membercard_bt_w">170dp</dimen>
+    <dimen name="frag_membercard_bt_h">40dp</dimen>
+    <dimen name="frag_membercard_bt_marinbottom">20dp</dimen>
+
+
+    <!-- ITEM MEMBER CARD  -->
+    <dimen name="item_member_card_h">60dp</dimen>
+    <dimen name="item_member_card_padding">10dp</dimen>
+    <dimen name="item_member_card_icon_size">40dp</dimen>
+    <dimen name="item_member_card_text_size">15sp</dimen>
+
+
+    <!-- ITEM COPYWRIGHT -->
+    <dimen name="item_copywright_marinbottom">5dp</dimen>
+    <dimen name="item_copywright_textsize">14sp</dimen>
+
+
+
+    <!-- ITEM MYCOUPER -->
+    <dimen name="splash_icon_mycouper_marintop">20dp</dimen>
+    <dimen name="item_icon_mycouper_size">70dp</dimen>
+    <dimen name="item_icon_mycouper_textsize">30sp</dimen>
+
+    <!-- ITEM TOP BAR  -->
+    <dimen name="item_topbar_h">50dp</dimen>
+    <dimen name="item_topbar_icon_marin">5dp</dimen>
+    <dimen name="item_topbar_icon_size">40dp</dimen>
+    <dimen name="item_topbar_text_size">18sp</dimen>
+
+
+
+</resources>

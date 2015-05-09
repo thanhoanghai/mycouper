@@ -1,0 +1,14 @@
+<merge xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.nct.customview.TfTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/item_copywright"
+        android:textColor="@color/white"
+        android:textSize="@dimen/item_copywright_textsize"
+        android:layout_marginBottom="@dimen/item_copywright_marinbottom"
+        app:typeface_name="@string/font_roboto_regular"
+        />
+
+</merge>
