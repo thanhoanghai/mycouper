@@ -13,9 +13,14 @@
     <string name="empty"></string>
     <string name="account_test">hoang.test.001@gmail.com</string>
 
+
+    <string name="cancel">Cancel</string>
+
+
     <!-- FRAG CREATE NEW CARD -->
     <string name="frag_createcard">CREATE NEW CARD</string>
     <string name="frag_createcard_other">Other (not in list)</string>
+    <string name="frag_createcard_findinlist">Find in list (Viet Nam)</string>
 
 
     <!-- FRAG MEMBER CARD -->

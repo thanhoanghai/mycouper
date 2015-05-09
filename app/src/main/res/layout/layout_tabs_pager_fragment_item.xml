@@ -17,7 +17,7 @@
 
     <View
         android:id="@+id/lineView"
-        android:layout_width="1px"
+        android:layout_width="1dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"

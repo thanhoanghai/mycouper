@@ -14,9 +14,15 @@
     <string name="account_test">hoang.test.001@gmail.com</string>
 
 
+
+    <string name="cancel">Huỷ</string>
+
+
     <!-- FRAG CREATE NEW CARD -->
     <string name="frag_createcard">TẠO THẺ MỚI</string>
     <string name="frag_createcard_other">Thẻ khác</string>
+    <string name="frag_createcard_findinlist">Tìm trong danh sách (Việt Nam)</string>
+
 
     <!-- FRAG MEMBER CARD -->
     <string name="frag_membercard_addmore">+     Add more card</string>
