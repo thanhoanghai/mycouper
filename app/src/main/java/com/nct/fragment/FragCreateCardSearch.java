@@ -27,6 +27,7 @@ import com.nct.model.CardObject;
 import com.nct.model.CompanyData;
 import com.nct.model.CompanyObject;
 import com.nct.model.MemberCardObject;
+import com.nct.mv.AtCreateCard;
 import com.nct.utils.Utils;
 
 import java.util.ArrayList;
@@ -35,11 +36,12 @@ import thh.com.mycouper.R;
 
 public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
 
-    private Button bntAddmore;
     private EditText edtSearch;
     private ImageView bntClear;
 
     private TextView bntCancel;
+
+    private Button bntOther;
 
     public static FragCreateCardSearch newInstance() {
         FragCreateCardSearch f = new FragCreateCardSearch();
@@ -63,7 +65,15 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
         setTopbarLeftBtListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((AtCreateCard)getActivity()).actionBackKey();
+            }
+        });
 
+        bntOther = (Button) v.findViewById(R.id.frag_create_card_bt_other);
+        bntOther.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_INFO);
             }
         });
 
@@ -107,13 +117,6 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
             }
         });
 
-        bntAddmore = (Button) v.findViewById(R.id.frag_create_card_bt_other);
-        bntAddmore.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Utils.gotoScreenCreateCard(getActivity());
-            }
-        });
 
         return v;
     }

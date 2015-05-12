@@ -193,13 +193,25 @@ public class AtMain extends AtBase {
         quickAction.setOnActionItemClickListener(new QuickAction.OnActionItemClickListener() {
             @Override
             public void onItemClick(QuickAction source, int pos, int actionId) {
-                if(actionId == Constants.POP_UP_ID_USER_PROFILE)
-                {
+                if (actionId == Constants.POP_UP_ID_USER_PROFILE) {
                     Utils.gotoScreenUserProfile(AtMain.this);
                 }
             }
         });
 
+    }
+
+    public void popFragments() {
+        Fragment fragment = mStacks.get(mCurrentTab).elementAt(
+                mStacks.get(mCurrentTab).size() - 2);
+
+		/* pop current fragment from stack.. */
+        mStacks.get(mCurrentTab).pop();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
+        ft.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        ft.replace(R.id.tab_realcontent, fragment);
+        ft.commit();
     }
 
 }

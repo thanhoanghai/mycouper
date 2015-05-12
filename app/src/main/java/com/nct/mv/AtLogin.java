@@ -128,6 +128,7 @@ public class AtLogin extends AtBase {
                     GlobalInstance.getInstance().userInfo = object.data;
                     //Debug.logData(tag, object.data.user_email);
                     Utils.gotoScreenMain(AtLogin.this);
+                    finish();
                 }else
                     Debug.toast(AtLogin.this,object.errorMessage);
                 hideDialogLoading();

@@ -17,6 +17,7 @@
 
     <string name="cancel">Huỷ</string>
     <string name="scan">Quét mã thẻ</string>
+    <string name="next">Tiếp</string>
 
     <!-- USER PROFILE -->
     <string name="user_profile">Tài khoản</string>

@@ -18,6 +18,8 @@ public class Constants {
 	public static final String TAB_2 = "TAB_2";
 	public static final String TAB_3 = "TAB_3";
 
+	public static final String TAB_CREATE_CARD = "TAB_CREATE_CARD";
+
 
 	public static final int API_DELAY_TIME = 1000;
 	
@@ -38,5 +40,10 @@ public class Constants {
 	public static int POP_UP_ID_SYNCHRONIZE = 4;
 	public static int POP_UP_ID_HELP = 5;
 	public static int POP_UP_ID_COPYRIGHT = 6;
+
+	public static int TYPE_CREATE_CARD_SEARCH = 0;
+	public static int TYPE_CREATE_CARD_INFO = 1;
+	public static int TYPE_CREATE_CARD_IMAGE = 2;
+	public static int TYPE_CREATE_CARD_SUCCESS = 3;
 
 }

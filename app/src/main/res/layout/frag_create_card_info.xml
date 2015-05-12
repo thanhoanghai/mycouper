@@ -73,7 +73,7 @@
             <include layout="@layout/item_line"/>
 
             <Button
-                android:id="@+id/frag_create_card_info_bt_"
+                android:id="@+id/frag_create_card_info_bt_scan"
                 android:layout_width="@dimen/frag_membercard_bt_w"
                 android:layout_height="@dimen/frag_membercard_bt_h"
                 android:layout_gravity="bottom|center_horizontal"
@@ -84,6 +84,19 @@
                 android:textColor="@color/white"
                 tools:ignore="UnusedAttribute" />
 
+
+
+            <Button
+                android:id="@+id/frag_create_card_info_bt_next"
+                android:layout_width="@dimen/frag_membercard_bt_w"
+                android:layout_height="@dimen/frag_membercard_bt_h"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="20dp"
+                android:alpha="0.7"
+                android:background="@drawable/login_bt_face_bg"
+                android:text="@string/next"
+                android:textColor="@color/white"
+                tools:ignore="UnusedAttribute" />
 
         </LinearLayout>
 
