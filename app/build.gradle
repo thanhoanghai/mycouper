@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "thh.com.mycouper"
-        minSdkVersion 8
+        minSdkVersion 9
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
+    compile 'me.dm7.barcodescanner:zxing:1.7'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-v4:+'
 //    compile 'com.android.support:appcompat-v7:22.1.1'
