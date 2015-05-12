@@ -1,20 +1,26 @@
 package com.nct.dataloader;
 
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
+import com.nct.utils.Debug;
 
 public class DataLoader {
 
-	// private static final String TAG = "DataLoader";
+	private static final String TAG = "DataLoader";
 	private static AsyncHttpClient client = new AsyncHttpClient();
 
 	public static void get(String url, TextHttpResponseHandler responseHandler) {
+        Debug.logURL(TAG, url);
 		client.get(url, responseHandler);
 	}
 
 	public static void post(String url, TextHttpResponseHandler responseHandler) {
 		client.post(url, responseHandler);
 	}
+    public static void postParam(RequestParams param, TextHttpResponseHandler responseHandler) {
+        client.post(URLProvider.PROVIDER,param, responseHandler);
+    }
 
 }
 

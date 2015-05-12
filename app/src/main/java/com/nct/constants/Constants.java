@@ -27,5 +27,7 @@ public class Constants {
 	public static String TOKEN_KEY = "";
 	public static String DEVICE_INFOR = "";
 	public static final String VERSION_NAME_WHEN_ERROR = "1.0.0";
-	
+
+
+    public static int STATUS_CODE_OK = 200;
 }
