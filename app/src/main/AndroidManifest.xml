@@ -5,10 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name="com.nct.application.MVapplication"
@@ -31,6 +31,7 @@
         <activity android:name="com.nct.mv.AtForgotPass" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
         <activity android:name="com.nct.mv.AtSignUp" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
         <activity android:name="com.nct.mv.AtCreateCard" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
+        <activity android:name="com.nct.mv.AtScan" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
 
 
     </application>
