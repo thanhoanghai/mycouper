@@ -5,7 +5,7 @@ import com.loopj.android.http.RequestParams;
 
 public class URLProvider {
 
-    private static final String TAG = "URLProvider";
+
     public static final String PROVIDER = "http://mycouper.com/api/";
 
 
@@ -15,6 +15,14 @@ public class URLProvider {
         params.put("ac", "login");
         params.put("email", email);
         params.put("password", password);
+        return params;
+    }
+
+    public static RequestParams getParamForgotPass(String email)
+    {
+        RequestParams params = new RequestParams();
+        params.put("ac", "reset_password");
+        params.put("email", email);
         return params;
     }
 

@@ -79,6 +79,7 @@ public class AtLogin extends AtBase {
 
     private void getLogin()
     {
+        
         showDialogLoading();
         DataLoader.postParam(URLProvider.getParamLogin(sEmail, sPass), new TextHttpResponseHandler() {
             @Override
