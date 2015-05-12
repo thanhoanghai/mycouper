@@ -32,6 +32,7 @@ import com.nct.mv.AtForgotPass;
 import com.nct.mv.AtLogin;
 import com.nct.mv.AtMain;
 import com.nct.mv.AtSignUp;
+import com.nct.mv.AtUserProfile;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import thh.com.mycouper.R;
@@ -39,6 +40,12 @@ import thh.com.mycouper.R;
 public class Utils {
 
 	private static final String TAG = "Utils";
+
+	public static void gotoScreenUserProfile(Context mContext) {
+		Intent search = new Intent(mContext, AtUserProfile.class);
+		mContext.startActivity(search);
+	}
+
 
 	public static void gotoScreenCreateCard(Context mContext) {
 		Intent search = new Intent(mContext, AtCreateCard.class);

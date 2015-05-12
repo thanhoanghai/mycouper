@@ -16,6 +16,7 @@ import com.nct.customview.PagerSlidingTabStrip;
 import com.nct.customview.QuickAction;
 import com.nct.fragment.FragHome;
 import com.nct.fragment.FragMemberCard;
+import com.nct.utils.Utils;
 
 import thh.com.mycouper.R;
 
@@ -57,20 +58,7 @@ public class AtMain extends AtBase {
 
         setLanguge();
 
-        quickAction = new QuickAction(AtMain.this, QuickAction.VERTICAL);
-        bntUserProfile = new ActionItem(Constants.POP_UP_ID_USER_PROFILE, "User profile", null);
-        bntSetting = new ActionItem(Constants.POP_UP_ID_SETTING, "Setting", null);
-        bntContact = new ActionItem(Constants.POP_UP_ID_CONTACT, "Contact", null);
-        bntSynchronize = new ActionItem(Constants.POP_UP_ID_SYNCHRONIZE , "Synchronize", null);
-        bntHelp = new ActionItem(Constants.POP_UP_ID_HELP , "Help", null);
-        bntCopyRight = new ActionItem(Constants.POP_UP_ID_COPYRIGHT , "Copyright", null);
-
-        quickAction.addActionItem(bntUserProfile);
-        quickAction.addActionItem(bntSetting);
-        quickAction.addActionItem(bntContact);
-        quickAction.addActionItem(bntSynchronize);
-        quickAction.addActionItem(bntHelp);
-        quickAction.addActionItem(bntCopyRight);
+        initListPopUpMenu();
 
         initTopbar(getString(R.string.frag_membercard));
         setTopbarRighttBtListener(new View.OnClickListener() {
@@ -182,6 +170,36 @@ public class AtMain extends AtBase {
             ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
         ft.replace(R.id.tab_realcontent, fragment);
         ft.commit();
+    }
+
+
+    private void initListPopUpMenu()
+    {
+        quickAction = new QuickAction(AtMain.this, QuickAction.VERTICAL);
+        bntUserProfile = new ActionItem(Constants.POP_UP_ID_USER_PROFILE, "User profile", null);
+        bntSetting = new ActionItem(Constants.POP_UP_ID_SETTING, "Setting", null);
+        bntContact = new ActionItem(Constants.POP_UP_ID_CONTACT, "Contact", null);
+        bntSynchronize = new ActionItem(Constants.POP_UP_ID_SYNCHRONIZE , "Synchronize", null);
+        bntHelp = new ActionItem(Constants.POP_UP_ID_HELP , "Help", null);
+        bntCopyRight = new ActionItem(Constants.POP_UP_ID_COPYRIGHT , "Copyright", null);
+
+        quickAction.addActionItem(bntUserProfile);
+        quickAction.addActionItem(bntSetting);
+        quickAction.addActionItem(bntContact);
+        quickAction.addActionItem(bntSynchronize);
+        quickAction.addActionItem(bntHelp);
+        quickAction.addActionItem(bntCopyRight);
+
+        quickAction.setOnActionItemClickListener(new QuickAction.OnActionItemClickListener() {
+            @Override
+            public void onItemClick(QuickAction source, int pos, int actionId) {
+                if(actionId == Constants.POP_UP_ID_USER_PROFILE)
+                {
+                    Utils.gotoScreenUserProfile(AtMain.this);
+                }
+            }
+        });
+
     }
 
 }
