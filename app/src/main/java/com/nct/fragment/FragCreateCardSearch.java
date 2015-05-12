@@ -3,25 +3,43 @@ package com.nct.fragment;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.nct.adapter.FragCompanyAdapter;
 import com.nct.adapter.FragMemberCardAdapter;
 import com.nct.constants.Constants;
+import com.nct.dataloader.DataHelper;
+import com.nct.dataloader.DataLoader;
+import com.nct.dataloader.URLProvider;
 import com.nct.model.CardObject;
+import com.nct.model.CompanyData;
+import com.nct.model.CompanyObject;
+import com.nct.model.MemberCardObject;
 import com.nct.utils.Utils;
 
 import java.util.ArrayList;
 
 import thh.com.mycouper.R;
 
-public class FragCreateCardSearch extends BaseGridFragment<CardObject> {
-
+public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
 
     private Button bntAddmore;
+    private EditText edtSearch;
+    private ImageView bntClear;
+
+    private TextView bntCancel;
 
     public static FragCreateCardSearch newInstance() {
         FragCreateCardSearch f = new FragCreateCardSearch();
@@ -46,6 +64,46 @@ public class FragCreateCardSearch extends BaseGridFragment<CardObject> {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        bntCancel = (TextView) v.findViewById(R.id.frag_create_card_tv_cancel);
+        bntCancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utils.keyBoardForceHide(getActivity());
+            }
+        });
+
+        bntClear = (ImageView) v.findViewById(R.id.frag_create_card_bnt_clear);
+        bntClear.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtSearch.setText("");
+            }
+        });
+
+        edtSearch = (EditText) v.findViewById(R.id.frag_create_card_edt_search);
+        edtSearch.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+                String text = edtSearch.getText().toString();
+                if(text.length() > 0)
+                    bntClear.setVisibility(View.VISIBLE);
+                else
+                    bntClear.setVisibility(View.INVISIBLE);
+                ((FragCompanyAdapter)mBaseAdapter).setFilter(text);
             }
         });
 
@@ -78,44 +136,21 @@ public class FragCreateCardSearch extends BaseGridFragment<CardObject> {
 
     @Override
     protected void loadData() {
-        ArrayList<CardObject> list = new ArrayList<CardObject>();
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-        list.add(new CardObject());
-
-        setData(list, true);
-    }
-
-
-    @Override
-    protected void loadDataWithLoadmore(int pageindex, int pagesize) {
-        //DataLoader.get(URLProvider.getMVGenres(genres,topic, pageindex),
-        //mTextHttpResponseHandler);
+        DataLoader.get(URLProvider.getCompanyMemberCard(),
+                mTextHttpResponseHandler);
     }
 
     @Override
     protected boolean handleLoadingDataSuccess(String result) {
-
+        CompanyData data = DataHelper.getCompanyData(result);
+        setData(data.data,false);
         return true;
     }
 
     @Override
-    protected FragMemberCardAdapter initAdapter(ArrayList<CardObject> list) {
-        FragMemberCardAdapter adapter = new FragMemberCardAdapter(getActivity(), list);
+    protected FragCompanyAdapter initAdapter(ArrayList<CompanyObject> list) {
+        FragCompanyAdapter adapter = new FragCompanyAdapter(getActivity(), list);
         return adapter;
     }
-
 
 }

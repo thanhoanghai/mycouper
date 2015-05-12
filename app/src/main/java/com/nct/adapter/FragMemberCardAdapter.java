@@ -10,16 +10,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nct.model.CardObject;
+import com.nct.model.MemberCardObject;
 
 
 import java.util.ArrayList;
 
 import thh.com.mycouper.R;
 
-public class FragMemberCardAdapter extends BaseAdapterApp<CardObject> {
+public class FragMemberCardAdapter extends BaseAdapterApp<MemberCardObject> {
 
-	public FragMemberCardAdapter(Context context, ArrayList<CardObject> list) {
+	public FragMemberCardAdapter(Context context, ArrayList<MemberCardObject> list) {
 		super(context, list);
 		mContext = context;
 		//setDisplayImageOptions(R.drawable.store_default_topic);
@@ -47,6 +47,8 @@ public class FragMemberCardAdapter extends BaseAdapterApp<CardObject> {
 			holder = (ViewHolder) view.getTag();
 		}
 
+		MemberCardObject item = getItem(position);
+		displayImage(holder.imgThumb,item.company_logo);
 
 		return view;
 	}

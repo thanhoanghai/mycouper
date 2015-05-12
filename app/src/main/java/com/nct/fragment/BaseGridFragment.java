@@ -29,7 +29,7 @@ import thh.com.mycouper.R;
 	protected boolean mIsRefreshData = true;
 	private boolean mIsLockLoadmore = false;
 	
-	private BaseAdapterApp<T> mBaseAdapter;
+	public BaseAdapterApp<T> mBaseAdapter;
 	private boolean mIsDisableRefresh = false;
 	private boolean mIsDisableLoadmore = false;
 	private boolean mIsDisableLoading = false;

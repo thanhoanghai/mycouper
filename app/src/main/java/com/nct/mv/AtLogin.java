@@ -1,11 +1,13 @@
 package com.nct.mv;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
@@ -15,6 +17,11 @@ import com.nct.dataloader.URLProvider;
 import com.nct.model.UserData;
 import com.nct.utils.Debug;
 import com.nct.utils.Utils;
+import com.sromku.simple.fb.Permission;
+import com.sromku.simple.fb.SimpleFacebook;
+import com.sromku.simple.fb.entities.Profile;
+import com.sromku.simple.fb.listeners.OnLoginListener;
+import com.sromku.simple.fb.listeners.OnProfileListener;
 
 import org.apache.http.Header;
 
@@ -28,6 +35,24 @@ public class AtLogin extends AtBase {
     private Button btLogin, btLoginFace;
     private TextView btForgot, btSignup;
     private String sEmail,sPass;
+    private SimpleFacebook mSimpleFacebook;
+
+
+    private int TYPE_LOGIN_FACEBOOK = 2;
+    private int TYPE_LOGIN = 1;
+    private int indexLogin = TYPE_LOGIN;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSimpleFacebook = SimpleFacebook.getInstance(AtLogin.this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Debug.logError(tag, "result code " + resultCode);
+        mSimpleFacebook.onActivityResult(this, requestCode, resultCode, data);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +60,7 @@ public class AtLogin extends AtBase {
         setContentView(R.layout.at_login);
 
         edtUsername = (EditText) findViewById(R.id.login_edt_username);
-        edtUsername.setText("hoang.test.001@gmail.com");
+        edtUsername.setText("avataryipyip@gmail.com");
         edtPass = (EditText) findViewById(R.id.login_edt_password);
         edtPass.setText("123456");
 
@@ -43,6 +68,7 @@ public class AtLogin extends AtBase {
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                indexLogin = TYPE_LOGIN;
                 checkLogin();
             }
         });
@@ -50,7 +76,8 @@ public class AtLogin extends AtBase {
         btLoginFace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                indexLogin = TYPE_LOGIN_FACEBOOK;
+                loginFacebook();
             }
         });
 
@@ -79,9 +106,15 @@ public class AtLogin extends AtBase {
 
     private void getLogin()
     {
-        
+        RequestParams params;
+        if(indexLogin == TYPE_LOGIN)
+            params = URLProvider.getParamLogin(sEmail,sPass);
+        else
+            params = URLProvider.getParamLoginFacebook(sEmail);
+
+        Utils.keyBoardForceHide(AtLogin.this);
         showDialogLoading();
-        DataLoader.postParam(URLProvider.getParamLogin(sEmail, sPass), new TextHttpResponseHandler() {
+        DataLoader.postParam(params, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
                 hideDialogLoading();
@@ -89,14 +122,86 @@ public class AtLogin extends AtBase {
 
             @Override
             public void onSuccess(int i, Header[] headers, String s) {
+                Debug.logData(tag,s);
                 UserData object = DataHelper.getUserData(s);
-                if(object!=null && object.statusCode == Constants.STATUS_CODE_OK)
-                {
+                if (object != null && object.statusCode == Constants.STATUS_CODE_OK) {
                     GlobalInstance.getInstance().userInfo = object.data;
-                    Debug.logData(tag,object.data.user_email);
-                }
+                    //Debug.logData(tag, object.data.user_email);
+                    Utils.gotoScreenMain(AtLogin.this);
+                }else
+                    Debug.toast(AtLogin.this,object.errorMessage);
                 hideDialogLoading();
-                Utils.gotoScreenMain(AtLogin.this);
+
+            }
+        });
+    }
+
+    private void loginFacebook()
+    {
+        mSimpleFacebook.login(onLoginListener);
+    }
+    final OnLoginListener onLoginListener = new OnLoginListener() {
+        @Override
+        public void onFail(String reason) {
+            Debug.logError(tag, "Failed to login");
+        }
+
+        @Override
+        public void onException(Throwable throwable) {
+            Debug.logError(tag, "Bad thing happened");
+        }
+
+        @Override
+        public void onThinking() {
+            // show progress bar or something to the user while login is
+            // happening
+            Debug.logError(tag, "onThinking");
+        }
+
+        @Override
+        public void onLogin() {
+            // change the state of the button or do whatever you want
+            Debug.logError(tag, "login succeed");
+            getProfileFacebook();
+        }
+
+        @Override
+        public void onNotAcceptingPermissions(Permission.Type type) {
+            Debug.toast(
+                    AtLogin.this,
+                    String.format("You didn't accept %s permissions"));
+        }
+    };
+
+    private void getProfileFacebook()
+    {
+        showDialogLoading();
+        SimpleFacebook.getInstance().getProfile(new OnProfileListener() {
+            @Override
+            public void onThinking() {
+            }
+
+            @Override
+            public void onException(Throwable throwable) {
+            }
+
+            @Override
+            public void onFail(String reason) {
+                hideDialogLoading();
+            }
+
+            @Override
+            public void onComplete(Profile response) {
+                Debug.logError(tag, "info onComplete");
+                //fbuserid = response.getId();
+                // fbavatar = "https://graph.facebook.com/" + fbuserid+
+                // "/picture?type=normal";
+                //fbfullname = response.getLastName() + response.getFirstName();// /response.getName();
+                //fbaccesskey = mSimpleFacebook.getSession().getAccessToken();
+                sEmail = response.getEmail();
+                //indexLogin = Constants.TYPE_USER_FACEBOOK;
+                //callLogin(Constants.TYPE_LOGIN_ARRAY[indexLogin]);
+                getLogin();
             }
         });
     }

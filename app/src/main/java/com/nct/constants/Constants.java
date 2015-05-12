@@ -18,9 +18,7 @@ public class Constants {
 	public static final String TAB_2 = "TAB_2";
 	public static final String TAB_3 = "TAB_3";
 
-	
-	public static final String SECRECT_KEY = "4139ac*&048#^&$*db@(**";
-	public static final String PROVIDER = "http://nstore.nivi.vn/";
+
 	public static final int API_DELAY_TIME = 1000;
 	
 	public static String DEVICES_ID = "";
@@ -30,4 +28,15 @@ public class Constants {
 
 
     public static int STATUS_CODE_OK = 200;
+	public static final String FACEBOOK_ID = "751574654961717";
+	public static final String FACEBOOK_NAMESPACE = "mycouper";
+
+
+	public static int POP_UP_ID_USER_PROFILE = 1;
+	public static int POP_UP_ID_SETTING = 2;
+	public static int POP_UP_ID_CONTACT = 3;
+	public static int POP_UP_ID_SYNCHRONIZE = 4;
+	public static int POP_UP_ID_HELP = 5;
+	public static int POP_UP_ID_COPYRIGHT = 6;
+
 }

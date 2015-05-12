@@ -17,11 +17,12 @@
             android:layout_width="0dp" android:layout_weight="1"
             android:layout_height="wrap_content">
             <EditText
+                android:id="@+id/frag_create_card_edt_search"
                 android:hint="@string/frag_createcard_findinlist"
                 android:paddingLeft="@dimen/frag_createcard_search_bar_paddingleft"
                 android:layout_width="match_parent"
                 android:background="@drawable/search_bar_bg"
-                android:textSize="@dimen/frag_createcard_search_textsize"
+                android:textSize="@dimen/frag_createcard_search_textsize" android:lines="1"
                 android:layout_marginRight="@dimen/frag_createcard_search_padding"
                 android:layout_height="@dimen/frag_createcard_search_h" />
 
@@ -30,7 +31,7 @@
                 android:layout_width="20dp" android:layout_marginLeft="7dp"
                 android:layout_height="20dp" android:src="@drawable/icon_search" />
 
-            <ImageView
+            <ImageView  android:id="@+id/frag_create_card_bnt_clear"
                 android:layout_gravity="center_vertical|right"
                 android:layout_width="25dp" android:layout_marginRight="10dp"
                 android:layout_height="25dp" android:src="@drawable/selector_bt_delete_circle" />
@@ -39,7 +40,7 @@
 
 
         <com.nct.customview.TfTextView
-            android:id="@+id/item_topbar_tv_title"
+            android:id="@+id/frag_create_card_tv_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cancel"

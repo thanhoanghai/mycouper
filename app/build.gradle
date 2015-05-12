@@ -23,11 +23,13 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-v4:+'
-//    compile 'com.android.support:appcompat-v7:22.1.1'
+    //    compile 'com.android.support:appcompat-v7:22.1.1'
     compile files('libs/universal-image-loader-1.9.2.jar')
     compile files('libs/gson-2.2.4.jar')
     compile files('libs/glide-3.4.0.jar')
     compile files('libs/android-async-http-1.4.5.jar')
+    compile files('libs/simple-facebook.jar')
     compile 'me.dm7.barcodescanner:zxing:1.7'
+    compile 'com.github.asne.facebook:facebook:3.17.2'
 
 }

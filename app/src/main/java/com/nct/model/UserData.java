@@ -1,8 +1,7 @@
 package com.nct.model;
 
-public class UserData {
+public class UserData extends StatusObject {
 
-	public int statusCode;
 	public UserObject data;
 
 }

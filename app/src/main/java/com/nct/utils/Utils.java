@@ -134,7 +134,7 @@ public class Utils {
 		return options;
 	}
 
-	public static void showHashKeyFacebook(Context mContext) {
+	public static String showHashKeyFacebook(Context mContext) {
 		try {
 			String PACKAGE_NAME = mContext.getPackageName();
 			PackageInfo info = mContext.getPackageManager().getPackageInfo(
@@ -146,12 +146,15 @@ public class Utils {
 						"key is: "
 								+ Base64.encodeToString(md.digest(),
 										Base64.DEFAULT));
+				return Base64.encodeToString(md.digest(),
+						Base64.DEFAULT);
 			}
 		} catch (NameNotFoundException e) {
 			Log.e("error", "error name not found");
 		} catch (NoSuchAlgorithmException e) {
 			Log.e("error", "error no algorithm");
 		}
+		return "";
 	}
 
 	public static void updateDeviceInfo(Context context, String username) {

@@ -19,6 +19,8 @@ import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
 import com.nct.gridview.SuperListview;
 import com.nct.model.CardObject;
+import com.nct.model.MemberCardData;
+import com.nct.model.MemberCardObject;
 import com.nct.utils.Utils;
 
 
@@ -29,7 +31,7 @@ import java.util.ArrayList;
 
 import thh.com.mycouper.R;
 
-public class FragMemberCard extends BaseGridFragment<CardObject> {
+public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 
 
 	private Button bntAddmore;
@@ -79,39 +81,21 @@ public class FragMemberCard extends BaseGridFragment<CardObject> {
 
 	@Override
 	protected void loadData() {
-		ArrayList<CardObject> list = new ArrayList<CardObject>();
-		list.add(new CardObject());
-		list.add(new CardObject());list.add(new CardObject());
-		list.add(new CardObject());
-		list.add(new CardObject());
-		list.add(new CardObject());list.add(new CardObject());
-		list.add(new CardObject());
-		list.add(new CardObject());
-		list.add(new CardObject());
-		list.add(new CardObject());
-		list.add(new CardObject());
-		list.add(new CardObject());
-		list.add(new CardObject());
-		list.add(new CardObject());
-
-		setData(list,true);
-	}
-
-
-	@Override
-	protected void loadDataWithLoadmore(int pageindex, int pagesize) {
-		//DataLoader.get(URLProvider.getMVGenres(genres,topic, pageindex),
-				//mTextHttpResponseHandler);
+		DataLoader.get(URLProvider.getMemberCardForUser(GlobalInstance.getInstance().userInfo.user_id),
+				mTextHttpResponseHandler);
 	}
 
 	@Override
 	protected boolean handleLoadingDataSuccess(String result) {
 
+		MemberCardData object = DataHelper.getMemberCardData(result);
+		setData(object.data);
+
 		return true;
 	}
 
 	@Override
-	protected FragMemberCardAdapter initAdapter(ArrayList<CardObject> list) {
+	protected FragMemberCardAdapter initAdapter(ArrayList<MemberCardObject> list) {
 		FragMemberCardAdapter adapter = new FragMemberCardAdapter(getActivity(), list);
 		return adapter;
 	}

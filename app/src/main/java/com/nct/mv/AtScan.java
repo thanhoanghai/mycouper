@@ -10,5 +10,4 @@ import com.nct.utils.Utils;
 import thh.com.mycouper.R;
 
 public class AtScan extends Activity {
-
 }
