@@ -19,6 +19,11 @@
     <string name="scan">Quét mã thẻ</string>
     <string name="next">Tiếp</string>
 
+    <!-- CHANGE PASS -->
+    <string name="change_pass">THAY ĐỔI MẬT KHẨU</string>
+    <string name="change_pass_currentpass">Mật khẩu hiện tại</string>
+    <string name="change_pass_newpass">Mật khẩu mới</string>
+
     <!-- USER PROFILE -->
     <string name="user_profile">Tài khoản</string>
     <string name="user_account">TÀI KHOẢN</string>

@@ -19,6 +19,12 @@
     <string name="next">Next</string>
 
 
+    <!-- CHANGE PASS -->
+    <string name="change_pass">CHANGE PASSWORD</string>
+    <string name="change_pass_currentpass">Current passowrd</string>
+    <string name="change_pass_newpass">New password</string>
+
+
     <!-- USER PROFILE -->
     <string name="user_profile">User Profile</string>
     <string name="user_account">ACCOUNT</string>

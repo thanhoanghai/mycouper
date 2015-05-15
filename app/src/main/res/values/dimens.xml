@@ -8,6 +8,9 @@
     <dimen name="splash_icon_size">140dp</dimen>
 
 
+    <!-- CHANGE PASSWORD -->
+    <dimen name="change_pass_title_marin_top">20dp</dimen>
+
     <!-- USER ACCOUNT -->
     <dimen name="user_account_logo_size">80dp</dimen>
     <dimen name="user_account_bar_text_h">40dp</dimen>

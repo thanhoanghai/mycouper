@@ -62,6 +62,13 @@ public class AtUserProfile extends AtBase {
 			}
 		});
 
+		tvPass.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Utils.gotoScreenChangepass(AtUserProfile.this);
+			}
+		});
+
 		setData();
 	}
 

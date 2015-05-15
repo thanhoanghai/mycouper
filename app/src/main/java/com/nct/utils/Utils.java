@@ -28,6 +28,7 @@ import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 
 import com.nct.constants.Constants;
+import com.nct.mv.AtChangePass;
 import com.nct.mv.AtCreateCard;
 import com.nct.mv.AtForgotPass;
 import com.nct.mv.AtLogin;
@@ -41,6 +42,11 @@ import thh.com.mycouper.R;
 public class Utils {
 
 	private static final String TAG = "Utils";
+	public static void gotoScreenChangepass(Context mContext) {
+		Intent search = new Intent(mContext, AtChangePass.class);
+		mContext.startActivity(search);
+	}
+
 
 	public static void gotoScreenUserProfile(Context mContext) {
 		Intent search = new Intent(mContext, AtUserProfile.class);
