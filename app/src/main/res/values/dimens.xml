@@ -12,6 +12,7 @@
     <dimen name="user_account_bar_text_h">40dp</dimen>
     <dimen name="user_account_title_w">100dp</dimen>
     <dimen name="user_account_bar_text_marintop">5dp</dimen>
+    <dimen name="user_account_icon_padding">10dp</dimen>
 
 
     <!-- SIGN UP -->
