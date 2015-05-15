@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nct.constants.Constants;
+import com.nct.fragment.FragCreateCardInfo;
 import com.nct.model.CompanyObject;
 import com.nct.model.MemberCardObject;
+import com.nct.mv.AtCreateCard;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -54,6 +57,13 @@ public class FragCompanyAdapter extends BaseAdapterApp<CompanyObject> {
 		CompanyObject item = getItem(position);
 		displayImage(holder.imgThumb,item.company_logo);
 		holder.tvTitle.setText(item.company_name);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((AtCreateCard)mContext).changeFragment( Constants.TYPE_CREATE_CARD_INFO,new FragCreateCardInfo());
+            }
+        });
 
 		return view;
 	}

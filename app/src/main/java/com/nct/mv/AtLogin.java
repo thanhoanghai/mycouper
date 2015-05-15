@@ -2,6 +2,7 @@ package com.nct.mv;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,10 +38,9 @@ public class AtLogin extends AtBase {
     private String sEmail,sPass;
     private SimpleFacebook mSimpleFacebook;
 
+    private enum TYPE_LOGIN {LoginEmail, LoginFacebook};
 
-    private int TYPE_LOGIN_FACEBOOK = 2;
-    private int TYPE_LOGIN = 1;
-    private int indexLogin = TYPE_LOGIN;
+    private TYPE_LOGIN typeLogin = TYPE_LOGIN.LoginEmail;
 
     @Override
     protected void onResume() {
@@ -68,15 +68,19 @@ public class AtLogin extends AtBase {
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                indexLogin = TYPE_LOGIN;
-                checkLogin();
+                typeLogin = TYPE_LOGIN.LoginEmail;
+                String result = checkLogin();
+                if(result.equals(""))
+                    getLogin();
+                else
+                    Debug.toast(AtLogin.this, result);
             }
         });
         btLoginFace = (Button) findViewById(R.id.login_bt_login_fb);
         btLoginFace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                indexLogin = TYPE_LOGIN_FACEBOOK;
+                typeLogin = TYPE_LOGIN.LoginFacebook;
                 loginFacebook();
             }
         });
@@ -97,18 +101,24 @@ public class AtLogin extends AtBase {
         });
     }
 
-    private void checkLogin()
-    {
+    private String checkLogin(){
+        String result = "";
         sEmail = edtUsername.getText().toString();
         sPass = edtPass.getText().toString();
-        getLogin();
+        if(TextUtils.isEmpty(sEmail)){
+            return result = getResources().getString(R.string.login_message_user_is_empty);
+        }
+        if(TextUtils.isEmpty(sPass)){
+            return result = getResources().getString(R.string.login_message_pass_is_empty);
+        }
+        return result;
     }
 
     private void getLogin()
     {
         RequestParams params;
-        if(indexLogin == TYPE_LOGIN)
-            params = URLProvider.getParamLogin(sEmail,sPass);
+        if(typeLogin == TYPE_LOGIN.LoginEmail)
+            params = URLProvider.getParamLogin(sEmail, sPass);
         else
             params = URLProvider.getParamLoginFacebook(sEmail);
 

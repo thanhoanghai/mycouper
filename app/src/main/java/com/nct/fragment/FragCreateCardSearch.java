@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -42,6 +43,7 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
     private TextView bntCancel;
 
     private Button bntOther;
+    private CompanyData data;
 
     public static FragCreateCardSearch newInstance() {
         FragCreateCardSearch f = new FragCreateCardSearch();
@@ -73,7 +75,11 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
         bntOther.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_INFO);
+                FragCreateCardInfo fm = new FragCreateCardInfo();
+                Bundle bundle = new Bundle();
+                bundle.putBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, true);
+                fm.setArguments(bundle);
+                ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_INFO, fm);
             }
         });
 
@@ -116,7 +122,16 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
                 ((FragCompanyAdapter)mBaseAdapter).setFilter(text);
             }
         });
-
+//        mAbsListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                FragCreateCardInfo fm = new FragCreateCardInfo();
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE, data.data.get(position));
+//                fm.setArguments(bundle);
+//                ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_INFO, fm);
+//            }
+//        });
 
         return v;
     }
@@ -145,7 +160,7 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
 
     @Override
     protected boolean handleLoadingDataSuccess(String result) {
-        CompanyData data = DataHelper.getCompanyData(result);
+        data = DataHelper.getCompanyData(result);
         setData(data.data,false);
         return true;
     }

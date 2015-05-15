@@ -30,6 +30,18 @@
     <string name="frag_createcard_company_name">Company name:</string>
     <string name="frag_createcard_cardinformation">Card information:</string>
 
+    <!-- FRAG CREATE CARD INFO -->
+    <string name="frag_createcard_info_title">Or enter below information</string>
+    <string name="frag_createcard_info_cardcode">Card code:</string>
+    <string name="frag_createcard_info_required">(required)</string>
+    <string name="frag_createcard_info_cardname">Name on Card:</string>
+    <string name="frag_createcard_info_optional">(optional)</string>
+    <string name="frag_createcard_info_description">Description:</string>
+    <string name="frag_createcard_info_caompanyname">Company name:</string>
+    <string name="frag_createcard_info_caompanyname_is_empty">Field Company name is not empty!</string>
+    <string name="frag_createcard_info_cardcode_is_empty">Field Card code is not empty!</string>
+    <string name="frag_createcard_info_front_camera">Front face</string>
+    <string name="frag_createcard_info_back_camera">Back face</string>
 
     <!-- FRAG MEMBER CARD -->
     <string name="frag_membercard_addmore">+     Add more card</string>
@@ -56,6 +68,10 @@
     <string name="login_copywright">Copywright 2015 by myCouper</string>
     <string name="login_forgot_pass">Forgot password</string>
     <string name="login_signup">Sign up</string>
+    <string name="login_message_user_is_empty">Field username is not empty!</string>
+    <string name="login_message_pass_is_empty">Need password field!</string>
+    <string name="login_message_user_invalid">Email is invalid!</string>
+    <string name="login_message_confirm_pass_incorrect">Confirm password incorrect!</string>
 
 
     <!-- ITEM COPYWRIGHT -->

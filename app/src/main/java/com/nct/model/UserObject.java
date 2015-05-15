@@ -14,4 +14,8 @@ public class UserObject {
     public String last_update;
     public String last_login_time;
 
+    public UserObject(String user_id, String user_email){
+        this.user_id = user_id;
+        this.user_email = user_email;
+    }
 }

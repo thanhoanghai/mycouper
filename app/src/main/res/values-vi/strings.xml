@@ -31,6 +31,20 @@
     <string name="frag_createcard_company_name">Tên công ty:</string>
     <string name="frag_createcard_cardinformation">Thông tin thẻ:</string>
 
+
+    <!-- FRAG CREATE CARD INFO -->
+    <string name="frag_createcard_info_title">Hoặc nhập thông tin dưới đây</string>
+    <string name="frag_createcard_info_cardcode">Mã Card:</string>
+    <string name="frag_createcard_info_required">(bắt buộc)</string>
+    <string name="frag_createcard_info_cardname">Tên Card:</string>
+    <string name="frag_createcard_info_optional">(không bắt buộc)</string>
+    <string name="frag_createcard_info_description">Miêu tả:</string>
+    <string name="frag_createcard_info_caompanyname">Tên công ty:</string>
+    <string name="frag_createcard_info_caompanyname_is_empty">Tên công ty là bắt buộc!</string>
+    <string name="frag_createcard_info_cardcode_is_empty">Mã Card là bắt buộc!</string>
+    <string name="frag_createcard_info_front_camera">Mặt trước</string>
+    <string name="frag_createcard_info_back_camera">Mặt sau</string>
+
     <!-- FRAG MEMBER CARD -->
     <string name="frag_membercard_addmore">+     Add more card</string>
     <string name="frag_membercard">THẺ THÀNH VIÊN</string>
@@ -56,6 +70,10 @@
     <string name="login_copywright">Copywright 2015 by myCouper</string>
     <string name="login_forgot_pass">Forgot password</string>
     <string name="login_signup">Sign up</string>
+    <string name="login_message_user_is_empty">Tên đăng nhập không được để trống!</string>
+    <string name="login_message_pass_is_empty">Mật khẩu không được để trống!</string>
+    <string name="login_message_user_invalid">Email không chính xác!</string>
+    <string name="login_message_confirm_pass_incorrect">Xác nhận mật khẩu không chính xác!</string>
 
 
     <!-- ITEM COPYWRIGHT -->

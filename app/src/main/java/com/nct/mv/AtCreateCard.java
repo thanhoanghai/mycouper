@@ -1,11 +1,15 @@
 package com.nct.mv;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.nct.constants.Constants;
 import com.nct.fragment.FragCreateCardImage;
@@ -14,7 +18,9 @@ import com.nct.fragment.FragCreateCardSearch;
 import com.nct.fragment.FragCreateCardSuccess;
 import com.nct.fragment.FragHome;
 import com.nct.utils.Utils;
+import com.soundcloud.android.crop.Crop;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -38,7 +44,7 @@ public class AtCreateCard extends AtBase {
 		setLanguge();
 
 		linear = (LinearLayout) findViewById(R.id.at_create_card_linear);
-		changeFragment(Constants.TYPE_CREATE_CARD_SEARCH);
+		changeFragment(Constants.TYPE_CREATE_CARD_SEARCH, new FragCreateCardSearch());
 	}
 
 	private void initSaveFragment()
@@ -60,21 +66,21 @@ public class AtCreateCard extends AtBase {
 	}
 
 
-	public void changeFragment(int type)
+	public void changeFragment(int type, Fragment fragment)
 	{
 		if(type == Constants.TYPE_CREATE_CARD_SEARCH)
 		{
-			pushFragments(Constants.TAB_CREATE_CARD,new FragCreateCardSearch(),false,true);
+			pushFragments(Constants.TAB_CREATE_CARD, fragment, false, true);
 		}else if(type == Constants.TYPE_CREATE_CARD_INFO)
 		{
-			pushFragments(Constants.TAB_CREATE_CARD,new FragCreateCardInfo(),true,true);
+			pushFragments(Constants.TAB_CREATE_CARD, fragment,true,true);
 		}else if(type == Constants.TYPE_CREATE_CARD_IMAGE)
 		{
-			pushFragments(Constants.TAB_CREATE_CARD,new FragCreateCardImage(),true,true);
+			pushFragments(Constants.TAB_CREATE_CARD, fragment,true,true);
 		}
 		else if(type == Constants.TYPE_CREATE_CARD_SUCCESS)
 		{
-			pushFragments(Constants.TAB_CREATE_CARD,new FragCreateCardSuccess(),true,true);
+			pushFragments(Constants.TAB_CREATE_CARD, fragment,true,true);
 		}
 	}
 
@@ -101,5 +107,13 @@ public class AtCreateCard extends AtBase {
 		ft.replace(R.id.at_create_card_linear, fragment);
 		ft.commit();
 	}
+
+//    @Override
+public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+}
+
+
 
 }

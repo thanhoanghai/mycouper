@@ -16,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -276,5 +277,52 @@ public class Utils {
 		mContext.startActivity(Intent.createChooser(intent,
 				"Share Your Friends"));
 	}
+
+    public final static boolean isValidEmail(String target) {
+        if (target == null || target.equals("")) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
+    }
+
+    public static Bitmap scaleDownBitmap(String imgPath){
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(imgPath,options);
+        options.inSampleSize = calculateInSampleSize(options ,300, 200);
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeFile(imgPath, options);
+
+    }
+
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        return calculateInSampleSize(width, height, reqWidth, reqHeight);
+    }
+
+    public static int calculateInSampleSize(int curWidth, int curHeight, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = curHeight;
+        final int width =  curWidth;
+
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
+    }
 
 }

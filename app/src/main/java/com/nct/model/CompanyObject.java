@@ -1,7 +1,8 @@
 package com.nct.model;
 
-public class CompanyObject {
+import java.io.Serializable;
 
+public class CompanyObject implements Serializable {
 	public String company_id;
 	public String company_name;
 	public String company_logo;

@@ -44,11 +44,16 @@
     <dimen name="frag_createcard_search_h">35dp</dimen>
     <dimen name="frag_createcard_search_padding">7dp</dimen>
     <dimen name="frag_createcard_search_textsize">14sp</dimen>
+
     <!-- FRAG CREATE CARD INFO -->
     <dimen name="frag_createcard_info_title_size">15sp</dimen>
     <dimen name="frag_createcard_info_title_marintop">10dp</dimen>
     <dimen name="frag_createcard_info_title_marinleft">5dp</dimen>
     <dimen name="frag_createcard_info_edittext_h">35dp</dimen>
+    <dimen name="frag_createcard_info_layout_marintop">10dp</dimen>
+    <dimen name="frag_createcard_info_edittext_marintop">15dp</dimen>
+    <dimen name="frag_createcard_info_edittext_marinleft">10dp</dimen>
+    <dimen name="frag_createcard_info_camera_title_size">20sp</dimen>
 
 
     <!-- FRAG MEMBER CARD -->

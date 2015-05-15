@@ -1,0 +1,114 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <com.nct.customview.TfTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/frag_createcard_info_layout_marintop"
+        android:text="@string/frag_createcard_info_title"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/frag_createcard_info_title_size"
+        app:typeface_name="@string/font_roboto_regular" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/frag_createcard_info_edittext_h"
+        android:layout_marginTop="@dimen/frag_createcard_info_layout_marintop"
+        android:background="@color/grey_info_card"
+        android:orientation="horizontal">
+
+        <com.nct.customview.TfTextView
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:gravity="right|center_vertical"
+            android:text="@string/frag_createcard_info_cardcode"
+            android:textColor="@color/grey_info_text_card"
+            android:textSize="@dimen/frag_createcard_info_title_size"
+            app:typeface_name="@string/font_roboto_regular" />
+
+        <EditText
+            android:id="@+id/create_card_cardcode"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
+            android:gravity="left|center_vertical"
+            android:background="@color/transparent"
+            android:textColorHint="@color/read"
+            android:textColor="@color/grey_info_text_card"
+            android:hint="@string/frag_createcard_info_required"
+            android:textSize="@dimen/frag_createcard_info_title_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/frag_createcard_info_edittext_h"
+        android:layout_marginTop="@dimen/frag_createcard_info_edittext_marintop"
+        android:background="@color/grey_info_card"
+        android:orientation="horizontal">
+
+        <com.nct.customview.TfTextView
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:gravity="right|center_vertical"
+            android:text="@string/frag_createcard_info_cardname"
+            android:textColor="@color/grey_info_text_card"
+            android:textSize="@dimen/frag_createcard_info_title_size"
+            app:typeface_name="@string/font_roboto_regular" />
+
+        <EditText
+            android:id="@+id/create_card_cardname"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
+            android:gravity="left|center_vertical"
+            android:background="@color/transparent"
+            android:textColorHint="@color/grey_info_edittext_card"
+            android:textColor="@color/grey_info_text_card"
+            android:hint="@string/frag_createcard_info_optional"
+            android:textSize="@dimen/frag_createcard_info_title_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/frag_createcard_info_edittext_h"
+        android:layout_marginTop="@dimen/frag_createcard_info_edittext_marintop"
+        android:background="@color/grey_info_card"
+        android:orientation="horizontal">
+
+        <com.nct.customview.TfTextView
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:gravity="right|center_vertical"
+            android:text="@string/frag_createcard_info_description"
+            android:textColor="@color/grey_info_text_card"
+            android:textSize="@dimen/frag_createcard_info_title_size"
+            app:typeface_name="@string/font_roboto_regular" />
+
+        <EditText
+            android:id="@+id/create_card_carddescription"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
+            android:gravity="left|center_vertical"
+            android:background="@color/transparent"
+            android:textColorHint="@color/grey_info_edittext_card"
+            android:textColor="@color/grey_info_text_card"
+            android:hint="@string/frag_createcard_info_optional"
+            android:textSize="@dimen/frag_createcard_info_title_size" />
+
+    </LinearLayout>
+
+</LinearLayout>
