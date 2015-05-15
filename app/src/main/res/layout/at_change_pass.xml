@@ -6,7 +6,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <include layout="@layout/item_top_bar"
+    <include layout="@layout/item_top_bar"></include>
 
     <com.nct.customview.TfTextView android:layout_marginTop="@dimen/change_pass_title_marin_top"
         android:text="@string/change_pass_currentpass"
