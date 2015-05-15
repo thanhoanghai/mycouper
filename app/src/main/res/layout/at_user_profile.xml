@@ -7,7 +7,7 @@
 
     <include layout="@layout/item_top_bar" />
 
-    <ScrollView
+    <ScrollView android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -152,6 +152,37 @@
                 android:textColor="@color/grey_info_text_card" android:textSize="15sp"
                 app:typeface_name="@string/font_roboto_regular" />
         </LinearLayout>
+
+        <com.nct.customview.TfTextView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/user_account_sharing_mycouper" android:layout_marginTop="@dimen/user_account_bar_text_marintop"
+            android:textColor="@color/black" android:gravity="center_horizontal" android:textSize="15sp"
+            app:typeface_name="@string/font_roboto_regular" />
+
+        <LinearLayout
+            android:layout_width="match_parent" android:gravity="center_horizontal" android:layout_marginTop="20dp"
+            android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:layout_width="@dimen/user_account_icon_face_size" android:background="@drawable/icon_user_bg_face"
+                android:layout_height="@dimen/user_account_icon_face_size"  android:src="@drawable/icon_face"/>
+
+            <ImageView android:layout_marginLeft="30dp"
+                android:layout_width="@dimen/user_account_icon_face_size" android:background="@drawable/icon_user_bg_face"
+                android:layout_height="@dimen/user_account_icon_face_size"  android:src="@drawable/icon_google"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/user_account_bt_logout"
+            android:layout_width="@dimen/frag_membercard_bt_w"
+            android:layout_height="@dimen/frag_membercard_bt_h"
+            android:background="@drawable/bt_logout_bg"
+            android:text="@string/user_account_logout"
+            android:textColor="@color/white" android:layout_marginBottom="20dp"
+            tools:ignore="UnusedAttribute" />
+
 
 
     </LinearLayout>

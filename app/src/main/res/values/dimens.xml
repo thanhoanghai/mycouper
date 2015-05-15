@@ -8,12 +8,13 @@
     <dimen name="splash_icon_size">140dp</dimen>
 
 
-    <!-- SIGN UP -->
+    <!-- USER ACCOUNT -->
     <dimen name="user_account_logo_size">80dp</dimen>
     <dimen name="user_account_bar_text_h">40dp</dimen>
     <dimen name="user_account_title_w">100dp</dimen>
     <dimen name="user_account_bar_text_marintop">5dp</dimen>
     <dimen name="user_account_icon_padding">10dp</dimen>
+    <dimen name="user_account_icon_face_size">50dp</dimen>
 
 
     <!-- SIGN UP -->

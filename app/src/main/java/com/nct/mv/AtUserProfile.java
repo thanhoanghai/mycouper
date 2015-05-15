@@ -1,8 +1,10 @@
 package com.nct.mv;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.nct.constants.GlobalInstance;
@@ -19,6 +21,8 @@ public class AtUserProfile extends AtBase {
 	private TextView tvEmail,tvPass;
 	private UserObject userObject;
 
+	private Button bntLogout;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,6 +32,12 @@ public class AtUserProfile extends AtBase {
 		initTopbar(getString(R.string.user_account));
 		setTopbarBtLeftImage(R.drawable.icon_back);
 		setTopbarBtRightVisible(View.INVISIBLE);
+		setTopbarLeftBtListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
 
 		userObject = GlobalInstance.getInstance().userInfo;
 
@@ -40,6 +50,17 @@ public class AtUserProfile extends AtBase {
 		tvcivility = (TextView) findViewById(R.id.user_account_civility);
 		tvPhone = (TextView) findViewById(R.id.user_account_phone);
 		tvLastLogin = (TextView) findViewById(R.id.user_account_lastlogin);
+
+		bntLogout = (Button) findViewById(R.id.user_account_bt_logout);
+		bntLogout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(AtUserProfile.this, AtLogin.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+				startActivity(intent);
+				finish();
+			}
+		});
 
 		setData();
 	}
