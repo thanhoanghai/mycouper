@@ -6,7 +6,7 @@ public class GlobalInstance {
 
 	private static GlobalInstance mGlobalInstance;
 	public String userID = "";
-	public String idLanguage = "";
+	public String idLanguage = "vi";
     public UserObject userInfo;
 
 	public static GlobalInstance getInstance() {

@@ -31,6 +31,7 @@
     <string name="user_account_login_click_to_edit">Account Login \n Click to edit information</string>
     <string name="user_account_sharing_mycouper">Sharing myCouper with your firends:</string>
     <string name="user_account_logout">Logout</string>
+    <string name="user_account_password_click_here">Password (click here to change)</string>
 
 
     <!-- FRAG CREATE NEW CARD -->
@@ -55,7 +56,7 @@
     <string name="frag_createcard_info_back_camera">Back face</string>
 
     <!-- FRAG MEMBER CARD -->
-    <string name="frag_membercard_addmore">+     Add more card</string>
+    <string name="frag_membercard_addmore">+   Add more card</string>
     <string name="frag_membercard">CARDS MEMBER</string>
 
     <!-- SIGN UP -->

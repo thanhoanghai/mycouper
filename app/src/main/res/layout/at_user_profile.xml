@@ -16,6 +16,13 @@
         android:layout_width="match_parent" android:gravity="center_horizontal"
         android:layout_height="wrap_content" android:orientation="vertical">
 
+        <ImageView
+            android:layout_marginTop="@dimen/user_account_icon_padding"
+            android:layout_marginBottom="@dimen/user_account_icon_padding"
+            android:layout_width="@dimen/user_account_logo_size"
+            android:layout_height="@dimen/user_account_logo_size" android:background="@drawable/icon_user_profile_bg" />
+
+
         <LinearLayout
             android:layout_width="match_parent" android:gravity="center_vertical"
             android:layout_height="@dimen/user_account_bar_text_h"
@@ -124,7 +131,9 @@
             android:layout_height="@dimen/user_account_bar_text_h" android:layout_marginTop="@dimen/user_account_bar_text_marintop"
             android:background="@color/grey_info_card"
             >
-            <com.nct.customview.TfTextView android:layout_marginLeft="@dimen/user_account_icon_padding" android:drawablePadding="@dimen/user_account_icon_padding"
+            <com.nct.customview.TfTextView
+                android:id="@+id/user_account_email" android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/user_account_icon_padding" android:drawablePadding="@dimen/user_account_icon_padding"
                 android:drawableLeft="@drawable/icon_email"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:textColor="@color/grey_info_text_card" android:textSize="15sp"
@@ -136,9 +145,10 @@
             android:layout_height="@dimen/user_account_bar_text_h" android:layout_marginTop="@dimen/user_account_bar_text_marintop"
             android:background="@color/grey_info_card"
             >
-            <com.nct.customview.TfTextView android:layout_marginLeft="@dimen/user_account_icon_padding" android:drawablePadding="@dimen/user_account_icon_padding"
-                android:drawableLeft="@drawable/icon_lock"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
+            <com.nct.customview.TfTextView android:id="@+id/user_account_password"
+                android:layout_marginLeft="@dimen/user_account_icon_padding" android:drawablePadding="@dimen/user_account_icon_padding"
+                android:drawableLeft="@drawable/icon_lock" android:text="@string/user_account_password_click_here"
+                android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical"
                 android:textColor="@color/grey_info_text_card" android:textSize="15sp"
                 app:typeface_name="@string/font_roboto_regular" />
         </LinearLayout>
