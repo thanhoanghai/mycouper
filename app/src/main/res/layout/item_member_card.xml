@@ -15,6 +15,7 @@
         android:layout_height="0dp" android:layout_weight="1">
 
         <ImageView
+            android:src="@color/grey_info_card"
             android:id="@+id/item_membercard_img"
             android:layout_width="@dimen/item_member_card_icon_size"
             android:layout_height="@dimen/item_member_card_icon_size"

@@ -37,6 +37,7 @@
         <activity android:name="com.nct.mv.AtScan" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
         <activity android:name="com.nct.mv.AtUserProfile" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
         <activity android:name="com.nct.mv.AtChangePass" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
+        <activity android:name="com.nct.mv.AtCardDetail" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
 
         <activity
             android:clearTaskOnLaunch="true"

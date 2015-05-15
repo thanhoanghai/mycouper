@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nct.model.MemberCardObject;
+import com.nct.utils.Utils;
 
 
 import java.util.ArrayList;
@@ -49,6 +50,13 @@ public class FragMemberCardAdapter extends BaseAdapterApp<MemberCardObject> {
 
 		MemberCardObject item = getItem(position);
 		displayImage(holder.imgThumb,item.company_logo);
+
+		view.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Utils.gotoScreenCardDetail(mContext);
+			}
+		});
 
 		return view;
 	}
