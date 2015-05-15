@@ -18,6 +18,9 @@
     <string name="cancel">Huỷ</string>
     <string name="scan">Quét mã thẻ</string>
     <string name="next">Tiếp</string>
+    <string name="change">Thay đổi</string>
+    <string name="close">Đóng</string>
+
 
     <!-- CHANGE PASS -->
     <string name="change_pass">THAY ĐỔI MẬT KHẨU</string>
@@ -66,8 +69,8 @@
 
     <!-- SIGN UP -->
     <string name="signup_couper_will_help">( Couper will help you keep all the cards when switching phone )</string>
-    <string name="signup_password">Password</string>
-    <string name="signup_confirmpass">Confirm password</string>
+    <string name="signup_password">Mật khẩu</string>
+    <string name="signup_confirmpass">Xác nhận mật khẩu</string>
     <string name="signup_required">(required)</string>
 
     <!-- FORGOT PASSWORD -->

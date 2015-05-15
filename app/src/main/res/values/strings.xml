@@ -17,6 +17,8 @@
     <string name="cancel">Cancel</string>
     <string name="scan">Scan</string>
     <string name="next">Next</string>
+    <string name="change">Change</string>
+    <string name="close">Close</string>
 
 
     <!-- CHANGE PASS -->

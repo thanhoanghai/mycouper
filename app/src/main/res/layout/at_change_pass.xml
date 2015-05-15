@@ -14,11 +14,82 @@
         android:textColor="@color/black" android:textSize="16sp"
         app:typeface_name="@string/font_roboto_regular" app:typeface_style="bold"/>
 
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
+        android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/grey_info_card"
+        android:gravity="center_vertical" android:orientation="horizontal">
+        <ImageView
+            android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_lock" />
+
+        <EditText android:id="@+id/change_pass_edt_currentpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+            android:background="@color/transparent"
+            android:hint="@string/change_pass_currentpass" android:textSize="@dimen/login_textfield_textsize" />
+    </LinearLayout>
+
+
     <com.nct.customview.TfTextView android:layout_marginTop="@dimen/change_pass_title_marin_top"
         android:text="@string/change_pass_newpass"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:textColor="@color/black" android:textSize="16sp"
         app:typeface_name="@string/font_roboto_regular" app:typeface_style="bold"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
+        android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/grey_info_card"
+        android:gravity="center_vertical" android:orientation="horizontal">
+        <ImageView
+            android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_lock" />
+
+        <EditText android:id="@+id/change_pass_edt_newpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+            android:background="@color/transparent"
+            android:hint="@string/change_pass_newpass" android:textSize="@dimen/login_textfield_textsize" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
+        android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/grey_info_card"
+        android:gravity="center_vertical" android:orientation="horizontal">
+        <ImageView
+            android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_lock"/>
+
+        <EditText android:id="@+id/change_pass_edt_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+            android:background="@color/transparent"
+            android:hint="@string/signup_confirmpass" android:textSize="@dimen/login_textfield_textsize" />
+    </LinearLayout>
+
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/change_pass_bt_change"
+        android:layout_width="@dimen/frag_membercard_bt_w"
+        android:layout_height="@dimen/frag_membercard_bt_h"
+        android:background="@drawable/login_bt_face_bg"
+        android:text="@string/change"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        tools:ignore="UnusedAttribute" />
+
+    <Button
+        android:id="@+id/change_pass_bt_close"
+        android:layout_width="@dimen/frag_membercard_bt_w"
+        android:layout_height="@dimen/frag_membercard_bt_h"
+        android:background="@drawable/bt_logout_bg"
+        android:text="@string/close"
+        android:textColor="@color/white"
+        tools:ignore="UnusedAttribute" />
+
 
 
 </LinearLayout>
