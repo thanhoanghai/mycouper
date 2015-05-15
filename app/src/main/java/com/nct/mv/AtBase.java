@@ -129,7 +129,10 @@ public class AtBase extends FragmentActivity {
 	{
 		topBarBtRight.setImageResource(resource);
 	}
-
+	public void setTopbarBtRightVisible(int visi)
+	{
+		topBarBtRight.setVisibility(visi);
+	}
 
 	////////////////// LANGUAGE ////////
 	public void setLanguge() {

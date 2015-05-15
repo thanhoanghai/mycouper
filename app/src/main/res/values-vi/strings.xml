@@ -21,7 +21,16 @@
 
     <!-- USER PROFILE -->
     <string name="user_profile">Tài khoản</string>
-
+    <string name="user_account">Tài khoản</string>
+    <string name="user_account_firstname">Tên:</string>
+    <string name="user_account_lastname">Họ:</string>
+    <string name="user_account_birthday">Ngày sinh:</string>
+    <string name="user_account_civility">Giới tính:</string>
+    <string name="user_account_phone">Điện thoại:</string>
+    <string name="user_account_lastlogin">Đăng nhập:</string>
+    <string name="user_account_login_click_to_edit">Tài khoản đăng nhập \n Nhấn để chỉnh sửa thông tin</string>
+    <string name="user_account_sharing_mycouper">Chia sẻ thông tin mycouper với bạn bè</string>
+    <string name="user_account_logout">Đăng xuất</string>
 
     <!-- FRAG CREATE NEW CARD -->
     <string name="frag_createcard">TẠO THẺ MỚI</string>

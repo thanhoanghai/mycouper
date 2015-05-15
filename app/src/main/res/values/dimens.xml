@@ -9,6 +9,12 @@
 
 
     <!-- SIGN UP -->
+    <dimen name="user_account_bar_text_h">40dp</dimen>
+    <dimen name="user_account_title_w">100dp</dimen>
+    <dimen name="user_account_bar_text_marintop">5dp</dimen>
+
+
+    <!-- SIGN UP -->
     <dimen name="signup_text_marinTop">20dp</dimen>
     <dimen name="signup_text_marinLeft">10dp</dimen>
     <dimen name="signup_bt_sign_marinTop">30dp</dimen>

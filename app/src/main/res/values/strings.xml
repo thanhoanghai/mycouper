@@ -21,6 +21,17 @@
 
     <!-- USER PROFILE -->
     <string name="user_profile">User Profile</string>
+    <string name="user_account">Account</string>
+    <string name="user_account_firstname">First name:</string>
+    <string name="user_account_lastname">Last name:</string>
+    <string name="user_account_birthday">Birthday:</string>
+    <string name="user_account_civility">Civility:</string>
+    <string name="user_account_phone">Phone:</string>
+    <string name="user_account_lastlogin">Last login:</string>
+    <string name="user_account_login_click_to_edit">Account Login \n Click to edit information</string>
+    <string name="user_account_sharing_mycouper">Sharing myCouper with your firends:</string>
+    <string name="user_account_logout">Logout</string>
+
 
     <!-- FRAG CREATE NEW CARD -->
     <string name="frag_createcard">CREATE NEW CARD</string>

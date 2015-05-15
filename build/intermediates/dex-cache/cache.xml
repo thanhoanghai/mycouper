@@ -9,11 +9,18 @@
         <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-e60f9b63c6418d0a0113d628e26e434c17094706.jar" />
     </item>
     <item
-        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/classes.jar"
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/universal-image-loader-1.9.2.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
-        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-57b85b5f8895d99c9971d150cc0094bd18f26c55.jar" />
+        sha1="9e025bc5b84968e7d6ac765e660a70b3e5a87432">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.2-20b3374616c7d1ee6c6f3d987919f79599d4399d.jar" />
+    </item>
+    <item
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/info.vividcode.android.zxing/capture-activity/2.3.0-1.2/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="424e4f70e4b535fa98c871d442963bd30e7b3bb0">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-9d91f2aa2f1cff94d6cce36ab009db22bde47901.jar" />
     </item>
     <item
         jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/android-async-http-1.4.5.jar"
@@ -23,11 +30,11 @@
         <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-a0284cb886862c4851cb45df2a17a336e521dccb.jar" />
     </item>
     <item
-        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/universal-image-loader-1.9.2.jar"
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/com.github.asne.facebook/facebook/3.17.2/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="9e025bc5b84968e7d6ac765e660a70b3e5a87432">
-        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.2-20b3374616c7d1ee6c6f3d987919f79599d4399d.jar" />
+        sha1="0027a7b1c1f861403303ac4b10ac53fb6067324b">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-0b2f604fc588ae7d640a40d6d588567605ebcc16.jar" />
     </item>
     <item
         jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/glide-3.4.0.jar"
@@ -37,25 +44,11 @@
         <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/glide-3.4.0-2f9605d011d43811605d18838a63b0d524d1fcb5.jar" />
     </item>
     <item
-        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/core/1.7/jars/classes.jar"
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/com.soundcloud.android/android-crop/1.0.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="068eb5c44888c4d2b804ecd5c020ef83675d956d">
-        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-77fab7dfd08d550bcce7b5ddd91456425e39f2d0.jar" />
-    </item>
-    <item
-        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.2.0/e019d15a13a9786f881141d2df6654b8510bce8b/core-3.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e019d15a13a9786f881141d2df6654b8510bce8b">
-        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/core-3.2.0-b285ba8432d805ff47179540bcc5b97b3c4ef73a.jar" />
-    </item>
-    <item
-        jar="/Users/admin/Desktop/DEV/sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
-        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-ba15a28481cc039e1dbfc518475fb37d37f4584b.jar" />
+        sha1="7d59ba36bdb53bd81f4d16ed7e2abb47de5c53bd">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-a54e25cb463cff48c9f9d15e7898183fba7af46b.jar" />
     </item>
     <item
         jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/gson-2.2.4.jar"
@@ -65,11 +58,39 @@
         <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/gson-2.2.4-35f228d93907208a0ea1c9aedcd5646ced8d5fbe.jar" />
     </item>
     <item
-        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/zxing/1.7/jars/classes.jar"
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.2.0/e019d15a13a9786f881141d2df6654b8510bce8b/core-3.2.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="160a0e24f830333002385e26849d9c321dcdd727">
-        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-041146ca4fe0688b289471e9a0fca194aeb895a1.jar" />
+        sha1="e019d15a13a9786f881141d2df6654b8510bce8b">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/core-3.2.0-b285ba8432d805ff47179540bcc5b97b3c4ef73a.jar" />
+    </item>
+    <item
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.2/91c20388c9a45f62b5ed8fe0502bb76ff6251fc7/bolts-android-1.1.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-dccd517be2934f36ea26b79159673985766ba84c.jar" />
+    </item>
+    <item
+        jar="/Users/admin/Desktop/DEV/sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-ba15a28481cc039e1dbfc518475fb37d37f4584b.jar" />
+    </item>
+    <item
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/simple-facebook.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1b0cf80e08db153510dedeca3e91f644ff366930">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/simple-facebook-dd42231a7290265289c44a33b28facdba751d500.jar" />
+    </item>
+    <item
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-57b85b5f8895d99c9971d150cc0094bd18f26c55.jar" />
     </item>
 
 </items>
