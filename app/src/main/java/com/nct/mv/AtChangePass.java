@@ -36,6 +36,12 @@ public class AtChangePass extends AtBase {
 
 		initTopbar(getString(R.string.change_pass));
 		setTopbarBtLeftImage(R.drawable.icon_back);
+		setTopbarLeftBtListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
 		setTopbarBtRightVisible(View.INVISIBLE);
 
 		edtCurrentpass = (EditText) findViewById(R.id.change_pass_edt_currentpass);

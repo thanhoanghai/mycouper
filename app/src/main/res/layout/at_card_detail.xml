@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -7,5 +8,29 @@
     <include layout="@layout/item_top_bar"></include>
 
     <include layout="@layout/item_segment"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.nct.customview.TfTextView
+            app:typeface_name="@string/font_roboto_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:gravity="center"
+            android:drawableTop="@drawable/bt_map_selector"
+            android:text="@string/map"
+            android:textColor="@color/grey_info_text_card"
+            android:textSize="15sp" />
+
+        <com.nct.customview.TfTextView
+            app:typeface_name="@string/font_roboto_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:gravity="center"
+            android:drawableTop="@drawable/bt_rotate_selector"
+            android:text="@string/map"
+            android:textColor="@color/grey_info_text_card"
+            android:textSize="15sp" />
+
+    </LinearLayout>
 
 </LinearLayout>

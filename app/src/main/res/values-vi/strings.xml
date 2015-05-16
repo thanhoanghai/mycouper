@@ -20,6 +20,10 @@
     <string name="next">Tiếp</string>
     <string name="change">Thay đổi</string>
     <string name="close">Đóng</string>
+    <string name="card">Thẻ</string>
+    <string name="front_card">Mặt trước</string>
+    <string name="back_card">Mặt sau</string>
+    <string name="map">Bản đồ</string>
 
 
     <!-- CHANGE PASS -->
