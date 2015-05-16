@@ -26,7 +26,6 @@ public class URLProvider {
         params.put("description", description);
         params.put("card_number_type", description);
 
-
         return params;
     }
 
