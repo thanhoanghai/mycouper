@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <com.nct.customview.SegmentedGroup
-        android:id="@+id/layout_segment" android:layout_width="match_parent"
+        android:id="@+id/layout_segment" android:layout_width="match_parent" android:background="@color/grey_info_card"
         android:layout_height="40dp" android:layout_gravity="center_horizontal"
         android:checkedButton="@+id/layout_segment_bt1" android:orientation="horizontal">
 

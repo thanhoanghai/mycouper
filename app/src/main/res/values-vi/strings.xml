@@ -27,6 +27,10 @@
     <string name="rotate">Xoay</string>
 
 
+    <!-- CARD DETAIL -->
+    <string name="card_detail_enter_the_following">Nhập mã nếu thiết bị không nhận :</string>
+
+
     <!-- CHANGE PASS -->
     <string name="change_pass">THAY ĐỔI MẬT KHẨU</string>
     <string name="change_pass_currentpass">Mật khẩu hiện tại</string>

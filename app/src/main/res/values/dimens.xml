@@ -8,7 +8,7 @@
     <dimen name="splash_icon_size">140dp</dimen>
 
 
-    <!-- MEMBER CARD DETAIL -->
+    <!--CARD DETAIL -->
     <dimen name="card_detail_marintop">10dp</dimen>
     <dimen name="card_detail_text_id">19sp</dimen>
     <dimen name="card_detail_img_front_card_w">200dp</dimen>

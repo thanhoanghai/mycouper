@@ -26,6 +26,10 @@
     <string name="rotate">Rotate</string>
 
 
+    <!-- CARD DETAIL -->
+    <string name="card_detail_enter_the_following">Enter the following code if the devices does not recognize:</string>
+
+
     <!-- CHANGE PASS -->
     <string name="change_pass">CHANGE PASSWORD</string>
     <string name="change_pass_currentpass">Current passowrd</string>
