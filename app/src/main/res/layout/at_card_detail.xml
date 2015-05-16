@@ -55,7 +55,9 @@
         android:padding="20dp"
         android:layout_height="150dp">
 
-        <com.nct.customview.TfTextView android:layout_gravity="center"
+        <com.nct.customview.TfTextView
+            android:id="@+id/card_detail_img_idcode"
+            android:layout_gravity="center"
             app:typeface_name="@string/font_roboto_regular"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

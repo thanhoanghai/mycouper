@@ -9,19 +9,19 @@
 
         <RadioButton android:id="@+id/layout_segment_bt1"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
-            android:button="@null" android:gravity="center" android:text="Hello"
+            android:button="@null" android:gravity="center" android:text="@string/card"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/segment_text_color" android:textSize="15sp" />
 
         <RadioButton android:id="@+id/layout_segment_bt2"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
-            android:button="@null" android:gravity="center" android:text="Hello"
+            android:button="@null" android:gravity="center" android:text="@string/front_card"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/segment_text_color" android:textSize="15sp" />
 
         <RadioButton android:id="@+id/layout_segment_bt3"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
-            android:button="@null" android:gravity="center" android:text="Telo"
+            android:button="@null" android:gravity="center" android:text="@string/back_card"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/segment_text_color" android:textSize="15sp" />
     </com.nct.customview.SegmentedGroup>
