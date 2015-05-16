@@ -17,6 +17,7 @@ import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
 import com.nct.model.UserData;
 import com.nct.utils.Debug;
+import com.nct.utils.Pref;
 import com.nct.utils.Utils;
 import com.sromku.simple.fb.Permission;
 import com.sromku.simple.fb.SimpleFacebook;
@@ -99,6 +100,13 @@ public class AtLogin extends AtBase {
                 Utils.gotoScreenSignUp(AtLogin.this);
             }
         });
+
+        String jsonLogin = Pref.getStringObject(Constants.ID_SAVE_LOGIN,AtLogin.this);
+        if(!TextUtils.isEmpty(jsonLogin))
+        {
+            handleLogin(jsonLogin);
+        }
+
     }
 
     private String checkLogin(){
@@ -133,17 +141,23 @@ public class AtLogin extends AtBase {
             @Override
             public void onSuccess(int i, Header[] headers, String s) {
                 Debug.logData(tag,s);
-                UserData object = DataHelper.getUserData(s);
-                if (object != null && object.statusCode == Constants.STATUS_CODE_OK) {
-                    GlobalInstance.getInstance().userInfo = object.data;
-                    Utils.gotoScreenMain(AtLogin.this);
-                    finish();
-                }else
-                    Debug.toast(AtLogin.this,object.errorMessage);
+                Pref.SaveStringObject(Constants.ID_SAVE_LOGIN, s, AtLogin.this);
+                handleLogin(s);
                 hideDialogLoading();
 
             }
         });
+    }
+
+    private void handleLogin(String s)
+    {
+        UserData object = DataHelper.getUserData(s);
+        if (object != null && object.statusCode == Constants.STATUS_CODE_OK) {
+            GlobalInstance.getInstance().userInfo = object.data;
+            Utils.gotoScreenMain(AtLogin.this);
+            finish();
+        }else
+            Debug.toast(AtLogin.this,object.errorMessage);
     }
 
     private void loginFacebook()

@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
 import com.nct.model.UserObject;
 import com.nct.utils.Debug;
+import com.nct.utils.Pref;
 import com.nct.utils.Utils;
 
 import thh.com.mycouper.R;
@@ -55,6 +57,7 @@ public class AtUserProfile extends AtBase {
 		bntLogout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				Pref.SaveStringObject(Constants.ID_SAVE_LOGIN,"",AtUserProfile.this);
 				Intent intent = new Intent(AtUserProfile.this, AtLogin.class);
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(intent);

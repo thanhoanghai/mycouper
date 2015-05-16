@@ -18,6 +18,7 @@ public class Constants {
 	public static final String TAB_2 = "TAB_2";
 	public static final String TAB_3 = "TAB_3";
 
+	public static final String ID_SAVE_LOGIN = "ID_SAVE_LOGIN";
 	public static final String TAB_CREATE_CARD = "TAB_CREATE_CARD";
 
 
