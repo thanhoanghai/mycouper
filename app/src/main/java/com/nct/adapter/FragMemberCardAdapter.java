@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nct.constants.GlobalInstance;
 import com.nct.model.MemberCardObject;
 import com.nct.utils.Utils;
 
@@ -50,10 +51,13 @@ public class FragMemberCardAdapter extends BaseAdapterApp<MemberCardObject> {
 
 		MemberCardObject item = getItem(position);
 		displayImage(holder.imgThumb,item.company_logo);
+		holder.tvTitle.setText(item.company_name);
+		holder.tvDes.setText(item.card_name);
 
 		view.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				GlobalInstance.getInstance().memberCard = getItem(position);
 				Utils.gotoScreenCardDetail(mContext);
 			}
 		});

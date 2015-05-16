@@ -6,4 +6,6 @@
 
     <include layout="@layout/item_top_bar"></include>
 
+    <include layout="@layout/item_segment"></include>
+
 </LinearLayout>
