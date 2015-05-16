@@ -26,6 +26,9 @@
     <string name="change_pass">THAY ĐỔI MẬT KHẨU</string>
     <string name="change_pass_currentpass">Mật khẩu hiện tại</string>
     <string name="change_pass_newpass">Mật khẩu mới</string>
+    <string name="change_pass_confirm_pass_not_match">Mật khẩu xác nhận không khớp!</string>
+    <string name="change_pass_enter_new_password">Nhập mật khẩu mới</string>
+    <string name="change_pass_your_pass_have_been_update">Đã cập nhật mật khẩu mới</string>
 
     <!-- USER PROFILE -->
     <string name="user_profile">Tài khoản</string>

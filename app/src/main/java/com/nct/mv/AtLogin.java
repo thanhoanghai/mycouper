@@ -136,7 +136,6 @@ public class AtLogin extends AtBase {
                 UserData object = DataHelper.getUserData(s);
                 if (object != null && object.statusCode == Constants.STATUS_CODE_OK) {
                     GlobalInstance.getInstance().userInfo = object.data;
-                    //Debug.logData(tag, object.data.user_email);
                     Utils.gotoScreenMain(AtLogin.this);
                     finish();
                 }else

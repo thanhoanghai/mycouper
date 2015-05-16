@@ -2,11 +2,38 @@ package com.nct.dataloader;
 
 
 import com.loopj.android.http.RequestParams;
+import com.nct.utils.Debug;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class URLProvider {
 
-
+    public static final String tag = "URLProvider";
     public static final String PROVIDER = "http://mycouper.com/api/";
+
+    public static RequestParams getParamsChangpassword(String user_id,String new_password)
+    {
+        RequestParams params = new RequestParams();
+        params.put("ac", "change_user_info");
+        Debug.logData(tag, user_id);
+        params.put("user_id", user_id);
+        params.put("new_password", new_password);
+        return params;
+    }
+
+
+    public static final String PROVIDER_UPLOAD_IMAGE = "http://media.mycouper.com/api.php?task=up";
+    public static RequestParams getParamsUploadImage(String pathImage) {
+        File myFile = new File(pathImage);
+        RequestParams params = new RequestParams();
+        try {
+            params.put("file", myFile);
+        } catch(FileNotFoundException e) {}
+        return params;
+    }
+
+
     public static String getCompanyMemberCard() {
         String client = PROVIDER;
         try {

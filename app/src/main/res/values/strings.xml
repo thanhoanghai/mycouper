@@ -25,6 +25,9 @@
     <string name="change_pass">CHANGE PASSWORD</string>
     <string name="change_pass_currentpass">Current passowrd</string>
     <string name="change_pass_newpass">New password</string>
+    <string name="change_pass_confirm_pass_not_match">Confirm password does not match!</string>
+    <string name="change_pass_enter_new_password">Enter new password</string>
+    <string name="change_pass_your_pass_have_been_update">Your password have been updated</string>
 
 
     <!-- USER PROFILE -->

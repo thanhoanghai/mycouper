@@ -31,7 +31,7 @@ public class MVapplication extends Application {
 		Constants.SCREEN_WIDTH = metrics.widthPixels;
 		Constants.SCREEN_HEIGHT = metrics.heightPixels;
 
-		Utils.updateDeviceInfo(this, GlobalInstance.getInstance().userID);
+		Utils.updateDeviceInfo(this, "");
 	}
 
 	public ImageLoader getImageLoader() {

@@ -5,7 +5,6 @@ import com.nct.model.UserObject;
 public class GlobalInstance {
 
 	private static GlobalInstance mGlobalInstance;
-	public String userID = "";
 	public String idLanguage = "vi";
     public UserObject userInfo;
 
@@ -14,6 +13,13 @@ public class GlobalInstance {
 			mGlobalInstance = new GlobalInstance();
 		}
 		return mGlobalInstance;
+	}
+
+	public String getUserID()
+	{
+		if(userInfo!=null)
+			return userInfo.user_id;
+		return "";
 	}
 
 
