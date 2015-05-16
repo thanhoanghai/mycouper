@@ -3,6 +3,7 @@ package com.nct.mv;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.nct.constants.GlobalInstance;
 import com.nct.model.MemberCardObject;
@@ -15,6 +16,8 @@ public class AtCardDetail extends AtBase {
 	private static final String tag = "AtCardDetail";
 
 	private MemberCardObject memberCard;
+
+	private ImageView imgIcon;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,5 +35,10 @@ public class AtCardDetail extends AtBase {
 				finish();
 			}
 		});
+
+		imgIcon = (ImageView) findViewById(R.id.at_card_detail_img);
+		initImageLoader();
+		displayImage(imgIcon,memberCard.company_logo);
+
 	}
 }

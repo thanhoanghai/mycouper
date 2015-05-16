@@ -9,27 +9,46 @@
 
     <include layout="@layout/item_segment"></include>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <LinearLayout android:gravity="center_vertical" android:layout_marginTop="10dp"
+        android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="wrap_content">
 
         <com.nct.customview.TfTextView
             app:typeface_name="@string/font_roboto_regular"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp" android:layout_weight="1"
             android:layout_height="wrap_content" android:gravity="center"
             android:drawableTop="@drawable/bt_map_selector"
             android:text="@string/map"
             android:textColor="@color/grey_info_text_card"
             android:textSize="15sp" />
 
+
+        <FrameLayout
+            android:layout_width="0dp" android:layout_weight="1" android:gravity="center_horizontal"
+            android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center"
+                android:src="@color/grey_info_card"
+                android:id="@+id/at_card_detail_img"
+                android:layout_width="@dimen/item_member_card_icon_size"
+                android:layout_height="@dimen/item_member_card_icon_size"
+                />
+                <ImageView android:layout_gravity="center"
+                    android:background="@drawable/icon_border"
+                    android:layout_width="@dimen/item_member_card_icon_size"
+                    android:layout_height="@dimen/item_member_card_icon_size"
+                    />
+        </FrameLayout>
+
         <com.nct.customview.TfTextView
             app:typeface_name="@string/font_roboto_regular"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp" android:layout_weight="1"
             android:layout_height="wrap_content" android:gravity="center"
             android:drawableTop="@drawable/bt_rotate_selector"
-            android:text="@string/map"
+            android:text="@string/rotate"
             android:textColor="@color/grey_info_text_card"
             android:textSize="15sp" />
+
+
 
     </LinearLayout>
 
