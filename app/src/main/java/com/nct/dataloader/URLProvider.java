@@ -12,11 +12,29 @@ public class URLProvider {
     public static final String tag = "URLProvider";
     public static final String PROVIDER = "http://mycouper.com/api/";
 
+
+    public static RequestParams getParamsCreateCardWithCompanyByCategory(String user_id,String company_id,String member_card_name,String member_card_number,String front_of_the_card,String back_of_the_card,String description,String card_number_type)
+    {
+        RequestParams params = new RequestParams();
+        params.put("ac", "create_member_card_by_category");
+        params.put("user_id", user_id);
+        params.put("company_id", company_id);
+        params.put("member_card_name", member_card_name);
+        params.put("member_card_number", member_card_number);
+        params.put("front_of_the_card", front_of_the_card);
+        params.put("back_of_the_card", back_of_the_card);
+        params.put("description", description);
+        params.put("card_number_type", description);
+
+
+        return params;
+    }
+
+
     public static RequestParams getParamsChangpassword(String user_id,String new_password)
     {
         RequestParams params = new RequestParams();
         params.put("ac", "change_user_info");
-        Debug.logData(tag, user_id);
         params.put("user_id", user_id);
         params.put("new_password", new_password);
         return params;
