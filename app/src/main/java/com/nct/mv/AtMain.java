@@ -16,6 +16,7 @@ import com.nct.customview.PagerSlidingTabStrip;
 import com.nct.customview.QuickAction;
 import com.nct.fragment.FragHome;
 import com.nct.fragment.FragMemberCard;
+import com.nct.utils.Device;
 import com.nct.utils.Utils;
 
 import thh.com.mycouper.R;

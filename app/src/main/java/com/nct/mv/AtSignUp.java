@@ -90,7 +90,7 @@ public class AtSignUp extends AtBase {
                 }
 
                 StatusObject item = DataHelper.getStatusObject(s);
-                Debug.toast(AtSignUp.this,item.errorMessage);
+                Debug.toast(AtSignUp.this, item.errorMessage);
                 UserObject data = new UserObject("", sEmail);
                 GlobalInstance.getInstance().userInfo = data;
                 Utils.gotoScreenMain(AtSignUp.this);

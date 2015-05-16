@@ -1,6 +1,8 @@
 package com.nct.constants;
 
 
+import android.os.Environment;
+
 public class Constants {
 	
 	public static final String ID_GOOGLE_ANALYTICS = "UA-51832900-15";
@@ -21,6 +23,31 @@ public class Constants {
 	public static final String ID_SAVE_LOGIN = "ID_SAVE_LOGIN";
 	public static final String TAB_CREATE_CARD = "TAB_CREATE_CARD";
 
+    /**
+     * Folder is used to save down load image in SDCard.
+     */
+    public static final String SDCARD_CACHE_PREFIX = Environment
+            .getExternalStorageDirectory() + "/MyCouper/";
+
+    /**
+     * Default file path of photo has taken from camera.
+     * */
+    public static final String SDCARD_TAKE_PHOTO_CACHE_PREFIX = SDCARD_CACHE_PREFIX
+            + "/photo.jpg";
+
+    public static final String SDCARD_TAKE_AUDIO_CACHE_PREFIX = SDCARD_CACHE_PREFIX
+            + "/audio.3gp";
+
+    public static final String SDCARD_TAKE_VIDEO_CACHE_PREFIX = SDCARD_CACHE_PREFIX
+            + "/video.mp4";
+
+    public static final String JPG = ".jpg";
+    public static final String MP4 = ".mp4";
+
+    public static final int BITMAP_MAX_SIZE = 960;
+
+    public static final int CB_IMAGE_HEIGHT = 200;
+    public static final int CB_IMAGE_WIDTH = 300;
 
 	public static final int API_DELAY_TIME = 1000;
 	
@@ -54,5 +81,6 @@ public class Constants {
     public static String KEY_BUNDLE_CARD_INFO_CARDCODE = "KEY_BUNDLE_CARD_INFO_CARDCODE";
     public static String KEY_BUNDLE_CARD_INFO_CARDNAME = "KEY_BUNDLE_CARD_INFO_CARDNAME";
     public static String KEY_BUNDLE_CARD_INFO_CARDDES = "KEY_BUNDLE_CARD_INFO_CARDDES";
+    public static String KEY_BUNDLE_CARD_INFO_BITMAP = "KEY_BUNDLE_CARD_INFO_BITMAP";
 
 }

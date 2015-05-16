@@ -1,10 +1,13 @@
 package com.nct.application;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.util.DisplayMetrics;
 
 import com.facebook.SessionDefaultAudience;
+import com.nct.background.TaskExecuter;
+import com.nct.utils.Device;
 import com.nct.utils.Utils;
 import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
@@ -31,8 +34,22 @@ public class MVapplication extends Application {
 		Constants.SCREEN_WIDTH = metrics.widthPixels;
 		Constants.SCREEN_HEIGHT = metrics.heightPixels;
 
+
 		Utils.updateDeviceInfo(this, "");
+
+        new Device(this);
+
+        initObjects();
 	}
+
+    private void initObjects() {
+        // create async task
+        com.nct.background.ImageLoader.getInstance(MVapplication.this);
+        TaskExecuter.getInstance(MVapplication.this);
+
+        // session
+        //TODO
+    }
 
 	public ImageLoader getImageLoader() {
 		return imageLoader;

@@ -17,7 +17,9 @@ import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
 import com.nct.model.UserData;
 import com.nct.utils.Debug;
+
 import com.nct.utils.Pref;
+import com.nct.utils.Device;
 import com.nct.utils.Utils;
 import com.sromku.simple.fb.Permission;
 import com.sromku.simple.fb.SimpleFacebook;
@@ -59,6 +61,8 @@ public class AtLogin extends AtBase {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.at_login);
+
+        new Device(this);
 
         edtUsername = (EditText) findViewById(R.id.login_edt_username);
         edtUsername.setText("avataryipyip@gmail.com");

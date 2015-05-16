@@ -17,6 +17,7 @@
     <string name="cancel">Cancel</string>
     <string name="scan">Scan</string>
     <string name="next">Next</string>
+
     <string name="change">Change</string>
     <string name="close">Close</string>
     <string name="card">Card</string>
@@ -37,6 +38,11 @@
     <string name="change_pass_confirm_pass_not_match">Confirm password does not match!</string>
     <string name="change_pass_enter_new_password">Enter new password</string>
     <string name="change_pass_your_pass_have_been_update">Your password have been updated</string>
+
+    <string name="retake">Retake</string>
+    <string name="use">Use</string>
+
+
 
 
     <!-- USER PROFILE -->
@@ -108,6 +114,10 @@
 
     <!-- ITEM COPYWRIGHT -->
     <string name="item_copywright">Copywright 2015 by myCouper</string>
+
+    <!-- Camera-->
+    <string name="camera_take_photo">Take a photo</string>
+    <string name="camera_flast_auto">Auto</string>
 
     <!-- ITEM ICON MYCOUPER -->
     <string name="item_icon_mycouper_dot">-------------------------------------</string>

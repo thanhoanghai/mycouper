@@ -11,14 +11,25 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.constants.Constants;
+import com.nct.constants.GlobalInstance;
+import com.nct.dataloader.DataHelper;
+import com.nct.dataloader.DataLoader;
+import com.nct.dataloader.URLProvider;
 import com.nct.fragment.FragCreateCardImage;
 import com.nct.fragment.FragCreateCardInfo;
 import com.nct.fragment.FragCreateCardSearch;
 import com.nct.fragment.FragCreateCardSuccess;
 import com.nct.fragment.FragHome;
+import com.nct.model.StatusObject;
+import com.nct.model.UserObject;
+import com.nct.utils.Debug;
 import com.nct.utils.Utils;
 import com.soundcloud.android.crop.Crop;
+
+import org.apache.http.Header;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.HashMap;
@@ -108,12 +119,46 @@ public class AtCreateCard extends AtBase {
 		ft.commit();
 	}
 
-//    @Override
-public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
+    //    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.at_create_card_linear);
+        if(fragment instanceof FragCreateCardInfo)
+            ((FragCreateCardInfo)fragment).activityResult(requestCode, resultCode, data);
+        else if(fragment instanceof FragCreateCardImage)
+            ((FragCreateCardImage)fragment).activityResult(requestCode, resultCode, data);
+    }
 
-}
-
-
-
+    public void createNewCard(){
+        showDialogLoading();
+//        DataLoader.postParam(URLProvider.getSignUp(sEmail, sPass), new TextHttpResponseHandler() {
+//            @Override
+//            public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+//                hideDialogLoading();
+//            }
+//
+//            @Override
+//            public void onSuccess(int i, Header[] headers, String s) {
+//                hideDialogLoading();
+//                String mUserID = "";
+//                try {
+//                    JSONObject object = new JSONObject(s);
+//                    JSONObject obj = object.getJSONObject("data");
+//                    mUserID = obj.optString("user_id");
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                StatusObject item = DataHelper.getStatusObject(s);
+//                Debug.toast(AtSignUp.this, item.errorMessage);
+//                UserObject data = new UserObject("", sEmail);
+//                GlobalInstance.getInstance().userInfo = data;
+//                Utils.gotoScreenMain(AtSignUp.this);
+//                finish();
+//
+////                {"statusCode":"200","data":{"user_id":268}}
+//            }
+//        });
+    }
 }

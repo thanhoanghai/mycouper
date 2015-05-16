@@ -148,19 +148,18 @@ public class FragCreateCardInfo extends BaseMainFragment {
         return result;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-        if (requestCode == 0) {
-            if (resultCode == getActivity().RESULT_OK) {
-                mCardCode = intent.getStringExtra("SCAN_RESULT");
-                if(mCardCode != null)
-                    edtCardCode.setText(mCardCode);
-                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
-                // Handle successful scan
-            } else if (resultCode == getActivity().RESULT_CANCELED) {
-                // Handle cancel
-            }
+    public void activityResult(int requestCode, int resultCode, Intent intent){
+        if (resultCode == getActivity().RESULT_OK) {
+            mCardCode = intent.getStringExtra("SCAN_RESULT");
+            if(mCardCode != null)
+                edtCardCode.setText(mCardCode);
+            else
+                mCardCode = "";
+            String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+            // Handle successful scan
+        } else if (resultCode == getActivity().RESULT_CANCELED) {
+            // Handle cancel
+            mCardCode = "";
         }
     }
 }

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/camera_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black" >
+
+        <ImageView
+            android:id="@+id/camera_top_bar_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:src="@drawable/top_bar_opacity" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_alignBottom="@+id/camera_top_bar_bg"
+            android:layout_alignTop="@+id/camera_top_bar_bg"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/photo_top_bar_camera"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/photo_top_bar_camera_flash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:drawableLeft="@drawable/icon_flash"
+                    android:gravity="center"
+                    android:onClick="onViewClick"
+                    android:text="On"
+                    android:textColor="@android:color/white" />
+
+                <ImageView
+                    android:id="@+id/photo_top_bar_camera_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:contentDescription="@null"
+                    android:onClick="onViewClick"
+                    android:src="@drawable/switch_camera_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/photo_top_bar_effect"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/photo_top_bar_effect_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:contentDescription="@null"
+                    android:onClick="onViewClick"
+                    android:src="@drawable/icon_cancel" />
+
+                <ImageView
+                    android:id="@+id/photo_top_bar_effect_apply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:contentDescription="@null"
+                    android:onClick="onViewClick"
+                    android:src="@drawable/icon_apply" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/camera_content_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/camera_top_bar" >
+    </FrameLayout>
+
+</RelativeLayout>

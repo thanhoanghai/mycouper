@@ -23,6 +23,7 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.text.style.TtsSpan;
 import android.util.Base64;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
@@ -30,12 +31,16 @@ import android.view.inputmethod.InputMethodManager;
 import com.nct.constants.Constants;
 import com.nct.mv.AtCardDetail;
 import com.nct.mv.AtChangePass;
+import com.nct.mv.AtCamera;
+
 import com.nct.mv.AtCreateCard;
 import com.nct.mv.AtForgotPass;
 import com.nct.mv.AtLogin;
 import com.nct.mv.AtMain;
 import com.nct.mv.AtSignUp;
 import com.nct.mv.AtUserProfile;
+import com.nct.mv.MainHomeCameraActivity;
+import com.nct.mv.croppersample.MainActivity;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import thh.com.mycouper.R;
@@ -89,6 +94,10 @@ public class Utils {
 		mContext.startActivity(search);
 	}
 
+    public static void gotoScreenCamera(Context mContext) {
+        Intent search = new Intent(mContext, AtCamera.class);
+        mContext.startActivity(search);
+    }
 
 	public static boolean isNetwork3g(Context mContext) {
 		try {
@@ -305,7 +314,7 @@ public class Utils {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(imgPath,options);
-        options.inSampleSize = calculateInSampleSize(options ,300, 200);
+        options.inSampleSize = calculateInSampleSize(options , Constants.CB_IMAGE_WIDTH, Constants.CB_IMAGE_HEIGHT);
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeFile(imgPath, options);
 
