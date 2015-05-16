@@ -9,7 +9,7 @@
 
     <include layout="@layout/item_segment"></include>
 
-    <LinearLayout android:gravity="center_vertical" android:layout_marginTop="10dp"
+    <LinearLayout android:gravity="center_vertical" android:layout_marginTop="@dimen/card_detail_marintop"
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="wrap_content">
 
@@ -48,8 +48,37 @@
             android:textColor="@color/grey_info_text_card"
             android:textSize="15sp" />
 
-
-
     </LinearLayout>
+
+    <FrameLayout android:layout_marginTop="@dimen/card_detail_marintop"
+        android:layout_width="match_parent" android:background="@color/grey_info_card"
+        android:padding="20dp"
+        android:layout_height="150dp">
+
+        <com.nct.customview.TfTextView android:layout_gravity="center"
+            app:typeface_name="@string/font_roboto_regular"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" android:background="@drawable/icon_border"
+            android:text="@string/rotate"
+            android:textColor="@color/black"
+            android:textSize="@dimen/card_detail_text_id" />
+        
+        <ImageView android:layout_gravity="center"
+            android:id="@+id/card_detail_img_front"
+            android:layout_width="@dimen/card_detail_img_front_card_w"
+            android:layout_height="@dimen/card_detail_img_front_card_h"
+            android:background="@color/grey_info_text_card" android:visibility="gone"
+            />
+
+        <ImageView android:layout_gravity="center"
+            android:id="@+id/card_detail_img_back"
+            android:layout_width="@dimen/card_detail_img_front_card_w"
+            android:layout_height="@dimen/card_detail_img_front_card_h"
+            android:background="@color/grey_info_text_card" android:visibility="gone"
+            />
+
+
+    </FrameLayout>
 
 </LinearLayout>
