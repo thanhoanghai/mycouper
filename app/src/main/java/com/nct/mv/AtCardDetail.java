@@ -3,10 +3,15 @@ package com.nct.mv;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.nct.constants.GlobalInstance;
 import com.nct.model.MemberCardObject;
 import com.nct.utils.Debug;
@@ -26,11 +31,41 @@ public class AtCardDetail extends AtBase {
 	private TextView imgCode;
 	private ImageView imgFront,imgBack;
 
+	// Google Map
+	private GoogleMap googleMap;
+
+	private LinearLayout frameMaps;
+	private Button bntCloseMap;
+	private TextView btOpenmap;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.at_card_detail);
+
+		try {
+			// Loading map
+			initGoogleMap();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		btOpenmap = (TextView) findViewById(R.id.card_detail_bt_openmap);
+		btOpenmap.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				frameMaps.setVisibility(View.VISIBLE);
+			}
+		});
+
+		frameMaps = (LinearLayout) findViewById(R.id.card_detail_frame_maps);
+		bntCloseMap = (Button) findViewById(R.id.card_detail_bt_closemap);
+		bntCloseMap.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				frameMaps.setVisibility(View.GONE);
+			}
+		});
 
 		memberCard = GlobalInstance.getInstance().memberCard;
 
@@ -77,6 +112,9 @@ public class AtCardDetail extends AtBase {
 
 	private void setVisibleItemSegment(int index)
 	{
+		if(frameMaps.getVisibility()==View.VISIBLE)
+			frameMaps.setVisibility(View.GONE);
+
 		if(index==0)
 			setStatusItem(View.VISIBLE,View.INVISIBLE,View.INVISIBLE);
 		else if(index ==1)
@@ -90,5 +128,19 @@ public class AtCardDetail extends AtBase {
 		imgCode.setVisibility(status1);
 		imgFront.setVisibility(status2);
 		imgBack.setVisibility(status3);
+	}
+
+	private void initGoogleMap()
+	{
+		if (googleMap == null) {
+			googleMap = ((MapFragment) getFragmentManager().findFragmentById(
+					R.id.map)).getMap();
+
+			// check if map is created successfully or not
+			if (googleMap == null) {
+				Debug.toast(AtCardDetail.this,
+						"Sorry! unable to create maps");
+			}
+		}
 	}
 }

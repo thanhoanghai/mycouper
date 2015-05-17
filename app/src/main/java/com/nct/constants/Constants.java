@@ -14,6 +14,8 @@ public class Constants {
 	
 	public static int SCREEN_WIDTH = 480;
 	public static int SCREEN_HEIGHT = 800;
+
+	public static String API_GOOGLE_KEY = "AIzaSyB8mtKr923llplPGMNN30mdPDQACTpXfxQ";
 	
 	
 	public static final String TAB_1 = "TAB_1";
