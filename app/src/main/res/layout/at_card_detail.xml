@@ -162,10 +162,13 @@
                     android:textColor="@color/grey_info_text_card"
                     android:textSize="14sp" />
 
-                <com.nct.customview.TfTextView android:id="@+id/card_detail_tv_mapsphone"
+                <com.nct.customview.TfTextView android:id="@+id/card_detail_tv_mapphone"
                     android:layout_marginTop="@dimen/card_detail_marintop"
                     app:typeface_name="@string/font_roboto_regular"
+                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
+                    android:drawableLeft="@drawable/icon_phone"
+                    android:drawablePadding="5dp"
                     android:layout_height="wrap_content"
                     android:text="@string/app_name"
                     android:textColor="@color/grey_info_text_card"

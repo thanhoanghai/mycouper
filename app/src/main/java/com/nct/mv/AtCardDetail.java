@@ -54,6 +54,9 @@ public class AtCardDetail extends AtBase {
 	private PosData posData;
 	private PosObject posObject;
 
+	private TextView mapTitle,mapPos,mapStreets,mapPhone,mapOpen,mapClose;
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -67,66 +70,15 @@ public class AtCardDetail extends AtBase {
 		}
 		memberCard = GlobalInstance.getInstance().memberCard;
 
-		btOpenmap = (TextView) findViewById(R.id.card_detail_bt_openmap);
-		btOpenmap.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				frameMaps.setVisibility(View.VISIBLE);
-			}
-		});
+		initValueItem();
 
-		frameMaps = (LinearLayout) findViewById(R.id.card_detail_frame_maps);
-		bntCloseMap = (Button) findViewById(R.id.card_detail_bt_closemap);
-		bntCloseMap.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				frameMaps.setVisibility(View.GONE);
-			}
-		});
-
-		initTopbar(memberCard.company_name);
-		setTopbarBtLeftImage(R.drawable.icon_back);
-		setTopbarBtRightImage(R.drawable.icon_menu_dot);
-		setTopbarLeftBtListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
-
-		imgIcon = (ImageView) findViewById(R.id.at_card_detail_img);
 		initImageLoader();
 		displayImage(imgIcon, memberCard.company_logo);
 
-		bnt1= (RadioButton) findViewById(R.id.layout_segment_bt1);
-		bnt1.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				setVisibleItemSegment(0);
-			}
-		});
-		bnt2= (RadioButton) findViewById(R.id.layout_segment_bt2);
-		bnt2.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				setVisibleItemSegment(1);
-			}
-		});
-		bnt3= (RadioButton) findViewById(R.id.layout_segment_bt3);
-		bnt3.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				setVisibleItemSegment(2);
-			}
-		});
-
-		imgCode = (TextView) findViewById(R.id.card_detail_img_idcode);
-		imgFront = (ImageView) findViewById(R.id.card_detail_img_front);
-		imgBack = (ImageView) findViewById(R.id.card_detail_img_back);
-
-
 		getPositionCompany();
+
 	}
+
 
 	private void setVisibleItemSegment(int index)
 	{
@@ -189,5 +141,75 @@ public class AtCardDetail extends AtBase {
 		CameraPosition cameraPosition = new CameraPosition.Builder().target(
 				new LatLng(posObject.latitude, posObject.longitude)).zoom(12).build();
 		googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+		mapTitle.setText(posObject.pos_name);
+		mapPos.setText(posObject.pos_id);
+		mapStreets.setText(posObject.address + " | " + posObject.address2);
+		mapPhone.setText(posObject.phone);
+	}
+
+
+
+	private void initValueItem()
+	{
+		btOpenmap = (TextView) findViewById(R.id.card_detail_bt_openmap);
+		btOpenmap.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				frameMaps.setVisibility(View.VISIBLE);
+			}
+		});
+
+		frameMaps = (LinearLayout) findViewById(R.id.card_detail_frame_maps);
+		bntCloseMap = (Button) findViewById(R.id.card_detail_bt_closemap);
+		bntCloseMap.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				frameMaps.setVisibility(View.GONE);
+			}
+		});
+
+		initTopbar(memberCard.company_name);
+		setTopbarBtLeftImage(R.drawable.icon_back);
+		setTopbarBtRightImage(R.drawable.icon_menu_dot);
+		setTopbarLeftBtListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+
+		imgIcon = (ImageView) findViewById(R.id.at_card_detail_img);
+
+		bnt1= (RadioButton) findViewById(R.id.layout_segment_bt1);
+		bnt1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				setVisibleItemSegment(0);
+			}
+		});
+		bnt2= (RadioButton) findViewById(R.id.layout_segment_bt2);
+		bnt2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				setVisibleItemSegment(1);
+			}
+		});
+		bnt3= (RadioButton) findViewById(R.id.layout_segment_bt3);
+		bnt3.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				setVisibleItemSegment(2);
+			}
+		});
+
+		imgCode = (TextView) findViewById(R.id.card_detail_img_idcode);
+		imgFront = (ImageView) findViewById(R.id.card_detail_img_front);
+		imgBack = (ImageView) findViewById(R.id.card_detail_img_back);
+
+		mapTitle = (TextView) findViewById(R.id.card_detail_tv_maptitle);
+		mapPos = (TextView) findViewById(R.id.card_detail_tv_mappos);
+		mapStreets = (TextView) findViewById(R.id.card_detail_tv_mapstreet);
+		mapPhone = (TextView) findViewById(R.id.card_detail_tv_mapphone);
 	}
 }
