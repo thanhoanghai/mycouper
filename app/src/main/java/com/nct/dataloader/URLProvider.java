@@ -51,6 +51,19 @@ public class URLProvider {
     }
 
 
+    public static String getPosCompany(String company_id)
+    {
+        String client = PROVIDER;
+        try {
+            client += "?ac=get_pos" ;
+            client += "&company_id=" + company_id;
+            return client;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return client;
+    }
+
     public static String getCompanyMemberCard() {
         String client = PROVIDER;
         try {
