@@ -14,11 +14,23 @@
         android:layout_width="match_parent" android:orientation="horizontal" android:gravity="center_vertical"
         android:layout_height="0dp" android:layout_weight="1">
 
-        <ImageView
-            android:id="@+id/item_company_img" android:scaleType="fitXY"
+        <FrameLayout
             android:layout_width="@dimen/item_company_icon_size"
-            android:layout_height="@dimen/item_company_icon_size"
-             />
+            android:layout_height="@dimen/item_company_icon_size">
+
+            <ImageView
+                android:id="@+id/item_company_img" android:scaleType="fitXY"
+                android:layout_width="@dimen/item_company_icon_size"
+                android:layout_height="@dimen/item_company_icon_size"/>
+
+            <ImageView
+                android:background="@drawable/icon_border"
+                android:id="@+id/item_membercard_img"
+                android:layout_width="@dimen/item_company_icon_size"
+                android:layout_height="@dimen/item_company_icon_size"
+                />
+        </FrameLayout>
+
 
             <com.nct.customview.TfTextView
                 android:layout_marginLeft="@dimen/item_member_card_padding"
