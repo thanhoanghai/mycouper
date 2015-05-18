@@ -78,7 +78,7 @@ public class AtCardDetail extends AtBase {
 		displayImage(imgBack,memberCard.back_of_the_card);
 
 		getPositionCompany();
-
+		getEcoupon();
 	}
 
 
@@ -150,6 +150,20 @@ public class AtCardDetail extends AtBase {
 		mapPhone.setText(posObject.phone);
 	}
 
+
+	private void getEcoupon()
+	{
+		DataLoader.get(URLProvider.getEcouponBymemberCompany(memberCard.company_id, GlobalInstance.getInstance().getUserID()), new TextHttpResponseHandler() {
+			@Override
+			public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+			}
+
+			@Override
+			public void onSuccess(int i, Header[] headers, String s) {
+				Debug.logError(tag,s);
+			}
+		});
+	}
 
 
 	private void initValueItem()

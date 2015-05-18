@@ -40,6 +40,15 @@ public class URLProvider {
     }
 
 
+    public static RequestParams getParamsDeleteMemberCard(String member_card_id)
+    {
+        RequestParams params = new RequestParams();
+        params.put("ac", "delete_member_card");
+        params.put("member_card_id", member_card_id);
+        return params;
+    }
+
+
     public static final String PROVIDER_UPLOAD_IMAGE = "http://media.mycouper.com/api.php?task=up";
     public static RequestParams getParamsUploadImage(String pathImage) {
         File myFile = new File(pathImage);
@@ -49,6 +58,21 @@ public class URLProvider {
         } catch(FileNotFoundException e) {}
         return params;
     }
+
+    public static String getEcouponBymemberCompany(String company_id,String user_id)
+    {
+        String client = PROVIDER;
+        try {
+            client += "?ac=get_ecoupon_by_member" ;
+            client += "&company_id=" + company_id;
+            client += "&user_id=" + user_id;
+            return client;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return client;
+    }
+
 
 
     public static String getPosCompany(String company_id)
