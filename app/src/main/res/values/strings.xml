@@ -13,7 +13,7 @@
     <string name="empty"></string>
     <string name="account_test">hoang.test.001@gmail.com</string>
 
-
+    <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
     <string name="scan">Scan</string>
     <string name="next">Next</string>

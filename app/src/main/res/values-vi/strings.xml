@@ -14,7 +14,7 @@
     <string name="account_test">hoang.test.001@gmail.com</string>
 
 
-
+    <string name="ok">Đồng ý</string>
     <string name="cancel">Huỷ</string>
     <string name="scan">Quét mã thẻ</string>
     <string name="next">Tiếp</string>
