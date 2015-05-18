@@ -76,6 +76,8 @@ public class AtCamera extends Activity implements OnClickListener {
     private int mCurrentCameraId;
     private int result = 0;
 
+    private boolean cameraFront = false;
+
     // Saves the state upon rotating the screen/restarting the activity
     @Override
     protected void onSaveInstanceState(Bundle bundle) {
@@ -150,6 +152,53 @@ public class AtCamera extends Activity implements OnClickListener {
 			preview.setCamera(camera);
 		}
 	}
+
+    public void chooseCamera() {
+        //if the camera preview is the front
+        if (cameraFront) {
+            int cameraId = findBackFacingCamera();
+            if (cameraId >= 0) {
+                //open the backFacingCamera
+                //set a picture callback
+                //refresh the preview
+
+                camera = Camera.open(cameraId);
+//                mPicture = getPictureCallback();
+//                preview.refreshCamera(camera);
+            }
+        } else {
+            int cameraId = findFrontFacingCamera();
+            if (cameraId >= 0) {
+                //open the backFacingCamera
+                //set a picture callback
+                //refresh the preview
+
+                camera = Camera.open(cameraId);
+//                mPicture = getPictureCallback();
+//                preview.refreshCamera(camera);
+            }
+        }
+
+        if(camera==null){
+            camera = Camera.open();
+            camera.startPreview();
+            camera.setErrorCallback(new ErrorCallback() {
+                public void onError(int error, Camera mcamera) {
+
+                    camera.release();
+                    camera = Camera.open();
+                    Log.d("Camera died", "error camera");
+                }
+            });
+        }
+        if (camera != null) {
+            if (Build.VERSION.SDK_INT >= 14)
+                setCameraDisplayOrientation(context,
+                        CameraInfo.CAMERA_FACING_BACK, camera);
+            preview.setCamera(camera);
+        }
+
+    }
 	
 	private void setCameraDisplayOrientation(Activity activity, int cameraId,
 			Camera camera) {
@@ -456,6 +505,40 @@ public class AtCamera extends Activity implements OnClickListener {
     /** Create a file Uri for saving an image or video */
     private Uri getOutputMediaFileUri(int type, String fileName){
         return Uri.fromFile(getOutputMediaFile(type, fileName));
+    }
+
+    private int findFrontFacingCamera() {
+        int cameraId = -1;
+        // Search for the front facing camera
+        int numberOfCameras = Camera.getNumberOfCameras();
+        for (int i = 0; i < numberOfCameras; i++) {
+            CameraInfo info = new CameraInfo();
+            Camera.getCameraInfo(i, info);
+            if (info.facing == CameraInfo.CAMERA_FACING_FRONT) {
+                cameraId = i;
+                cameraFront = true;
+                break;
+            }
+        }
+        return cameraId;
+    }
+
+    private int findBackFacingCamera() {
+        int cameraId = -1;
+        //Search for the back facing camera
+        //get the number of cameras
+        int numberOfCameras = Camera.getNumberOfCameras();
+        //for every camera check
+        for (int i = 0; i < numberOfCameras; i++) {
+            CameraInfo info = new CameraInfo();
+            Camera.getCameraInfo(i, info);
+            if (info.facing == CameraInfo.CAMERA_FACING_BACK) {
+                cameraId = i;
+                cameraFront = false;
+                break;
+            }
+        }
+        return cameraId;
     }
 
 }

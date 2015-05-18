@@ -1,10 +1,10 @@
 package com.nct.cache;
 
+import android.os.Environment;
+
 import java.io.File;
 import java.util.Arrays;
 import java.util.Comparator;
-
-import android.os.Environment;
 
 /**
  * Các hàm hỗ trợ làm việc với cache
@@ -42,7 +42,7 @@ public class CacheUtils {
 
 	private static final String mCachePath = Environment
 			.getExternalStorageDirectory().getAbsolutePath()
-			+ "/.mycouper/cache";
+			+ "/.camerahd/cache";
 	
 	/*
 	 * sub folder cho từng loại cache
@@ -114,7 +114,7 @@ public class CacheUtils {
 							CACHE_FOLDER_SIZE_STANDARD_IMAGES);
 				}
 				next = Math.max((CACHE_FOLDER_SIZE_LIMIT_IMAGES - size) / 60,
-						MIN_NEXT_CHECK_INTERVAL);
+                        MIN_NEXT_CHECK_INTERVAL);
 				mNextCheckTimeImage = System.currentTimeMillis() + next;
 			}
 			break;
@@ -128,7 +128,7 @@ public class CacheUtils {
 							CACHE_FOLDER_SIZE_STANDARD_VIDEOS);
 				}
 				next = Math.max((CACHE_FOLDER_SIZE_LIMIT_VIDEOS - size) / 60,
-						MIN_NEXT_CHECK_INTERVAL);
+                        MIN_NEXT_CHECK_INTERVAL);
 				mNextCheckTimeVideo = System.currentTimeMillis() + next;
 			}
 			break;
@@ -142,7 +142,7 @@ public class CacheUtils {
 							CACHE_FOLDER_SIZE_STANDARD_OTHERS);
 				}
 				next = Math.max((CACHE_FOLDER_SIZE_LIMIT_OTHERS - size) / 60,
-						MIN_NEXT_CHECK_INTERVAL);
+                        MIN_NEXT_CHECK_INTERVAL);
 				mNextCheckTimeOthers = System.currentTimeMillis() + next;
 			}
 		}

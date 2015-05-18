@@ -5,16 +5,16 @@ import android.util.DisplayMetrics;
 
 public class Device
 {
-	protected static String 	DEVICE_NAME;
-	protected static String 	DEVICE_MODEL;
+	protected static String DEVICE_NAME;
+	protected static String DEVICE_MODEL;
 	protected static int 		DEVICE_WIDTH;
 	protected static int 		DEVICE_HEIGHT;
 	protected static float 		DEVICE_DENSITY;
-	protected static String 	DEVICE_OS;
+	protected static String DEVICE_OS;
 	protected static double 	LATITUDE;
 	protected static double 	LONGITUDE;
 	
-	final static String			TAG = "system.Device";
+	final static String TAG = "system.Device";
 	
 	public Device(Context act)
 	{

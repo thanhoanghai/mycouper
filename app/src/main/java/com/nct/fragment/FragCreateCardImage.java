@@ -1,13 +1,8 @@
 package com.nct.fragment;
 
-import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -21,18 +16,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
+import com.javacodegeeks.androidcameraexample.AndroidCameraExample;
 import com.nct.constants.Constants;
 import com.nct.customview.TfTextView;
 import com.nct.mv.AtCamera;
 import com.nct.mv.AtCreateCard;
-import com.nct.utils.Utils;
-import com.soundcloud.android.crop.Crop;
-import com.soundcloud.android.crop.CropImageActivity;
-
-import java.io.File;
-import java.net.URI;
+import com.nct.mv.MainHomeCameraActivity;
 
 import thh.com.mycouper.R;
 

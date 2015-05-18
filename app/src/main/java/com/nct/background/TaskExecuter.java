@@ -1,14 +1,14 @@
 package com.nct.background;
 
+import android.content.Context;
+import android.os.Handler;
+import android.util.Log;
+
 import java.util.Iterator;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
-import android.content.Context;
-import android.os.Handler;
-import android.util.Log;
 
 /**
  * Hỗ trợ thực thi các task ở thread khác với UI thread
@@ -56,7 +56,7 @@ public class TaskExecuter {
 	public static TaskExecuter getInstance(Context context) {
 		synchronized (mLock) {
 			if (mInstance == null) {
-				mInstance = new TaskExecuter(context.getApplicationContext());				
+				mInstance = new TaskExecuter(context.getApplicationContext());
 			}
 			return mInstance;
 		}
@@ -105,7 +105,7 @@ public class TaskExecuter {
 		execute(runnable, PRIORITY_NORMAL);
 	}
 
-	public void cancel(Runnable runnable) {				
+	public void cancel(Runnable runnable) {
 		mTaskThreadPool.remove(runnable);
 		mUrgentTaskThreadPool.remove(runnable);
 	}
@@ -117,7 +117,7 @@ public class TaskExecuter {
 			Iterator<Runnable> itNormal = mNormalTaskQueue.iterator();
 			while (itNormal.hasNext()) {
 				Runnable r = itNormal.next();
-				Log.d(TAG, "normal runable instance = " + r.getClass().getName() );
+				Log.d(TAG, "normal runable instance = " + r.getClass().getName());
 				if(r instanceof CancelableTask){
 					CancelableTask runable = (CancelableTask) r;
 					if(runable.getComeFrom().equals(comeFrom)){
@@ -135,7 +135,7 @@ public class TaskExecuter {
 			Iterator<Runnable> itUrgent = mUrgentTaskQueue.iterator();
 			while (itUrgent.hasNext()) {
 				Runnable r = itUrgent.next();
-				Log.d(TAG, "urgent runable instance = " + r.getClass().getName() );
+				Log.d(TAG, "urgent runable instance = " + r.getClass().getName());
 				if(r instanceof CancelableTask){
 					CancelableTask runable = (CancelableTask) r;
 					if(runable.getComeFrom().equals(comeFrom)){
@@ -158,7 +158,7 @@ public class TaskExecuter {
 	 * @param <I> input params
 	 * @param <O> output of doInBackground
 	 */
-	public static abstract class TaskTemplate<I,O> implements Runnable {	
+	public static abstract class TaskTemplate<I,O> implements Runnable {
 		private I[] params;		
 		O result;
 		
@@ -182,7 +182,7 @@ public class TaskExecuter {
 		@Override
 		public void run() {			
 			result = doInBackground(params);
-			mUIThreadHandler.post(new Runnable() {				
+			mUIThreadHandler.post(new Runnable() {
 				@Override
 				public void run() {
 					onPostExecute(result);

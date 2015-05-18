@@ -1,35 +1,30 @@
 package com.nct.fragment;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.AdapterView;
 import android.widget.FrameLayout;
 
 import com.nct.background.ImageLoader;
-import com.nct.background.TaskExecuter;
+import com.nct.background.ImageLoader.OnImageLoadingFinishListener;
 import com.nct.constants.Constants;
 import com.nct.customview.SpanZoomImageView;
 import com.nct.utils.BitmapUtils;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import thh.com.mycouper.R;
 
@@ -38,7 +33,7 @@ public class EffectCameraFragment extends Fragment {
 	/*
 	 * Effect image
 	 */
-	public static final String EXT_DATA_URI = "KBKardEffect24Fragment_ext_data_uri";	
+	public static final String EXT_DATA_URI = "KBKardEffect24Fragment_ext_data_uri";
 	
 	private Uri imageUri;
 	private SpanZoomImageView kardImage;
@@ -57,7 +52,7 @@ public class EffectCameraFragment extends Fragment {
 	 * native libraries for do image effect
 	 */
 	static { 	
-	    System.loadLibrary( "yuv420sp2rgb" );	
+	    System.loadLibrary("yuv420sp2rgb");
 	} 
 		
 	/*
@@ -67,12 +62,12 @@ public class EffectCameraFragment extends Fragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {	
+			Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.effect_camera_fragment, null);
 	}
 
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {		
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);		
 		Bundle bundle = getArguments();
 		if( bundle != null ) {
@@ -139,7 +134,7 @@ public class EffectCameraFragment extends Fragment {
 		}
 	}
 	
-	private ImageLoader.OnImageLoadingFinishListener mImageLoadedListener = new ImageLoader.OnImageLoadingFinishListener() {
+	private OnImageLoadingFinishListener mImageLoadedListener = new OnImageLoadingFinishListener() {
 		@Override
 		public void onLoadingFinished(String url, Bitmap resultBitmap) {
 			dismissProgressDialog();
@@ -179,7 +174,7 @@ public class EffectCameraFragment extends Fragment {
         	e.printStackTrace();
         }
         
-        resultFileUri = Uri.fromFile(pictureFile);	   
+        resultFileUri = Uri.fromFile(pictureFile);
         
         return resultFileUri;
 	}

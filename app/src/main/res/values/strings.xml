@@ -133,4 +133,11 @@
     <string name="font_roboto_medium_italic">Roboto-MediumItalic</string>
     <string name="font_roboto_regular">Roboto-Regular</string>
 
+    <!-- camera 24 -->
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="auto">Auto</string>
+    <string name="library">Library</string>
+    <string name="instagram">Instagram</string>
+
 </resources>

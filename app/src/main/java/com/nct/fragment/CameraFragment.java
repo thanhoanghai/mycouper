@@ -1,13 +1,5 @@
 package com.nct.fragment;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.Bitmap;
@@ -37,6 +29,14 @@ import com.nct.customview.CameraPreview;
 import com.nct.utils.BitmapUtils;
 import com.nct.utils.Device;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 import thh.com.mycouper.R;
 
 public class CameraFragment extends Fragment {
@@ -51,7 +51,7 @@ private static final String TAG = "CameraFragment";
 	
 	private static Camera mCamera;
 	private MediaRecorder mMediaRecorder;
-    private CameraPreview mPreview;    
+    private CameraPreview mPreview;
     private int mCurrentCameraId;
 	private int result = 0;
     
@@ -70,12 +70,12 @@ private static final String TAG = "CameraFragment";
     
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {				
+			Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.camera_fragment, null);
 	}
 	
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {	
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
 		mKardPreviewFrameHeight = 0;
@@ -100,7 +100,7 @@ private static final String TAG = "CameraFragment";
 	                   * wait 500 milli for the view to be drawn before show preview
 	                   * sony devices problem
 	                   */	                  	                  
-	                  preview.postDelayed(new Runnable() {						
+	                  preview.postDelayed(new Runnable() {
 						@Override
 						public void run() {						
 							// try to open first available camera
@@ -179,7 +179,7 @@ private static final String TAG = "CameraFragment";
 		parameters.setPreviewSize(previewWidth, previewHeigth);				
 		mCamera.setParameters(parameters);
 		
-		mPreview = new CameraPreview(getActivity(), mCamera);
+		mPreview = new CameraPreview(getActivity(), mCamera);		
 		int previewScaleW = previewWidth;
 		int previewScaleH = previewHeigth;		
 		if( Device.getDeviceWidth() * previewWidth < mKardPreviewFrameHeight * previewHeigth ) {
@@ -242,31 +242,31 @@ private static final String TAG = "CameraFragment";
 			Camera.getCameraInfo(camIdx, cameraInfo);
 			if (cameraInfo.facing == facing) {
 				try {
-					cam = Camera.open(camIdx);					
+					cam = Camera.open(camIdx);
 					setCameraDisplayOrientation(getActivity(), camIdx, cam);
 					
 					//enable auto focus
-					Parameters params = cam.getParameters();
+					Camera.Parameters params = cam.getParameters();
 					List<String> focusModes = params.getSupportedFocusModes();
-					if (focusModes.contains(Parameters.FOCUS_MODE_AUTO)) {
-						params.setFocusMode(Parameters.FOCUS_MODE_AUTO);
+					if (focusModes.contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
+						params.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
 						cam.setParameters(params);
 					}
-					
+
 					mCurrentCameraId = camIdx;
 				} catch (RuntimeException e) {
-					Log.e(TAG,"Camera failed to open: " + e.getLocalizedMessage());
+					Log.e(TAG, "Camera failed to open: " + e.getLocalizedMessage());
 				}
 			}
 		}
 
 		return cam;
 	}
-	
+
 	private void setCameraDisplayOrientation(FragmentActivity activity,
-			int cameraId, Camera camera) {
-		Camera.CameraInfo info = new Camera.CameraInfo();
-		Camera.getCameraInfo(cameraId, info);
+			int cameraId, android.hardware.Camera camera) {
+		android.hardware.Camera.CameraInfo info = new android.hardware.Camera.CameraInfo();
+		android.hardware.Camera.getCameraInfo(cameraId, info);
 		int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
 		int degrees = 0;
 		switch (rotation) {
@@ -290,9 +290,9 @@ private static final String TAG = "CameraFragment";
 		} else { // back-facing
 			result = (info.orientation - degrees + 360) % 360;
 		}
-		camera.setDisplayOrientation(result);							
+		camera.setDisplayOrientation(result);
 	}
-	
+
 	/**
 	 * capture image and finish
 	 */
@@ -302,56 +302,56 @@ private static final String TAG = "CameraFragment";
 			mCamera.autoFocus(autoFocusCallback);
 			isCapturing = true;
 		}
-	}		
-	
-	AutoFocusCallback autoFocusCallback = new AutoFocusCallback() {	
+	}
+
+	AutoFocusCallback autoFocusCallback = new AutoFocusCallback() {
 		@Override
 		public void onAutoFocus(boolean success, Camera camera) {
-			showProgressDialog();			
-			mCamera.takePicture(null, null, mPictureCallback);	
+			showProgressDialog();
+			mCamera.takePicture(null, null, mPictureCallback);
 		}
 	};
-	
+
 	private PictureCallback mPictureCallback = new PictureCallback() {
 	    @Override
 	    public void onPictureTaken(byte[] data, Camera camera) {
 	    	dismissProgressDialog();
 	    	String fileName = Calendar.getInstance().getTimeInMillis() + Constants.JPG;
-	        File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE, fileName);	        	        
+	        File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE, fileName);
 	        try {
 	            Bitmap realImage = BitmapFactory.decodeByteArray(data, 0, data.length);
-	            Camera.CameraInfo info = new Camera.CameraInfo();
-	    		Camera.getCameraInfo(mCurrentCameraId, info);
+	            android.hardware.Camera.CameraInfo info = new android.hardware.Camera.CameraInfo();
+	    		android.hardware.Camera.getCameraInfo(mCurrentCameraId, info);
 				int camDegree = result;
 				if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
 					camDegree = (360 - camDegree) % 360; // compensate the mirror
 				}
-				
+
 	            Bitmap bitmap = BitmapUtils.rotate(realImage, camDegree);
-	            
-	            FileOutputStream fos = new FileOutputStream(pictureFile);	            
+
+	            FileOutputStream fos = new FileOutputStream(pictureFile);
 	            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-	            fos.close();	            
+	            fos.close();
 	        } catch (FileNotFoundException e) {
 	            Log.d(TAG, "File not found: " + e.getMessage());
 	        } catch (IOException e) {
 	            Log.d(TAG, "Error accessing file: " + e.getMessage());
 	        }
-	        	        
+
 	        if( onCaptureListener != null ) {
 	        	onCaptureListener.onCapture(getOutputMediaFileUri(MEDIA_TYPE_IMAGE, fileName));
 	        }
-	        
+
 	        if( mCamera!= null ) {
 				mCamera.startPreview();
 			}
-	        
+
 	        isCapturing = false;
 	    }
-	};				
-		
+	};
+
 	@SuppressLint("NewApi")
-	private boolean prepareVideoRecorder(boolean useLowProfile){			
+	private boolean prepareVideoRecorder(boolean useLowProfile){
 		String fileName = Calendar.getInstance().getTimeInMillis() + Constants.MP4;
 	    mMediaRecorder = new MediaRecorder();
 
@@ -362,7 +362,7 @@ private static final String TAG = "CameraFragment";
 	    // Step 2: Set sources
 	    mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
 	    mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-	    
+
 	    // Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
 	    if(useLowProfile) {
 	    	mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_LOW));
@@ -376,7 +376,7 @@ private static final String TAG = "CameraFragment";
 				}
 			} else {
 				mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_LOW));
-			}	    
+			}
 	    }
 
 	    // Step 4: Set output file
@@ -384,12 +384,12 @@ private static final String TAG = "CameraFragment";
 
 	    // Step 5: Set the preview output
 	    mMediaRecorder.setPreviewDisplay(mPreview.getHolder().getSurface());
-	    	    	    
+
 	    //set rotation hint
-	    Camera.CameraInfo info = new Camera.CameraInfo();
-		Camera.getCameraInfo(mCurrentCameraId, info);
-		mMediaRecorder.setOrientationHint(info.orientation);	    
-	    
+	    android.hardware.Camera.CameraInfo info = new android.hardware.Camera.CameraInfo();
+		android.hardware.Camera.getCameraInfo(mCurrentCameraId, info);
+		mMediaRecorder.setOrientationHint(info.orientation);
+
 	    // Step 6: Prepare configured MediaRecorder
 	    try {
 	        mMediaRecorder.prepare();
@@ -404,7 +404,7 @@ private static final String TAG = "CameraFragment";
 	    }
 	    return true;
 	}
-	
+
 	private void releaseMediaRecorder(){
         if (mMediaRecorder != null) {
             mMediaRecorder.reset();   // clear recorder configuration
@@ -413,17 +413,17 @@ private static final String TAG = "CameraFragment";
             mCamera.lock();           // lock camera for later use
         }
     }
-		
+
 	public boolean isVideoRecording() {
 		return isRecording;
 	}
-	
+
 	/**
 	 * start/stop record video and return if operation success or fail
 	 * @param onCaptureListener
 	 * @return
 	 */
-	public boolean recordVideo( OnCaptureListener onCaptureListener ) {		
+	public boolean recordVideo( OnCaptureListener onCaptureListener ) {
 		this.onCaptureListener = onCaptureListener;
 		boolean success = true;
 		String fileName = Calendar.getInstance().getTimeInMillis() + Constants.MP4;
@@ -434,8 +434,8 @@ private static final String TAG = "CameraFragment";
             mCamera.lock();         // take camera access back from MediaRecorder
 
             // inform the user that recording has stopped
-            isRecording = false;           
-            
+            isRecording = false;
+
             //return result to parent
             if( this.onCaptureListener != null ) {
             	this.onCaptureListener.onCapture(getOutputMediaFileUri(MEDIA_TYPE_VIDEO, fileName));
@@ -448,7 +448,7 @@ private static final String TAG = "CameraFragment";
 	                // Camera is available and unlocked, MediaRecorder is prepared,
 	                // now you can start recording
 	                mMediaRecorder.start();
-	
+
 	                // inform the user that recording has started
 	                isRecording = true;
 	            } else {
@@ -464,28 +464,28 @@ private static final String TAG = "CameraFragment";
 	                mMediaRecorder.start();
 	                isRecording = true;
 	            } else {
-	            	success = false;	             
+	            	success = false;
 	                releaseMediaRecorder();
 	            }
-        	}        	
+        	}
         }
-		
+
 		return success;
 	}
-		
+
 	/** Create a file Uri for saving an image or video */
 	private Uri getOutputMediaFileUri(int type, String fileName){
 	      return Uri.fromFile(getOutputMediaFile(type, fileName));
 	}
 
 	/** Create a File for saving an image or video */
-	private File getOutputMediaFile(int type, String fileName){	    
+	private File getOutputMediaFile(int type, String fileName){
 	    File dir = new File(Constants.SDCARD_CACHE_PREFIX);
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}
-		
-		File mediaFile;        
+
+		File mediaFile;
         if (type == MEDIA_TYPE_IMAGE){
 //	        mediaFile = new File(Constant.SDCARD_TAKE_PHOTO_CACHE_PREFIX);
         	mediaFile = new File(Constants.SDCARD_CACHE_PREFIX + "/" + "image" + fileName);
@@ -495,22 +495,22 @@ private static final String TAG = "CameraFragment";
 	    } else {
 	        return null;
 	    }
-	    
+
 	    return mediaFile;
 	}
-		
+
 	//flash mode
 	public List<String> getSupportedFlashModes() {
 		if( mCamera != null ) {
-			Parameters parameters = mCamera.getParameters();
+			Camera.Parameters parameters = mCamera.getParameters();
 			return parameters.getSupportedFlashModes();
 		}
 		return null;
 	}
-	
+
 	public void setFlashMode(String mode) {
 		if( mCamera != null ) {
-			Parameters parameters = mCamera.getParameters();
+			Camera.Parameters parameters = mCamera.getParameters();
 			parameters.setFlashMode(mode);
 			mCamera.setParameters(parameters);
 		}

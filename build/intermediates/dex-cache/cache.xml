@@ -154,6 +154,104 @@
         revision="22.0.1"
         sha1="5ea948d825957be6c4358c48422bee60eef2d487">
         <dex dex="/Users/haith/Desktop/DEV/Temp/Mycouper1/app/build/intermediates/pre-dexed/debug/classes-d4a0979487ba41482579224893bace78c88a892b.jar" />
+=======
+        jar="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\exploded-aar\com.soundcloud.android\android-crop\1.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7d59ba36bdb53bd81f4d16ed7e2abb47de5c53bd">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\classes-d1c0d4edcf15689a61b60dbe5bb216b6137e5999.jar" />
+    </item>
+    <item
+        jar="E:\SoftWare\android-sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-06d0a439fa5acb3bdfb863d3047076dfb50c3d43.jar" />
+    </item>
+    <item
+        jar="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\exploded-aar\com.commonsware.cwac\camera\0.6.12\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="733494514a30e5e5c60da15444b7d720590679c4">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\classes-96610a480748c549784ae8e3f5230d531d9cab45.jar" />
+    </item>
+    <item
+        jar="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\classes-51abd3c50c9ea12c23627724d0dbf9a62cc9ab31.jar" />
+    </item>
+    <item
+        jar="C:\Users\nghidv\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.2.0\e019d15a13a9786f881141d2df6654b8510bce8b\core-3.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e019d15a13a9786f881141d2df6654b8510bce8b">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\core-3.2.0-a2387a32ce786a0ce00a7d95804741bb458366cc.jar" />
+    </item>
+    <item
+        jar="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\exploded-aar\info.vividcode.android.zxing\capture-activity\2.3.0-1.2\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="424e4f70e4b535fa98c871d442963bd30e7b3bb0">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\classes-e52c9a0cf64b792731c0eaec331fd3ed2e9a20c1.jar" />
+    </item>
+    <item
+        jar="E:\ProjectMyCouper\MyCouper\mycouper.git\app\libs\universal-image-loader-1.9.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9e025bc5b84968e7d6ac765e660a70b3e5a87432">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.2-86a8f6a976a6d5daaa1911f0581237f04ca1c442.jar" />
+    </item>
+    <item
+        jar="E:\ProjectMyCouper\MyCouper\mycouper.git\app\libs\android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.5-9f8ce9e081cb56ca72a74eba08606c37a7229d33.jar" />
+    </item>
+    <item
+        jar="C:\Users\nghidv\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.2\91c20388c9a45f62b5ed8fe0502bb76ff6251fc7\bolts-android-1.1.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-392a66354fcc3f976899c0c1b545776cf569f1a5.jar" />
+    </item>
+    <item
+        jar="E:\ProjectMyCouper\MyCouper\mycouper.git\app\libs\simple-facebook.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1b0cf80e08db153510dedeca3e91f644ff366930">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\simple-facebook-4a61a8c0ff5e7ae3be398f658ea75f18cf556c69.jar" />
+    </item>
+    <item
+        jar="E:\ProjectMyCouper\MyCouper\mycouper.git\app\libs\glide-3.4.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="82552712133e094bbb565289fb2bc2d2952ba551">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\glide-3.4.0-f20d6f2ccf3af502b05bbd1cfe86ed2bc3822cff.jar" />
+    </item>
+    <item
+        jar="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-6ff1df870ba068a837bd32f8e6c29398b63b5121.jar" />
+    </item>
+    <item
+        jar="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\exploded-aar\com.github.asne.facebook\facebook\3.17.2\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0027a7b1c1f861403303ac4b10ac53fb6067324b">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\classes-042ba0b84a4921f4bda5b3ca8162b5013b88b029.jar" />
+    </item>
+    <item
+        jar="E:\ProjectMyCouper\MyCouper\mycouper.git\app\libs\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="E:\ProjectMyCouper\MyCouper\mycouper.git\app\build\intermediates\pre-dexed\debug\gson-2.2.4-659bf39612de1b366238c34d04786338e98b7a27.jar" />
+>>>>>>> Stashed changes
     </item>
 
 </items>

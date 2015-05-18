@@ -1,5 +1,17 @@
 package com.nct.background;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Handler;
+import android.support.v4.util.LruCache;
+import android.util.Log;
+import android.widget.ImageView;
+
+import com.nct.cache.CacheUtils;
+import com.nct.customview.RoundedDrawable;
+import com.nct.utils.BitmapUtils;
+
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,18 +28,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Handler;
-import android.support.v4.util.LruCache;
-import android.util.Log;
-import android.widget.ImageView;
-
-import com.nct.cache.CacheUtils;
-import com.nct.customview.RoundedDrawable;
-import com.nct.utils.BitmapUtils;
 
 import thh.com.mycouper.R;
 
@@ -134,7 +134,7 @@ public class ImageLoader {
 	 * maybe return null
 	 * @return
 	 */
-	public static ImageLoader getInstance() {		
+	public static ImageLoader getInstance() {
 		return mInstance;		
 	}
 
@@ -242,11 +242,11 @@ public class ImageLoader {
 				for (ImageCallback icb : callbacks) {
 					if (icb.imageView.get() != null) {
 						File file = CacheUtils.getCacheFileByUrl(
-								CacheUtils.CACHE_TYPE_IMAGE, mUrl);
+                                CacheUtils.CACHE_TYPE_IMAGE, mUrl);
 						decodeImageAndSet(file, icb.shadowPercent, icb.shadowResourceId, icb.roundType, icb.roundPercent, icb.outputWidth, icb.ratio, icb.imageView, mUrl);
 					} else if (icb.callback.get() != null) {
 						File file = CacheUtils.getCacheFileByUrl(
-								CacheUtils.CACHE_TYPE_IMAGE, mUrl);
+                                CacheUtils.CACHE_TYPE_IMAGE, mUrl);
 						decodeImageAndCallback(file, icb.shadowPercent, icb.shadowResourceId, icb.roundType, icb.roundPercent, icb.outputWidth, icb.ratio, icb.callback, mUrl);
 					}
 				}
@@ -291,7 +291,7 @@ public class ImageLoader {
 				options = new BitmapFactory.Options();
 				// tính tỉ lệ kích thước cần decode
 				options.inSampleSize = Math.round((float) originalWidth
-						/ (float) outputWidth);
+                        / (float) outputWidth);
 				stream = new FileInputStream(file);
 				bitmap = BitmapFactory.decodeStream(stream, null, options);
 			} else {
@@ -322,12 +322,12 @@ public class ImageLoader {
 			 * TODO add support custom bitmap			
 			 */
 			if (shadowPercent > 0 && shadowBitmapDefault == null) {				
-				shadowBitmapDefault = BitmapFactory.decodeResource(mAppContext.getResources(), R.drawable.bg_icon_effect);
+				shadowBitmapDefault = BitmapFactory.decodeResource(mAppContext.getResources(), R.drawable.kard_shadow_default_horizontal);
 			}
 
 			//add shadow to result bitmap			
 			if( shadowPercent > 0 ) {
-				if( shadowResId > 0 && shadowResId != R.drawable.bg_icon_effect ) {
+				if( shadowResId > 0 && shadowResId != R.drawable.kard_shadow_default_horizontal ) {
 					bitmap = BitmapUtils.addShadow(bitmap, shadowPercent, 
 							BitmapFactory.decodeResource(mAppContext.getResources(), shadowResId));
 				} else {
@@ -361,7 +361,7 @@ public class ImageLoader {
 			final String url) {
 
 		try {			
-			final Bitmap resultBitmap = decodeImage(file, shadowPercent, shadowResId, roundType, roundPercent, outputWidth, ratio);			
+			final Bitmap resultBitmap = decodeImage(file, shadowPercent, shadowResId, roundType, roundPercent, outputWidth, ratio);
 			mUIThreadHandler.post(new Runnable() {
 				@Override
 				public void run() {
@@ -402,7 +402,7 @@ public class ImageLoader {
 	/**
 	 * Decode ảnh, kèm hiệu ứng và đưa vào imageView để hiển thị
 	 */
-	private void decodeImageAndCallback(File file, int shadowPercent, int shadowResId, int roundType, int roundPercent, int outputWidth, int ratio, 
+	private void decodeImageAndCallback(File file, int shadowPercent, int shadowResId, int roundType, int roundPercent, int outputWidth, int ratio,
 			final WeakReference<OnImageLoadingFinishListener> callbackRef,
 			final String url) {
 
@@ -471,7 +471,7 @@ public class ImageLoader {
 
 					byte[] expandedBuffer = new byte[newSize];
 					System.arraycopy(tempBuffer, 0, expandedBuffer, 0,
-							tempBuffer.length);
+                            tempBuffer.length);
 					tempBuffer = expandedBuffer;
 				} while (true);
 
@@ -502,14 +502,14 @@ public class ImageLoader {
 			}
 		} catch (IOException e) {
 			Log.e("ImageLoader",
-					"error loading file from url " + e.getMessage());
+                    "error loading file from url " + e.getMessage());
 		} finally {
 			if (null != byteStream) {
 				try {
 					byteStream.close();
 				} catch (Exception e) {
 					Log.e("ImageLoader",
-							"error closing byte stream " + e.getMessage());
+                            "error closing byte stream " + e.getMessage());
 				}
 			}
 		}
@@ -574,7 +574,7 @@ public class ImageLoader {
 					} else {
 						// Nên ktra file cache trước
 						File file = CacheUtils.getCacheFileByUrl(
-								CacheUtils.CACHE_TYPE_IMAGE, url);
+                                CacheUtils.CACHE_TYPE_IMAGE, url);
 
 						if (!file.exists()) {
 							if (mWaitingDownloadURLs.isEmpty()
@@ -614,7 +614,7 @@ public class ImageLoader {
 	 * ex: 25 mean width will be crop to be 25% of height
 	 * @param defaultImageId default resource to use while waiting for loading
 	 */
-	public void loadImage(final ImageView imageView, String url, int outputWidth, int roundType, 
+	public void loadImage(final ImageView imageView, String url, int outputWidth, int roundType,
 			int shadowPercent, int ratio, final int defaultImageId) {
 		//call loadImage iwth default shadow vertical resource
 		loadImage(imageView, url, outputWidth, roundType, BitmapUtils.CORNER_PERCENT, shadowPercent, 0, ratio, defaultImageId);
@@ -697,7 +697,7 @@ public class ImageLoader {
 					} else {
 						// Nên ktra file cache trước
 						File file = CacheUtils.getCacheFileByUrl(
-								CacheUtils.CACHE_TYPE_IMAGE, url);
+                                CacheUtils.CACHE_TYPE_IMAGE, url);
 
 						if (!file.exists()) {
 							if (mWaitingDownloadURLs.isEmpty()
@@ -770,7 +770,7 @@ public class ImageLoader {
 		if (url == null || url.isEmpty()) {
 			for (int i = 0; i < 5; i++)
 				Log.e("ImageLoader",
-						"Why do you ask me to load image from a null url???");
+                        "Why do you ask me to load image from a null url???");
 			return false;
 		}
 		return true;
