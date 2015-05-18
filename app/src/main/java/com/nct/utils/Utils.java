@@ -37,6 +37,7 @@ import com.nct.mv.AtCreateCard;
 import com.nct.mv.AtForgotPass;
 import com.nct.mv.AtLogin;
 import com.nct.mv.AtMain;
+import com.nct.mv.AtPreviewImage;
 import com.nct.mv.AtSignUp;
 import com.nct.mv.AtUserProfile;
 import com.nct.mv.MainHomeCameraActivity;
@@ -48,6 +49,13 @@ import thh.com.mycouper.R;
 public class Utils {
 
 	private static final String TAG = "Utils";
+
+
+	public static void gotoScreenPreviewImage(Context mContext,String linkImage) {
+		Intent search = new Intent(mContext, AtPreviewImage.class);
+		search.putExtra(Constants.AT_PREVIEW_ID_LINK_IMAGE,linkImage);
+		mContext.startActivity(search);
+	}
 
 	public static void gotoScreenCardDetail(Context mContext) {
 		Intent search = new Intent(mContext, AtCardDetail.class);

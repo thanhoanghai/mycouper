@@ -74,6 +74,8 @@ public class AtCardDetail extends AtBase {
 
 		initImageLoader();
 		displayImage(imgIcon, memberCard.company_logo);
+		displayImage(imgFront,memberCard.front_of_the_card);
+		displayImage(imgBack,memberCard.back_of_the_card);
 
 		getPositionCompany();
 
@@ -123,7 +125,7 @@ public class AtCardDetail extends AtBase {
 				@Override
 				public void onSuccess(int i, Header[] headers, String s) {
 					posData = DataHelper.getPosData(s);
-					if(posData!=null)
+					if(posData!=null && posData.data.size() > 0)
 					{
 						posObject = posData.data.get(0);
 						showPosCompany();
@@ -161,6 +163,7 @@ public class AtCardDetail extends AtBase {
 		});
 
 		frameMaps = (LinearLayout) findViewById(R.id.card_detail_frame_maps);
+		frameMaps.setVisibility(View.GONE);
 		bntCloseMap = (Button) findViewById(R.id.card_detail_bt_closemap);
 		bntCloseMap.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -205,7 +208,21 @@ public class AtCardDetail extends AtBase {
 
 		imgCode = (TextView) findViewById(R.id.card_detail_img_idcode);
 		imgFront = (ImageView) findViewById(R.id.card_detail_img_front);
+		imgFront.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(!TextUtils.isEmpty(memberCard.front_of_the_card))
+					Utils.gotoScreenPreviewImage(AtCardDetail.this,memberCard.front_of_the_card);
+			}
+		});
 		imgBack = (ImageView) findViewById(R.id.card_detail_img_back);
+		imgBack.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(!TextUtils.isEmpty(memberCard.back_of_the_card))
+					Utils.gotoScreenPreviewImage(AtCardDetail.this,memberCard.back_of_the_card);
+			}
+		});
 
 		mapTitle = (TextView) findViewById(R.id.card_detail_tv_maptitle);
 		mapPos = (TextView) findViewById(R.id.card_detail_tv_mappos);

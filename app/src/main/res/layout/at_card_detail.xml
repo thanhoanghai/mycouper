@@ -120,8 +120,8 @@
 
         <LinearLayout
             android:id="@+id/card_detail_frame_maps"
-            android:layout_width="match_parent" android:orientation="vertical"
-            android:layout_height="match_parent" android:visibility="gone">
+            android:layout_width="match_parent" android:orientation="vertical" android:background="@color/white"
+            android:layout_height="match_parent" android:visibility="visible">
             <fragment
                 android:id="@+id/map"
                 android:name="com.google.android.gms.maps.MapFragment"
@@ -132,11 +132,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent" android:gravity="center_horizontal" android:layout_height="wrap_content"
-                android:paddingTop="5dp" android:paddingLeft="5dp" android:orientation="vertical"
+                android:paddingLeft="5dp" android:orientation="vertical"
                 >
 
                 <com.nct.customview.TfTextView android:id="@+id/card_detail_tv_maptitle"
-                    android:layout_marginTop="@dimen/card_detail_marintop"
                     app:typeface_name="@string/font_roboto_regular"
                     app:typeface_style="bold"
                     android:layout_width="match_parent"

@@ -85,4 +85,7 @@ public class Constants {
     public static String KEY_BUNDLE_CARD_INFO_CARDDES = "KEY_BUNDLE_CARD_INFO_CARDDES";
     public static String KEY_BUNDLE_CARD_INFO_BITMAP = "KEY_BUNDLE_CARD_INFO_BITMAP";
 
+
+	public static String AT_PREVIEW_ID_LINK_IMAGE = "AT_PREVIEW_ID_LINK_IMAGE";
+
 }
