@@ -2,21 +2,14 @@ package com.nct.mv;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 
-import com.nct.adapter.AtMainViewpagerAdapter;
 import com.nct.constants.Constants;
-import com.nct.constants.GlobalInstance;
-import com.nct.customview.ActionItem;
-import com.nct.customview.PagerSlidingTabStrip;
+import com.nct.customview.PopupActionItem;
 import com.nct.customview.QuickAction;
 import com.nct.fragment.FragHome;
 import com.nct.fragment.FragMemberCard;
-import com.nct.utils.Device;
 import com.nct.utils.Utils;
 
 import thh.com.mycouper.R;
@@ -24,15 +17,11 @@ import thh.com.mycouper.R;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.TabHost;
 
-import java.util.Locale;
 import java.util.Stack;
 import java.util.HashMap;
 
@@ -44,12 +33,12 @@ public class AtMain extends AtBase {
 
 
     private QuickAction quickAction;
-    private ActionItem bntUserProfile;
-    private ActionItem bntSetting;
-    private ActionItem bntContact;
-    private ActionItem bntSynchronize;
-    private ActionItem bntHelp;
-    private ActionItem bntCopyRight;
+    private PopupActionItem bntUserProfile;
+    private PopupActionItem bntSetting;
+    private PopupActionItem bntContact;
+    private PopupActionItem bntSynchronize;
+    private PopupActionItem bntHelp;
+    private PopupActionItem bntCopyRight;
 
 
     @Override
@@ -177,12 +166,12 @@ public class AtMain extends AtBase {
     private void initListPopUpMenu()
     {
         quickAction = new QuickAction(AtMain.this, QuickAction.VERTICAL);
-        bntUserProfile = new ActionItem(Constants.POP_UP_ID_USER_PROFILE, "User profile", null);
-        bntSetting = new ActionItem(Constants.POP_UP_ID_SETTING, "Setting", null);
-        bntContact = new ActionItem(Constants.POP_UP_ID_CONTACT, "Contact", null);
-        bntSynchronize = new ActionItem(Constants.POP_UP_ID_SYNCHRONIZE , "Synchronize", null);
-        bntHelp = new ActionItem(Constants.POP_UP_ID_HELP , "Help", null);
-        bntCopyRight = new ActionItem(Constants.POP_UP_ID_COPYRIGHT , "Copyright", null);
+        bntUserProfile = new PopupActionItem(Constants.POP_UP_ID_USER_PROFILE, "User profile", null);
+        bntSetting = new PopupActionItem(Constants.POP_UP_ID_SETTING, "Setting", null);
+        bntContact = new PopupActionItem(Constants.POP_UP_ID_CONTACT, "Contact", null);
+        bntSynchronize = new PopupActionItem(Constants.POP_UP_ID_SYNCHRONIZE , "Synchronize", null);
+        bntHelp = new PopupActionItem(Constants.POP_UP_ID_HELP , "Help", null);
+        bntCopyRight = new PopupActionItem(Constants.POP_UP_ID_COPYRIGHT , "Copyright", null);
 
         quickAction.addActionItem(bntUserProfile);
         quickAction.addActionItem(bntSetting);

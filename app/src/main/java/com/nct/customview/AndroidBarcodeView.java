@@ -82,9 +82,9 @@ public class AndroidBarcodeView extends View
         // Unit of Measure, pixel, cm, or inch
         barcode.setUom(IBarcode.UOM_PIXEL);
         // barcode bar module width (X) in pixel
-        barcode.setX(1f);
+        barcode.setX(6f);
         // barcode bar module height (Y) in pixel
-        barcode.setY(75f);
+        barcode.setY(200f);
 
         // barcode image margins
         barcode.setLeftMargin(10f);
@@ -93,15 +93,15 @@ public class AndroidBarcodeView extends View
         barcode.setBottomMargin(10f);
 
         // barcode image resolution in dpi
-        barcode.setResolution(72);
+        barcode.setResolution(100);
 
         // disply barcode encoding data below the barcode
-        barcode.setShowText(true);
+        //barcode.setShowText(true);
         // barcode encoding data font style
-        barcode.setTextFont(new AndroidFont("Arial", Typeface.NORMAL, 12));
+        //barcode.setTextFont(new AndroidFont("Arial", Typeface.NORMAL, 12));
         // space between barcode and barcode encoding data
-        barcode.setTextMargin(6);
-        barcode.setTextColor(AndroidColor.black);
+        //barcode.setTextMargin(6);
+        //barcode.setTextColor(AndroidColor.black);
         
         // barcode bar color and background color in Android device
         barcode.setForeColor(AndroidColor.black);
@@ -110,7 +110,7 @@ public class AndroidBarcodeView extends View
         /*
           specify your barcode drawing area
         */
-        RectF bounds = new RectF(Utils.pxFromDp(mContext,200), Utils.pxFromDp(mContext,100), 0, 0);
+        RectF bounds = new RectF(0, 0, 0, 0);
         barcode.drawBarcode(canvas, bounds);
     }
 

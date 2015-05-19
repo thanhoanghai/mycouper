@@ -11,7 +11,7 @@ import android.graphics.drawable.Drawable;
  *         Contributors: - Kevin Peck <kevinwpeck@gmail.com>
  * 
  */
-public class ActionItem {
+public class PopupActionItem {
 	private Drawable icon;
 	private Bitmap thumb;
 	private String title;
@@ -29,7 +29,7 @@ public class ActionItem {
 	 * @param icon
 	 *            Icon to use
 	 */
-	public ActionItem(int actionId, String title, Drawable icon) {
+	public PopupActionItem(int actionId, String title, Drawable icon) {
 		this.title = title;
 		this.icon = icon;
 		this.actionId = actionId;
@@ -38,7 +38,7 @@ public class ActionItem {
 	/**
 	 * Constructor
 	 */
-	public ActionItem() {
+	public PopupActionItem() {
 		this(-1, null, null);
 	}
 
@@ -50,7 +50,7 @@ public class ActionItem {
 	 * @param title
 	 *            Text to show for the item
 	 */
-	public ActionItem(int actionId, String title) {
+	public PopupActionItem(int actionId, String title) {
 		this(actionId, title, null);
 	}
 
@@ -60,7 +60,7 @@ public class ActionItem {
 	 * @param icon
 	 *            {@link Drawable} action icon
 	 */
-	public ActionItem(Drawable icon) {
+	public PopupActionItem(Drawable icon) {
 		this(-1, null, icon);
 	}
 
@@ -72,7 +72,7 @@ public class ActionItem {
 	 * @param icon
 	 *            {@link Drawable} action icon
 	 */
-	public ActionItem(int actionId, Drawable icon) {
+	public PopupActionItem(int actionId, Drawable icon) {
 		this(actionId, null, icon);
 	}
 

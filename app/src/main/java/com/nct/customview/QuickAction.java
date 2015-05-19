@@ -40,7 +40,7 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 	private OnActionItemClickListener mItemClickListener;
 	private OnDismissListener mDismissListener;
 
-	private List<ActionItem> actionItems = new ArrayList<ActionItem>();
+	private List<PopupActionItem> actionItems = new ArrayList<PopupActionItem>();
 
 	private boolean mDidAction;
 
@@ -112,7 +112,7 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 	 * 
 	 * @return Action Item at the position
 	 */
-	public ActionItem getActionItem(int index) {
+	public PopupActionItem getActionItem(int index) {
 		return actionItems.get(index);
 	}
 	
@@ -163,9 +163,9 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 	 * Add action item
 	 * 
 	 * @param action
-	 *            {@link ActionItem}
+	 *            {@link PopupActionItem}
 	 */
-	public void addActionItem(ActionItem action) {
+	public void addActionItem(PopupActionItem action) {
 		actionItems.add(action);
 
 		String title = action.getTitle();
