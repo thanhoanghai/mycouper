@@ -50,7 +50,7 @@ public class URLProvider {
     }
 
 
-    public static RequestParams getParamsDeleteMemberCard(String member_card_id)
+    public static RequestParams getParamsDeleteMemberCard(int member_card_id)
     {
         RequestParams params = new RequestParams();
         params.put("ac", "delete_member_card");

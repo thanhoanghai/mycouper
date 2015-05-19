@@ -20,6 +20,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.constants.GlobalInstance;
+import com.nct.customview.DialogCustom;
+import com.nct.customview.DialogRate;
 import com.nct.dataloader.DataHelper;
 import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
@@ -160,7 +162,7 @@ public class AtCardDetail extends AtBase {
 
 			@Override
 			public void onSuccess(int i, Header[] headers, String s) {
-				Debug.logError(tag,s);
+				Debug.logError(tag, s);
 			}
 		});
 	}
@@ -193,6 +195,12 @@ public class AtCardDetail extends AtBase {
 			@Override
 			public void onClick(View v) {
 				finish();
+			}
+		});
+		setTopbarRighttBtListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showDialogDeletCard();
 			}
 		});
 
@@ -242,5 +250,53 @@ public class AtCardDetail extends AtBase {
 		mapPos = (TextView) findViewById(R.id.card_detail_tv_mappos);
 		mapStreets = (TextView) findViewById(R.id.card_detail_tv_mapstreet);
 		mapPhone = (TextView) findViewById(R.id.card_detail_tv_mapphone);
+	}
+
+	private DialogRate dialogRate;
+	private void showDialogDeletCard()
+	{
+		if(dialogRate == null)
+		{
+			dialogRate = new DialogRate(AtCardDetail.this,3,getString(R.string.edit),getString(R.string.delete),getString(R.string.skip),"");
+			dialogRate.setListenerFinishedDialog(new DialogCustom.FinishDialogConfirmListener() {
+				@Override
+				public void onFinishConfirmDialog(int i) {
+					if(i==1)
+						showDialogConfirmDelete();
+				}
+			});
+		}
+		dialogRate.show();
+	}
+	private void showDialogConfirmDelete()
+	{
+		DialogCustom dialog = new DialogCustom(AtCardDetail.this);
+		dialog.setText(getString(R.string.confirm),getString(R.string.do_you_want_delete));
+		dialog.setListenerFinishedDialog(new DialogCustom.FinishDialogConfirmListener() {
+			@Override
+			public void onFinishConfirmDialog(int i) {
+				if(i==1)
+					loadApiDeleteThisCard();
+			}
+		});
+		dialog.show();
+	}
+
+	private void loadApiDeleteThisCard()
+	{
+		showDialogLoading();
+		DataLoader.postParam(URLProvider.getParamsDeleteMemberCard(memberCard.member_card_id), new TextHttpResponseHandler() {
+			@Override
+			public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+				hideDialogLoading();
+			}
+
+			@Override
+			public void onSuccess(int i, Header[] headers, String s) {
+				hideDialogLoading();
+				Debug.toast(AtCardDetail.this,s);
+				finish();
+			}
+		});
 	}
 }

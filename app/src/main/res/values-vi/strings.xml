@@ -28,6 +28,11 @@
     <string name="back_card">Mặt sau</string>
     <string name="map">Bản đồ</string>
     <string name="rotate">Xoay</string>
+    <string name="edit">Sữa</string>
+    <string name="delete">Xoá</string>
+    <string name="skip">Bỏ qua</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="do_you_want_delete">Bạn muốn xoá thẻ này?</string>
 
 
     <!-- CARD DETAIL -->

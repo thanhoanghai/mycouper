@@ -89,7 +89,7 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 	protected boolean handleLoadingDataSuccess(String result) {
 
 		MemberCardData object = DataHelper.getMemberCardData(result);
-		setData(object.data);
+		setData(object.data,false);
 
 		return true;
 	}

@@ -41,4 +41,9 @@ public class Debug {
 		a.setDuration(10);
 		a.show();
 	}
+
+	public static void toastDebug(Context mContext, String s) {
+		if (Constants.DEBUG_TOAST)
+			Toast.makeText(mContext, s, Toast.LENGTH_LONG).show();
+	}
 }

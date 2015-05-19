@@ -11,6 +11,7 @@ public class Constants {
 	public static boolean DEBUG_URL = true;
 	public static boolean DEBUG_DATA = true;
 	public static boolean DEBUG_ERROR = true;
+	public static boolean DEBUG_TOAST = true;
 	
 	public static int SCREEN_WIDTH = 480;
 	public static int SCREEN_HEIGHT = 800;

@@ -74,7 +74,8 @@ public class DialogRate extends Dialog implements
 		if(!TextUtils.isEmpty(textTitle))
 		{
 			tvTitle.setText(textTitle);
-		}
+		}else
+			tvTitle.setVisibility(View.GONE);
 	}
 
 	public void exitDialog() {
