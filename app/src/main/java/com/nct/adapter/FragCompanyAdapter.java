@@ -4,6 +4,7 @@
 package com.nct.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +62,12 @@ public class FragCompanyAdapter extends BaseAdapterApp<CompanyObject> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AtCreateCard)mContext).changeFragment( Constants.TYPE_CREATE_CARD_INFO,new FragCreateCardInfo());
+                FragCreateCardInfo fm = new FragCreateCardInfo();
+                Bundle bundle = new Bundle();
+                bundle.putBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
+                bundle.putSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE, saveList.get(position));
+                fm.setArguments(bundle);
+                ((AtCreateCard)mContext).changeFragment( Constants.TYPE_CREATE_CARD_INFO, fm);
             }
         });
 

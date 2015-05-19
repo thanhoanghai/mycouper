@@ -2,27 +2,27 @@ package com.nct.fragment;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.javacodegeeks.androidcameraexample.AndroidCameraExample;
+import com.nct.model.CompanyObject;
+import com.nct.mv.AtCamera;
 import com.nct.constants.Constants;
 import com.nct.customview.TfTextView;
-import com.nct.mv.AtCamera;
+import com.nct.model.ItemCreateKard;
 import com.nct.mv.AtCreateCard;
-import com.nct.mv.MainHomeCameraActivity;
+import com.nct.utils.BitmapUtils;
+import com.nct.utils.Debug;
 
 import thh.com.mycouper.R;
 
@@ -35,12 +35,16 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
     private enum MODE_CAMERA_FACE {Front, Back};
     private MODE_CAMERA_FACE modeFace;
 
+    private RelativeLayout mLLInfoCard;
+    private LinearLayout mLLInputName;
+    private ImageView imageView;
+
     RelativeLayout lyBtnCameraFront, lyBtnCameraBack, lyImageFront, lyImageBack;
     ImageView imgeFront, imageBack;
     ImageView btnFront, btnBack;
 
 
-    private TfTextView txtCompanyName;
+    private TfTextView txtCompanyName, txtCompanyDes;
     private Button bntNext;
     private ImageButton btnFrontFace;
     private ImageButton btnBackFace;
@@ -49,6 +53,8 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
     private String mCardCode;
     private String mCardName;
     private String mCardDes;
+    private boolean isOther = false;
+    private CompanyObject itemCompany;
 
     private Bitmap mBitmapFront, mBitmapBack;
 
@@ -65,7 +71,11 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
             mCardCode = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_CARDCODE);
             mCardName = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_CARDNAME);
             mCardDes = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_CARDDES);
+            isOther = getArguments().getBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
+            itemCompany = (CompanyObject)getArguments().getSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE);
         }
+        if(mCardDes == null)
+            mCardDes = "";
     }
 
     @Override
@@ -83,23 +93,44 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
             }
         });
 
+        mLLInfoCard = (RelativeLayout) v.findViewById(R.id.frag_create_card_info_linear_img);
+        mLLInputName = (LinearLayout) v.findViewById(R.id.frag_create_card_info_linear_input);
+
+        if(isOther){
+            mLLInfoCard.setVisibility(View.GONE);
+            mLLInputName.setVisibility(View.VISIBLE);
+            txtCompanyName = (TfTextView) v.findViewById(R.id.create_card_companymane);
+            if(mCompanyName == null)
+                mCompanyName = "";
+            txtCompanyName.setText(mCompanyName);
+        }else{
+            mLLInfoCard.setVisibility(View.VISIBLE);
+            mLLInputName.setVisibility(View.GONE);
+            imageView = (ImageView) v.findViewById(R.id.frag_create_card_info_img);
+            txtCompanyName = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_title);
+            txtCompanyDes = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_des);
+            txtCompanyDes.setText(mCardDes);
+            if(itemCompany != null){
+                displayImage(imageView, itemCompany.company_logo);
+                if(itemCompany.company_name != null)
+                    txtCompanyName.setText(itemCompany.company_name);
+                else
+                    txtCompanyName.setText("");
+            }
+        }
+
         lyBtnCameraFront = (RelativeLayout) v.findViewById(R.id.btn_front_camera);
         lyImageFront = (RelativeLayout) v.findViewById(R.id.lyImageFront);
         lyBtnCameraBack = (RelativeLayout) v.findViewById(R.id.btn_back_camera);
         lyImageBack = (RelativeLayout) v.findViewById(R.id.lyImagBack);
 
-        imgeFront = (ImageView) v.findViewById(R.id.front_Camera);
+        imgeFront = (ImageView) v.findViewById(R.id.image_front);
         btnFront = (ImageView) v.findViewById(R.id.image_camera_front);
         btnFront.setOnClickListener(this);
 
         imageBack = (ImageView) v.findViewById(R.id.image_back);
         btnBack = (ImageView) v.findViewById(R.id.image_camera_back);
         btnBack.setOnClickListener(this);
-
-        txtCompanyName = (TfTextView) v.findViewById(R.id.create_card_companymane);
-        if(mCompanyName == null)
-            mCompanyName = "";
-        txtCompanyName.setText(mCompanyName);
 
         btnFrontFace = (ImageButton) v.findViewById(R.id.front_Camera);
         btnFrontFace.setOnClickListener(this);
@@ -121,41 +152,73 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
             case R.id.front_Camera:
                 modeFace = MODE_CAMERA_FACE.Front;
                 intent = new Intent(getActivity(), AtCamera.class);
+                intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, true);
                 getActivity().startActivityForResult(intent, TAKE_PICTURE);
                 break;
             case R.id.image_camera_back:
             case R.id.back_Camera:
                 modeFace = MODE_CAMERA_FACE.Back;
                 intent = new Intent(getActivity(), AtCamera.class);
+                intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
                 getActivity().startActivityForResult(intent, TAKE_PICTURE);
                 break;
             case R.id.frag_create_card_image_bt_next:
-                ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_SUCCESS, new FragCreateCardSuccess());
+                String result = checkBitmap();
+                if(result.equals(""))
+                    ((AtCreateCard)getActivity()).savePhoto();
+                else
+                    Debug.toast(getActivity(), result);
                 break;
         }
+    }
+
+    public void showSuccess(){
+        FragCreateCardSuccess fm = new FragCreateCardSuccess();
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYNAME, mCompanyName);
+        bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDCODE, mCardCode);
+        bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDNAME, mCardName);
+        bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDDES, mCardDes);
+        bundle.putBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, isOther);
+        bundle.putSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE, itemCompany);
+        fm.setArguments(bundle);
+        ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_IMAGE, fm);
+    }
+
+    private String checkBitmap(){
+        String result = "";
+        if(ItemCreateKard.frontFile == null)
+            return result = "Please capture front photo";
+        if(ItemCreateKard.frontFile == null)
+            return result = "Please capture back photo";
+        return result;
     }
 
     public void activityResult(int requestCode, int resultCode, Intent data){
         if (resultCode == getActivity().RESULT_OK) {
             switch (requestCode){
                 case TAKE_PICTURE:
-                    byte[] byteArray = data.getByteArrayExtra(Constants.KEY_BUNDLE_CARD_INFO_BITMAP);
                     if(modeFace == MODE_CAMERA_FACE.Front){
-                        mBitmapFront = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+                        mBitmapFront = ItemCreateKard.bitmapFront;
                         if(mBitmapFront != null){
                             lyBtnCameraFront.setVisibility(View.GONE);
                             lyImageFront.setVisibility(View.VISIBLE);
                             imgeFront.setImageBitmap(mBitmapFront);
+                            String fileName = "mycouper_front_photo.png";
+                            // save bitmap
+                            ItemCreateKard.frontFile = BitmapUtils.saveBitmapInSDCard(getActivity(), fileName, mBitmapFront);
                         }else{
                             lyBtnCameraFront.setVisibility(View.VISIBLE);
                             lyImageFront.setVisibility(View.GONE);
                         }
                     }else{
-                        mBitmapBack = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+                        mBitmapBack = ItemCreateKard.bitmapBack;
                         if(mBitmapBack != null){
                             lyBtnCameraBack.setVisibility(View.GONE);
                             lyImageBack.setVisibility(View.VISIBLE);
                             imageBack.setImageBitmap(mBitmapBack);
+                            String fileName = "mycouper_back_photo.png";
+                            ItemCreateKard.backFile = BitmapUtils.saveBitmapInSDCard(getActivity(), fileName, mBitmapBack);
                         }else{
                             lyBtnCameraBack.setVisibility(View.VISIBLE);
                             lyImageBack.setVisibility(View.GONE);

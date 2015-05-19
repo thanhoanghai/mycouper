@@ -22,6 +22,7 @@ import com.nct.fragment.FragCreateCardInfo;
 import com.nct.fragment.FragCreateCardSearch;
 import com.nct.fragment.FragCreateCardSuccess;
 import com.nct.fragment.FragHome;
+import com.nct.model.ItemCreateKard;
 import com.nct.model.StatusObject;
 import com.nct.model.UserObject;
 import com.nct.utils.Debug;
@@ -129,36 +130,61 @@ public class AtCreateCard extends AtBase {
             ((FragCreateCardImage)fragment).activityResult(requestCode, resultCode, data);
     }
 
-    public void createNewCard(){
+    boolean isFrontSuccess = false;
+    boolean isBackSuccess = false;
+    String mFrontUrl = "";
+    String mBackUrl = "";
+    public void savePhoto(){
         showDialogLoading();
-//        DataLoader.postParam(URLProvider.getSignUp(sEmail, sPass), new TextHttpResponseHandler() {
-//            @Override
-//            public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
-//                hideDialogLoading();
-//            }
-//
-//            @Override
-//            public void onSuccess(int i, Header[] headers, String s) {
-//                hideDialogLoading();
-//                String mUserID = "";
-//                try {
-//                    JSONObject object = new JSONObject(s);
-//                    JSONObject obj = object.getJSONObject("data");
-//                    mUserID = obj.optString("user_id");
-//
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//
-//                StatusObject item = DataHelper.getStatusObject(s);
-//                Debug.toast(AtSignUp.this, item.errorMessage);
-//                UserObject data = new UserObject("", sEmail);
-//                GlobalInstance.getInstance().userInfo = data;
-//                Utils.gotoScreenMain(AtSignUp.this);
-//                finish();
-//
-////                {"statusCode":"200","data":{"user_id":268}}
-//            }
-//        });
+        isFrontSuccess = false;
+        isBackSuccess = false;
+        DataLoader.postPhotoParam(URLProvider.getParamsUploadImage(ItemCreateKard.frontFile.getPath()), new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+                hideDialogLoading();
+            }
+
+            @Override
+            public void onSuccess(int i, Header[] headers, String s) {
+                hideDialogLoading();
+                try {
+                    JSONObject object = new JSONObject(s);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                isFrontSuccess = true;
+                if(isFrontSuccess && isBackSuccess)
+                    createNewCard();
+            }
+        });
+
+        DataLoader.postPhotoParam(URLProvider.getParamsUploadImage(ItemCreateKard.backFile.getPath()), new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+                hideDialogLoading();
+            }
+
+            @Override
+            public void onSuccess(int i, Header[] headers, String s) {
+                hideDialogLoading();
+                try {
+                    JSONObject object = new JSONObject(s);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                isBackSuccess = true;
+                if(isFrontSuccess && isBackSuccess)
+                    createNewCard();
+            }
+        });
+    }
+
+    private void createNewCard(){
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.at_create_card_linear);
+
+        ((FragCreateCardImage)fragment).showSuccess();
+//        ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_SUCCESS, new FragCreateCardSuccess());
     }
 }

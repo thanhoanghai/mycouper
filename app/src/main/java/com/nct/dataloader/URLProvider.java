@@ -1,11 +1,21 @@
 package com.nct.dataloader;
 
 
+import android.content.Context;
+import android.webkit.MimeTypeMap;
+
 import com.loopj.android.http.RequestParams;
-import com.nct.utils.Debug;
+import com.nct.utils.HttpsUtils;
+
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 public class URLProvider {
 
@@ -13,7 +23,7 @@ public class URLProvider {
     public static final String PROVIDER = "http://mycouper.com/api/";
 
 
-    public static RequestParams getParamsCreateCardWithCompanyByCategory(String user_id,String company_id,String member_card_name,String member_card_number,String front_of_the_card,String back_of_the_card,String description,String card_number_type)
+    public static RequestParams getParamsCreateCardWithCompanyByCategory(String user_id, String company_id, String member_card_name, String member_card_number, String front_of_the_card, String back_of_the_card, String description,String card_number_type)
     {
         RequestParams params = new RequestParams();
         params.put("ac", "create_member_card_by_category");
@@ -55,8 +65,51 @@ public class URLProvider {
         RequestParams params = new RequestParams();
         try {
             params.put("file", myFile);
+//            params.put("file",new FileInputStream(myFile));
         } catch(FileNotFoundException e) {}
         return params;
+    }
+
+    public static String postPhoto(String pathImage, Context ctx){
+
+        String result = null;
+
+        HttpClient httpClient = HttpsUtils.getInstance().sslClient(new DefaultHttpClient());
+        HttpPost httppost = new HttpPost(PROVIDER_UPLOAD_IMAGE);
+
+//        try {
+//            MultipartEntity reqEntity = new MultipartEntity(
+//                    HttpMultipartMode.BROWSER_COMPATIBLE);
+//            reqEntity.addPart("fkUser", new StringBody("" + Constant.uid));
+//            reqEntity.addPart("idNewKard", new StringBody("" + idNewKard));
+//            reqEntity
+//                    .addPart(new FormBodyPart("file", new ByteArrayBody(
+//                            baosphoto.toByteArray(), "image/jpeg", idNewKard
+//                            + ".png")));
+//            httppost.setEntity(reqEntity);
+//
+//            HttpResponse response = httpClient.execute(httppost);
+//            result = EntityUtils.toString(response.getEntity()).trim();
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        } catch (ClientProtocolException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        return result;
+
+//        File file = new File(pathImage);
+//
+//        MimeTypeMap map = MimeTypeMap.getSingleton();
+//        String ext = FilenameUtils.getExtension(file.getName());
+//        String mime_type = map.getMimeTypeFromExtension(ext);
+//
+//        MultipartEntity form = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE, ctx);
+//        form.addPart("file-data", new FileBody(file, mime_type, "UTF-8"));
+//
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        client.post(context, [your url], form, mime_type, responseHandler) ;
     }
 
     public static String getEcouponBymemberCompany(String company_id,String user_id)

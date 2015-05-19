@@ -20,6 +20,7 @@
     <include layout="@layout/item_line" />
 
     <LinearLayout
+        android:id="@+id/frag_create_card_info_linear_input"
         android:layout_width="match_parent"
         android:layout_height="@dimen/frag_createcard_info_edittext_h"
         android:layout_marginBottom="20dp"
@@ -49,6 +50,49 @@
             app:typeface_name="@string/font_roboto_regular" />
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/frag_create_card_info_linear_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/frag_create_card_info_img"
+            android:layout_width="@dimen/item_member_card_icon_size_large"
+            android:layout_height="@dimen/item_member_card_icon_size_large" />
+
+        <com.nct.customview.TfTextView
+            android:id="@+id/frag_create_card_info_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/frag_create_card_info_img"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/frag_createcard_info_camera_title_size"
+            app:typeface_name="@string/font_roboto_regular" />
+
+        <com.nct.customview.TfTextView
+            android:id="@+id/frag_create_card_info_tv_des"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/frag_create_card_info_img"
+            android:layout_below="@id/frag_create_card_info_tv_title"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/frag_createcard_info_title_size"
+            app:typeface_name="@string/font_roboto_regular" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -155,6 +199,7 @@
             android:layout_height="150dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:visibility="gone">
 

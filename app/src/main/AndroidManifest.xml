@@ -69,19 +69,6 @@
 
         <activity
             android:name="com.nct.mv.AtCamera"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:label="@string/app_name" >
-        </activity>
-
-        <activity
-            android:name="com.nct.mv.MainHomeCameraActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Light.NoTitleBar" />
-
-        <activity
-            android:name="com.javacodegeeks.androidcameraexample.AndroidCameraExample"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
@@ -106,11 +93,6 @@
         </activity>
 
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
-
-        <activity
-            android:name="com.nct.mv.croppersample.MainActivity"
-            android:label="@string/app_name" >
-        </activity>
 
         <!-- FACEBOOK -->
         <activity android:name="com.facebook.LoginActivity"/>

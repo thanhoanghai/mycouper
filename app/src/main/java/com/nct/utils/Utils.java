@@ -40,8 +40,6 @@ import com.nct.mv.AtMain;
 import com.nct.mv.AtPreviewImage;
 import com.nct.mv.AtSignUp;
 import com.nct.mv.AtUserProfile;
-import com.nct.mv.MainHomeCameraActivity;
-import com.nct.mv.croppersample.MainActivity;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import thh.com.mycouper.R;

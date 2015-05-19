@@ -13,11 +13,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.constants.Constants;
 import com.nct.customview.TfTextView;
+import com.nct.dataloader.DataLoader;
+import com.nct.dataloader.URLProvider;
 import com.nct.model.CompanyObject;
+import com.nct.model.ItemCreateKard;
 import com.nct.mv.AtCreateCard;
 import com.nct.utils.Debug;
+
+import org.apache.http.Header;
+import org.json.JSONObject;
+
 import info.vividcode.android.zxing.CaptureActivity;
 import thh.com.mycouper.R;
 
@@ -122,6 +131,8 @@ public class FragCreateCardInfo extends BaseMainFragment {
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDCODE, mCardCode);
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDNAME, mCardName);
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDDES, mCardDes);
+                    bundle.putBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, isOther);
+                    bundle.putSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE, itemCompany);
                     fm.setArguments(bundle);
                     ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_IMAGE, fm);
                 }else

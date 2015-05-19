@@ -18,10 +18,14 @@ public class DataLoader {
 	public static void post(String url, TextHttpResponseHandler responseHandler) {
 		client.post(url, responseHandler);
 	}
+
     public static void postParam(RequestParams param, TextHttpResponseHandler responseHandler) {
         client.post(URLProvider.PROVIDER,param, responseHandler);
     }
 
+    public static void postPhotoParam(RequestParams param, TextHttpResponseHandler responseHandler) {
+        client.post(URLProvider.PROVIDER_UPLOAD_IMAGE, param, responseHandler);
+    }
 }
 
 // public static String getLinkWithToken(String link)

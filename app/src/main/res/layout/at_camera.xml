@@ -1,10 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/bg_main"
-    android:orientation="vertical">
+    android:background="@drawable/bg_main">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -17,7 +17,10 @@
             android:layout_height="wrap_content"
             android:alpha="1"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -35,7 +38,7 @@
                     android:gravity="center_vertical"
                     android:text="@string/camera_flast_auto"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/frag_createcard_info_title_size"
+                    android:textSize="@dimen/frag_createcard_info_camera_title_size"
                     app:typeface_name="@string/font_roboto_regular" />
 
                 <View
@@ -53,11 +56,11 @@
                     android:layout_marginBottom="@dimen/item_copywright_marinbottom"
                     android:text="@string/camera_take_photo"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/frag_createcard_info_title_size"
+                    android:textSize="@dimen/frag_createcard_info_camera_title_size"
                     app:typeface_name="@string/font_roboto_regular" />
 
                 <ImageView
-                    android:id="@+id/imageView_choose_camera"
+                    android:id="@+id/button_ChangeCamera"
                     android:layout_width="54dp"
                     android:layout_height="44dp"
                     android:layout_alignParentRight="true"
@@ -72,53 +75,19 @@
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:layout_toLeftOf="@+id/imageView_choose_camera"
+                    android:layout_toLeftOf="@+id/button_ChangeCamera"
                     android:background="@android:color/white" />
 
             </RelativeLayout>
 
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/preview"
+        <LinearLayout
+            android:id="@+id/camera_preview"
             android:layout_width="fill_parent"
             android:layout_height="0dip"
-            android:layout_weight="1">
-
-            <SurfaceView
-                android:id="@+id/KutCameraFragment"
-                android:name="com.kut.camera.KutCameraFragment"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" />
-
-            <RelativeLayout
-                android:id="@+id/rel_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:id="@+id/progress_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <ProgressBar
-                        android:id="@+id/progressBar1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/islem_value_textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Loading..." />
-
-                </LinearLayout>
-            </RelativeLayout>
-        </FrameLayout>
+            android:layout_weight="1"
+            android:orientation="horizontal" />
 
         <RelativeLayout
             android:id="@+id/RelativeLayout1"
@@ -127,19 +96,22 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:alpha="0.9"
-            android:padding="10dp">
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp">
 
             <ImageView
-                android:id="@+id/imageView_foto"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:id="@+id/button_capture"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/icon_camera_capture_01" />
 
             <ImageView
-                android:id="@+id/imageView_photo"
+                android:id="@+id/button_gallery"
                 android:layout_width="54dp"
                 android:layout_height="54dp"
                 android:layout_alignParentLeft="true"
@@ -163,5 +135,27 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <include layout="@layout/layout_crop_image"/>
+    <include layout="@layout/layout_crop_image" />
+
+    <LinearLayout
+        android:id="@+id/progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/islem_value_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading..." />
+
+    </LinearLayout>
 </RelativeLayout>

@@ -11,6 +11,14 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.os.Environment;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class BitmapUtils {
 
@@ -315,4 +323,53 @@ public class BitmapUtils {
 		}
 		return result;
 	}
+
+    public static File saveBitmapInSDCard(Context ctx, String fileName, Bitmap bmp) {
+        createMoMoFolder(ctx);
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, bytes);
+
+        File f = new File(getRootPath(ctx)
+                + File.separator
+                + FOLDER_NAME_MYCOUPER //parent folder
+                + File.separator
+                + FOLDER_NAME_INCLUDE_PHOTO //avatar folder
+                + File.separator
+                + fileName); //avatar name
+        try {
+            if (f.exists()) {
+                f.delete();
+            }
+            f.createNewFile();
+            //write the bytes in file
+            FileOutputStream fo = new FileOutputStream(f);
+            fo.write(bytes.toByteArray());
+            // remember close de FileOutput
+            fo.close();
+            return f;
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    public static final String FOLDER_NAME_MYCOUPER = "mycouper";
+    public static final String FOLDER_NAME_INCLUDE_PHOTO = "couper_photo";
+    public static void createMoMoFolder(Context ctx) {
+        File folder = new File(getRootPath(ctx) + File.separator + FOLDER_NAME_MYCOUPER + File.separator + FOLDER_NAME_INCLUDE_PHOTO);
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+    }
+
+    public static String getRootPath(Context ctx) {
+
+        String pathDir = null;
+        Boolean isSDPresent = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+        if (isSDPresent) {
+            pathDir = Environment.getExternalStorageDirectory().getPath();
+        } else {
+            pathDir = ctx.getFilesDir().getPath();
+        }
+        return pathDir;
+    }
 }

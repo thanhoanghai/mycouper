@@ -18,6 +18,8 @@
     <string name="cancel">Huỷ</string>
     <string name="scan">Quét mã thẻ</string>
     <string name="next">Tiếp</string>
+    <string name="done">Xong</string>
+    <string name="create_other_card">Tạo card mới</string>
 
     <string name="change">Thay đổi</string>
     <string name="close">Đóng</string>
