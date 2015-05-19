@@ -3,6 +3,7 @@ package com.nct.fragment;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -52,6 +53,8 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 		// TODO Auto-generated method stub
 		View v = inflater.inflate(R.layout.frag_member_card, container, false);
 
+		disableLoadmore();
+
 		bntAddmore = (Button) v.findViewById(R.id.frag_membercard_bt_admore);
 		bntAddmore.setOnClickListener(new OnClickListener() {
 			@Override
@@ -81,7 +84,8 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 
 	@Override
 	protected void loadData() {
-		DataLoader.get(URLProvider.getMemberCardForUser(GlobalInstance.getInstance().userInfo.user_id),
+		if(!TextUtils.isEmpty(GlobalInstance.getInstance().getUserID()))
+			DataLoader.get(URLProvider.getMemberCardForUser(GlobalInstance.getInstance().getUserID()),
 				mTextHttpResponseHandler);
 	}
 

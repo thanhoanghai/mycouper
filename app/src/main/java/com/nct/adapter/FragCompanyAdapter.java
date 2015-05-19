@@ -25,7 +25,7 @@ import thh.com.mycouper.R;
 public class FragCompanyAdapter extends BaseAdapterApp<CompanyObject> {
 
 	private String filter = "";
-	private ArrayList<CompanyObject> saveList;
+	private static ArrayList<CompanyObject> saveList;
 
 	public FragCompanyAdapter(Context context, ArrayList<CompanyObject> list) {
 		super(context, list);

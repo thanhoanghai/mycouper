@@ -45,6 +45,8 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
     private Button bntOther;
     private CompanyData data;
 
+    private Boolean isActiveSearch;
+
     public static FragCreateCardSearch newInstance() {
         FragCreateCardSearch f = new FragCreateCardSearch();
         return f;
@@ -60,6 +62,10 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         View v = inflater.inflate(R.layout.frag_create_card_search, container, false);
+
+        disableLoadmore();
+
+        isActiveSearch = false;
 
         initTopbar(v, getString(R.string.frag_createcard));
         setTopBarbtRightVisible(View.INVISIBLE);
@@ -115,23 +121,16 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
             public void onTextChanged(CharSequence s, int start, int before,
                                       int count) {
                 String text = edtSearch.getText().toString();
-                if(text.length() > 0)
+                if(text.length() > 0) {
                     bntClear.setVisibility(View.VISIBLE);
+                    isActiveSearch = true;
+                }
                 else
                     bntClear.setVisibility(View.INVISIBLE);
-                ((FragCompanyAdapter)mBaseAdapter).setFilter(text);
+                if(isActiveSearch)
+                    ((FragCompanyAdapter)mBaseAdapter).setFilter(text);
             }
         });
-//        mAbsListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                FragCreateCardInfo fm = new FragCreateCardInfo();
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE, data.data.get(position));
-//                fm.setArguments(bundle);
-//                ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_INFO, fm);
-//            }
-//        });
 
         return v;
     }
@@ -143,7 +142,7 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
 
         if (isAdapterNull()) {
             DelayTimeStart(Constants.API_DELAY_TIME);
-        } else
+        }else
             setDataDefault();
 
     }
