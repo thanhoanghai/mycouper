@@ -87,6 +87,10 @@
     <string name="frag_createcard_info_cardcode_is_empty">Field Card code is not empty!</string>
     <string name="frag_createcard_info_front_camera">Front face</string>
     <string name="frag_createcard_info_back_camera">Back face</string>
+    <string name="frag_createcard_info_capture_front">Front photo is required!</string>
+    <string name="frag_createcard_info_capture_back">Back photo is required!</string>
+    <string name="frag_createcard_info_upload_front">Upload front photo error!</string>
+    <string name="frag_createcard_info_upload_back">Upload back photo error!</string>
 
     <!-- FRAG MEMBER CARD -->
     <string name="frag_membercard_addmore">+   Add more card</string>

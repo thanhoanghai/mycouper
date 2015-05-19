@@ -85,6 +85,10 @@
     <string name="frag_createcard_info_cardcode_is_empty">Mã Card là bắt buộc!</string>
     <string name="frag_createcard_info_front_camera">Mặt trước</string>
     <string name="frag_createcard_info_back_camera">Mặt sau</string>
+    <string name="frag_createcard_info_capture_front">Ảnh trước là bắt buộc!</string>
+    <string name="frag_createcard_info_capture_back">Ảnh sau là bắt buộc!</string>
+    <string name="frag_createcard_info_upload_front">Tải ảnh trước bị lỗi!</string>
+    <string name="frag_createcard_info_upload_back">Tải ảnh sau bị lỗi!</string>
 
     <!-- FRAG MEMBER CARD -->
     <string name="frag_membercard_addmore">+   Thêm thẻ</string>

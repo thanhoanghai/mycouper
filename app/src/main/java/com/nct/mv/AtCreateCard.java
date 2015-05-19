@@ -1,5 +1,6 @@
 package com.nct.mv;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -8,14 +9,17 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.webkit.MimeTypeMap;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
 import com.nct.dataloader.DataHelper;
 import com.nct.dataloader.DataLoader;
+import com.nct.dataloader.TaskExecuter;
 import com.nct.dataloader.URLProvider;
 import com.nct.fragment.FragCreateCardImage;
 import com.nct.fragment.FragCreateCardInfo;
@@ -25,14 +29,22 @@ import com.nct.fragment.FragHome;
 import com.nct.model.ItemCreateKard;
 import com.nct.model.StatusObject;
 import com.nct.model.UserObject;
+import com.nct.utils.BitmapUtils;
 import com.nct.utils.Debug;
 import com.nct.utils.Utils;
 import com.soundcloud.android.crop.Crop;
 
 import org.apache.http.Header;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -130,61 +142,76 @@ public class AtCreateCard extends AtBase {
             ((FragCreateCardImage)fragment).activityResult(requestCode, resultCode, data);
     }
 
-    boolean isFrontSuccess = false;
-    boolean isBackSuccess = false;
     String mFrontUrl = "";
     String mBackUrl = "";
-    public void savePhoto(){
+    public void savePhoto(final Bitmap mBitmapFront, final Bitmap mBitmapBack){
         showDialogLoading();
-        isFrontSuccess = false;
-        isBackSuccess = false;
-        DataLoader.postPhotoParam(URLProvider.getParamsUploadImage(ItemCreateKard.frontFile.getPath()), new TextHttpResponseHandler() {
-            @Override
-            public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
-                hideDialogLoading();
-            }
+        mFrontUrl = "";
+        mBackUrl = "";
+        final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.at_create_card_linear);
 
+        final String nameImageFront = "" + System.currentTimeMillis() + ".jpg";
+        final String nameImageBack = "" + System.currentTimeMillis() + ".jpg";
+        TaskExecuter.TaskTemplate<Void, String> upFrontBitmap = new TaskExecuter.TaskTemplate<Void, String>() {
             @Override
-            public void onSuccess(int i, Header[] headers, String s) {
-                hideDialogLoading();
+            public String doInBackground(Void... params) {
+                String result = URLProvider.postPhoto(nameImageFront, BitmapUtils.getByteArrayOutputStream(mBitmapFront, 100));
                 try {
-                    JSONObject object = new JSONObject(s);
-
+                    JSONObject object = new JSONObject(result);
+                    mFrontUrl = object.optString("image");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                isFrontSuccess = true;
-                if(isFrontSuccess && isBackSuccess)
-                    createNewCard();
-            }
-        });
-
-        DataLoader.postPhotoParam(URLProvider.getParamsUploadImage(ItemCreateKard.backFile.getPath()), new TextHttpResponseHandler() {
-            @Override
-            public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
-                hideDialogLoading();
-            }
-
-            @Override
-            public void onSuccess(int i, Header[] headers, String s) {
-                hideDialogLoading();
+                String mResult = URLProvider.postPhoto(nameImageBack, BitmapUtils.getByteArrayOutputStream(mBitmapBack, 100));
                 try {
-                    JSONObject object = new JSONObject(s);
-
+                    JSONObject object = new JSONObject(mResult);
+                    mBackUrl = object.optString("image");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                isBackSuccess = true;
-                if(isFrontSuccess && isBackSuccess)
-                    createNewCard();
+                return null;
             }
-        });
+
+            @Override
+            public void onPostExecute(String result) {
+                ((FragCreateCardImage)fragment).callCreateKard(mFrontUrl, mBackUrl);
+            }
+        };
+        TaskExecuter.getInstance(this).execute(upFrontBitmap, TaskExecuter.PRIORITY_BLOCKING);
     }
 
-    private void createNewCard(){
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.at_create_card_linear);
+    public void createNewCard(String user_id, String company_id, String member_card_name, String member_card_number, String front_of_the_card,
+                               String back_of_the_card, String description, String card_number_type, boolean isOther){
+        final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.at_create_card_linear);
+        if(isOther){
 
-        ((FragCreateCardImage)fragment).showSuccess();
+        }else{
+            DataLoader.postParam(URLProvider.getParamsCreateCardWithCompanyByCategory(user_id, company_id, member_card_name, member_card_number,
+                    front_of_the_card, back_of_the_card, description, card_number_type), new TextHttpResponseHandler() {
+                @Override
+                public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+                    hideDialogLoading();
+                }
+
+                @Override
+                public void onSuccess(int i, Header[] headers, String s) {
+                    hideDialogLoading();
+                    try {
+                        JSONObject object = new JSONObject(s);
+                        mBackUrl = object.optString("image");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    if(fragment instanceof FragCreateCardImage)
+                        ((FragCreateCardImage)fragment).showSuccess();
+                }
+            });
+        }
+
+
+
+
+
 //        ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_SUCCESS, new FragCreateCardSuccess());
     }
 }

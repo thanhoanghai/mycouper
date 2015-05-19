@@ -4,14 +4,23 @@ package com.nct.dataloader;
 import android.content.Context;
 import android.webkit.MimeTypeMap;
 
+import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
 import com.nct.utils.HttpsUtils;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.FormBodyPart;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.ByteArrayBody;
+import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -70,46 +79,27 @@ public class URLProvider {
         return params;
     }
 
-    public static String postPhoto(String pathImage, Context ctx){
-
+    public static String postPhoto(String nameImage, ByteArrayOutputStream baosphoto){
         String result = null;
 
+        String mime_type = "multipart/form-data";
         HttpClient httpClient = HttpsUtils.getInstance().sslClient(new DefaultHttpClient());
         HttpPost httppost = new HttpPost(PROVIDER_UPLOAD_IMAGE);
+        try {
+            MultipartEntity reqEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
+            reqEntity.addPart(new FormBodyPart("file", new ByteArrayBody(baosphoto.toByteArray(), "image/jpeg", nameImage)));
+            httppost.setEntity(reqEntity);
 
-//        try {
-//            MultipartEntity reqEntity = new MultipartEntity(
-//                    HttpMultipartMode.BROWSER_COMPATIBLE);
-//            reqEntity.addPart("fkUser", new StringBody("" + Constant.uid));
-//            reqEntity.addPart("idNewKard", new StringBody("" + idNewKard));
-//            reqEntity
-//                    .addPart(new FormBodyPart("file", new ByteArrayBody(
-//                            baosphoto.toByteArray(), "image/jpeg", idNewKard
-//                            + ".png")));
-//            httppost.setEntity(reqEntity);
-//
-//            HttpResponse response = httpClient.execute(httppost);
-//            result = EntityUtils.toString(response.getEntity()).trim();
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        } catch (ClientProtocolException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+            HttpResponse response = httpClient.execute(httppost);
+            result = EntityUtils.toString(response.getEntity()).trim();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return result;
-
-//        File file = new File(pathImage);
-//
-//        MimeTypeMap map = MimeTypeMap.getSingleton();
-//        String ext = FilenameUtils.getExtension(file.getName());
-//        String mime_type = map.getMimeTypeFromExtension(ext);
-//
-//        MultipartEntity form = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE, ctx);
-//        form.addPart("file-data", new FileBody(file, mime_type, "UTF-8"));
-//
-//        AsyncHttpClient client = new AsyncHttpClient();
-//        client.post(context, [your url], form, mime_type, responseHandler) ;
     }
 
     public static String getEcouponBymemberCompany(String company_id,String user_id)

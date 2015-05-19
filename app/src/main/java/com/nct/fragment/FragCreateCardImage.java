@@ -165,11 +165,25 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
             case R.id.frag_create_card_image_bt_next:
                 String result = checkBitmap();
                 if(result.equals(""))
-                    ((AtCreateCard)getActivity()).savePhoto();
+                    ((AtCreateCard)getActivity()).savePhoto(mBitmapFront, mBitmapBack);
                 else
                     Debug.toast(getActivity(), result);
                 break;
         }
+    }
+
+//    public static String TYPE_CARD_SCAN_CODE[] = {"ID","qrcode","barcode"};
+
+    public void callCreateKard(String fontUrl, String backUrl){
+        String result = "";
+        if(fontUrl == null || fontUrl.equals(""))
+            result = getActivity().getResources().getString(R.string.frag_createcard_info_upload_front);
+        if(backUrl == null || backUrl.equals(""))
+            result = getActivity().getResources().getString(R.string.frag_createcard_info_upload_back);
+        if(result.equals(""))
+            ((AtCreateCard)getActivity()).createNewCard("", itemCompany.company_id, mCardName, mCardCode, fontUrl, backUrl, mCardDes, "", isOther);
+        else
+            Debug.toast(getActivity(), result);
     }
 
     public void showSuccess(){
@@ -187,10 +201,10 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
 
     private String checkBitmap(){
         String result = "";
-        if(ItemCreateKard.frontFile == null)
-            return result = "Please capture front photo";
-        if(ItemCreateKard.frontFile == null)
-            return result = "Please capture back photo";
+        if(mBitmapFront == null)
+            return result = getActivity().getResources().getString(R.string.frag_createcard_info_capture_front);
+        if(mBitmapBack == null)
+            return result = getActivity().getResources().getString(R.string.frag_createcard_info_capture_back);
         return result;
     }
 
@@ -204,9 +218,9 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
                             lyBtnCameraFront.setVisibility(View.GONE);
                             lyImageFront.setVisibility(View.VISIBLE);
                             imgeFront.setImageBitmap(mBitmapFront);
-                            String fileName = "mycouper_front_photo.png";
+//                            String fileName = "mycouper_front_photo.png";
                             // save bitmap
-                            ItemCreateKard.frontFile = BitmapUtils.saveBitmapInSDCard(getActivity(), fileName, mBitmapFront);
+//                            ItemCreateKard.frontFile = BitmapUtils.saveBitmapInSDCard(getActivity(), fileName, mBitmapFront);
                         }else{
                             lyBtnCameraFront.setVisibility(View.VISIBLE);
                             lyImageFront.setVisibility(View.GONE);
@@ -217,8 +231,8 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
                             lyBtnCameraBack.setVisibility(View.GONE);
                             lyImageBack.setVisibility(View.VISIBLE);
                             imageBack.setImageBitmap(mBitmapBack);
-                            String fileName = "mycouper_back_photo.png";
-                            ItemCreateKard.backFile = BitmapUtils.saveBitmapInSDCard(getActivity(), fileName, mBitmapBack);
+//                            String fileName = "mycouper_back_photo.png";
+//                            ItemCreateKard.backFile = BitmapUtils.saveBitmapInSDCard(getActivity(), fileName, mBitmapBack);
                         }else{
                             lyBtnCameraBack.setVisibility(View.VISIBLE);
                             lyImageBack.setVisibility(View.GONE);

@@ -372,4 +372,23 @@ public class BitmapUtils {
         }
         return pathDir;
     }
+
+    public static ByteArrayOutputStream getByteArrayOutputStream(Bitmap bitmap,
+                                                                 int quality) {
+        if (bitmap == null || quality < 0 || quality > 100)
+            return null;
+        try {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            if (bitmap.compress(Bitmap.CompressFormat.JPEG, quality, bos)) {
+                return bos;
+            } else
+                return null;
+        } catch (OutOfMemoryError e) {
+            e.printStackTrace();
+            return null;
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

@@ -41,4 +41,5 @@ dependencies {
     compile 'info.vividcode.android.zxing:capture-activity:2.3.0-1.2'
     compile 'com.soundcloud.android:android-crop:1.0.0@aar'
     compile 'com.google.android.gms:play-services:7.3.0'
+    compile files('libs/httpmime-4.1.3.jar')
 }
