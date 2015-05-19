@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.nct.constants.GlobalInstance;
 import com.nct.model.CompanyObject;
 import com.nct.mv.AtCamera;
 import com.nct.constants.Constants;
@@ -49,10 +50,11 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
     private ImageButton btnFrontFace;
     private ImageButton btnBackFace;
 
-    private String mCompanyName;
-    private String mCardCode;
-    private String mCardName;
-    private String mCardDes;
+    private String mCompanyName = "";
+    private String mCardCode = "";
+    private String mCardName = "";
+    private String mCardDes = "";
+    private String mTypeCode = "";
     private boolean isOther = false;
     private CompanyObject itemCompany;
 
@@ -71,11 +73,10 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
             mCardCode = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_CARDCODE);
             mCardName = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_CARDNAME);
             mCardDes = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_CARDDES);
+            mTypeCode = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_TYPE_CODE);
             isOther = getArguments().getBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
             itemCompany = (CompanyObject)getArguments().getSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE);
         }
-        if(mCardDes == null)
-            mCardDes = "";
     }
 
     @Override
@@ -180,9 +181,15 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
             result = getActivity().getResources().getString(R.string.frag_createcard_info_upload_front);
         if(backUrl == null || backUrl.equals(""))
             result = getActivity().getResources().getString(R.string.frag_createcard_info_upload_back);
-        if(result.equals(""))
-            ((AtCreateCard)getActivity()).createNewCard("", itemCompany.company_id, mCardName, mCardCode, fontUrl, backUrl, mCardDes, "", isOther);
-        else
+        if(result.equals("")) {
+            String mCompany = "";
+            if(!isOther){
+                if(itemCompany != null)
+                    mCompany = itemCompany.company_id;
+            }else
+                mCompany = mCompanyName;
+            ((AtCreateCard) getActivity()).createNewCard(GlobalInstance.getInstance().userInfo.user_id, mCompany, mCardName, mCardCode, fontUrl, backUrl, mCardDes, mTypeCode, isOther);
+        }else
             Debug.toast(getActivity(), result);
     }
 

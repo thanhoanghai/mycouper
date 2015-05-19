@@ -76,9 +76,11 @@ public class Utils {
 	}
 
 
-	public static void gotoScreenCreateCard(Context mContext) {
-		Intent search = new Intent(mContext, AtCreateCard.class);
-		mContext.startActivity(search);
+	public static void gotoScreenCreateCard(Context mContext, boolean isEdit) {
+		Intent intent = new Intent(mContext, AtCreateCard.class);
+        if(isEdit)
+            intent.putExtra(Constants.KEY_BUNDLE_CARD_EDIT_CARD, isEdit);
+		mContext.startActivity(intent);
 	}
 
 

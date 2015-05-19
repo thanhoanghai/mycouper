@@ -41,6 +41,8 @@
             android:gravity="left|center_vertical"
             android:background="@color/transparent"
             android:textColorHint="@color/read"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             android:textColor="@color/grey_info_text_card"
             android:hint="@string/frag_createcard_info_required"
             android:textSize="@dimen/frag_createcard_info_title_size" />
@@ -72,9 +74,11 @@
             android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
             android:gravity="left|center_vertical"
             android:background="@color/transparent"
-            android:textColorHint="@color/grey_info_edittext_card"
+            android:textColorHint="@color/read"
             android:textColor="@color/grey_info_text_card"
-            android:hint="@string/frag_createcard_info_optional"
+            android:hint="@string/frag_createcard_info_required"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             android:textSize="@dimen/frag_createcard_info_title_size" />
 
     </LinearLayout>
@@ -107,6 +111,7 @@
             android:textColorHint="@color/grey_info_edittext_card"
             android:textColor="@color/grey_info_text_card"
             android:hint="@string/frag_createcard_info_optional"
+            android:imeOptions="actionDone"
             android:textSize="@dimen/frag_createcard_info_title_size" />
 
     </LinearLayout>

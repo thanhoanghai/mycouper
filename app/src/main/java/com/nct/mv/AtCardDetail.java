@@ -298,8 +298,17 @@ public class AtCardDetail extends AtBase {
 			dialogRate.setListenerFinishedDialog(new DialogCustom.FinishDialogConfirmListener() {
 				@Override
 				public void onFinishConfirmDialog(int i) {
-					if(i==1)
-						showDialogConfirmDelete();
+                    switch (i){
+                        case 0:
+                            Utils.gotoScreenCreateCard(AtCardDetail.this, true);
+                            break;
+                        case 1:
+                            showDialogConfirmDelete();
+                            break;
+                        case 2:
+
+                            break;
+                    }
 				}
 			});
 		}

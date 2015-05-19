@@ -59,15 +59,21 @@ public class AtCreateCard extends AtBase {
 
 	private FragCreateCardSearch fragCreateCard;
 
+    private boolean isEditCard = false;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.at_create_card);
 
+        if(getIntent() != null)
+            isEditCard = getIntent().getBooleanExtra(Constants.KEY_BUNDLE_CARD_EDIT_CARD, false);
+
 		initSaveFragment();
 		setLanguge();
 
 		linear = (LinearLayout) findViewById(R.id.at_create_card_linear);
+        if(isEditCard)
 		changeFragment(Constants.TYPE_CREATE_CARD_SEARCH, new FragCreateCardSearch());
 	}
 
@@ -180,13 +186,10 @@ public class AtCreateCard extends AtBase {
         TaskExecuter.getInstance(this).execute(upFrontBitmap, TaskExecuter.PRIORITY_BLOCKING);
     }
 
-    public void createNewCard(String user_id, String company_id, String member_card_name, String member_card_number, String front_of_the_card,
+    public void createNewCard(String user_id, String company, String member_card_name, String member_card_number, String front_of_the_card,
                                String back_of_the_card, String description, String card_number_type, boolean isOther){
-        final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.at_create_card_linear);
         if(isOther){
-
-        }else{
-            DataLoader.postParam(URLProvider.getParamsCreateCardWithCompanyByCategory(user_id, company_id, member_card_name, member_card_number,
+            DataLoader.postParam(URLProvider.getParamsCreateCardWithUser(user_id, company, member_card_name, member_card_number,
                     front_of_the_card, back_of_the_card, description, card_number_type), new TextHttpResponseHandler() {
                 @Override
                 public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
@@ -194,24 +197,47 @@ public class AtCreateCard extends AtBase {
                 }
 
                 @Override
-                public void onSuccess(int i, Header[] headers, String s) {
+                public void onSuccess(int i, Header[] headers, String result) {
                     hideDialogLoading();
-                    try {
-                        JSONObject object = new JSONObject(s);
-                        mBackUrl = object.optString("image");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    if(fragment instanceof FragCreateCardImage)
-                        ((FragCreateCardImage)fragment).showSuccess();
+                    createKardDone(result);
+                }
+            });
+        }else{
+            DataLoader.postParam(URLProvider.getParamsCreateCardWithCompanyByCategory(user_id, company, member_card_name, member_card_number,
+                    front_of_the_card, back_of_the_card, description, card_number_type), new TextHttpResponseHandler() {
+                @Override
+                public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+                    hideDialogLoading();
+                }
+
+                @Override
+                public void onSuccess(int i, Header[] headers, String result) {
+                    hideDialogLoading();
+                    createKardDone(result);
                 }
             });
         }
+    }
 
+    private void createKardDone(String result){
+        final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.at_create_card_linear);
+        int statusCode = 0;
+        int cardID = -1;
+        try {
+            JSONObject object = new JSONObject(result);
+            statusCode = object.optInt("statusCode");
+            JSONObject json = object.getJSONObject("data");
+            cardID = json.optInt("member_card_id", -1);
 
-
-
-
-//        ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_SUCCESS, new FragCreateCardSuccess());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(statusCode == Constants.API_REQUEST_STATUS_SUCCESS && cardID > 0){
+            Debug.toast(this, getResources().getString(R.string.frag_createcard_info_successfully));
+            if(fragment instanceof FragCreateCardImage)
+                ((FragCreateCardImage)fragment).showSuccess();
+        }else{
+            Debug.toast(this, getResources().getString(R.string.frag_createcard_info_failed));
+        }
     }
 }

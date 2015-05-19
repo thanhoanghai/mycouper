@@ -59,7 +59,7 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 		bntAddmore.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Utils.gotoScreenCreateCard(getActivity());
+				Utils.gotoScreenCreateCard(getActivity(), false);
 			}
 		});
 

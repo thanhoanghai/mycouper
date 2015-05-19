@@ -23,7 +23,7 @@ public class FragCreateCardSuccess extends BaseMainFragment {
     private ImageView imageView;
     private TfTextView txtCompanyName, txtCompanyDes;
 
-    private Button bntNext;
+    private Button bntDone, btnAgain;
 
     private String mCompanyName;
     private String mCardCode;
@@ -83,6 +83,21 @@ public class FragCreateCardSuccess extends BaseMainFragment {
                     txtCompanyName.setText("");
             }
         }
+
+        bntDone = (Button) v.findViewById(R.id.frag_create_card_info_bt_done);
+        bntDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
+        btnAgain = (Button) v.findViewById(R.id.frag_create_card_info_again);
+        btnAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         return v;
     }

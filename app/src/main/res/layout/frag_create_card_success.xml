@@ -51,17 +51,19 @@
         <ImageView
             android:id="@+id/frag_create_card_info_img"
             android:layout_width="@dimen/item_member_card_icon_size_large"
-            android:layout_height="@dimen/item_member_card_icon_size_large" />
+            android:layout_height="@dimen/item_member_card_icon_size_large"
+            android:background="@drawable/bg_icon_border"
+            android:padding="1dp"
+            android:scaleType="centerInside"/>
 
         <com.nct.customview.TfTextView
             android:id="@+id/frag_create_card_info_tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/frag_create_card_info_img"
             android:ellipsize="end"
             android:lines="1"
-            android:text="@string/app_name"
             android:textColor="@color/black"
             android:textSize="@dimen/frag_createcard_info_camera_title_size"
             app:typeface_name="@string/font_roboto_regular" />
@@ -70,12 +72,11 @@
             android:id="@+id/frag_create_card_info_tv_des"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/frag_create_card_info_img"
             android:layout_below="@id/frag_create_card_info_tv_title"
             android:ellipsize="end"
             android:lines="1"
-            android:text="@string/app_name"
             android:textColor="@color/black"
             android:textSize="@dimen/frag_createcard_info_title_size"
             app:typeface_name="@string/font_roboto_regular" />
@@ -89,7 +90,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
+        android:layout_margin="20dp"
         android:text="Create card successfully!"
         android:textColor="@color/blue"
         android:textSize="@dimen/frag_createcard_info_success"

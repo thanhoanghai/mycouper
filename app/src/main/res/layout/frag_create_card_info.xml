@@ -56,6 +56,8 @@
                     android:background="@color/transparent"
                     android:textColorHint="@color/read"
                     android:textColor="@color/grey_info_text_card"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
                     android:hint="@string/frag_createcard_info_required"
                     android:textSize="@dimen/frag_createcard_info_title_size" />
 
@@ -72,14 +74,17 @@
 
                 <ImageView
                     android:id="@+id/frag_create_card_info_img"
-                    android:layout_width="@dimen/item_member_card_icon_size"
-                    android:layout_height="@dimen/item_member_card_icon_size" />
+                    android:layout_width="@dimen/item_member_card_icon_size_large"
+                    android:layout_height="@dimen/item_member_card_icon_size_large"
+                    android:scaleType="centerInside"
+                    android:padding="1dp"
+                    android:background="@drawable/bg_icon_border"/>
 
                 <com.nct.customview.TfTextView
                     android:id="@+id/frag_create_card_info_tv_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
                     android:ellipsize="end"
                     android:lines="1"
                     android:text="@string/app_name"

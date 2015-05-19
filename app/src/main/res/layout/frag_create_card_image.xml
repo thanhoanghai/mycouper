@@ -63,13 +63,16 @@
         <ImageView
             android:id="@+id/frag_create_card_info_img"
             android:layout_width="@dimen/item_member_card_icon_size_large"
-            android:layout_height="@dimen/item_member_card_icon_size_large" />
+            android:layout_height="@dimen/item_member_card_icon_size_large"
+            android:background="@drawable/bg_icon_border"
+            android:padding="1dp"
+            android:scaleType="centerInside"/>
 
         <com.nct.customview.TfTextView
             android:id="@+id/frag_create_card_info_tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/frag_create_card_info_img"
             android:ellipsize="end"
             android:lines="1"
@@ -82,7 +85,7 @@
             android:id="@+id/frag_create_card_info_tv_des"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/frag_create_card_info_img"
             android:layout_below="@id/frag_create_card_info_tv_title"
             android:ellipsize="end"

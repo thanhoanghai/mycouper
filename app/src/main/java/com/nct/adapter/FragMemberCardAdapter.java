@@ -4,17 +4,13 @@
 package com.nct.adapter;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.nct.constants.GlobalInstance;
 import com.nct.model.MemberCardObject;
 import com.nct.utils.Utils;
-
-
 import java.util.ArrayList;
 
 import thh.com.mycouper.R;

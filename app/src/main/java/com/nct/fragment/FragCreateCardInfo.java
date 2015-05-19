@@ -1,6 +1,5 @@
 package com.nct.fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,23 +13,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.constants.Constants;
 import com.nct.customview.TfTextView;
-import com.nct.dataloader.DataLoader;
-import com.nct.dataloader.URLProvider;
 import com.nct.model.CompanyObject;
-import com.nct.model.ItemCreateKard;
+import com.nct.model.MemberCardObject;
 import com.nct.mv.AtCreateCard;
 import com.nct.utils.Debug;
-
-import org.apache.http.Header;
-import org.json.JSONObject;
-
-import info.vividcode.android.zxing.CaptureActivity;
 import thh.com.mycouper.R;
 
 public class FragCreateCardInfo extends BaseMainFragment {
+
+    private final String TYPE_CARD_SCAN_CODE[] = {"ID","qrcode","barcode"};
+    private final String TYPE_QRCODE = "QR_CODE";
 
     private Button bntNext;
     private Button bntScan;
@@ -42,11 +36,13 @@ public class FragCreateCardInfo extends BaseMainFragment {
 
     private boolean isOther = false;
     private CompanyObject itemCompany;
+    private MemberCardObject memberCard;
 
     private String mCompanyName;
     private String mCardCode;
     private String mCardName;
     private String mCardDes;
+    private String mTypeCode = TYPE_CARD_SCAN_CODE[0];
 
     public static FragCreateCardInfo newInstance() {
         FragCreateCardInfo f = new FragCreateCardInfo();
@@ -114,7 +110,7 @@ public class FragCreateCardInfo extends BaseMainFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-                intent.putExtra("SCAN_MODE", "BAR_CODE_MODE");
+//                intent.putExtra("SCAN_MODE", "BAR_CODE_MODE");
                 startActivityForResult(intent, 0);
             }
         });
@@ -131,6 +127,7 @@ public class FragCreateCardInfo extends BaseMainFragment {
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDCODE, mCardCode);
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDNAME, mCardName);
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDDES, mCardDes);
+                    bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_TYPE_CODE, mTypeCode);
                     bundle.putBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, isOther);
                     bundle.putSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE, itemCompany);
                     fm.setArguments(bundle);
@@ -155,10 +152,12 @@ public class FragCreateCardInfo extends BaseMainFragment {
             return result = getResources().getString(R.string.frag_createcard_info_caompanyname_is_empty);
         if(TextUtils.isEmpty(mCardCode))
             return result = getResources().getString(R.string.frag_createcard_info_cardcode_is_empty);
+        if(TextUtils.isEmpty(mCardName))
+            return result = getResources().getString(R.string.frag_createcard_info_cardname_requiret);
 
         return result;
     }
-
+    // QR_CODE
     public void activityResult(int requestCode, int resultCode, Intent intent){
         if (resultCode == getActivity().RESULT_OK) {
             mCardCode = intent.getStringExtra("SCAN_RESULT");
@@ -166,8 +165,14 @@ public class FragCreateCardInfo extends BaseMainFragment {
                 edtCardCode.setText(mCardCode);
             else
                 mCardCode = "";
-            String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
             // Handle successful scan
+            String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+            if(format != null){
+                if(format.equals(TYPE_QRCODE))
+                    mTypeCode = TYPE_CARD_SCAN_CODE[1];
+                else
+                    mTypeCode = TYPE_CARD_SCAN_CODE[2];
+            }
         } else if (resultCode == getActivity().RESULT_CANCELED) {
             // Handle cancel
             mCardCode = "";
