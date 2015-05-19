@@ -15,6 +15,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
@@ -25,6 +26,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.text.style.TtsSpan;
 import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 
@@ -354,5 +356,10 @@ public class Utils {
         }
         return inSampleSize;
     }
+
+
+	public static float pxFromDp(final Context context, final float dp) {
+		return dp * context.getResources().getDisplayMetrics().density;
+	}
 
 }

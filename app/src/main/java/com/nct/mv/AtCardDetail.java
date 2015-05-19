@@ -19,7 +19,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.loopj.android.http.TextHttpResponseHandler;
+import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
+import com.nct.customview.AndroidBarcodeView;
 import com.nct.customview.DialogCustom;
 import com.nct.customview.DialogRate;
 import com.nct.dataloader.DataHelper;
@@ -58,6 +60,10 @@ public class AtCardDetail extends AtBase {
 
 	private TextView mapTitle,mapPos,mapStreets,mapPhone,mapOpen,mapClose;
 
+	private TextView barCodeID;
+	private ImageView imgQRcode;
+	private LinearLayout linearBarcode;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +84,7 @@ public class AtCardDetail extends AtBase {
 		displayImage(imgIcon, memberCard.company_logo);
 		displayImage(imgFront,memberCard.front_of_the_card);
 		displayImage(imgBack,memberCard.back_of_the_card);
+		checkTypeCard();
 
 		getPositionCompany();
 		getEcoupon();
@@ -99,7 +106,14 @@ public class AtCardDetail extends AtBase {
 
 	private void setStatusItem(int status1,int status2,int status3)
 	{
-		imgCode.setVisibility(status1);
+		if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[0])) {
+			imgCode.setVisibility(status1);
+			imgQRcode.setVisibility(View.INVISIBLE);
+		}else
+		{
+			imgQRcode.setVisibility(status1);
+			imgCode.setVisibility(View.INVISIBLE);
+		}
 		imgFront.setVisibility(status2);
 		imgBack.setVisibility(status3);
 	}
@@ -150,6 +164,8 @@ public class AtCardDetail extends AtBase {
 		mapPos.setText(posObject.pos_id);
 		mapStreets.setText(posObject.address + " | " + posObject.address2);
 		mapPhone.setText(posObject.phone);
+
+
 	}
 
 
@@ -167,9 +183,30 @@ public class AtCardDetail extends AtBase {
 		});
 	}
 
+	private void checkTypeCard()
+	{
+		if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[0]))
+		{
+			imgCode.setText(memberCard.member_card_number);
+			imgQRcode.setVisibility(View.INVISIBLE);
+		}else if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[1]) || memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[2]))
+		{
+			imgCode.setVisibility(View.INVISIBLE);
+			imgQRcode.setVisibility(View.VISIBLE);
+			showImgQRcode();
+
+		}
+		barCodeID.setText(memberCard.member_card_number);
+	}
 
 	private void initValueItem()
 	{
+
+		linearBarcode = (LinearLayout) findViewById(R.id.card_detail_linear_barcode);
+
+		barCodeID = (TextView) findViewById(R.id.card_detail_tv_idcode);
+		imgQRcode = (ImageView) findViewById(R.id.card_detail_img_qrcode);
+
 		btOpenmap = (TextView) findViewById(R.id.card_detail_bt_openmap);
 		btOpenmap.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -275,7 +312,7 @@ public class AtCardDetail extends AtBase {
 		dialog.setListenerFinishedDialog(new DialogCustom.FinishDialogConfirmListener() {
 			@Override
 			public void onFinishConfirmDialog(int i) {
-				if(i==1)
+				if (i == 1)
 					loadApiDeleteThisCard();
 			}
 		});
@@ -294,9 +331,23 @@ public class AtCardDetail extends AtBase {
 			@Override
 			public void onSuccess(int i, Header[] headers, String s) {
 				hideDialogLoading();
-				Debug.toast(AtCardDetail.this,s);
+				Debug.toast(AtCardDetail.this, s);
 				finish();
 			}
 		});
+	}
+
+
+	private void showImgQRcode()
+	{
+		String qr = "qr";
+		if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[1])) {
+			displayImage(imgQRcode, "http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=" + memberCard.member_card_number);
+		}if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[2])) {
+			AndroidBarcodeView view = new AndroidBarcodeView(AtCardDetail.this,memberCard.member_card_number);
+			imgQRcode.setVisibility(View.INVISIBLE);
+		 	linearBarcode.addView(view);
+			linearBarcode.setVisibility(View.VISIBLE);
+		}
 	}
 }
