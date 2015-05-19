@@ -16,19 +16,19 @@
 		android:layout_marginTop="15dp" android:orientation="vertical">
 
 		<Button android:id="@+id/dialog_rate_bt_rate_now"
-			android:layout_width="150dp" android:layout_height="45dp"
+			android:layout_width="150dp" android:layout_height="35dp"
 			android:textSize="14sp" android:layout_marginRight="5dp"
 			android:textColor="@color/white" android:background="@drawable/login_bt_face_bg"
 			android:text="@string/cancel" />
 
 		<Button android:id="@+id/dialog_rate_bt_later"
-			android:layout_width="150dp" android:layout_height="45dp" android:layout_marginTop="10dp"
+			android:layout_width="150dp" android:layout_height="35dp" android:layout_marginTop="10dp"
 			android:textSize="14sp" android:background="@drawable/login_bt_face_bg"
 			android:textColor="@color/white" android:layout_marginRight="5dp"
 			android:text="@string/cancel" />
 		
 		<Button android:id="@+id/dialog_rate_bt_no"
-			android:layout_width="150dp" android:layout_height="45dp" android:layout_marginTop="10dp"
+			android:layout_width="150dp" android:layout_height="35dp" android:layout_marginTop="10dp"
 			android:textSize="14sp" android:background="@drawable/login_bt_face_bg"
 			android:textColor="@color/white" android:layout_marginRight="5dp"
 			android:text="@string/cancel" />
