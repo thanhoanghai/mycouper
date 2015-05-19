@@ -66,6 +66,13 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 	public static final int ANIM_REFLECT = 4;
 	public static final int ANIM_AUTO = 5;
 
+	private Boolean isShowBackground = true;
+
+	public void setStatusBackround(Boolean status)
+	{
+		isShowBackground = status;
+	}
+
 	/**
 	 * Constructor for default vertical layout
 	 * 
@@ -317,13 +324,16 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 
 		// showArrow(((onTop) ? R.drawable.popup_downarrow_bg :
 		// R.drawable.popup_uparrow_bg), arrowPos);
-		if ((onTop)) {
-			mScroller.setBackgroundResource(
-				(typeBg==BG_WHITE)?R.drawable.popup_downarrow_bg:R.drawable.popup_downarrow_bg_black);
-		} else {
-			mScroller.setBackgroundResource(
-				(typeBg==BG_WHITE)?R.drawable.popup_uparrow_bg:R.drawable.popup_uparrow_bg_black);
-		}
+		if(isShowBackground) {
+			if ((onTop)) {
+				mScroller.setBackgroundResource(
+						(typeBg == BG_WHITE) ? R.drawable.popup_downarrow_bg : R.drawable.popup_downarrow_bg_black);
+			} else {
+				mScroller.setBackgroundResource(
+						(typeBg == BG_WHITE) ? R.drawable.popup_uparrow_bg : R.drawable.popup_uparrow_bg_black);
+			}
+		}else
+			mScroller.setBackgroundResource(R.drawable.transparent);
 		setAnimationStyle(screenWidth, anchorRect.centerX(), onTop);
 
 		xPos = xPos - movePos / 2;
@@ -407,10 +417,13 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 		// param.leftMargin = requestedX - arrowWidth / 2;
 		//
 		// hideArrow.setVisibility(View.INVISIBLE);
-		mScroller.setBackgroundResource(
-				(typeBg==BG_WHITE)?R.drawable.popup_downarrow_bg:R.drawable.popup_downarrow_bg_black);
-		mScroller.setBackgroundResource(
-				(typeBg==BG_WHITE)?R.drawable.popup_uparrow_bg:R.drawable.popup_uparrow_bg_black);
+		if(isShowBackground) {
+			mScroller.setBackgroundResource(
+					(typeBg == BG_WHITE) ? R.drawable.popup_downarrow_bg : R.drawable.popup_downarrow_bg_black);
+			mScroller.setBackgroundResource(
+					(typeBg == BG_WHITE) ? R.drawable.popup_uparrow_bg : R.drawable.popup_uparrow_bg_black);
+		}else
+			mScroller.setBackgroundResource(R.drawable.transparent);
 	}
 
 	/**

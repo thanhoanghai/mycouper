@@ -166,6 +166,7 @@ public class AtMain extends AtBase {
     private void initListPopUpMenu()
     {
         quickAction = new QuickAction(AtMain.this, QuickAction.VERTICAL);
+        quickAction.setStatusBackround(false);
         bntUserProfile = new PopupActionItem(Constants.POP_UP_ID_USER_PROFILE, "User profile", null);
         bntSetting = new PopupActionItem(Constants.POP_UP_ID_SETTING, "Setting", null);
         bntContact = new PopupActionItem(Constants.POP_UP_ID_CONTACT, "Contact", null);
