@@ -1,5 +1,6 @@
 package com.nct.fragment;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -17,12 +18,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.nct.constants.GlobalInstance;
+import com.nct.customview.DialogCustom;
+import com.nct.customview.DialogRate;
 import com.nct.model.CompanyObject;
 import com.nct.mv.AtCamera;
 import com.nct.constants.Constants;
 import com.nct.customview.TfTextView;
 import com.nct.model.ItemCreateKard;
 import com.nct.mv.AtCreateCard;
+import com.nct.mv.AtWacCamera;
 import com.nct.utils.BitmapUtils;
 import com.nct.utils.Debug;
 
@@ -98,7 +102,7 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
         setTopbarLeftBtListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AtCreateCard)getActivity()).actionBackKey();
+                ((AtCreateCard) getActivity()).actionBackKey();
             }
         });
         setTopBarbtRightVisible(View.INVISIBLE);
@@ -181,16 +185,18 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
             case R.id.image_camera_front:
             case R.id.front_Camera:
                 modeFace = MODE_CAMERA_FACE.Front;
-                intent = new Intent(getActivity(), AtCamera.class);
-                intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, true);
-                getActivity().startActivityForResult(intent, TAKE_PICTURE);
+//                intent = new Intent(getActivity(), AtWacCamera.class);
+//                intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, true);
+//                getActivity().startActivityForResult(intent, TAKE_PICTURE);
+                showsSelectDialog();
                 break;
             case R.id.image_camera_back:
             case R.id.back_Camera:
                 modeFace = MODE_CAMERA_FACE.Back;
-                intent = new Intent(getActivity(), AtCamera.class);
-                intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
-                getActivity().startActivityForResult(intent, TAKE_PICTURE);
+                showsSelectDialog();
+//                intent = new Intent(getActivity(), AtWacCamera.class);
+//                intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
+//                getActivity().startActivityForResult(intent, TAKE_PICTURE);
                 break;
             case R.id.frag_create_card_image_bt_next:
                 ((AtCreateCard)getActivity()).savePhoto(mBitmapFront, mBitmapBack);
@@ -276,6 +282,26 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
 
             }
         }
+    }
+
+    private void showsSelectDialog() {
+        DialogRate dialog = new DialogRate(getActivity(), 2, "Gallery", "Camera", "", "");
+        dialog.setListenerFinishedDialog(new DialogCustom.FinishDialogConfirmListener() {
+            @Override
+            public void onFinishConfirmDialog(int i) {
+                Intent intent = new Intent(getActivity(), AtWacCamera.class);
+                if(modeFace == MODE_CAMERA_FACE.Front)
+                    intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, true);
+                else
+                    intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
+                if(i == 0)
+                    intent.putExtra(AtWacCamera.GET_PICTURE_FROM_GALLERY, true);
+                else
+                    intent.putExtra(AtWacCamera.GET_PICTURE_FROM_GALLERY, false);
+                getActivity().startActivityForResult(intent, TAKE_PICTURE);
+            }
+        });
+        dialog.show();
     }
 
 }

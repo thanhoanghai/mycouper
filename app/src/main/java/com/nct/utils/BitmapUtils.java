@@ -13,6 +13,8 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Environment;
 
+import com.nct.constants.Constants;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -390,5 +392,56 @@ public class BitmapUtils {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static Bitmap scaleDownBitmap(byte[] img){
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeByteArray(img,0,img.length, options);
+        options.inSampleSize = calculateInSampleSize(options, Constants.CB_IMAGE_WIDTH, Constants.CB_IMAGE_HEIGHT);
+        options.inJustDecodeBounds = false;
+
+        return BitmapFactory.decodeByteArray(img,0,img.length, options);
+
+    }
+
+    public static Bitmap scaleDownBitmap(String imgPath, int mWidth, int mHeight){
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(imgPath,options);
+        options.inSampleSize = calculateInSampleSize(options, mWidth, mHeight);
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeFile(imgPath, options);
+
+    }
+
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        return calculateInSampleSize(width, height, reqWidth, reqHeight);
+    }
+
+    public static int calculateInSampleSize(int curWidth, int curHeight, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = curHeight;
+        final int width =  curWidth;
+
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
     }
 }
