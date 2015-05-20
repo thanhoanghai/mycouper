@@ -167,19 +167,23 @@ public class AtCreateCard extends AtBase {
         TaskExecuter.TaskTemplate<Void, String> upFrontBitmap = new TaskExecuter.TaskTemplate<Void, String>() {
             @Override
             public String doInBackground(Void... params) {
-                String result = URLProvider.postPhoto(nameImageFront, BitmapUtils.getByteArrayOutputStream(mBitmapFront, 100));
-                try {
-                    JSONObject object = new JSONObject(result);
-                    mFrontUrl = object.optString("image");
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if(mBitmapFront != null){
+                    String result = URLProvider.postPhoto(nameImageFront, BitmapUtils.getByteArrayOutputStream(mBitmapFront, 100));
+                    try {
+                        JSONObject object = new JSONObject(result);
+                        mFrontUrl = object.optString("image");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-                String mResult = URLProvider.postPhoto(nameImageBack, BitmapUtils.getByteArrayOutputStream(mBitmapBack, 100));
-                try {
-                    JSONObject object = new JSONObject(mResult);
-                    mBackUrl = object.optString("image");
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if(mBitmapBack != null){
+                    String mResult = URLProvider.postPhoto(nameImageBack, BitmapUtils.getByteArrayOutputStream(mBitmapBack, 100));
+                    try {
+                        JSONObject object = new JSONObject(mResult);
+                        mBackUrl = object.optString("image");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 return null;
             }
@@ -234,12 +238,10 @@ public class AtCreateCard extends AtBase {
             statusCode = object.optInt("statusCode");
             JSONObject json = object.getJSONObject("data");
             cardID = json.optInt("member_card_id", -1);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         if(statusCode == Constants.API_REQUEST_STATUS_SUCCESS && cardID > 0){
-            Debug.toast(this, getResources().getString(R.string.frag_createcard_info_successfully));
             if(fragment instanceof FragCreateCardImage)
                 ((FragCreateCardImage)fragment).showSuccess();
         }else{
@@ -247,36 +249,39 @@ public class AtCreateCard extends AtBase {
         }
     }
 
-    public void updateCard(String user_id, String company, String member_card_name, String member_card_number, String front_of_the_card,
-                              String back_of_the_card, String description, String card_number_type, boolean isOther){
-        if(isOther){
-            DataLoader.postParam(URLProvider.getParamsCreateCardWithUser(user_id, company, member_card_name, member_card_number,
-                    front_of_the_card, back_of_the_card, description, card_number_type), new TextHttpResponseHandler() {
-                @Override
-                public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
-                    hideDialogLoading();
-                }
+    public void updateCard(String user_id, String cardID, String note, String company_name, String member_card_name,
+                           String front_of_the_card, String back_of_the_card, String description){
+        DataLoader.postParam(URLProvider.getParamsUpdateCard(user_id, cardID, note, company_name,
+                member_card_name, front_of_the_card, back_of_the_card, description), new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+                hideDialogLoading();
+            }
 
-                @Override
-                public void onSuccess(int i, Header[] headers, String result) {
-                    hideDialogLoading();
-                    createKardDone(result);
-                }
-            });
+            @Override
+            public void onSuccess(int i, Header[] headers, String result) {
+                hideDialogLoading();
+                updateKardDone(result);
+            }
+        });
+    }
+
+    private void updateKardDone(String result){
+        final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.at_create_card_linear);
+        int statusCode = 0;
+        try {
+            JSONObject object = new JSONObject(result);
+            statusCode = object.optInt("statusCode");
+            JSONObject json = object.getJSONObject("data");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(statusCode == Constants.API_REQUEST_STATUS_SUCCESS){
+            if(fragment instanceof FragCreateCardImage)
+                ((FragCreateCardImage)fragment).showSuccess();
         }else{
-            DataLoader.postParam(URLProvider.getParamsCreateCardWithCompanyByCategory(user_id, company, member_card_name, member_card_number,
-                    front_of_the_card, back_of_the_card, description, card_number_type), new TextHttpResponseHandler() {
-                @Override
-                public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
-                    hideDialogLoading();
-                }
-
-                @Override
-                public void onSuccess(int i, Header[] headers, String result) {
-                    hideDialogLoading();
-                    createKardDone(result);
-                }
-            });
+            Debug.toast(this, getResources().getString(R.string.frag_updatecard_info_failed));
         }
     }
 }

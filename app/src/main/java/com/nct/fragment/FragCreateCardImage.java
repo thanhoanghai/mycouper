@@ -105,6 +105,9 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
 
         mLLInfoCard = (RelativeLayout) v.findViewById(R.id.frag_create_card_info_linear_img);
         mLLInputName = (LinearLayout) v.findViewById(R.id.frag_create_card_info_linear_input);
+        imageView = (ImageView) v.findViewById(R.id.frag_create_card_info_img);
+        txtCompanyName = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_title);
+        txtCompanyDes = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_des);
 
         if(isOther){
             mLLInfoCard.setVisibility(View.GONE);
@@ -116,9 +119,6 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
         }else{
             mLLInfoCard.setVisibility(View.VISIBLE);
             mLLInputName.setVisibility(View.GONE);
-            imageView = (ImageView) v.findViewById(R.id.frag_create_card_info_img);
-            txtCompanyName = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_title);
-            txtCompanyDes = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_des);
             txtCompanyDes.setText(mCardDes);
             if(mCompanyLogo != null)
                 displayImage(imageView, mCompanyLogo);
@@ -153,7 +153,7 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
             lyImageFront.setVisibility(View.VISIBLE);
             lyBtnCameraBack.setVisibility(View.GONE);
             lyImageBack.setVisibility(View.VISIBLE);
-            if(ItemCreateKard.frontUrl != null){
+            if(ItemCreateKard.frontUrl != null && !ItemCreateKard.frontUrl.equals("") && !ItemCreateKard.frontUrl.equals("NULL")){
                 lyBtnCameraFront.setVisibility(View.GONE);
                 lyImageFront.setVisibility(View.VISIBLE);
                 displayImage(imgeFront, ItemCreateKard.frontUrl);
@@ -161,7 +161,7 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
                 lyBtnCameraFront.setVisibility(View.VISIBLE);
                 lyImageFront.setVisibility(View.GONE);
             }
-            if(ItemCreateKard.backUrl != null){
+            if(ItemCreateKard.backUrl != null && !ItemCreateKard.frontUrl.equals("") && !ItemCreateKard.frontUrl.equals("NULL")){
                 lyBtnCameraBack.setVisibility(View.GONE);
                 lyImageBack.setVisibility(View.VISIBLE);
                 displayImage(imageBack, ItemCreateKard.backUrl);
@@ -193,26 +193,20 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
                 getActivity().startActivityForResult(intent, TAKE_PICTURE);
                 break;
             case R.id.frag_create_card_image_bt_next:
-                mBitmapFront = ((BitmapDrawable)imgeFront.getDrawable()).getBitmap();
-                mBitmapBack = ((BitmapDrawable)imageBack.getDrawable()).getBitmap();
-                String result = checkBitmap();
-                if(result.equals(""))
-                    ((AtCreateCard)getActivity()).savePhoto(mBitmapFront, mBitmapBack);
-                else
-                    Debug.toast(getActivity(), result);
+                ((AtCreateCard)getActivity()).savePhoto(mBitmapFront, mBitmapBack);
                 break;
         }
     }
 
-//    public static String TYPE_CARD_SCAN_CODE[] = {"ID","qrcode","barcode"};
-
     public void callCreateKard(String fontUrl, String backUrl){
-        String result = "";
-        if(fontUrl == null || fontUrl.equals(""))
-            result = getActivity().getResources().getString(R.string.frag_createcard_info_upload_front);
-        if(backUrl == null || backUrl.equals(""))
-            result = getActivity().getResources().getString(R.string.frag_createcard_info_upload_back);
-        if(result.equals("")) {
+        if(isEditCard){
+            String note = "";
+            if(fontUrl.equals("") && ItemCreateKard.frontUrl != null)
+                fontUrl = ItemCreateKard.frontUrl;
+            if(backUrl.equals("") && ItemCreateKard.backUrl != null)
+                backUrl = ItemCreateKard.backUrl;
+            ((AtCreateCard) getActivity()).updateCard(GlobalInstance.getInstance().userInfo.user_id, ItemCreateKard.mCardID, note, mCompanyName, mCardName, fontUrl, backUrl, mCardDes);
+        }else{
             String mCompany = "";
             if(!isOther){
                 if(mCompanyID != null)
@@ -220,8 +214,7 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
             }else
                 mCompany = mCompanyName;
             ((AtCreateCard) getActivity()).createNewCard(GlobalInstance.getInstance().userInfo.user_id, mCompany, mCardName, mCardCode, fontUrl, backUrl, mCardDes, mTypeCode, isOther);
-        }else
-            Debug.toast(getActivity(), result);
+        }
     }
 
     public void showSuccess(){

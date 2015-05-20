@@ -50,6 +50,39 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/lyTypeCode"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/frag_createcard_info_edittext_h"
+        android:layout_marginTop="@dimen/frag_createcard_info_edittext_marintop"
+        android:background="@color/grey_info_card"
+        android:orientation="horizontal">
+
+        <com.nct.customview.TfTextView
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:gravity="right|center_vertical"
+            android:text="@string/frag_createcard_info_typecode"
+            android:textColor="@color/grey_info_text_card"
+            android:textSize="@dimen/frag_createcard_info_title_size"
+            app:typeface_name="@string/font_roboto_regular" />
+
+        <com.nct.customview.TfTextView
+            android:id="@+id/create_card_typecode"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
+            android:gravity="left|center_vertical"
+            android:background="@color/transparent"
+            android:text="BarCode"
+            android:textColor="@color/grey_info_text_card"
+            android:singleLine="true"
+            android:textSize="@dimen/frag_createcard_info_title_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/frag_createcard_info_edittext_h"
         android:layout_marginTop="@dimen/frag_createcard_info_edittext_marintop"

@@ -72,6 +72,11 @@ public class Constants {
 	public static int POP_UP_ID_HELP = 5;
 	public static int POP_UP_ID_COPYRIGHT = 6;
 
+    // type code
+    public static final int POP_UP_ID_CODE_ID = 1;
+    public static final int POP_UP_ID_CODE_BARCODE = 2;
+    public static final int POP_UP_ID_CODE_QRCODE = 3;
+
 	public static String TYPE_CARD_SCAN_CODE[] = {"ID","qrcode","barcode"};
 	public static int TYPE_CREATE_CARD_SEARCH = 0;
 	public static int TYPE_CREATE_CARD_INFO = 1;

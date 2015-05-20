@@ -79,6 +79,7 @@
     <string name="frag_createcard_info_title">Or enter below information</string>
     <string name="frag_createcard_info_cardcode">Card code:</string>
     <string name="frag_createcard_info_required">(required)</string>
+    <string name="frag_createcard_info_typecode">Code type:</string>
     <string name="frag_createcard_info_cardname">Name on Card:</string>
     <string name="frag_createcard_info_optional">(optional)</string>
     <string name="frag_createcard_info_description">Description:</string>

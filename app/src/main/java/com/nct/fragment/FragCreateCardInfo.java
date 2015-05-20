@@ -15,17 +15,21 @@ import android.widget.LinearLayout;
 
 import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
+import com.nct.customview.PopupActionItem;
+import com.nct.customview.QuickAction;
 import com.nct.customview.TfTextView;
 import com.nct.model.CompanyObject;
 import com.nct.model.ItemCreateKard;
 import com.nct.model.MemberCardObject;
 import com.nct.mv.AtCreateCard;
 import com.nct.utils.Debug;
+import com.nct.utils.Utils;
+
 import thh.com.mycouper.R;
 
 public class FragCreateCardInfo extends BaseMainFragment {
 
-    private final String TYPE_CARD_SCAN_CODE[] = {"ID","qrcode","barcode"};
+    private final String TYPE_CARD_SCAN_CODE[] = {"ID", "barcode", "qrcode"};
     private final String TYPE_QRCODE = "QR_CODE";
 
     private Button bntNext;
@@ -35,6 +39,13 @@ public class FragCreateCardInfo extends BaseMainFragment {
     private TfTextView txtCompanyName;
     private EditText edtCardCode, edtCardName, edtCardDes;
     private EditText edtCompanyName;
+
+    private LinearLayout mLLTypeCode;
+    private TfTextView txtTypeCode;
+    private QuickAction quickAction;
+    private PopupActionItem bntID;
+    private PopupActionItem bntBarcode;
+    private PopupActionItem bntQrcode;
 
     private boolean isEditCard = false;
     private boolean isOther = false;
@@ -65,6 +76,7 @@ public class FragCreateCardInfo extends BaseMainFragment {
                 itemCompany = (CompanyObject)getArguments().getSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE);
             }else{
                 memberCard = GlobalInstance.getInstance().memberCard;
+                ItemCreateKard.mCardID = "" + memberCard.member_card_id;
                 ItemCreateKard.frontUrl = memberCard.front_of_the_card;
                 ItemCreateKard.backUrl = memberCard.back_of_the_card;
             }
@@ -96,7 +108,9 @@ public class FragCreateCardInfo extends BaseMainFragment {
     private void innitControl(View v){
         mLLInfoCard = (LinearLayout) v.findViewById(R.id.frag_create_card_info_linear_img);
         mLLInputName = (LinearLayout) v.findViewById(R.id.frag_create_card_info_linear_input);
-
+        mLLTypeCode = (LinearLayout) v.findViewById(R.id.lyTypeCode);
+        imageView = (ImageView) v.findViewById(R.id.frag_create_card_info_img);
+        txtCompanyName = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_title);
         if(isOther){
             mLLInfoCard.setVisibility(View.GONE);
             mLLInputName.setVisibility(View.VISIBLE);
@@ -104,8 +118,6 @@ public class FragCreateCardInfo extends BaseMainFragment {
         }else{
             mLLInfoCard.setVisibility(View.VISIBLE);
             mLLInputName.setVisibility(View.GONE);
-            imageView = (ImageView) v.findViewById(R.id.frag_create_card_info_img);
-            txtCompanyName = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_title);
             if(isEditCard){
                 mCompanyLogo = memberCard.company_logo;
                 displayImage(imageView, mCompanyLogo);
@@ -127,18 +139,19 @@ public class FragCreateCardInfo extends BaseMainFragment {
             }
         }
 
+        innitPopup();
+
         edtCardCode = (EditText) v.findViewById(R.id.create_card_cardcode);
         edtCardName = (EditText) v.findViewById(R.id.create_card_cardname);
         edtCardDes = (EditText) v.findViewById(R.id.create_card_carddescription);
-
-        if(isEditCard){
-            if(memberCard.member_card_number != null)
-                edtCardCode.setText(memberCard.member_card_number);
-            if(memberCard.member_card_name != null)
-                edtCardName.setText(memberCard.member_card_name);
-            if(memberCard.description != null)
-                edtCardDes.setText(memberCard.description);
-        }
+        txtTypeCode = (TfTextView) v.findViewById(R.id.create_card_typecode);
+        txtTypeCode.setText("ID");
+        txtTypeCode.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quickAction.show(v);
+            }
+        });
 
         bntScan = (Button) v.findViewById(R.id.frag_create_card_info_bt_scan);
         bntScan.setOnClickListener(new OnClickListener() {
@@ -149,6 +162,22 @@ public class FragCreateCardInfo extends BaseMainFragment {
                 startActivityForResult(intent, 0);
             }
         });
+
+        if(isEditCard){
+            edtCardCode.setEnabled(false);
+            bntScan.setClickable(false);
+            txtTypeCode.setClickable(false);
+            if(memberCard.member_card_number != null)
+                edtCardCode.setText(memberCard.member_card_number);
+            if(memberCard.member_card_name != null)
+                edtCardName.setText(memberCard.member_card_name);
+            if(memberCard.description != null)
+                edtCardDes.setText(memberCard.description);
+        }else{
+            edtCardCode.setEnabled(true);
+            bntScan.setClickable(true);
+            txtTypeCode.setClickable(true);
+        }
 
         bntNext = (Button) v.findViewById(R.id.frag_create_card_info_bt_next);
         bntNext.setOnClickListener(new OnClickListener() {
@@ -173,6 +202,40 @@ public class FragCreateCardInfo extends BaseMainFragment {
                     ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_IMAGE, fm);
                 }else
                     Debug.toast(getActivity(), result);
+            }
+        });
+    }
+
+    private void innitPopup(){
+        quickAction = new QuickAction(getActivity(), QuickAction.VERTICAL);
+        quickAction.setStatusBackround(false);
+        bntID = new PopupActionItem(Constants.POP_UP_ID_CODE_ID, "ID", null);
+        bntBarcode = new PopupActionItem(Constants.POP_UP_ID_CODE_BARCODE, "Barcode", null);
+        bntQrcode = new PopupActionItem(Constants.POP_UP_ID_CODE_QRCODE, "Qrcode", null);
+
+        quickAction.addActionItem(bntID);
+        quickAction.addActionItem(bntBarcode);
+        quickAction.addActionItem(bntQrcode);
+
+        quickAction.setOnActionItemClickListener(new QuickAction.OnActionItemClickListener() {
+            @Override
+            public void onItemClick(QuickAction source, int pos, int actionId) {
+                String mtype = "ID";
+                switch (actionId){
+                    case Constants.POP_UP_ID_CODE_ID:
+                        mTypeCode = TYPE_CARD_SCAN_CODE[0];
+                        mtype = "ID";
+                        break;
+                    case Constants.POP_UP_ID_CODE_BARCODE:
+                        mTypeCode = TYPE_CARD_SCAN_CODE[1];
+                        mtype = "Barcode";
+                        break;
+                    case Constants.POP_UP_ID_CODE_QRCODE:
+                        mTypeCode = TYPE_CARD_SCAN_CODE[2];
+                        mtype = "Qrcode";
+                        break;
+                }
+                txtTypeCode.setText(mtype);
             }
         });
     }
@@ -206,12 +269,13 @@ public class FragCreateCardInfo extends BaseMainFragment {
                 mCardCode = "";
             // Handle successful scan
             String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
-            if(format != null){
-                if(format.equals(TYPE_QRCODE))
-                    mTypeCode = TYPE_CARD_SCAN_CODE[1];
-                else
+            if(mCardCode != null){
+                if(format != null && format.equals(TYPE_QRCODE))
                     mTypeCode = TYPE_CARD_SCAN_CODE[2];
+                else
+                    mTypeCode = TYPE_CARD_SCAN_CODE[1];
             }
+            txtTypeCode.setText(mTypeCode);
         } else if (resultCode == getActivity().RESULT_CANCELED) {
             // Handle cancel
             mCardCode = "";
