@@ -63,7 +63,6 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/frag_create_card_info_img"
             android:ellipsize="end"
-            android:lines="1"
             android:textColor="@color/black"
             android:textSize="@dimen/frag_createcard_info_camera_title_size"
             app:typeface_name="@string/font_roboto_regular" />

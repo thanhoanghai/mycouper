@@ -175,5 +175,10 @@ abstract class BaseMainFragment extends Fragment {
 	{
 		topBarBtRight.setVisibility(visi);
 	}
+	public void setTopBarbtLeftVisible(int visi)
+	{
+		topBarbtLeft.setVisibility(visi);
+	}
+
 
 }

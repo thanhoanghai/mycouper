@@ -79,7 +79,7 @@
     <dimen name="frag_membercard_bt_w">170dp</dimen>
     <dimen name="frag_membercard_bt_large_w">220dp</dimen>
     <dimen name="frag_membercard_bt_h">40dp</dimen>
-    <dimen name="frag_membercard_bt_large_h">50dp</dimen>
+    <dimen name="frag_membercard_bt_large_h">45dp</dimen>
     <dimen name="frag_membercard_bt_marinbottom">20dp</dimen>
 
     <!-- ITEM COMPANY  -->

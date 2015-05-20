@@ -6,7 +6,7 @@ import com.nct.model.UserObject;
 public class GlobalInstance {
 
 	private static GlobalInstance mGlobalInstance;
-	public String idLanguage = "";
+	public String idLanguage = "en";
     public UserObject userInfo;
 	public MemberCardObject memberCard;
 

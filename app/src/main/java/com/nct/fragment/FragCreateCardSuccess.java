@@ -63,6 +63,10 @@ public class FragCreateCardSuccess extends BaseMainFragment {
         // TODO Auto-generated method stub
         View v = inflater.inflate(R.layout.frag_create_card_success, container, false);
 
+        initTopbar(v,getString(R.string.frag_createcard));
+        setTopBarbtRightVisible(View.INVISIBLE);
+        setTopBarbtLeftVisible(View.INVISIBLE);
+
         mLLInfoCard = (RelativeLayout) v.findViewById(R.id.frag_create_card_info_linear_img);
         mLLInputName = (LinearLayout) v.findViewById(R.id.frag_create_card_info_linear_input);
 

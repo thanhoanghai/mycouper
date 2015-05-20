@@ -7,235 +7,247 @@
 
     <include layout="@layout/item_top_bar"></include>
 
-    <com.nct.customview.TfTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="@dimen/frag_createcard_info_title_marintop"
-        android:text="@string/frag_createcard_store"
-        android:textColor="@color/blue_topbar"
-        android:textSize="@dimen/frag_createcard_info_title_size"
-        app:typeface_name="@string/font_roboto_regular" />
 
-    <include layout="@layout/item_line" />
 
-    <LinearLayout
-        android:id="@+id/frag_create_card_info_linear_input"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/frag_createcard_info_edittext_h"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="10dp"
-        android:orientation="horizontal">
-
-        <com.nct.customview.TfTextView
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="30"
-            android:gravity="right|center_vertical"
-            android:text="@string/frag_createcard_info_caompanyname"
-            android:textColor="@color/black"
-            android:textSize="@dimen/frag_createcard_info_title_size"
-            app:typeface_name="@string/font_roboto_regular" />
-
-        <com.nct.customview.TfTextView
-            android:id="@+id/create_card_companymane"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="70"
-            android:gravity="left|center_vertical"
-            android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
-            android:text="@string/frag_createcard_info_caompanyname"
-            android:textColor="@color/black"
-            android:textSize="@dimen/frag_createcard_info_title_size"
-            app:typeface_name="@string/font_roboto_regular" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/frag_create_card_info_linear_img"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:visibility="gone"
-        android:padding="10dp">
-
-        <ImageView
-            android:id="@+id/frag_create_card_info_img"
-            android:layout_width="@dimen/item_member_card_icon_size_large"
-            android:layout_height="@dimen/item_member_card_icon_size_large"
-            android:background="@drawable/bg_icon_border"
-            android:padding="1dp"
-            android:scaleType="centerInside"/>
-
-        <com.nct.customview.TfTextView
-            android:id="@+id/frag_create_card_info_tv_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/frag_create_card_info_img"
-            android:ellipsize="end"
-            android:lines="1"
-            android:text="@string/app_name"
-            android:textColor="@color/black"
-            android:textSize="@dimen/frag_createcard_info_camera_title_size"
-            app:typeface_name="@string/font_roboto_regular" />
-
-        <com.nct.customview.TfTextView
-            android:id="@+id/frag_create_card_info_tv_des"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/frag_create_card_info_img"
-            android:layout_below="@id/frag_create_card_info_tv_title"
-            android:ellipsize="end"
-            android:lines="1"
-            android:text="@string/app_name"
-            android:textColor="@color/black"
-            android:textSize="@dimen/frag_createcard_info_title_size"
-            app:typeface_name="@string/font_roboto_regular" />
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:id="@+id/btn_front_camera"
-            android:layout_width="300dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_gravity="center"
-            android:visibility="visible"
-            android:background="@drawable/bg_gray_layout">
-
-            <ImageButton
-                android:id="@+id/front_Camera"
-                android:layout_width="74dp"
-                android:layout_height="63dp"
-                android:layout_centerInParent="true"
-                android:scaleType="fitXY"
-                android:background="@null"
-                android:src="@drawable/switch_camera_icon"/>
-
-            <com.nct.customview.TfTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:text="@string/frag_createcard_info_front_camera"
-                android:textColor="@color/grey_info_text_card"
-                android:layout_below="@id/front_Camera"
-                android:textSize="@dimen/frag_createcard_info_camera_title_size"
-                app:typeface_name="@string/font_roboto_regular" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/lyImageFront"
-            android:layout_width="300dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_gravity="center"
-            android:visibility="gone">
-
-            <ImageView
-                android:id="@+id/image_front"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:scaleType="fitXY"/>
-
-            <ImageView
-                android:id="@+id/image_camera_front"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_margin="10dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/switch_camera_icon"/>
+        android:layout_height="match_parent">
+   <LinearLayout android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
 
 
-        </RelativeLayout>
+       <com.nct.customview.TfTextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"
+           android:layout_marginTop="@dimen/frag_createcard_info_title_marintop"
+           android:text="@string/frag_createcard_store"
+           android:textColor="@color/blue_topbar"
+           android:textSize="@dimen/frag_createcard_info_title_size"
+           app:typeface_name="@string/font_roboto_regular" />
 
-        <RelativeLayout
-            android:id="@+id/btn_back_camera"
-            android:layout_width="300dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:visibility="visible"
-            android:background="@drawable/bg_gray_layout">
+       <include layout="@layout/item_line" />
 
-            <ImageButton
-                android:id="@+id/back_Camera"
-                android:layout_width="74dp"
-                android:layout_height="63dp"
-                android:layout_centerInParent="true"
-                android:scaleType="fitXY"
-                android:background="@null"
-                android:src="@drawable/switch_camera_icon"/>
+       <LinearLayout
+           android:id="@+id/frag_create_card_info_linear_input"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/frag_createcard_info_edittext_h"
+           android:layout_marginBottom="20dp"
+           android:layout_marginLeft="10dp"
+           android:orientation="horizontal">
 
-            <com.nct.customview.TfTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:text="@string/frag_createcard_info_back_camera"
-                android:textColor="@color/grey_info_text_card"
-                android:layout_below="@id/back_Camera"
-                android:textSize="@dimen/frag_createcard_info_camera_title_size"
-                app:typeface_name="@string/font_roboto_regular" />
+           <com.nct.customview.TfTextView
+               android:layout_width="0dip"
+               android:layout_height="match_parent"
+               android:layout_weight="30"
+               android:gravity="right|center_vertical"
+               android:text="@string/frag_createcard_info_caompanyname"
+               android:textColor="@color/black"
+               android:textSize="@dimen/frag_createcard_info_title_size"
+               app:typeface_name="@string/font_roboto_regular" />
 
-        </RelativeLayout>
+           <com.nct.customview.TfTextView
+               android:id="@+id/create_card_companymane"
+               android:layout_width="0dip"
+               android:layout_height="match_parent"
+               android:layout_weight="70"
+               android:gravity="left|center_vertical"
+               android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
+               android:text="@string/frag_createcard_info_caompanyname"
+               android:textColor="@color/black"
+               android:textSize="@dimen/frag_createcard_info_title_size"
+               app:typeface_name="@string/font_roboto_regular" />
 
-        <RelativeLayout
-            android:id="@+id/lyImagBack"
-            android:layout_width="300dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:visibility="gone">
+       </LinearLayout>
 
-            <ImageView
-                android:id="@+id/image_back"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:scaleType="fitXY"/>
+       <RelativeLayout
+           android:id="@+id/frag_create_card_info_linear_img"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:gravity="center_vertical"
+           android:orientation="horizontal"
+           android:visibility="gone"
+           android:padding="10dp">
 
-            <ImageView
-                android:id="@+id/image_camera_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_margin="10dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/switch_camera_icon"/>
+           <ImageView
+               android:id="@+id/frag_create_card_info_img"
+               android:layout_width="@dimen/item_member_card_icon_size_large"
+               android:layout_height="@dimen/item_member_card_icon_size_large"
+               android:background="@drawable/bg_icon_border"
+               android:padding="1dp"
+               android:scaleType="centerInside"/>
 
-        </RelativeLayout>
+           <com.nct.customview.TfTextView
+               android:id="@+id/frag_create_card_info_tv_title"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="10dp"
+               android:layout_toRightOf="@id/frag_create_card_info_img"
+               android:ellipsize="end"
+               android:text="@string/app_name"
+               android:textColor="@color/black"
+               android:textSize="@dimen/frag_createcard_info_camera_title_size"
+               app:typeface_name="@string/font_roboto_regular" />
 
-        </LinearLayout>
+           <com.nct.customview.TfTextView
+               android:id="@+id/frag_create_card_info_tv_des"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="10dp"
+               android:layout_toRightOf="@id/frag_create_card_info_img"
+               android:layout_below="@id/frag_create_card_info_tv_title"
+               android:ellipsize="end"
+               android:lines="1"
+               android:text="@string/app_name"
+               android:textColor="@color/black"
+               android:textSize="@dimen/frag_createcard_info_title_size"
+               app:typeface_name="@string/font_roboto_regular" />
 
-    <Button
-        android:id="@+id/frag_create_card_image_bt_next"
-        android:layout_width="@dimen/frag_membercard_bt_w"
-        android:layout_height="@dimen/frag_membercard_bt_h"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginTop="20dp"
-        android:alpha="0.7"
-        android:background="@drawable/btn_blue_gray_bg"
-        android:text="@string/next"
-        android:textColor="@color/white"
-        tools:ignore="UnusedAttribute" />
+       </RelativeLayout>
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:orientation="vertical">
+
+           <RelativeLayout
+               android:id="@+id/btn_front_camera"
+               android:layout_width="300dp"
+               android:layout_height="150dp"
+               android:layout_marginLeft="20dp"
+               android:layout_marginRight="20dp"
+               android:layout_gravity="center"
+               android:visibility="visible"
+               android:background="@drawable/bg_gray_layout">
+
+               <ImageButton
+                   android:id="@+id/front_Camera"
+                   android:layout_width="74dp"
+                   android:layout_height="63dp"
+                   android:layout_centerInParent="true"
+                   android:scaleType="fitXY"
+                   android:background="@null"
+                   android:src="@drawable/switch_camera_icon"/>
+
+               <com.nct.customview.TfTextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerHorizontal="true"
+                   android:layout_marginTop="10dp"
+                   android:text="@string/frag_createcard_info_front_camera"
+                   android:textColor="@color/grey_info_text_card"
+                   android:layout_below="@id/front_Camera"
+                   android:textSize="@dimen/frag_createcard_info_camera_title_size"
+                   app:typeface_name="@string/font_roboto_regular" />
+
+           </RelativeLayout>
+
+           <RelativeLayout
+               android:id="@+id/lyImageFront"
+               android:layout_width="300dp"
+               android:layout_height="150dp"
+               android:layout_marginLeft="20dp"
+               android:layout_marginRight="20dp"
+               android:layout_gravity="center"
+               android:visibility="gone">
+
+               <ImageView
+                   android:id="@+id/image_front"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_centerInParent="true"
+                   android:scaleType="fitXY"/>
+
+               <ImageView
+                   android:id="@+id/image_camera_front"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentRight="true"
+                   android:layout_margin="10dp"
+                   android:scaleType="fitXY"
+                   android:src="@drawable/switch_camera_icon"/>
+
+
+           </RelativeLayout>
+
+           <RelativeLayout
+               android:id="@+id/btn_back_camera"
+               android:layout_width="300dp"
+               android:layout_height="150dp"
+               android:layout_marginLeft="20dp"
+               android:layout_marginRight="20dp"
+               android:layout_marginTop="20dp"
+               android:layout_gravity="center"
+               android:visibility="visible"
+               android:background="@drawable/bg_gray_layout">
+
+               <ImageButton
+                   android:id="@+id/back_Camera"
+                   android:layout_width="74dp"
+                   android:layout_height="63dp"
+                   android:layout_centerInParent="true"
+                   android:scaleType="fitXY"
+                   android:background="@null"
+                   android:src="@drawable/switch_camera_icon"/>
+
+               <com.nct.customview.TfTextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerHorizontal="true"
+                   android:layout_marginTop="10dp"
+                   android:text="@string/frag_createcard_info_back_camera"
+                   android:textColor="@color/grey_info_text_card"
+                   android:layout_below="@id/back_Camera"
+                   android:textSize="@dimen/frag_createcard_info_camera_title_size"
+                   app:typeface_name="@string/font_roboto_regular" />
+
+           </RelativeLayout>
+
+           <RelativeLayout
+               android:id="@+id/lyImagBack"
+               android:layout_width="300dp"
+               android:layout_height="150dp"
+               android:layout_marginLeft="20dp"
+               android:layout_marginRight="20dp"
+               android:layout_marginTop="20dp"
+               android:layout_gravity="center"
+               android:visibility="gone">
+
+               <ImageView
+                   android:id="@+id/image_back"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_centerInParent="true"
+                   android:scaleType="fitXY"/>
+
+               <ImageView
+                   android:id="@+id/image_camera_back"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentRight="true"
+                   android:layout_margin="10dp"
+                   android:scaleType="fitXY"
+                   android:src="@drawable/switch_camera_icon"/>
+
+           </RelativeLayout>
+
+       </LinearLayout>
+
+       <Button
+           android:id="@+id/frag_create_card_image_bt_next"
+           android:layout_width="@dimen/frag_membercard_bt_w"
+           android:layout_height="@dimen/frag_membercard_bt_h"
+           android:layout_gravity="bottom|center_horizontal"
+           android:layout_marginTop="20dp"
+           android:alpha="0.7"
+           android:background="@drawable/btn_blue_gray_bg"
+           android:text="@string/next"
+           android:textColor="@color/white"
+           android:layout_marginBottom="20dp"
+           tools:ignore="UnusedAttribute" />
+   </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
