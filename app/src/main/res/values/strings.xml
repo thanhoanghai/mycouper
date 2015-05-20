@@ -94,6 +94,8 @@
     <string name="frag_createcard_info_upload_back">Upload back photo error!</string>
     <string name="frag_createcard_info_successfully">CREATE CARD SUCCESSFULLY!</string>
     <string name="frag_createcard_info_failed">CREATE CARD FAILED!</string>
+    <string name="frag_updatecard_info_successfully">UPDATE CARD SUCCESSFULLY!</string>
+    <string name="frag_updatecard_info_failed">UPDATE CARD FAILED!</string>
 
     <!-- FRAG MEMBER CARD -->
     <string name="frag_membercard_addmore">+   Add more card</string>

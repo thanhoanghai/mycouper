@@ -92,6 +92,8 @@
     <string name="frag_createcard_info_upload_back">Tải ảnh sau bị lỗi!</string>
     <string name="frag_createcard_info_successfully">TẠO THẺ THÀNH CÔNG!</string>
     <string name="frag_createcard_info_failed">TẠO THẺ KHÔNG THÀNH CÔNG!</string>
+    <string name="frag_updatecard_info_successfully">CẬP NHẬT THẺ THÀNH CÔNG!</string>
+    <string name="frag_updatecard_info_failed">CẬP NHẬT THẺ KHÔNG THÀNH CÔNG!</string>
 
     <!-- FRAG MEMBER CARD -->
     <string name="frag_membercard_addmore">+   Thêm thẻ</string>

@@ -12,11 +12,15 @@ public class ItemCreateKard {
     public static File frontFile = null;
     public static Bitmap bitmapBack = null;
     public static File backFile = null;
+    public static String frontUrl = null;
+    public static String backUrl = null;
 
     public static void clear(){
         bitmapFront = null;
         frontFile = null;
         bitmapBack = null;
         backFile = null;
+        frontUrl = null;
+        backUrl = null;
     }
 }

@@ -63,6 +63,28 @@ public class URLProvider {
         return params;
     }
 
+    public static RequestParams getParamsUpdateCard(String user_id, String cardID, String note, String company_name, String member_card_name, String member_card_number, String front_of_the_card, String back_of_the_card, String description, String card_number_type)
+    {
+        RequestParams params = new RequestParams();
+        params.put("ac", "change_member_card");
+        params.put("member_card_id", company_name);
+        params.put("note", note);
+        params.put("member_card_name", member_card_name);
+        params.put("description", description);
+        params.put("front_of_the_card", front_of_the_card);
+        params.put("back_of_the_card", back_of_the_card);
+        params.put("company_name", company_name);
+        params.put("user_id", user_id);
+
+
+        params.put("member_card_number", member_card_number);
+
+
+        params.put("card_number_type", card_number_type);
+
+        return params;
+    }
+
     public static RequestParams getParamsChangpassword(String user_id,String new_password)
     {
         RequestParams params = new RequestParams();

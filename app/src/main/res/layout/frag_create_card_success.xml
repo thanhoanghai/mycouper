@@ -91,7 +91,7 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:text="Create card successfully!"
+        android:text="@string/frag_createcard_info_successfully"
         android:textColor="@color/blue"
         android:textSize="@dimen/frag_createcard_info_success"
         app:typeface_name="@string/font_roboto_regular" />

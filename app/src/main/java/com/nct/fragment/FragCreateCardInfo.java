@@ -14,8 +14,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.nct.constants.Constants;
+import com.nct.constants.GlobalInstance;
 import com.nct.customview.TfTextView;
 import com.nct.model.CompanyObject;
+import com.nct.model.ItemCreateKard;
 import com.nct.model.MemberCardObject;
 import com.nct.mv.AtCreateCard;
 import com.nct.utils.Debug;
@@ -34,11 +36,15 @@ public class FragCreateCardInfo extends BaseMainFragment {
     private EditText edtCardCode, edtCardName, edtCardDes;
     private EditText edtCompanyName;
 
+    private boolean isEditCard = false;
     private boolean isOther = false;
+
     private CompanyObject itemCompany;
     private MemberCardObject memberCard;
 
     private String mCompanyName;
+    private String mCompanyID;
+    private String mCompanyLogo;
     private String mCardCode;
     private String mCardName;
     private String mCardDes;
@@ -53,8 +59,15 @@ public class FragCreateCardInfo extends BaseMainFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
-            isOther = getArguments().getBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
-            itemCompany = (CompanyObject)getArguments().getSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE);
+            isEditCard = getArguments().getBoolean(Constants.KEY_BUNDLE_CARD_EDIT_CARD, false);
+            if(!isEditCard){
+                isOther = getArguments().getBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
+                itemCompany = (CompanyObject)getArguments().getSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE);
+            }else{
+                memberCard = GlobalInstance.getInstance().memberCard;
+                ItemCreateKard.frontUrl = memberCard.front_of_the_card;
+                ItemCreateKard.backUrl = memberCard.back_of_the_card;
+            }
         }
     }
 
@@ -92,18 +105,39 @@ public class FragCreateCardInfo extends BaseMainFragment {
             mLLInputName.setVisibility(View.GONE);
             imageView = (ImageView) v.findViewById(R.id.frag_create_card_info_img);
             txtCompanyName = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_title);
-            if(itemCompany != null){
-                displayImage(imageView, itemCompany.company_logo);
-                if(itemCompany.company_name != null)
-                    txtCompanyName.setText(itemCompany.company_name);
+            if(isEditCard){
+                mCompanyLogo = memberCard.company_logo;
+                displayImage(imageView, mCompanyLogo);
+                mCompanyID = memberCard.company_id;
+                if(memberCard.company_name != null)
+                    txtCompanyName.setText(memberCard.company_name);
                 else
                     txtCompanyName.setText("");
+            }else{
+                if(itemCompany != null){
+                    mCompanyLogo = itemCompany.company_logo;
+                    displayImage(imageView, mCompanyLogo);
+                    mCompanyID = itemCompany.company_id;
+                    if(itemCompany.company_name != null)
+                        txtCompanyName.setText(itemCompany.company_name);
+                    else
+                        txtCompanyName.setText("");
+                }
             }
         }
 
         edtCardCode = (EditText) v.findViewById(R.id.create_card_cardcode);
         edtCardName = (EditText) v.findViewById(R.id.create_card_cardname);
         edtCardDes = (EditText) v.findViewById(R.id.create_card_carddescription);
+
+        if(isEditCard){
+            if(memberCard.member_card_number != null)
+                edtCardCode.setText(memberCard.member_card_number);
+            if(memberCard.member_card_name != null)
+                edtCardName.setText(memberCard.member_card_name);
+            if(memberCard.description != null)
+                edtCardDes.setText(memberCard.description);
+        }
 
         bntScan = (Button) v.findViewById(R.id.frag_create_card_info_bt_scan);
         bntScan.setOnClickListener(new OnClickListener() {
@@ -123,13 +157,17 @@ public class FragCreateCardInfo extends BaseMainFragment {
                 if(result.equals("")) {
                     FragCreateCardImage fm = new FragCreateCardImage();
                     Bundle bundle = new Bundle();
+                    bundle.putBoolean(Constants.KEY_BUNDLE_CARD_EDIT_CARD, isEditCard);
+                    bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYID, mCompanyID);
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYNAME, mCompanyName);
+                    if(!isOther)
+                        bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYLOGO, mCompanyLogo);
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDCODE, mCardCode);
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDNAME, mCardName);
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDDES, mCardDes);
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_TYPE_CODE, mTypeCode);
                     bundle.putBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, isOther);
-                    bundle.putSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE, itemCompany);
+//                    bundle.putSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE, itemCompany);
                     fm.setArguments(bundle);
                     ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_IMAGE, fm);
                 }else

@@ -2,6 +2,7 @@ package com.nct.fragment;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -55,8 +56,11 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
     private String mCardName = "";
     private String mCardDes = "";
     private String mTypeCode = "";
+    private String mCompanyID = "";
+    private String mCompanyLogo = "";
+
+    private boolean isEditCard = false;
     private boolean isOther = false;
-    private CompanyObject itemCompany;
 
     private Bitmap mBitmapFront, mBitmapBack;
 
@@ -69,13 +73,17 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
+            isEditCard = getArguments().getBoolean(Constants.KEY_BUNDLE_CARD_EDIT_CARD, false);
             mCompanyName = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYNAME);
             mCardCode = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_CARDCODE);
             mCardName = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_CARDNAME);
             mCardDes = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_CARDDES);
             mTypeCode = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_TYPE_CODE);
             isOther = getArguments().getBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
-            itemCompany = (CompanyObject)getArguments().getSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE);
+            if(!isOther){
+                mCompanyID = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYID);
+                mCompanyLogo = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYLOGO);
+            }
         }
     }
 
@@ -111,13 +119,10 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
             txtCompanyName = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_title);
             txtCompanyDes = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_des);
             txtCompanyDes.setText(mCardDes);
-            if(itemCompany != null){
-                displayImage(imageView, itemCompany.company_logo);
-                if(itemCompany.company_name != null)
-                    txtCompanyName.setText(itemCompany.company_name);
-                else
-                    txtCompanyName.setText("");
-            }
+            if(mCompanyLogo != null)
+                displayImage(imageView, mCompanyLogo);
+            if(mCompanyName != null)
+                txtCompanyName.setText(mCompanyName);
         }
 
         lyBtnCameraFront = (RelativeLayout) v.findViewById(R.id.btn_front_camera);
@@ -142,6 +147,29 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
         bntNext = (Button) v.findViewById(R.id.frag_create_card_image_bt_next);
         bntNext.setOnClickListener(this);
 
+        if(isEditCard){
+            lyBtnCameraFront.setVisibility(View.GONE);
+            lyImageFront.setVisibility(View.VISIBLE);
+            lyBtnCameraBack.setVisibility(View.GONE);
+            lyImageBack.setVisibility(View.VISIBLE);
+            if(ItemCreateKard.frontUrl != null){
+                lyBtnCameraFront.setVisibility(View.GONE);
+                lyImageFront.setVisibility(View.VISIBLE);
+                displayImage(imgeFront, ItemCreateKard.frontUrl);
+            }else{
+                lyBtnCameraFront.setVisibility(View.VISIBLE);
+                lyImageFront.setVisibility(View.GONE);
+            }
+            if(ItemCreateKard.backUrl != null){
+                lyBtnCameraBack.setVisibility(View.GONE);
+                lyImageBack.setVisibility(View.VISIBLE);
+                displayImage(imageBack, ItemCreateKard.backUrl);
+            }else{
+                lyBtnCameraBack.setVisibility(View.VISIBLE);
+                lyImageBack.setVisibility(View.GONE);
+            }
+        }
+
         return v;
     }
 
@@ -164,6 +192,8 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
                 getActivity().startActivityForResult(intent, TAKE_PICTURE);
                 break;
             case R.id.frag_create_card_image_bt_next:
+                mBitmapFront = ((BitmapDrawable)imgeFront.getDrawable()).getBitmap();
+                mBitmapBack = ((BitmapDrawable)imageBack.getDrawable()).getBitmap();
                 String result = checkBitmap();
                 if(result.equals(""))
                     ((AtCreateCard)getActivity()).savePhoto(mBitmapFront, mBitmapBack);
@@ -184,8 +214,8 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
         if(result.equals("")) {
             String mCompany = "";
             if(!isOther){
-                if(itemCompany != null)
-                    mCompany = itemCompany.company_id;
+                if(mCompanyID != null)
+                    mCompany = mCompanyID;
             }else
                 mCompany = mCompanyName;
             ((AtCreateCard) getActivity()).createNewCard(GlobalInstance.getInstance().userInfo.user_id, mCompany, mCardName, mCardCode, fontUrl, backUrl, mCardDes, mTypeCode, isOther);
@@ -196,12 +226,15 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
     public void showSuccess(){
         FragCreateCardSuccess fm = new FragCreateCardSuccess();
         Bundle bundle = new Bundle();
+        bundle.putBoolean(Constants.KEY_BUNDLE_CARD_EDIT_CARD, isEditCard);
+        bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYID, mCompanyID);
         bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYNAME, mCompanyName);
+        if(!isOther)
+            bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYLOGO, mCompanyLogo);
         bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDCODE, mCardCode);
         bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDNAME, mCardName);
         bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDDES, mCardDes);
         bundle.putBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, isOther);
-        bundle.putSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE, itemCompany);
         fm.setArguments(bundle);
         ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_IMAGE, fm);
     }

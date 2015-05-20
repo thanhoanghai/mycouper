@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import com.nct.constants.Constants;
 import com.nct.customview.TfTextView;
 import com.nct.model.CompanyObject;
+import com.nct.model.ItemCreateKard;
 
 import thh.com.mycouper.R;
 
@@ -21,16 +22,18 @@ public class FragCreateCardSuccess extends BaseMainFragment {
     private RelativeLayout mLLInfoCard;
     private LinearLayout mLLInputName;
     private ImageView imageView;
-    private TfTextView txtCompanyName, txtCompanyDes;
+    private TfTextView txtCompanyName, txtCompanyDes, txtMesage;
 
     private Button bntDone, btnAgain;
 
     private String mCompanyName;
+    private String mCompanyLogo = "";
     private String mCardCode;
     private String mCardName;
     private String mCardDes;
+
+    private boolean isEditCard = false;
     private boolean isOther = false;
-    private CompanyObject itemCompany;
 
     public static FragCreateCardSuccess newInstance() {
         FragCreateCardSuccess f = new FragCreateCardSuccess();
@@ -41,12 +44,14 @@ public class FragCreateCardSuccess extends BaseMainFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
+            isEditCard = getArguments().getBoolean(Constants.KEY_BUNDLE_CARD_EDIT_CARD, false);
             mCompanyName = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYNAME);
             mCardCode = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_CARDCODE);
             mCardName = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_CARDNAME);
             mCardDes = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_CARDDES);
             isOther = getArguments().getBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
-            itemCompany = (CompanyObject)getArguments().getSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE);
+            if(!isOther)
+                mCompanyLogo = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYLOGO);
         }
         if(mCardDes == null)
             mCardDes = "";
@@ -75,29 +80,37 @@ public class FragCreateCardSuccess extends BaseMainFragment {
             txtCompanyName = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_title);
             txtCompanyDes = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_des);
             txtCompanyDes.setText(mCardDes);
-            if(itemCompany != null){
-                displayImage(imageView, itemCompany.company_logo);
-                if(itemCompany.company_name != null)
-                    txtCompanyName.setText(itemCompany.company_name);
-                else
-                    txtCompanyName.setText("");
+            if(mCompanyLogo != null){
+                displayImage(imageView, mCompanyLogo);
             }
+            if(mCompanyName != null)
+                txtCompanyName.setText(mCompanyName);
         }
 
+        txtMesage = (TfTextView) v.findViewById(R.id.create_card_success);
+        if(isEditCard)
+            txtMesage.setText(getResources().getString(R.string.frag_updatecard_info_successfully));
+        else
+            txtMesage.setText(getResources().getString(R.string.frag_createcard_info_successfully));
         bntDone = (Button) v.findViewById(R.id.frag_create_card_info_bt_done);
         bntDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ItemCreateKard.clear();
                 getActivity().finish();
             }
         });
-        btnAgain = (Button) v.findViewById(R.id.frag_create_card_info_again);
-        btnAgain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
+        btnAgain = (Button) v.findViewById(R.id.frag_create_card_info_again);
+        if(!isEditCard){
+            btnAgain.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }else
+            btnAgain.setVisibility(View.GONE);
 
         return v;
     }

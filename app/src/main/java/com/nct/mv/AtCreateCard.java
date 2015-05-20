@@ -73,8 +73,14 @@ public class AtCreateCard extends AtBase {
 		setLanguge();
 
 		linear = (LinearLayout) findViewById(R.id.at_create_card_linear);
-        if(isEditCard)
-		changeFragment(Constants.TYPE_CREATE_CARD_SEARCH, new FragCreateCardSearch());
+        if(isEditCard){
+            FragCreateCardInfo fm = new FragCreateCardInfo();
+            Bundle bundle = new Bundle();
+            bundle.putBoolean(Constants.KEY_BUNDLE_CARD_EDIT_CARD, isEditCard);
+            fm.setArguments(bundle);
+            changeFragment(Constants.TYPE_CREATE_CARD_INFO, fm);
+        }else
+		    changeFragment(Constants.TYPE_CREATE_CARD_SEARCH, new FragCreateCardSearch());
 	}
 
 	private void initSaveFragment()
@@ -238,6 +244,39 @@ public class AtCreateCard extends AtBase {
                 ((FragCreateCardImage)fragment).showSuccess();
         }else{
             Debug.toast(this, getResources().getString(R.string.frag_createcard_info_failed));
+        }
+    }
+
+    public void updateCard(String user_id, String company, String member_card_name, String member_card_number, String front_of_the_card,
+                              String back_of_the_card, String description, String card_number_type, boolean isOther){
+        if(isOther){
+            DataLoader.postParam(URLProvider.getParamsCreateCardWithUser(user_id, company, member_card_name, member_card_number,
+                    front_of_the_card, back_of_the_card, description, card_number_type), new TextHttpResponseHandler() {
+                @Override
+                public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+                    hideDialogLoading();
+                }
+
+                @Override
+                public void onSuccess(int i, Header[] headers, String result) {
+                    hideDialogLoading();
+                    createKardDone(result);
+                }
+            });
+        }else{
+            DataLoader.postParam(URLProvider.getParamsCreateCardWithCompanyByCategory(user_id, company, member_card_name, member_card_number,
+                    front_of_the_card, back_of_the_card, description, card_number_type), new TextHttpResponseHandler() {
+                @Override
+                public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+                    hideDialogLoading();
+                }
+
+                @Override
+                public void onSuccess(int i, Header[] headers, String result) {
+                    hideDialogLoading();
+                    createKardDone(result);
+                }
+            });
         }
     }
 }
