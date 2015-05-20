@@ -32,7 +32,7 @@
                 android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_lock" />
 
             <EditText android:id="@+id/change_pass_edt_currentpass"
-                android:layout_width="match_parent"
+                android:layout_width="match_parent" android:password="true"
                 android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
                 android:background="@color/transparent"
                 android:hint="@string/change_pass_currentpass" android:textSize="@dimen/login_textfield_textsize" />
@@ -55,7 +55,7 @@
                 android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_lock" />
 
             <EditText android:id="@+id/change_pass_edt_newpass"
-                android:layout_width="match_parent"
+                android:layout_width="match_parent" android:password="true"
                 android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
                 android:background="@color/transparent"
                 android:hint="@string/change_pass_newpass" android:textSize="@dimen/login_textfield_textsize" />
@@ -71,7 +71,7 @@
                 android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_lock"/>
 
             <EditText android:id="@+id/change_pass_edt_confirm"
-                android:layout_width="match_parent"
+                android:layout_width="match_parent" android:password="true"
                 android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
                 android:background="@color/transparent"
                 android:hint="@string/signup_confirmpass" android:textSize="@dimen/login_textfield_textsize" />

@@ -25,7 +25,6 @@
                 />
             <ImageView
                 android:background="@drawable/icon_border"
-                android:id="@+id/item_membercard_img"
                 android:layout_width="@dimen/item_member_card_icon_size"
                 android:layout_height="@dimen/item_member_card_icon_size"
                 />

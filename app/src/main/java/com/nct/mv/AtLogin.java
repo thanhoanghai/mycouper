@@ -65,9 +65,9 @@ public class AtLogin extends AtBase {
         new Device(this);
 
         edtUsername = (EditText) findViewById(R.id.login_edt_username);
-        edtUsername.setText("avataryipyip@gmail.com");
+        edtUsername.setText("hoang.test.001@gmail.com");
         edtPass = (EditText) findViewById(R.id.login_edt_password);
-        edtPass.setText("123456");
+        edtPass.setText("1234567xx");
 
         btLogin = (Button) findViewById(R.id.login_bt_login);
         btLogin.setOnClickListener(new View.OnClickListener() {
