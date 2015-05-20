@@ -101,6 +101,7 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
                 ((AtCreateCard)getActivity()).actionBackKey();
             }
         });
+        setTopBarbtRightVisible(View.INVISIBLE);
 
         mLLInfoCard = (RelativeLayout) v.findViewById(R.id.frag_create_card_info_linear_img);
         mLLInputName = (LinearLayout) v.findViewById(R.id.frag_create_card_info_linear_input);
