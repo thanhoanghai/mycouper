@@ -93,7 +93,7 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
         // TODO Auto-generated method stub
         View v = inflater.inflate(R.layout.frag_create_card_image, container, false);
 
-        initTopbar(v,"Card Image");
+        initTopbar(v,getString(R.string.frag_createcard));
         setTopbarBtLeftImage(R.drawable.icon_back);
         setTopbarLeftBtListener(new OnClickListener() {
             @Override

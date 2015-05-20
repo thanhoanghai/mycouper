@@ -52,7 +52,7 @@ public class FragCreateCardSuccess extends BaseMainFragment {
             isOther = getArguments().getBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
             if(!isOther)
                 mCompanyLogo = getArguments().getString(Constants.KEY_BUNDLE_CARD_INFO_COMPANYLOGO);
-        }
+        }-
         if(mCardDes == null)
             mCardDes = "";
     }

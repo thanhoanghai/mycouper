@@ -77,7 +77,7 @@ public class FragCreateCardInfo extends BaseMainFragment {
         // TODO Auto-generated method stub
         View v = inflater.inflate(R.layout.frag_create_card_info, container, false);
 
-        initTopbar(v,"create card info");
+        initTopbar(v,getString(R.string.frag_createcard));
 
         setTopbarBtLeftImage(R.drawable.icon_back);
         setTopbarLeftBtListener(new OnClickListener() {
@@ -86,6 +86,7 @@ public class FragCreateCardInfo extends BaseMainFragment {
                 ((AtCreateCard) getActivity()).actionBackKey();
             }
         });
+        setTopBarbtRightVisible(View.INVISIBLE);
 
         innitControl(v);
 
