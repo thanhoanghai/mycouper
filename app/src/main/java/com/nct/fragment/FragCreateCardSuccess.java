@@ -110,7 +110,8 @@ public class FragCreateCardSuccess extends BaseMainFragment {
             btnAgain.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    ItemCreateKard.clear();
+                    getActivity().finish();
                 }
             });
         }else
