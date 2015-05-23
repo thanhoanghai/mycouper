@@ -136,6 +136,8 @@
     <!-- Camera-->
     <string name="camera_take_photo">Take a photo</string>
     <string name="camera_flast_auto">Auto</string>
+    <string name="camera_flast_on">On</string>
+    <string name="camera_flast_off">Off</string>
 
     <!-- ITEM ICON MYCOUPER -->
     <string name="item_icon_mycouper_dot">-------------------------------------</string>

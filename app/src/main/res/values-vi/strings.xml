@@ -134,6 +134,8 @@
     <!-- Camera-->
     <string name="camera_take_photo">Chụp ảnh</string>
     <string name="camera_flast_auto">Tự động</string>
+    <string name="camera_flast_on">Bật</string>
+    <string name="camera_flast_off">Tắt</string>
 
     <!-- ITEM ICON MYCOUPER -->
     <string name="item_icon_mycouper_dot">-------------------------------------</string>

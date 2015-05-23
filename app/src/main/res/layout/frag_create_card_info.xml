@@ -39,7 +39,7 @@
                 <com.nct.customview.TfTextView
                     android:layout_width="0dip"
                     android:layout_height="match_parent"
-                    android:layout_weight="30"
+                    android:layout_weight="35"
                     android:gravity="right|center_vertical"
                     android:text="@string/frag_createcard_info_caompanyname"
                     android:textColor="@color/grey_info_text_card"
@@ -50,7 +50,7 @@
                     android:id="@+id/create_card_companymane"
                     android:layout_width="0dip"
                     android:layout_height="match_parent"
-                    android:layout_weight="70"
+                    android:layout_weight="65"
                     android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
                     android:gravity="left|center_vertical"
                     android:background="@color/transparent"

@@ -6,10 +6,8 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 
 import com.facebook.SessionDefaultAudience;
-import com.nct.utils.Device;
 import com.nct.utils.Utils;
 import com.nct.constants.Constants;
-import com.nct.constants.GlobalInstance;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -33,6 +31,7 @@ public class MVapplication extends Application {
 		Constants.SCREEN_WIDTH = metrics.widthPixels;
 		Constants.SCREEN_HEIGHT = metrics.heightPixels;
 		Utils.updateDeviceInfo(this, "");
+
 	}
 
 	public ImageLoader getImageLoader() {

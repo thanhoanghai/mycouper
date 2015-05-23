@@ -1,9 +1,6 @@
 package com.nct.fragment;
-
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,7 +8,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,15 +16,13 @@ import android.widget.RelativeLayout;
 import com.nct.constants.GlobalInstance;
 import com.nct.customview.DialogCustom;
 import com.nct.customview.DialogRate;
-import com.nct.model.CompanyObject;
-import com.nct.mv.AtCamera;
 import com.nct.constants.Constants;
 import com.nct.customview.TfTextView;
 import com.nct.model.ItemCreateKard;
+import com.nct.mv.AtCamera;
 import com.nct.mv.AtCreateCard;
 import com.nct.mv.AtWacCamera;
-import com.nct.utils.BitmapUtils;
-import com.nct.utils.Debug;
+import com.nct.utils.Utils;
 
 import thh.com.mycouper.R;
 
@@ -180,23 +174,16 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
 
     @Override
     public void onClick(View v) {
-        Intent intent = null;
         switch (v.getId()){
             case R.id.image_camera_front:
             case R.id.front_Camera:
                 modeFace = MODE_CAMERA_FACE.Front;
-//                intent = new Intent(getActivity(), AtWacCamera.class);
-//                intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, true);
-//                getActivity().startActivityForResult(intent, TAKE_PICTURE);
-                showsSelectDialog();
+                gotoCamera();
                 break;
             case R.id.image_camera_back:
             case R.id.back_Camera:
                 modeFace = MODE_CAMERA_FACE.Back;
-                showsSelectDialog();
-//                intent = new Intent(getActivity(), AtWacCamera.class);
-//                intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
-//                getActivity().startActivityForResult(intent, TAKE_PICTURE);
+                gotoCamera();
                 break;
             case R.id.frag_create_card_image_bt_next:
                 ((AtCreateCard)getActivity()).savePhoto(mBitmapFront, mBitmapBack);
@@ -239,15 +226,6 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
         ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_IMAGE, fm);
     }
 
-    private String checkBitmap(){
-        String result = "";
-        if(mBitmapFront == null)
-            return result = getActivity().getResources().getString(R.string.frag_createcard_info_capture_front);
-        if(mBitmapBack == null)
-            return result = getActivity().getResources().getString(R.string.frag_createcard_info_capture_back);
-        return result;
-    }
-
     public void activityResult(int requestCode, int resultCode, Intent data){
         if (resultCode == getActivity().RESULT_OK) {
             switch (requestCode){
@@ -284,12 +262,21 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
         }
     }
 
+    private void gotoCamera(){
+        Intent intent = new Intent(getActivity(), AtCamera.class);
+        if(modeFace == MODE_CAMERA_FACE.Front)
+            intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, true);
+        else
+            intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
+        getActivity().startActivityForResult(intent, TAKE_PICTURE);
+    }
+
     private void showsSelectDialog() {
         DialogRate dialog = new DialogRate(getActivity(), 2, "Gallery", "Camera", "", "");
         dialog.setListenerFinishedDialog(new DialogCustom.FinishDialogConfirmListener() {
             @Override
             public void onFinishConfirmDialog(int i) {
-                Intent intent = new Intent(getActivity(), AtWacCamera.class);
+                Intent intent = new Intent(getActivity(), AtCamera.class);
                 if(modeFace == MODE_CAMERA_FACE.Front)
                     intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, true);
                 else

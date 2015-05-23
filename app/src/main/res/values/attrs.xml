@@ -59,17 +59,7 @@
         <attr name="textAllCaps" format="boolean" />
     </declare-styleable>
 
-    
-    
-     <!-- Defines the custom XML attributes supported for a HorizontalListView -->
-    <declare-styleable name="HorizontalListView">
-        <attr name="dividerWidth" format="dimension" />
-        <attr name="android:divider" />
-        <attr name="android:requiresFadingEdge" />
-        <attr name="android:fadingEdgeLength" />
-    </declare-styleable>
-    
-    
+
     <declare-styleable name="ExpandableTextView">
 		<attr name="trimLength" format="integer"/>
 	</declare-styleable>
@@ -82,8 +72,16 @@
         </attr>
         <attr name="fixAspectRatio" format="boolean"/>
         <attr name="aspectRatioX" format="integer"/>
-        <attr name="aspectRatioY" format= "integer"/>
+        <attr name="aspectRatioY" format="integer"/>
         <attr name="imageResource" format="reference"/>
+        <attr name="scaleType">
+            <enum name="centerInside" value="0"/>
+            <enum name="fitCenter" value="1"/>
+        </attr>
+        <attr name="cropShape">
+            <enum name="rectangle" value="0"/>
+            <enum name="oval" value="1"/>
+        </attr>
     </declare-styleable>
     
 </resources>

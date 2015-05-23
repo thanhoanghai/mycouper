@@ -68,18 +68,18 @@
         <activity android:name="com.nct.mv.AtPreviewImage" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
 
         <activity
-            android:name="com.nct.mv.AtCamera"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-        </activity>
-
-        <activity
             android:name="com.nct.mv.AtWacCamera"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
+
+        <activity
+            android:name="com.nct.mv.AtCamera"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            </activity>
 
         <activity
             android:clearTaskOnLaunch="true"

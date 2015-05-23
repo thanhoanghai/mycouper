@@ -269,13 +269,17 @@ public class FragCreateCardInfo extends BaseMainFragment {
                 mCardCode = "";
             // Handle successful scan
             String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+            String typeCode = "";
             if(mCardCode != null){
-                if(format != null && format.equals(TYPE_QRCODE))
+                if(format != null && format.equals(TYPE_QRCODE)) {
                     mTypeCode = TYPE_CARD_SCAN_CODE[2];
-                else
+                    typeCode = "Qrcode";
+                }else{
                     mTypeCode = TYPE_CARD_SCAN_CODE[1];
+                    typeCode = "Barcode";
+                }
+                txtTypeCode.setText(mTypeCode);
             }
-            txtTypeCode.setText(mTypeCode);
         } else if (resultCode == getActivity().RESULT_CANCELED) {
             // Handle cancel
             mCardCode = "";

@@ -31,9 +31,9 @@ import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 
 import com.nct.constants.Constants;
+import com.nct.mv.AtCamera;
 import com.nct.mv.AtCardDetail;
 import com.nct.mv.AtChangePass;
-import com.nct.mv.AtCamera;
 
 import com.nct.mv.AtCreateCard;
 import com.nct.mv.AtForgotPass;

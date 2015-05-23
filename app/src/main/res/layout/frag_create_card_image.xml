@@ -124,12 +124,12 @@
 
                <ImageButton
                    android:id="@+id/front_Camera"
-                   android:layout_width="74dp"
-                   android:layout_height="63dp"
+                   android:layout_width="84dp"
+                   android:layout_height="66dp"
                    android:layout_centerInParent="true"
                    android:scaleType="fitXY"
                    android:background="@null"
-                   android:src="@drawable/switch_camera_icon"/>
+                   android:src="@drawable/your_info_camera_icon"/>
 
                <com.nct.customview.TfTextView
                    android:layout_width="wrap_content"
@@ -165,9 +165,8 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_alignParentRight="true"
-                   android:layout_margin="10dp"
                    android:scaleType="fitXY"
-                   android:src="@drawable/switch_camera_icon"/>
+                   android:src="@drawable/retake_photo"/>
 
 
            </RelativeLayout>
@@ -185,12 +184,12 @@
 
                <ImageButton
                    android:id="@+id/back_Camera"
-                   android:layout_width="74dp"
-                   android:layout_height="63dp"
+                   android:layout_width="84dp"
+                   android:layout_height="66dp"
                    android:layout_centerInParent="true"
                    android:scaleType="fitXY"
                    android:background="@null"
-                   android:src="@drawable/switch_camera_icon"/>
+                   android:src="@drawable/your_info_camera_icon"/>
 
                <com.nct.customview.TfTextView
                    android:layout_width="wrap_content"
@@ -227,9 +226,8 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_alignParentRight="true"
-                   android:layout_margin="10dp"
                    android:scaleType="fitXY"
-                   android:src="@drawable/switch_camera_icon"/>
+                   android:src="@drawable/retake_photo"/>
 
            </RelativeLayout>
 

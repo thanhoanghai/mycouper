@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,15 +14,12 @@ import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-
-import com.edmodo.cropper.CropImageView;
 import com.nct.constants.Constants;
 import com.nct.customview.TfTextView;
 import com.nct.model.ItemCreateKard;
 import com.nct.utils.BitmapUtils;
 import com.nct.utils.Debug;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.File;
 
@@ -63,6 +59,8 @@ public class AtWacCamera extends Activity implements View.OnClickListener {
 
         cropImageView = (CropImageView) findViewById(R.id.CropImageView);
         cropImageView.setAspectRatio(DEFAULT_ASPECT_RATIO_VALUES, DEFAULT_ASPECT_RATIO_VALUES);
+        cropImageView.setCropShape(CropImageView.CropShape.RECTANGLE);
+        cropImageView.setFixedAspectRatio(false);
 
         txtGallery = (TfTextView) findViewById(R.id.txtGallery);
         txtGallery.setOnClickListener(this);

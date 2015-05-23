@@ -25,7 +25,7 @@
         <com.nct.customview.TfTextView
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="30"
+            android:layout_weight="35"
             android:gravity="right|center_vertical"
             android:text="@string/frag_createcard_info_cardcode"
             android:textColor="@color/grey_info_text_card"
@@ -36,15 +36,15 @@
             android:id="@+id/create_card_cardcode"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="70"
             android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
-            android:gravity="left|center_vertical"
+            android:layout_weight="65"
             android:background="@color/transparent"
-            android:textColorHint="@color/read"
+            android:gravity="left|center_vertical"
+            android:hint="@string/frag_createcard_info_required"
             android:imeOptions="actionNext"
             android:singleLine="true"
             android:textColor="@color/grey_info_text_card"
-            android:hint="@string/frag_createcard_info_required"
+            android:textColorHint="@color/read"
             android:textSize="@dimen/frag_createcard_info_title_size" />
 
     </LinearLayout>
@@ -60,25 +60,31 @@
         <com.nct.customview.TfTextView
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="30"
+            android:layout_weight="35"
             android:gravity="right|center_vertical"
             android:text="@string/frag_createcard_info_typecode"
             android:textColor="@color/grey_info_text_card"
             android:textSize="@dimen/frag_createcard_info_title_size"
             app:typeface_name="@string/font_roboto_regular" />
 
-        <com.nct.customview.TfTextView
-            android:id="@+id/create_card_typecode"
+        <LinearLayout
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="70"
-            android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
-            android:gravity="left|center_vertical"
-            android:background="@color/transparent"
-            android:text="BarCode"
-            android:textColor="@color/grey_info_text_card"
-            android:singleLine="true"
-            android:textSize="@dimen/frag_createcard_info_title_size" />
+            android:layout_weight="65">
+
+            <com.nct.customview.TfTextView
+                android:id="@+id/create_card_typecode"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
+                android:background="@color/transparent"
+                android:gravity="left|center_vertical"
+                android:singleLine="true"
+                android:text="BarCode"
+                android:textColor="@color/grey_info_text_card"
+                android:textSize="@dimen/frag_createcard_info_title_size" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -92,7 +98,7 @@
         <com.nct.customview.TfTextView
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="30"
+            android:layout_weight="35"
             android:gravity="right|center_vertical"
             android:text="@string/frag_createcard_info_cardname"
             android:textColor="@color/grey_info_text_card"
@@ -103,15 +109,15 @@
             android:id="@+id/create_card_cardname"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="70"
             android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
-            android:gravity="left|center_vertical"
+            android:layout_weight="65"
             android:background="@color/transparent"
-            android:textColorHint="@color/read"
-            android:textColor="@color/grey_info_text_card"
+            android:gravity="left|center_vertical"
             android:hint="@string/frag_createcard_info_required"
             android:imeOptions="actionNext"
             android:singleLine="true"
+            android:textColor="@color/grey_info_text_card"
+            android:textColorHint="@color/read"
             android:textSize="@dimen/frag_createcard_info_title_size" />
 
     </LinearLayout>
@@ -126,7 +132,7 @@
         <com.nct.customview.TfTextView
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="30"
+            android:layout_weight="35"
             android:gravity="right|center_vertical"
             android:text="@string/frag_createcard_info_description"
             android:textColor="@color/grey_info_text_card"
@@ -137,14 +143,14 @@
             android:id="@+id/create_card_carddescription"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="70"
             android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
-            android:gravity="left|center_vertical"
+            android:layout_weight="65"
             android:background="@color/transparent"
-            android:textColorHint="@color/grey_info_edittext_card"
-            android:textColor="@color/grey_info_text_card"
+            android:gravity="left|center_vertical"
             android:hint="@string/frag_createcard_info_optional"
             android:imeOptions="actionDone"
+            android:textColor="@color/grey_info_text_card"
+            android:textColorHint="@color/grey_info_edittext_card"
             android:textSize="@dimen/frag_createcard_info_title_size" />
 
     </LinearLayout>
