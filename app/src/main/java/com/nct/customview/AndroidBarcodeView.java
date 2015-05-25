@@ -1,6 +1,8 @@
 package com.nct.customview;
 
 
+import com.nct.constants.Constants;
+import com.nct.utils.Debug;
 import com.nct.utils.Utils;
 import com.onbarcode.barcode.android.*;
 
@@ -82,21 +84,23 @@ public class AndroidBarcodeView extends View
         // Unit of Measure, pixel, cm, or inch
         barcode.setUom(IBarcode.UOM_PIXEL);
         // barcode bar module width (X) in pixel
-        barcode.setX(6f);
+        barcode.setX(3f);
         // barcode bar module height (Y) in pixel
-        barcode.setY(200f);
+        barcode.setY(Utils.pxFromDp(mContext, 80));
 
         // barcode image margins
-        barcode.setLeftMargin(10f);
-        barcode.setRightMargin(10f);
+        barcode.setLeftMargin(0f);
+        barcode.setRightMargin(0f);
         barcode.setTopMargin(10f);
         barcode.setBottomMargin(10f);
 
         // barcode image resolution in dpi
         barcode.setResolution(100);
+        barcode.setBarcodeWidth(Constants.SCREEN_WIDTH);
+
 
         // disply barcode encoding data below the barcode
-        //barcode.setShowText(true);
+        barcode.setShowText(false);
         // barcode encoding data font style
         //barcode.setTextFont(new AndroidFont("Arial", Typeface.NORMAL, 12));
         // space between barcode and barcode encoding data
@@ -110,7 +114,9 @@ public class AndroidBarcodeView extends View
         /*
           specify your barcode drawing area
         */
-        RectF bounds = new RectF(0, 0, 0, 0);
+        Debug.logError("barcode","scrw="+Constants.SCREEN_WIDTH);
+        Debug.logError("barcode","barw="+barcode.getBarcodeWidth());
+        RectF bounds = new RectF(Constants.SCREEN_WIDTH/2 - barcode.getBarcodeWidth()/2, 0, 0, 0);
         barcode.drawBarcode(canvas, bounds);
     }
 
