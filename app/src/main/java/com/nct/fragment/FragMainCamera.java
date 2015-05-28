@@ -3,13 +3,17 @@ package com.nct.fragment;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.commonsware.cwac.camera.CameraFragment;
 import com.commonsware.cwac.camera.CameraHost;
@@ -43,6 +47,7 @@ public class FragMainCamera extends CameraFragment implements View.OnClickListen
 
     private ImageView btnCapture, btnGallery, btnClose, btnSwitchCamera;
     private TfTextView btnFlast;
+    private RelativeLayout contentBorder;
 
     private QuickAction quickAction;
     private PopupActionItem flastAuto;
@@ -65,7 +70,6 @@ public class FragMainCamera extends CameraFragment implements View.OnClickListen
     public void onCreate(Bundle state) {
         super.onCreate(state);
 
-        setHasOptionsMenu(true);
         SimpleCameraHost.Builder builder = new SimpleCameraHost.Builder(new DemoCameraHost(getActivity()));
         setHost(builder.useFullBleedPreview(true).build());
     }
@@ -74,6 +78,19 @@ public class FragMainCamera extends CameraFragment implements View.OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View cameraView = super.onCreateView(inflater, container, savedInstanceState);
         View results=inflater.inflate(R.layout.frag_main_camera, container, false);
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int width = metrics.widthPixels - 60;
+        int height = width / 2;
+
+        contentBorder = (RelativeLayout) results.findViewById(R.id.ly_border);
+
+        RelativeLayout.LayoutParams ly = (RelativeLayout.LayoutParams) contentBorder.getLayoutParams();
+        ly.width = width;
+        ly.height = height;
+
+        ((ViewGroup)results.findViewById(R.id.camera)).addView(cameraView);
 
         btnGallery = (ImageView) results.findViewById(R.id.button_gallery);
         btnGallery.setOnClickListener(this);
@@ -86,11 +103,16 @@ public class FragMainCamera extends CameraFragment implements View.OnClickListen
         btnFlast = (TfTextView) results.findViewById(R.id.btn_flast);
         btnFlast.setOnClickListener(this);
 
-        ((ViewGroup)results.findViewById(R.id.camera)).addView(cameraView);
+        getContract().setSingleShotMode(true);
+
+        autoFocus();
         setDefaulMode();
         setFlashMode(mFlastMode);
         innitPopup();
-        autoFocus();
+
+        if (isRecording()) {
+            btnCapture.setClickable(false);
+        }
         return(results);
     }
 
@@ -178,6 +200,10 @@ public class FragMainCamera extends CameraFragment implements View.OnClickListen
         takePicture(xact);
     }
 
+    Contract getContract() {
+        return((Contract)getActivity());
+    }
+
     public interface Contract {
         boolean isSingleShotMode();
 
@@ -197,13 +223,12 @@ public class FragMainCamera extends CameraFragment implements View.OnClickListen
             if (getArguments() == null) {
                 return(false);
             }
-
             return(getArguments().getBoolean(KEY_USE_FFC));
         }
 
         @Override
-        protected File getPhotoPath() {
-            return super.getPhotoPath();
+        public boolean useSingleShotMode() {
+            return true;
         }
 
         @Override
@@ -243,15 +268,15 @@ public class FragMainCamera extends CameraFragment implements View.OnClickListen
         }
 
         @Override
-        public Camera.Parameters adjustPreviewParameters(Camera.Parameters parameters) {
-            flashMode=
-                    CameraUtils.findBestFlashModeMatch(parameters,
-                            Camera.Parameters.FLASH_MODE_RED_EYE,
-                            Camera.Parameters.FLASH_MODE_AUTO,
-                            Camera.Parameters.FLASH_MODE_ON);
+        public Parameters adjustPreviewParameters(Parameters parameters) {
+            flashMode = CameraUtils.findBestFlashModeMatch(parameters,
+                            Parameters.FLASH_MODE_RED_EYE,
+                            Parameters.FLASH_MODE_AUTO,
+                            Parameters.FLASH_MODE_ON,
+                            Parameters.FLASH_MODE_OFF);
 
             if (parameters.getMaxNumDetectedFaces() > 0) {
-                supportsFaces=true;
+                supportsFaces = true;
             }
 
             return(super.adjustPreviewParameters(parameters));
@@ -272,6 +297,12 @@ public class FragMainCamera extends CameraFragment implements View.OnClickListen
         @TargetApi(16)
         public void onAutoFocus(boolean success, Camera camera) {
             super.onAutoFocus(success, camera);
+            btnCapture.setClickable(true);
+        }
+
+        @Override
+        public boolean mirrorFFC() {
+            return true;
         }
     }
 

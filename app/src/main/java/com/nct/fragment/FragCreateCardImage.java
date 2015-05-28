@@ -178,12 +178,14 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
             case R.id.image_camera_front:
             case R.id.front_Camera:
                 modeFace = MODE_CAMERA_FACE.Front;
-                gotoCamera();
+//                gotoCamera();
+                showsSelectDialog();
                 break;
             case R.id.image_camera_back:
             case R.id.back_Camera:
                 modeFace = MODE_CAMERA_FACE.Back;
-                gotoCamera();
+//                gotoCamera();
+                showsSelectDialog();
                 break;
             case R.id.frag_create_card_image_bt_next:
                 ((AtCreateCard)getActivity()).savePhoto(mBitmapFront, mBitmapBack);
@@ -276,7 +278,7 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
         dialog.setListenerFinishedDialog(new DialogCustom.FinishDialogConfirmListener() {
             @Override
             public void onFinishConfirmDialog(int i) {
-                Intent intent = new Intent(getActivity(), AtCamera.class);
+                Intent intent = new Intent(getActivity(), AtWacCamera.class);
                 if(modeFace == MODE_CAMERA_FACE.Front)
                     intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, true);
                 else

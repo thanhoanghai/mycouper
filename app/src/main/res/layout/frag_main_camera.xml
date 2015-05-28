@@ -65,11 +65,27 @@
 
     </RelativeLayout>
 
-    <FrameLayout
-        android:id="@+id/camera"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <FrameLayout
+            android:id="@+id/camera"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:id="@+id/ly_border"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/rectangle_border_white" />
+
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/RelativeLayout1"
@@ -77,8 +93,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:padding="5dp"
-        android:alpha="0.9">
+        android:alpha="0.9"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/button_capture"

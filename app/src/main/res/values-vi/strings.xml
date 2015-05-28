@@ -64,6 +64,8 @@
     <string name="user_account_sharing_mycouper">Chia sẻ thông tin mycouper với bạn bè</string>
     <string name="user_account_logout">Đăng xuất</string>
     <string name="user_account_password_click_here">Mật khẩu (Click để chỉnh sửa)</string>
+    <string name="user_account_update_success">Thông tin cá nhân đã được cập nhật!</string>
+    <string name="user_account_update_failed">Thông tin cá nhân chưa được cập nhật!</string>
 
     <!-- FRAG CREATE NEW CARD -->
     <string name="frag_createcard">TẠO THẺ MỚI</string>

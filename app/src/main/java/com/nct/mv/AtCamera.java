@@ -28,6 +28,9 @@ import thh.com.mycouper.R;
  */
 public class AtCamera extends FragmentActivity implements FragMainCamera.Contract {
 
+    private static final String STATE_SINGLE_SHOT = "single_shot";
+    private static final String STATE_LOCK_TO_LANDSCAPE = "lock_to_landscape";
+
     private static final int SELECT_PICTURE = 1;
 
     private HashMap<String, Stack<Fragment>> mStacks;
@@ -38,7 +41,9 @@ public class AtCamera extends FragmentActivity implements FragMainCamera.Contrac
     private FragMainCamera current=null;
     private boolean hasTwoCameras=(Camera.getNumberOfCameras() > 1);
 
-    private boolean singleShot=false;
+    private boolean singleShot = false;
+    private boolean isLockedToLandscape=false;
+
     private boolean isFrontCamera = false;
     public boolean isFrontBitmap = false;
 
@@ -63,6 +68,21 @@ public class AtCamera extends FragmentActivity implements FragMainCamera.Contrac
             current = FragMainCamera.newInstance(false);
         }
         pushFragments(Constants.TAB_CAMERA_CAMERA, current, false, true);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        setSingleShotMode(savedInstanceState.getBoolean(STATE_SINGLE_SHOT));
+        isLockedToLandscape = savedInstanceState.getBoolean(STATE_LOCK_TO_LANDSCAPE);
+        if (current != null) {
+            current.lockToLandscape(isLockedToLandscape);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean(STATE_SINGLE_SHOT, isSingleShotMode());
+        outState.putBoolean(STATE_LOCK_TO_LANDSCAPE, isLockedToLandscape);
     }
 
     private void initSaveFragment()

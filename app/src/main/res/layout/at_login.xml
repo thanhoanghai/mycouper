@@ -3,67 +3,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
     android:background="@drawable/bg_main"
-    android:orientation="vertical" >
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp" android:layout_weight="1">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_horizontal"
-        android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-            <include layout="@layout/item_icon_mycouper"
-                />
+            <include layout="@layout/item_icon_mycouper" />
 
             <LinearLayout
-                android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
-                android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/white"
-                android:gravity="center_vertical" android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="wrap_content"
-                    android:src="@drawable/icon_email"
-                    android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_textfield_h"
+                android:layout_marginTop="@dimen/login_textfield_marintop"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <EditText android:id="@+id/login_edt_username"
+                <ImageView
+                    android:layout_width="@dimen/login_textfield_icon_w"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/login_textfield_icon_marinleft"
+                    android:src="@drawable/icon_email" />
+
+                <EditText
+                    android:id="@+id/login_edt_username"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
-                    android:background="@color/transparent" android:text="@string/account_test"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+                    android:background="@color/transparent"
+                    android:text="@string/account_test"
                     android:textSize="@dimen/login_textfield_textsize" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
-                android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/white"
-                android:gravity="center_vertical" android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="@dimen/login_textfield_icon_w"
-                    android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_lock" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_textfield_h"
+                android:layout_marginTop="@dimen/login_textfield_marintop"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <EditText android:id="@+id/login_edt_password"
+                <ImageView
+                    android:layout_width="@dimen/login_textfield_icon_w"
+                    android:layout_height="@dimen/login_textfield_icon_w"
+                    android:layout_marginLeft="@dimen/login_textfield_icon_marinleft"
+                    android:src="@drawable/icon_lock" />
+
+                <EditText
+                    android:id="@+id/login_edt_password"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
-                    android:background="@color/transparent" android:password="true"
-                    android:text="@string/account_test" android:textSize="@dimen/login_textfield_textsize" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+                    android:background="@color/transparent"
+                    android:password="true"
+                    android:text="@string/account_test"
+                    android:textSize="@dimen/login_textfield_textsize" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/login_bt_login" android:layout_marginBottom="@dimen/login_bt_marin_bt"
+                android:id="@+id/login_bt_login"
                 android:layout_width="@dimen/login_bt_w"
-                android:layout_height="@dimen/login_bt_h" android:textColor="@color/white" android:textStyle="bold"
-                android:layout_marginTop="@dimen/login_bt_marintop" android:background="@drawable/login_bt_bg"
-                android:text="@string/login_login" android:textSize="@dimen/login_bt_textsize" />
+                android:layout_height="@dimen/login_bt_h"
+                android:layout_marginBottom="@dimen/login_bt_marin_bt"
+                android:layout_marginTop="@dimen/login_bt_marintop"
+                android:background="@drawable/login_bt_bg"
+                android:text="@string/login_login"
+                android:textColor="@color/white"
+                android:textSize="@dimen/login_bt_textsize"
+                android:textStyle="bold" />
 
             <Button
-                android:id="@+id/login_bt_login_fb" android:layout_width="@dimen/login_bt_w"
-                android:layout_height="@dimen/login_bt_h" android:textColor="@color/white" android:textStyle="bold"
+                android:id="@+id/login_bt_login_fb"
+                android:layout_width="@dimen/login_bt_w"
+                android:layout_height="@dimen/login_bt_h"
                 android:layout_marginBottom="@dimen/login_bt_marintop"
-                android:background="@drawable/login_bt_face_bg" android:text="@string/login_login_with_facebook"
+                android:background="@drawable/login_bt_face_bg"
+                android:text="@string/login_login_with_facebook"
+                android:textColor="@color/white"
                 android:textSize="@dimen/login_bt_textsize"
-                />
+                android:textStyle="bold" />
 
 
             <LinearLayout
@@ -108,6 +136,6 @@
 
     </ScrollView>
 
-    <include layout="@layout/item_copywright"  />
+    <include layout="@layout/item_copywright" />
 
 </LinearLayout>

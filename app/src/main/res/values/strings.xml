@@ -66,6 +66,9 @@
     <string name="user_account_sharing_mycouper">Sharing myCouper with your firends:</string>
     <string name="user_account_logout">Logout</string>
     <string name="user_account_password_click_here">Password (click here to change)</string>
+    <string name="user_account_update_success">User\'s profile have been updated!</string>
+    <string name="user_account_update_failed">User\'s profile haven\'t been updated!</string>
+    <string name="user_account_format_birthday">yyyy-mm-dd</string>
 
 
     <!-- FRAG CREATE NEW CARD -->

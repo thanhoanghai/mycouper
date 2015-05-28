@@ -18,4 +18,16 @@ public class UserObject {
         this.user_id = user_id;
         this.user_email = user_email;
     }
+
+    public UserObject(String user_id, String user_email, String first_name, String last_name, String birthday,
+                      String phone, String civility, String last_update){
+        this.user_id = user_id;
+        this.user_email = user_email;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.birthday = birthday;
+        this.phone = phone;
+        this.civility = civility;
+        this.last_update = last_update;
+    }
 }

@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
@@ -12,12 +13,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.nct.customview.TfTextView;
 import com.nct.model.ItemCreateKard;
 import com.nct.mv.AtCamera;
 import com.nct.utils.BitmapUtils;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.io.File;
 
 import thh.com.mycouper.R;
 
@@ -32,11 +36,13 @@ public class FragCropImage extends Fragment implements View.OnClickListener {
     private static final int DEFAULT_ASPECT_RATIO_VALUES = 10;
 
     private CropImageView cropImageView;
+    private ImageView imgPhoto;
     private TfTextView txtCancel, txtRetake, txtUse;
 
     public static byte[] imageToShow=null;
     private String imgPath = null;
     private Bitmap bitmapCamera;
+    private Uri imageUri;
 
     private boolean isLibrary = false;
     private int bitmapWidth = 0;
@@ -68,6 +74,8 @@ public class FragCropImage extends Fragment implements View.OnClickListener {
         cropImageView.setCropShape(CropImageView.CropShape.RECTANGLE);
         cropImageView.setFixedAspectRatio(false);
 
+        imgPhoto = (ImageView) v.findViewById(R.id.img_photo);
+
         txtCancel = (TfTextView) v.findViewById(R.id.txtCancel);
         txtCancel.setOnClickListener(this);
         txtRetake = (TfTextView) v.findViewById(R.id.txtRetake);
@@ -76,11 +84,13 @@ public class FragCropImage extends Fragment implements View.OnClickListener {
         txtUse.setOnClickListener(this);
 
         if(imgPath != null){
+//            showImageUri();
             getBitmap(imgPath);
         }else if(imageToShow != null){
             showImageCapture();
         }else
             Toast.makeText(getActivity(), "Get photo error!", Toast.LENGTH_LONG).show();
+
         return v;
     }
 
@@ -98,6 +108,21 @@ public class FragCropImage extends Fragment implements View.OnClickListener {
             cropImageView.setImageBitmap(bitmapCamera);
     }
 
+    private void showImageUri(){
+        imageUri = getCaptureImageOutputUri();
+        cropImageView.setImageUri(imageUri);
+    }
+
+    private Uri getCaptureImageOutputUri() {
+        Uri outputFileUri = null;
+        File getImage = getActivity().getExternalCacheDir();
+        if (getImage != null) {
+            outputFileUri = Uri.fromFile(new File(imgPath));
+//            outputFileUri = Uri.fromFile(new File(getImage.getPath(), "pickImageResult.jpeg"));
+        }
+        return outputFileUri;
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -111,10 +136,14 @@ public class FragCropImage extends Fragment implements View.OnClickListener {
                 break;
             case R.id.txtUse:
                 if(bitmapCamera != null){
-                    if(((AtCamera)getActivity()).isFrontBitmap)
-                        ItemCreateKard.bitmapFront = cropImageView.getCroppedImage();
-                    else
-                        ItemCreateKard.bitmapBack = cropImageView.getCroppedImage();
+                    try{
+                        if(((AtCamera)getActivity()).isFrontBitmap)
+                            ItemCreateKard.bitmapFront = cropImageView.getCroppedImage();
+                        else
+                            ItemCreateKard.bitmapBack = cropImageView.getCroppedImage();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
                 Intent resultIntent = new Intent();
                 getActivity().setResult(Activity.RESULT_OK, resultIntent);
@@ -128,6 +157,7 @@ public class FragCropImage extends Fragment implements View.OnClickListener {
             bitmapCamera = BitmapUtils.scaleDownBitmap(path, bitmapWidth, bitmapHeight);
             if (bitmapCamera != null) {
                 cropImageView.setImageBitmap(bitmapCamera);
+                imgPhoto.setImageBitmap(bitmapCamera);
             }
         }catch (OutOfMemoryError e){
             e.getMessage();

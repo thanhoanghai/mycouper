@@ -219,4 +219,18 @@ public class URLProvider {
         return params;
     }
 
+    public static RequestParams updateProfile(String user_id, String first_name, String last_name, String phone,
+                                              String civility, String birthday)
+    {
+        RequestParams params = new RequestParams();
+        params.put("ac", "change_user_info");
+        params.put("user_id", user_id);
+        params.put("first_name", first_name);
+        params.put("last_name", last_name);
+        params.put("phone", phone);
+        params.put("civility", civility);
+        params.put("birthday", birthday);
+        return params;
+    }
+
 }

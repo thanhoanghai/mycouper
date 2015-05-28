@@ -168,8 +168,8 @@ public class AtCreateCard extends AtBase {
             @Override
             public String doInBackground(Void... params) {
                 if(mBitmapFront != null){
-                    String result = URLProvider.postPhoto(nameImageFront, BitmapUtils.getByteArrayOutputStream(mBitmapFront, 100));
                     try {
+                        String result = URLProvider.postPhoto(nameImageFront, BitmapUtils.getByteArrayOutputStream(mBitmapFront, 100));
                         JSONObject object = new JSONObject(result);
                         mFrontUrl = object.optString("image");
                     } catch (Exception e) {
@@ -177,8 +177,8 @@ public class AtCreateCard extends AtBase {
                     }
                 }
                 if(mBitmapBack != null){
-                    String mResult = URLProvider.postPhoto(nameImageBack, BitmapUtils.getByteArrayOutputStream(mBitmapBack, 100));
                     try {
+                        String mResult = URLProvider.postPhoto(nameImageBack, BitmapUtils.getByteArrayOutputStream(mBitmapBack, 100));
                         JSONObject object = new JSONObject(mResult);
                         mBackUrl = object.optString("image");
                     } catch (Exception e) {

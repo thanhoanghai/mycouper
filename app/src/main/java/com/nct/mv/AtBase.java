@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.nct.application.MVapplication;
 import com.nct.constants.GlobalInstance;
+import com.nct.customview.TfTextView;
 import com.nct.customview.ViewResultLoad;
 import com.nct.customview.ViewResultLoad.InterfaceNetworkListener;
 import com.nct.utils.Utils;
@@ -104,12 +105,14 @@ public class AtBase extends FragmentActivity {
 	/////////TOP BAR ///////////////////
 	private TextView topBartitle;
 	private ImageView topBarbtLeft,topBarBtRight;
+    private TfTextView topBarTxtRight;
 	public void initTopbar(String title)
 	{
 		topBartitle = (TextView) findViewById(R.id.item_topbar_tv_title);
 		topBartitle.setText(title);
 		topBarbtLeft = (ImageView) findViewById(R.id.item_topbar_bt_leftmenu);
 		topBarBtRight = (ImageView) findViewById(R.id.item_topbar_bt_rightmenu);
+        topBarTxtRight = (TfTextView) findViewById(R.id.item_topbar_tv_right);
 	}
 	public void setTopbarTitle(String text)
 	{
@@ -133,6 +136,20 @@ public class AtBase extends FragmentActivity {
 	{
 		topBarBtRight.setVisibility(visi);
 	}
+
+    public void setTopbarTxtRightVisible(int visi)
+    {
+        topBarTxtRight.setVisibility(visi);
+    }
+
+    public void setTopbarTxtRightTitle(String text)
+    {
+        topBarTxtRight.setText(text);
+    }
+
+    public void setTopbarRightTxtListener(View.OnClickListener listener){
+        topBarTxtRight.setOnClickListener(listener);
+    }
 
 	////////////////// LANGUAGE ////////
 	public void setLanguge() {

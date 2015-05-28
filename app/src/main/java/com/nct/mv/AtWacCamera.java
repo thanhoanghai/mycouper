@@ -131,6 +131,7 @@ public class AtWacCamera extends Activity implements View.OnClickListener {
                 case TAKE_PICTURE:
                     if (mImageUri != null) {
                         getBitmap(mImageUri.getPath());
+//                        performCrop(mImageUri);
                     }else
                         Debug.toast(this, "Capture photo error!");
                     break;
@@ -149,6 +150,36 @@ public class AtWacCamera extends Activity implements View.OnClickListener {
             }
         }else
             this.finish();
+    }
+
+    /**
+     * this function does the crop operation.
+     */
+    private void performCrop(Uri mImageUri) {
+        // take care of exceptions
+        try {
+            // call the standard crop action intent (the user device may not
+            // support it)
+            Intent cropIntent = new Intent("com.android.camera.action.CROP");
+            // indicate image type and Uri
+            cropIntent.setDataAndType(mImageUri, "image/*");
+            // set crop properties
+            cropIntent.putExtra("crop", "true");
+            // indicate aspect of desired crop
+            cropIntent.putExtra("aspectX", 2);
+            cropIntent.putExtra("aspectY", 1);
+            // indicate output X and Y
+            cropIntent.putExtra("outputX", 300);
+            cropIntent.putExtra("outputY", 150);
+            // retrieve data on return
+            cropIntent.putExtra("return-data", true);
+            // start the activity - we handle returning in onActivityResult
+            startActivityForResult(cropIntent, 100);
+        }
+        // respond to users whose devices do not support the crop action
+        catch (ActivityNotFoundException anfe) {
+
+        }
     }
 
     private void getBitmap(String path){
