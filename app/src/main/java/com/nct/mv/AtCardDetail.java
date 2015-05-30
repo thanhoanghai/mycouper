@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.loopj.android.http.TextHttpResponseHandler;
+import com.nct.adapter.CardDetailPosAdapter;
 import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
 import com.nct.customview.AndroidBarcodeView;
@@ -61,8 +64,6 @@ public class AtCardDetail extends AtBase {
 	private PosData posData;
 	private PosObject posObject;
 
-	private TextView mapTitle,mapPos,mapStreets,mapPhone,mapOpen,mapClose;
-
 	private TextView barCodeID;
 	private ImageView imgQRcode;
 	private LinearLayout linearBarcode;
@@ -72,6 +73,10 @@ public class AtCardDetail extends AtBase {
 	private TextView couponTitle;
 	private TextView couponExpire;
 	private CouponData couponData;
+
+
+	private ListView lvPos;
+	private CardDetailPosAdapter lvPosAdapter;
 
 
 	@Override
@@ -150,9 +155,11 @@ public class AtCardDetail extends AtBase {
 				@Override
 				public void onSuccess(int i, Header[] headers, String s) {
 					posData = DataHelper.getPosData(s);
-					if(posData!=null && posData.data.size() > 0)
+					if(posData.statusCode == Constants.STATUS_CODE_OK && posData!=null && posData.data.size() > 0)
 					{
 						posObject = posData.data.get(0);
+						lvPosAdapter = new CardDetailPosAdapter(AtCardDetail.this,posData.data);
+						lvPos.setAdapter(lvPosAdapter);
 						showPosCompany();
 					}
 
@@ -169,11 +176,6 @@ public class AtCardDetail extends AtBase {
 		CameraPosition cameraPosition = new CameraPosition.Builder().target(
 				new LatLng(posObject.latitude, posObject.longitude)).zoom(12).build();
 		googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-		mapTitle.setText(posObject.pos_name);
-		mapPos.setText(posObject.pos_id);
-		mapStreets.setText(posObject.address + " | " + posObject.address2);
-		mapPhone.setText(posObject.phone);
 
 		frameMapInfo.setVisibility(View.VISIBLE);
 
@@ -219,6 +221,15 @@ public class AtCardDetail extends AtBase {
 
 	private void initValueItem()
 	{
+
+		lvPos = (ListView) findViewById(R.id.card_detail_lv_maps);
+		lvPos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view,
+									int position, long id) {
+				posObject = lvPosAdapter.getItem(position);
+				showPosCompany();
+			}
+		});
 
 		linearCoupon = (LinearLayout) findViewById(R.id.card_detail_linear_coupon);
 		couponImg = (ImageView) findViewById(R.id.card_detail_coupon_img_icon);
@@ -309,10 +320,6 @@ public class AtCardDetail extends AtBase {
 			}
 		});
 
-		mapTitle = (TextView) findViewById(R.id.card_detail_tv_maptitle);
-		mapPos = (TextView) findViewById(R.id.card_detail_tv_mappos);
-		mapStreets = (TextView) findViewById(R.id.card_detail_tv_mapstreet);
-		mapPhone = (TextView) findViewById(R.id.card_detail_tv_mapphone);
 	}
 
 	private DialogRate dialogRate;

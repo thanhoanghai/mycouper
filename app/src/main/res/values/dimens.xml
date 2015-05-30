@@ -110,6 +110,10 @@
     <dimen name="item_topbar_icon_size">40dp</dimen>
     <dimen name="item_topbar_text_size">18sp</dimen>
 
+    <!-- ITEM POS  -->
+    <dimen name="item_pos_title_size">15sp</dimen>
+    <dimen name="item_pos_tvstreets_size">14sp</dimen>
+    <dimen name="item_pos_tvphone">12sp</dimen>
 
 
 </resources>

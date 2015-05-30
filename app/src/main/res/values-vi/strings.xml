@@ -37,6 +37,10 @@
 
     <string name="coupons">COUPONS:</string>
     <string name="expire_at">Hết hạn:</string>
+    <string name="open_">Mở:</string>
+    <string name="close_">Đóng:</string>
+
+    <string name="available_outlets">Available Outlets:</string>
 
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Nhập mã nếu thiết bị không nhận :</string>

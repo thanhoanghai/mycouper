@@ -204,43 +204,25 @@
                 android:paddingLeft="5dp" android:orientation="vertical"
                 >
 
-                <com.nct.customview.TfTextView android:id="@+id/card_detail_tv_maptitle"
+                <com.nct.customview.TfTextView
+                    android:id="@+id/card_detail_tv_maptitle"
                     app:typeface_name="@string/font_roboto_regular"
                     app:typeface_style="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/app_name"
+                    android:text="@string/available_outlets"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
-                <com.nct.customview.TfTextView android:id="@+id/card_detail_tv_mappos"
-                    android:layout_marginTop="@dimen/card_detail_marintop"
-                    app:typeface_name="@string/font_roboto_regular"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="@color/grey_info_text_card"
-                    android:textSize="14sp" />
+                    android:textSize="15sp" />
+                <ListView
+                    android:id="@+id/card_detail_lv_maps"
+                    android:layout_width="match_parent" android:alwaysDrawnWithCache="true"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:drawSelectorOnTop="false" android:scrollbars="none"
+                    android:listSelector="@android:color/transparent"
+                    android:divider="@null" android:dividerHeight="0dp"
+                    android:layout_height="140dp">
 
-                <com.nct.customview.TfTextView android:id="@+id/card_detail_tv_mapstreet"
-                    android:layout_marginTop="@dimen/card_detail_marintop"
-                    app:typeface_name="@string/font_roboto_regular"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="@color/grey_info_text_card"
-                    android:textSize="14sp" />
-
-                <com.nct.customview.TfTextView android:id="@+id/card_detail_tv_mapphone"
-                    android:layout_marginTop="@dimen/card_detail_marintop"
-                    app:typeface_name="@string/font_roboto_regular"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:drawableLeft="@drawable/icon_phone"
-                    android:drawablePadding="5dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="@color/grey_info_text_card"
-                    android:textSize="14sp" />
+                </ListView>
 
             </LinearLayout>
 
@@ -250,7 +232,9 @@
                 android:layout_height="@dimen/frag_membercard_bt_h"
                 android:background="@drawable/login_bt_face_bg"
                 android:text="@string/close"
-                android:textColor="@color/white" android:layout_marginBottom="10dp" android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 tools:ignore="UnusedAttribute" />
 
         </LinearLayout>
