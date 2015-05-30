@@ -125,11 +125,70 @@
                 android:textColor="@color/white"
                 android:background="@color/blue_hard"
                 android:textSize="17sp" />
+
+            <LinearLayout android:id="@+id/card_detail_linear_coupon" android:layout_marginTop="5dp" android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" android:orientation="vertical"
+                android:layout_width="match_parent" android:visibility="gone"
+                android:layout_height="wrap_content">
+
+                <com.nct.customview.TfTextView android:paddingLeft="2dp"
+                    app:typeface_name="@string/font_roboto_regular"
+                    app:typeface_style="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/coupons"
+                    android:textColor="@color/white"
+                    android:background="@color/yellow"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:background="@color/grey_info_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/card_detail_coupon_img_icon"
+                        android:layout_width="@dimen/item_member_card_icon_size"
+                        android:layout_height="@dimen/item_member_card_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@color/grey_info_card" />
+
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <com.nct.customview.TfTextView
+                            android:id="@+id/card_detail_coupon_tv_title"
+                            app:typeface_name="@string/font_roboto_regular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/coupons"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                        <com.nct.customview.TfTextView
+                            android:id="@+id/card_detail_coupon_tv_expire"
+                            app:typeface_name="@string/font_roboto_regular"
+                            android:gravity="right"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/coupons"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
         </LinearLayout>
         </ScrollView>
 
         <LinearLayout
-            android:id="@+id/card_detail_frame_maps"
+            android:id="@+id/card_detail_frame_maps" android:gravity="center_horizontal"
             android:layout_width="match_parent" android:orientation="vertical" android:background="@color/white"
             android:layout_height="match_parent" android:visibility="visible">
             <fragment
@@ -140,7 +199,7 @@
 
             </fragment>
 
-            <LinearLayout
+            <LinearLayout android:id="@+id/card_detail_frame_maps_info"
                 android:layout_width="match_parent" android:gravity="center_horizontal" android:layout_height="wrap_content"
                 android:paddingLeft="5dp" android:orientation="vertical"
                 >
@@ -183,16 +242,16 @@
                     android:textColor="@color/grey_info_text_card"
                     android:textSize="14sp" />
 
-
-                <Button
-                    android:id="@+id/card_detail_bt_closemap"
-                    android:layout_width="@dimen/frag_membercard_bt_w"
-                    android:layout_height="@dimen/frag_membercard_bt_h"
-                    android:background="@drawable/login_bt_face_bg"
-                    android:text="@string/close"
-                    android:textColor="@color/white" android:layout_marginBottom="10dp" android:layout_marginTop="10dp"
-                    tools:ignore="UnusedAttribute" />
             </LinearLayout>
+
+            <Button
+                android:id="@+id/card_detail_bt_closemap"
+                android:layout_width="@dimen/frag_membercard_bt_w"
+                android:layout_height="@dimen/frag_membercard_bt_h"
+                android:background="@drawable/login_bt_face_bg"
+                android:text="@string/close"
+                android:textColor="@color/white" android:layout_marginBottom="10dp" android:layout_marginTop="10dp"
+                tools:ignore="UnusedAttribute" />
 
         </LinearLayout>
 

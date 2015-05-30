@@ -27,6 +27,7 @@ import com.nct.customview.DialogRate;
 import com.nct.dataloader.DataHelper;
 import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
+import com.nct.model.CouponData;
 import com.nct.model.MemberCardObject;
 import com.nct.model.PosData;
 import com.nct.model.PosObject;
@@ -34,6 +35,7 @@ import com.nct.utils.Debug;
 import com.nct.utils.Utils;
 
 import org.apache.http.Header;
+import org.w3c.dom.Text;
 
 import thh.com.mycouper.R;
 
@@ -52,6 +54,7 @@ public class AtCardDetail extends AtBase {
 	// Google Map
 	private GoogleMap googleMap;
 
+	private LinearLayout frameMapInfo;
 	private LinearLayout frameMaps;
 	private Button bntCloseMap;
 	private TextView btOpenmap;
@@ -63,6 +66,12 @@ public class AtCardDetail extends AtBase {
 	private TextView barCodeID;
 	private ImageView imgQRcode;
 	private LinearLayout linearBarcode;
+
+	private LinearLayout linearCoupon;
+	private ImageView couponImg;
+	private TextView couponTitle;
+	private TextView couponExpire;
+	private CouponData couponData;
 
 
 	@Override
@@ -146,6 +155,7 @@ public class AtCardDetail extends AtBase {
 						posObject = posData.data.get(0);
 						showPosCompany();
 					}
+
 				}
 			});
 		}
@@ -165,6 +175,8 @@ public class AtCardDetail extends AtBase {
 		mapStreets.setText(posObject.address + " | " + posObject.address2);
 		mapPhone.setText(posObject.phone);
 
+		frameMapInfo.setVisibility(View.VISIBLE);
+
 
 	}
 
@@ -173,12 +185,18 @@ public class AtCardDetail extends AtBase {
 	{
 		DataLoader.get(URLProvider.getEcouponBymemberCompany(memberCard.company_id, GlobalInstance.getInstance().getUserID()), new TextHttpResponseHandler() {
 			@Override
-			public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
-			}
-
+			public void onFailure(int i, Header[] headers, String s, Throwable throwable) {}
 			@Override
 			public void onSuccess(int i, Header[] headers, String s) {
 				Debug.logError(tag, s);
+				couponData = DataHelper.getCouponData(s);
+				if(couponData.statusCode == Constants.STATUS_CODE_OK && couponData!=null && couponData.data.size() > 0)
+				{
+					linearCoupon.setVisibility(View.VISIBLE);
+					displayImage(couponImg, memberCard.company_logo);
+					couponTitle.setText(couponData.data.get(0).card_name);
+					couponExpire.setText(getString(R.string.expire_at) +couponData.data.get(0).valid_to);
+				}
 			}
 		});
 	}
@@ -202,6 +220,11 @@ public class AtCardDetail extends AtBase {
 	private void initValueItem()
 	{
 
+		linearCoupon = (LinearLayout) findViewById(R.id.card_detail_linear_coupon);
+		couponImg = (ImageView) findViewById(R.id.card_detail_coupon_img_icon);
+		couponTitle = (TextView) findViewById(R.id.card_detail_coupon_tv_title);
+		couponExpire = (TextView) findViewById(R.id.card_detail_coupon_tv_expire);
+
 		linearBarcode = (LinearLayout) findViewById(R.id.card_detail_linear_barcode);
 
 		barCodeID = (TextView) findViewById(R.id.card_detail_tv_idcode);
@@ -214,6 +237,9 @@ public class AtCardDetail extends AtBase {
 				frameMaps.setVisibility(View.VISIBLE);
 			}
 		});
+
+		frameMapInfo = (LinearLayout) findViewById(R.id.card_detail_frame_maps_info);
+		frameMapInfo.setVisibility(View.GONE);
 
 		frameMaps = (LinearLayout) findViewById(R.id.card_detail_frame_maps);
 		frameMaps.setVisibility(View.GONE);

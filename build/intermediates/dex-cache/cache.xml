@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/imageviewtouch.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1857884a27c184038904d6034c8932384cc38d51">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/imageviewtouch-f88dbd2505637b1b81c856c6e9825a6b11350e19.jar" />
+    </item>
+    <item
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.12/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="733494514a30e5e5c60da15444b7d720590679c4">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-41df0c4a6a6b74ce80ca52fa4273ec6e9469aee9.jar" />
+    </item>
+
+</items>

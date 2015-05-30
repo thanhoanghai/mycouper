@@ -35,6 +35,9 @@
     <string name="do_you_want_delete">Bạn muốn xoá thẻ này?</string>
 
 
+    <string name="coupons">COUPONS:</string>
+    <string name="expire_at">Hết hạn:</string>
+
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Nhập mã nếu thiết bị không nhận :</string>
 
