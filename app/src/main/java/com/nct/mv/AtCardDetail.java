@@ -1,8 +1,11 @@
 package com.nct.mv;
 
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -20,6 +23,10 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.adapter.CardDetailPosAdapter;
 import com.nct.constants.Constants;
@@ -382,14 +389,53 @@ public class AtCardDetail extends AtBase {
 
 	private void showImgQRcode()
 	{
-		String qr = "qr";
 		if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[1])) {
-			displayImage(imgQRcode, "http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=" + memberCard.member_card_number);
+            generateQRCode();
 		}if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[2])) {
-			AndroidBarcodeView view = new AndroidBarcodeView(AtCardDetail.this,memberCard.member_card_number);
-			imgQRcode.setVisibility(View.INVISIBLE);
-		 	linearBarcode.addView(view);
-			linearBarcode.setVisibility(View.VISIBLE);
+            generateBarCode();
 		}
 	}
+
+    private void generateBarCode(){
+        try{
+            DisplayMetrics metrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            int bitmapWidth = metrics.widthPixels / 2;
+
+            MultiFormatWriter writeBarcode = new MultiFormatWriter();
+            BitMatrix bitMatrix = writeBarcode.encode(memberCard.member_card_number, BarcodeFormat.CODE_128, 3 * bitmapWidth / 2, bitmapWidth);
+            Bitmap bmp = toBitmap(bitMatrix);
+            imgQRcode.setImageBitmap(bmp);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void generateQRCode(){
+        try{
+            DisplayMetrics metrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            int bitmapWidth = metrics.widthPixels / 2;
+
+            QRCodeWriter writeCode = new QRCodeWriter();
+            BitMatrix bitMatrix = writeCode.encode(memberCard.member_card_number, BarcodeFormat.QR_CODE, bitmapWidth, bitmapWidth);
+            Bitmap bmp = toBitmap(bitMatrix);
+            imgQRcode.setImageBitmap(bmp);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static Bitmap toBitmap(BitMatrix matrix){
+        int height = matrix.getHeight();
+        int width = matrix.getWidth();
+        Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+        for (int x = 0; x < width; x++){
+            for (int y = 0; y < height; y++){
+                bmp.setPixel(x, y, matrix.get(x,y) ? Color.BLACK : Color.WHITE);
+            }
+        }
+        return bmp;
+    }
+
 }
