@@ -110,16 +110,26 @@
                     android:text="@string/user_account_civility"
                     app:typeface_name="@string/font_roboto_regular" />
 
-                <EditText
-                    android:id="@+id/user_account_civility"
-                    style="@style/user_account_title_info"
-                    android:layout_weight="1"
-                    android:background="@color/transparent"
-                    android:gravity="left|center_vertical"
-                    android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:text="@string/user_account_civility"
-                    android:textColorHint="@color/grey_info_edittext_card" />
+                <LinearLayout
+                    android:id="@+id/contentcivility"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|left"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/user_account_civility"
+                        style="@style/user_textview_title_info"
+                        android:background="@color/transparent"
+                        android:gravity="center_vertical|left"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:text="@string/user_account_civility"
+                        android:textColorHint="@color/grey_info_edittext_card" />
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
 

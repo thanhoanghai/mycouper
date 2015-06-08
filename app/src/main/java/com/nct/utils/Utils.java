@@ -31,7 +31,6 @@ import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 
 import com.nct.constants.Constants;
-import com.nct.mv.AtCamera;
 import com.nct.mv.AtCardDetail;
 import com.nct.mv.AtChangePass;
 
@@ -103,11 +102,6 @@ public class Utils {
 		Intent search = new Intent(mContext, AtLogin.class);
 		mContext.startActivity(search);
 	}
-
-    public static void gotoScreenCamera(Context mContext) {
-        Intent search = new Intent(mContext, AtCamera.class);
-        mContext.startActivity(search);
-    }
 
 	public static boolean isNetwork3g(Context mContext) {
 		try {

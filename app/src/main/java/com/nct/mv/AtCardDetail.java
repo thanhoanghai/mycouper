@@ -185,8 +185,6 @@ public class AtCardDetail extends AtBase {
 		googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 		frameMapInfo.setVisibility(View.VISIBLE);
-
-
 	}
 
 

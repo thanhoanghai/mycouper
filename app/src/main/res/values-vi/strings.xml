@@ -116,6 +116,8 @@
     <string name="signup_password">Mật khẩu</string>
     <string name="signup_confirmpass">Xác nhận mật khẩu</string>
     <string name="signup_required">(required)</string>
+    <string name="signup_success">Đăng ký tài khoản thành công!</string>
+    <string name="signup_failed">Đăng ký tài khoản không thành công!</string>
 
     <!-- FORGOT PASSWORD -->
     <string name="forgot_email">Email</string>
@@ -137,6 +139,8 @@
     <string name="login_message_user_invalid">Email không chính xác!</string>
     <string name="login_message_confirm_pass_incorrect">Xác nhận mật khẩu không chính xác!</string>
 
+    <string name="do_you_want_logout">Bạn có muốn đăng xuất?</string>
+    <string name="logout_success">Đăng xuất thành công!</string>
 
     <!-- ITEM COPYWRIGHT -->
     <string name="item_copywright">Copywright 2015 by myCouper</string>

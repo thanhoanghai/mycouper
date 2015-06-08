@@ -68,6 +68,7 @@
             app:typeface_name="@string/font_roboto_regular" />
 
         <LinearLayout
+            android:id="@+id/contentTypeCode"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="65">

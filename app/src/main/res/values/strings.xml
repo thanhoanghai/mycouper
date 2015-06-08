@@ -119,6 +119,8 @@
     <string name="signup_password">Password</string>
     <string name="signup_confirmpass">Confirm password</string>
     <string name="signup_required">(required)</string>
+    <string name="signup_success">Signup successfully!</string>
+    <string name="signup_failed">Signup failed!</string>
 
     <!-- FORGOT PASSWORD -->
     <string name="forgot_email">Email</string>
@@ -139,6 +141,9 @@
     <string name="login_message_pass_is_empty">Need password field!</string>
     <string name="login_message_user_invalid">Email is invalid!</string>
     <string name="login_message_confirm_pass_incorrect">Confirm password incorrect!</string>
+
+    <string name="do_you_want_logout">Do you want to log out?</string>
+    <string name="logout_success">Logout success!</string>
 
 
     <!-- ITEM COPYWRIGHT -->

@@ -109,6 +109,7 @@ public class FragCreateCardInfo extends BaseMainFragment {
         mLLInfoCard = (LinearLayout) v.findViewById(R.id.frag_create_card_info_linear_img);
         mLLInputName = (LinearLayout) v.findViewById(R.id.frag_create_card_info_linear_input);
         mLLTypeCode = (LinearLayout) v.findViewById(R.id.lyTypeCode);
+
         imageView = (ImageView) v.findViewById(R.id.frag_create_card_info_img);
         txtCompanyName = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_title);
         if(isOther){
@@ -153,6 +154,14 @@ public class FragCreateCardInfo extends BaseMainFragment {
             }
         });
 
+        LinearLayout contentTypeCode = (LinearLayout) v.findViewById(R.id.contentTypeCode);
+        contentTypeCode.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quickAction.show(txtTypeCode);
+            }
+        });
+
         bntScan = (Button) v.findViewById(R.id.frag_create_card_info_bt_scan);
         bntScan.setOnClickListener(new OnClickListener() {
             @Override
@@ -164,9 +173,9 @@ public class FragCreateCardInfo extends BaseMainFragment {
         });
 
         if(isEditCard){
-            edtCardCode.setEnabled(false);
-            bntScan.setClickable(false);
-            txtTypeCode.setClickable(false);
+//            edtCardCode.setEnabled(false);
+//            bntScan.setClickable(false);
+//            txtTypeCode.setClickable(false);
             if(memberCard.member_card_number != null)
                 edtCardCode.setText(memberCard.member_card_number);
             if(memberCard.member_card_name != null)

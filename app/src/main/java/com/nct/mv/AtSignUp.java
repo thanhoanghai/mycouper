@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.loopj.android.http.TextHttpResponseHandler;
+import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
 import com.nct.dataloader.DataHelper;
 import com.nct.dataloader.DataLoader;
@@ -15,6 +16,7 @@ import com.nct.dataloader.URLProvider;
 import com.nct.model.StatusObject;
 import com.nct.model.UserObject;
 import com.nct.utils.Debug;
+import com.nct.utils.Pref;
 import com.nct.utils.Utils;
 
 import org.apache.http.Header;
@@ -78,25 +80,36 @@ public class AtSignUp extends AtBase {
 
             @Override
             public void onSuccess(int i, Header[] headers, String s) {
-                hideDialogLoading();
-                String mUserID = "";
+
+                int statusCode = 0;
+                String errorMessage = null;
+                String user_id = "";
                 try {
                     JSONObject object = new JSONObject(s);
-                    JSONObject obj = object.getJSONObject("data");
-                    mUserID = obj.optString("user_id");
-
+                    statusCode = object.optInt("statusCode");
+                    JSONObject json = object.getJSONObject("data");
+                    user_id = json.optString("user_id");
+                    errorMessage = object.optString("errorMessage");
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-
-                StatusObject item = DataHelper.getStatusObject(s);
-                Debug.toast(AtSignUp.this, item.errorMessage);
-                UserObject data = new UserObject("", sEmail);
-                GlobalInstance.getInstance().userInfo = data;
-                Utils.gotoScreenMain(AtSignUp.this);
-                finish();
-
-//                {"statusCode":"200","data":{"user_id":268}}
+                hideDialogLoading();
+                if(statusCode == Constants.API_REQUEST_STATUS_SUCCESS){
+                    Pref.SaveStringObject(Constants.ID_SAVE_LOGIN, s, AtSignUp.this);
+                    StatusObject item = DataHelper.getStatusObject(s);
+                    Debug.toast(AtSignUp.this, getResources().getString(R.string.signup_success));
+                    UserObject data = new UserObject(user_id, sEmail);
+                    GlobalInstance.getInstance().userInfo = data;
+                    Utils.gotoScreenMain(AtSignUp.this);
+                    finish();
+                }else{
+                    if(errorMessage != null && !errorMessage.equals(""))
+                        Debug.toast(AtSignUp.this, errorMessage);
+                    else
+                        Debug.toast(AtSignUp.this, getResources().getString(R.string.signup_failed));
+                }
+//                {"statusCode":"500","error":"user_email","errorMessage":"User email already exist"}
+//                {"statusCode":"200","data":{"user_id":273}}
             }
         });
     }

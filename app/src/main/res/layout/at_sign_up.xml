@@ -1,98 +1,137 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
     android:background="@drawable/bg_main"
-    >
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp" android:layout_weight="1">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
-            android:layout_width="match_parent" android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
-
-        <include layout="@layout/item_icon_mycouper" />
-
-        <com.nct.customview.TfTextView
-            android:gravity="center"
-            android:layout_marginTop="@dimen/signup_text_marinTop"
-            android:layout_marginRight="@dimen/signup_text_marinLeft"
-            android:layout_marginLeft="@dimen/signup_text_marinLeft"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/signup_couper_will_help"
-            android:textColor="@color/white"
-            android:textSize="@dimen/forgot_text_please_size"
-            app:typeface_name="@string/font_roboto_italic" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <include layout="@layout/item_icon_mycouper" />
+
+            <com.nct.customview.TfTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/signup_text_marinLeft"
+                android:layout_marginRight="@dimen/signup_text_marinLeft"
+                android:layout_marginTop="@dimen/signup_text_marinTop"
+                android:gravity="center"
+                android:text="@string/signup_couper_will_help"
+                android:textColor="@color/white"
+                android:textSize="@dimen/forgot_text_please_size"
+                app:typeface_name="@string/font_roboto_italic" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
-            android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/white"
-            android:gravity="center_vertical" android:orientation="horizontal">
-            <ImageView
-                android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_email" />
-
-            <EditText android:id="@+id/signup_edt_email"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
-                android:background="@color/transparent" android:hint="@string/forgot_email"
-                android:inputType="textEmailAddress"
-                android:textSize="@dimen/login_textfield_textsize" />
-        </LinearLayout>
+                android:layout_height="@dimen/login_textfield_h"
+                android:layout_marginTop="@dimen/login_textfield_marintop"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
-            android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/white"
-            android:gravity="center_vertical" android:orientation="horizontal">
-            <ImageView
-                android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_lock" />
+                <ImageView
+                    android:layout_width="@dimen/login_textfield_icon_w"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/login_textfield_icon_marinleft"
+                    android:src="@drawable/icon_email" />
 
-            <EditText android:id="@+id/signup_edt_password"
+                <EditText
+                    android:id="@+id/signup_edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+                    android:background="@color/transparent"
+                    android:hint="@string/forgot_email"
+                    android:singleLine="true"
+                    android:inputType="textEmailAddress"
+                    android:imeOptions="actionNext"
+                    android:textSize="@dimen/login_textfield_textsize" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
-                android:background="@color/transparent"
-                android:hint="@string/signup_password" android:textSize="@dimen/login_textfield_textsize" />
-        </LinearLayout>
+                android:layout_height="@dimen/login_textfield_h"
+                android:layout_marginTop="@dimen/login_textfield_marintop"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent" android:layout_height="@dimen/login_textfield_h"
-            android:layout_marginTop="@dimen/login_textfield_marintop" android:background="@color/white"
-            android:gravity="center_vertical" android:orientation="horizontal">
-            <ImageView
-                android:layout_width="@dimen/login_textfield_icon_w" android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/login_textfield_icon_marinleft" android:src="@drawable/icon_lock"/>
+                <ImageView
+                    android:layout_width="@dimen/login_textfield_icon_w"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/login_textfield_icon_marinleft"
+                    android:src="@drawable/icon_lock" />
 
-            <EditText android:id="@+id/signup_edt_confirm"
+                <EditText
+                    android:id="@+id/signup_edt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+                    android:background="@color/transparent"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:hint="@string/signup_password"
+                    android:textSize="@dimen/login_textfield_textsize" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
-                android:background="@color/transparent"
-                android:hint="@string/signup_confirmpass" android:textSize="@dimen/login_textfield_textsize" />
-        </LinearLayout>
+                android:layout_height="@dimen/login_textfield_h"
+                android:layout_marginTop="@dimen/login_textfield_marintop"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/login_textfield_icon_w"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/login_textfield_icon_marinleft"
+                    android:src="@drawable/icon_lock" />
+
+                <EditText
+                    android:id="@+id/signup_edt_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/login_textfield_marin_with_icon"
+                    android:background="@color/transparent"
+                    android:inputType="textPassword"
+                    android:imeOptions="actionDone"
+                    android:hint="@string/signup_confirmpass"
+                    android:singleLine="true"
+                    android:textSize="@dimen/login_textfield_textsize" />
+            </LinearLayout>
 
 
-        <Button
-            android:layout_marginTop="@dimen/signup_bt_sign_marinTop"
-            android:id="@+id/signup_bt_signup" android:layout_width="@dimen/login_bt_w"
-            android:layout_height="@dimen/login_bt_h" android:textColor="@color/white" android:textStyle="bold"
-            android:background="@drawable/login_bt_face_bg" android:text="@string/login_signup"
-            android:textSize="@dimen/login_bt_textsize"
-            />
+            <Button
+                android:id="@+id/signup_bt_signup"
+                android:layout_width="@dimen/login_bt_w"
+                android:layout_height="@dimen/login_bt_h"
+                android:layout_marginTop="@dimen/signup_bt_sign_marinTop"
+                android:background="@drawable/login_bt_face_bg"
+                android:text="@string/login_signup"
+                android:textColor="@color/white"
+                android:textSize="@dimen/login_bt_textsize"
+                android:textStyle="bold" />
 
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/signup_text_already_marinTop"
                 android:layout_marginBottom="@dimen/login_bt_marinbottom"
+                android:layout_marginTop="@dimen/signup_text_already_marinTop"
                 android:orientation="horizontal">
 
                 <com.nct.customview.TfTextView

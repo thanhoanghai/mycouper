@@ -19,10 +19,8 @@ import com.nct.customview.DialogRate;
 import com.nct.constants.Constants;
 import com.nct.customview.TfTextView;
 import com.nct.model.ItemCreateKard;
-import com.nct.mv.AtCamera;
 import com.nct.mv.AtCreateCard;
 import com.nct.mv.AtWacCamera;
-import com.nct.utils.Utils;
 
 import thh.com.mycouper.R;
 
@@ -262,15 +260,6 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
 
             }
         }
-    }
-
-    private void gotoCamera(){
-        Intent intent = new Intent(getActivity(), AtCamera.class);
-        if(modeFace == MODE_CAMERA_FACE.Front)
-            intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, true);
-        else
-            intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
-        getActivity().startActivityForResult(intent, TAKE_PICTURE);
     }
 
     private void showsSelectDialog() {
