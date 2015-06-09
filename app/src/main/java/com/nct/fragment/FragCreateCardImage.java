@@ -171,6 +171,12 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        ((AtCreateCard)getActivity()).setWindowSoftInputMode(false);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.image_camera_front:

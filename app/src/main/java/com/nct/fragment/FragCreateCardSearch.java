@@ -147,6 +147,12 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AtCreateCard)getActivity()).setWindowSoftInputMode(false);
+    }
+
     public void DelayTimeFinish() {
         loadData();
     }

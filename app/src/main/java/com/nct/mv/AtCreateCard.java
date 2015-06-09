@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -55,8 +56,6 @@ public class AtCreateCard extends AtBase {
 	private HashMap<String, Stack<Fragment>> mStacks;
 	private String mCurrentTab = Constants.TAB_CREATE_CARD;
 
-	private LinearLayout linear;
-
 	private FragCreateCardSearch fragCreateCard;
 
     private boolean isEditCard = false;
@@ -72,7 +71,6 @@ public class AtCreateCard extends AtBase {
 		initSaveFragment();
 		setLanguge();
 
-		linear = (LinearLayout) findViewById(R.id.at_create_card_linear);
         if(isEditCard){
             FragCreateCardInfo fm = new FragCreateCardInfo();
             Bundle bundle = new Bundle();
@@ -82,6 +80,13 @@ public class AtCreateCard extends AtBase {
         }else
 		    changeFragment(Constants.TYPE_CREATE_CARD_SEARCH, new FragCreateCardSearch());
 	}
+
+    public void setWindowSoftInputMode(boolean isScroll){
+        if(isScroll)
+            AtCreateCard.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        else
+            AtCreateCard.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+    }
 
 	private void initSaveFragment()
 	{

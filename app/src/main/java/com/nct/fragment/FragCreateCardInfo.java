@@ -105,6 +105,12 @@ public class FragCreateCardInfo extends BaseMainFragment {
         return v;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AtCreateCard)getActivity()).setWindowSoftInputMode(true);
+    }
+
     private void innitControl(View v){
         mLLInfoCard = (LinearLayout) v.findViewById(R.id.frag_create_card_info_linear_img);
         mLLInputName = (LinearLayout) v.findViewById(R.id.frag_create_card_info_linear_input);
