@@ -378,7 +378,7 @@ public class AtCardDetail extends AtBase {
 			@Override
 			public void onSuccess(int i, Header[] headers, String s) {
 				hideDialogLoading();
-				Debug.toast(AtCardDetail.this, s);
+				//Debug.toast(AtCardDetail.this, s);
 				finish();
 			}
 		});
