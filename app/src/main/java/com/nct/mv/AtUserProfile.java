@@ -32,7 +32,7 @@ import thh.com.mycouper.R;
 
 public class AtUserProfile extends AtBase {
 
-    private final String[] titleGender = {"Mr.", "Miss", "Mrs.", "Ms.", "Dr.", "Sir.", "Madam"};
+    private final String[] titleGender = {"Mrs", "Ms", "Mr"};
 
 	private static final String tag = "AtUserProfile";
 
@@ -87,7 +87,7 @@ public class AtUserProfile extends AtBase {
             }
         });
 
-        civility = titleGender[0];
+        civility = "2";
         innitPopup();
 
 		userObject = GlobalInstance.getInstance().userInfo;
@@ -100,7 +100,6 @@ public class AtUserProfile extends AtBase {
 		tvBirth = (EditText) findViewById(R.id.user_account_birthday);
         conTentGender = (LinearLayout) findViewById(R.id.contentcivility);
 		tvcivility = (TextView) findViewById(R.id.user_account_civility);
-        tvcivility.setText(civility);
         tvcivility.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,15 +169,30 @@ public class AtUserProfile extends AtBase {
 	private void setData()
 	{
         civility = userObject.civility;
-        if(civility == null)
-            civility = "";
+        if(civility == null || civility.equals(""))
+            civility = "2";
 		tvFistname.setText(userObject.first_name);
 		tvLastname.setText(userObject.last_name);
 		tvBirth.setText(userObject.birthday);
-		tvcivility.setText(civility);
+
 		tvPhone.setText(userObject.phone);
 		tvLastLogin.setText(userObject.last_login_time);
 		tvEmail.setText(userObject.user_email);
+        String temp = "";
+        if(civility.equals("2")){//MALE
+            temp = titleGender[0];
+            civility = "2";
+        }else if(civility.equals("3")){//FEMALE
+            temp = titleGender[1];
+            civility = "3";
+        }else if(civility.equals("4")){//FEMALE
+            temp = titleGender[2];
+            civility = "4";
+        }else{
+            temp = titleGender[0];
+            civility = "2";
+        }
+        tvcivility.setText(temp);
 	}
 
     private void updateProfile(){
@@ -188,7 +202,6 @@ public class AtUserProfile extends AtBase {
         firstName = tvFistname.getText().toString();
         lastName = tvLastname.getText().toString();
         birthDay = tvBirth.getText().toString();
-        civility = tvcivility.getText().toString();
         phoneNumber = tvPhone.getText().toString();
 
         DataLoader.postParam(URLProvider.updateProfile(GlobalInstance.getInstance().userInfo.user_id, firstName, lastName, phoneNumber, civility, birthDay),
@@ -236,10 +249,23 @@ public class AtUserProfile extends AtBase {
         quickAction.setOnActionItemClickListener(new QuickAction.OnActionItemClickListener() {
             @Override
             public void onItemClick(QuickAction source, int pos, int actionId) {
-                civility = titleGender[actionId];
-                tvcivility.setText(civility);
+                switch (actionId){
+                    case 0:
+                        civility = "2";
+                        break;
+                    case 1:
+                        civility = "3";
+                        break;
+                    case 2:
+                        civility = "4";
+                        break;
+                }
+
+                tvcivility.setText(titleGender[actionId]);
             }
         });
+
+
     }
 
 }
