@@ -54,6 +54,7 @@
                     android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
                     android:gravity="left|center_vertical"
                     android:background="@color/transparent"
+                    android:inputType="textCapSentences"
                     android:textColorHint="@color/read"
                     android:textColor="@color/grey_info_text_card"
                     android:imeOptions="actionNext"

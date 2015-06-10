@@ -83,11 +83,13 @@
     <dimen name="frag_membercard_bt_marinbottom">20dp</dimen>
 
     <!-- ITEM COMPANY  -->
-    <dimen name="item_company_icon_size">40dp</dimen>
+    <dimen name="item_company_icon_size">50dp</dimen>
 
     <!-- ITEM MEMBER CARD  -->
-    <dimen name="item_member_card_h">70dp</dimen>
+    <dimen name="item_member_card_h">60dp</dimen>
+    <dimen name="item_member_card_new_h">70dp</dimen>
     <dimen name="item_member_card_padding">10dp</dimen>
+    <dimen name="item_member_card_icon_size_new">60dp</dimen>
     <dimen name="item_member_card_icon_size">50dp</dimen>
     <dimen name="item_member_card_icon_size_large">90dp</dimen>
     <dimen name="item_member_card_text_size">15sp</dimen>

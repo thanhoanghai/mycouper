@@ -1,0 +1,62 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/card_detail_marintop"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:id="@+id/card_detail_linear_barcode"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+    </LinearLayout>
+
+    <com.nct.customview.TfTextView
+        android:id="@+id/card_detail_img_idcode"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/card_detail_img_front_card_h"
+        android:layout_gravity="center"
+        android:background="@drawable/icon_border"
+        android:gravity="center"
+        android:text="@string/rotate"
+        android:textColor="@color/black"
+        android:textSize="@dimen/card_detail_text_id"
+        app:typeface_name="@string/font_roboto_regular" />
+
+    <RelativeLayout
+        android:id="@+id/lyImgCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/card_detail_img_qrcode"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/card_detail_img_front_card_h"
+            android:layout_margin="10dp"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/card_detail_img_front"
+        android:layout_width="@dimen/card_detail_img_front_card_w"
+        android:layout_height="@dimen/card_detail_img_front_card_h"
+        android:layout_gravity="center"
+        android:background="@color/grey_info_text_card"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/card_detail_img_back"
+        android:layout_width="@dimen/card_detail_img_front_card_w"
+        android:layout_height="@dimen/card_detail_img_front_card_h"
+        android:layout_gravity="center"
+        android:background="@color/grey_info_text_card"
+        android:visibility="gone" />
+</FrameLayout>

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -65,13 +66,14 @@ public class AtCardDetail extends AtBase {
 	private GoogleMap googleMap;
 
 	private LinearLayout frameMapInfo;
-	private LinearLayout frameMaps;
+	private FrameLayout frameMaps;
 	private Button bntCloseMap;
 	private TextView btOpenmap;
 	private PosData posData;
 	private PosObject posObject;
 
 	private TextView barCodeID;
+	private RelativeLayout lyImgCode;
 	private ImageView imgQRcode;
 	private LinearLayout linearBarcode;
 
@@ -80,7 +82,6 @@ public class AtCardDetail extends AtBase {
 	private TextView couponTitle;
 	private TextView couponExpire;
 	private CouponData couponData;
-
 
 	private ListView lvPos;
 	private CardDetailPosAdapter lvPosAdapter;
@@ -129,10 +130,10 @@ public class AtCardDetail extends AtBase {
 	{
 		if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[0])) {
 			imgCode.setVisibility(status1);
-			imgQRcode.setVisibility(View.INVISIBLE);
+			lyImgCode.setVisibility(View.INVISIBLE);
 		}else
 		{
-			imgQRcode.setVisibility(status1);
+			lyImgCode.setVisibility(status1);
 			imgCode.setVisibility(View.INVISIBLE);
 		}
 		imgFront.setVisibility(status2);
@@ -213,11 +214,11 @@ public class AtCardDetail extends AtBase {
 		if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[0]))
 		{
 			imgCode.setText(memberCard.member_card_number);
-			imgQRcode.setVisibility(View.INVISIBLE);
+			lyImgCode.setVisibility(View.INVISIBLE);
 		}else if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[1]) || memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[2]))
 		{
 			imgCode.setVisibility(View.INVISIBLE);
-			imgQRcode.setVisibility(View.VISIBLE);
+			lyImgCode.setVisibility(View.VISIBLE);
 			showImgQRcode();
 
 		}
@@ -244,6 +245,7 @@ public class AtCardDetail extends AtBase {
 		linearBarcode = (LinearLayout) findViewById(R.id.card_detail_linear_barcode);
 
 		barCodeID = (TextView) findViewById(R.id.card_detail_tv_idcode);
+		lyImgCode = (RelativeLayout) findViewById(R.id.lyImgCode);
 		imgQRcode = (ImageView) findViewById(R.id.card_detail_img_qrcode);
 
 		btOpenmap = (TextView) findViewById(R.id.card_detail_bt_openmap);
@@ -257,7 +259,7 @@ public class AtCardDetail extends AtBase {
 		frameMapInfo = (LinearLayout) findViewById(R.id.card_detail_frame_maps_info);
 		frameMapInfo.setVisibility(View.GONE);
 
-		frameMaps = (LinearLayout) findViewById(R.id.card_detail_frame_maps);
+		frameMaps = (FrameLayout) findViewById(R.id.card_detail_frame_maps);
 		frameMaps.setVisibility(View.GONE);
 		bntCloseMap = (Button) findViewById(R.id.card_detail_bt_closemap);
 		bntCloseMap.setOnClickListener(new View.OnClickListener() {

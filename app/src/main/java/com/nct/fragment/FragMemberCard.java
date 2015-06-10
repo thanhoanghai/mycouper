@@ -15,6 +15,7 @@ import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.adapter.FragMemberCardAdapter;
 import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
+import com.nct.customview.TfTextView;
 import com.nct.dataloader.DataHelper;
 import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
@@ -35,7 +36,7 @@ import thh.com.mycouper.R;
 public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 
 
-	private Button bntAddmore;
+	private TfTextView bntAddmore;
 
 	public static FragMemberCard newInstance() {
 		FragMemberCard f = new FragMemberCard();
@@ -55,7 +56,7 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 
 		disableLoadmore();
 
-		bntAddmore = (Button) v.findViewById(R.id.frag_membercard_bt_admore);
+		bntAddmore = (TfTextView) v.findViewById(R.id.frag_membercard_bt_admore);
 		bntAddmore.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

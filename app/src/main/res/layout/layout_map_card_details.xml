@@ -1,0 +1,94 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_detail_frame_maps"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.nct.customview.TfTextView
+            android:id="@+id/card_tv_maptitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stores_map"
+            android:background="@color/blue_topbar"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            app:typeface_name="@string/font_roboto_regular"
+            app:typeface_style="bold" />
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </fragment>
+
+
+
+        <LinearLayout
+            android:id="@+id/card_detail_frame_maps_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:orientation="vertical">
+
+            <com.nct.customview.TfTextView
+                android:id="@+id/card_detail_tv_maptitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/available_outlets"
+                android:background="@color/blue_topbar"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                app:typeface_name="@string/font_roboto_regular"
+                app:typeface_style="bold" />
+
+            <ListView
+                android:id="@+id/card_detail_lv_maps"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:alwaysDrawnWithCache="true"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:drawSelectorOnTop="false"
+                android:listSelector="@android:color/transparent"
+                android:scrollbars="none">
+
+            </ListView>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/card_detail_bt_closemap"
+        android:layout_width="@dimen/frag_membercard_bt_w"
+        android:layout_height="@dimen/frag_membercard_bt_h"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_bt_face_bg"
+        android:alpha="0.7"
+        android:gravity="center"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="@string/close"
+        android:textColor="@color/white"
+        tools:ignore="UnusedAttribute" />
+</FrameLayout>

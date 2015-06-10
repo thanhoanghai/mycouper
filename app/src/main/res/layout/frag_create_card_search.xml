@@ -70,16 +70,18 @@
         <include layout="@layout/nct_layout_base_listview"></include>
 
 
-        <Button
+        <com.nct.customview.TfTextView
             android:id="@+id/frag_create_card_bt_other"
             android:layout_width="@dimen/frag_membercard_bt_w"
             android:layout_height="@dimen/frag_membercard_bt_h"
             android:layout_gravity="bottom|center_horizontal"
+            android:gravity="center"
             android:layout_marginBottom="@dimen/frag_membercard_bt_marinbottom"
             android:alpha="0.7"
             android:background="@drawable/login_bt_face_bg"
             android:text="@string/frag_createcard_other"
             android:textColor="@color/white"
+            app:typeface_name="@string/font_roboto_light"
             tools:ignore="UnusedAttribute" />
 
     </FrameLayout>

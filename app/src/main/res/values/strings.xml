@@ -39,7 +39,8 @@
     <string name="close_">Close:</string>
     <string name="select_country">Chọn Quốc gia</string>
 
-    <string name="available_outlets">Available Outlets:</string>
+    <string name="available_outlets">Available stores</string>
+    <string name="stores_map">Stores map</string>
 
 
 
@@ -98,7 +99,7 @@
     <string name="frag_createcard_info_description">Description:</string>
     <string name="frag_createcard_info_caompanyname">Company name:</string>
     <string name="frag_createcard_info_caompanyname_is_empty">Shop name is required!</string>
-    <string name="frag_createcard_info_cardcode_is_empty">Card ID is required!</string>
+    <string name="frag_createcard_info_cardcode_is_empty">Card code is required!</string>
     <string name="frag_createcard_info_cardname_requiret">Card name is required!</string>
     <string name="frag_createcard_info_front_camera">Front face</string>
     <string name="frag_createcard_info_back_camera">Back face</string>
@@ -113,7 +114,7 @@
 
     <!-- FRAG MEMBER CARD -->
     <string name="frag_membercard_addmore">+   Add more card</string>
-    <string name="frag_membercard">CARDS MEMBER</string>
+    <string name="frag_membercard">MEMBER CARDS</string>
 
     <!-- SIGN UP -->
     <string name="signup_couper_will_help">( Couper will help you keep all the cards when switching phone )</string>

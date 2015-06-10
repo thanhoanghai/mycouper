@@ -179,9 +179,6 @@ public class FragCreateCardInfo extends BaseMainFragment {
         });
 
         if(isEditCard){
-//            edtCardCode.setEnabled(false);
-//            bntScan.setClickable(false);
-//            txtTypeCode.setClickable(false);
             if(memberCard.member_card_number != null)
                 edtCardCode.setText(memberCard.member_card_number);
             if(memberCard.member_card_name != null)
@@ -212,7 +209,6 @@ public class FragCreateCardInfo extends BaseMainFragment {
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_CARDDES, mCardDes);
                     bundle.putString(Constants.KEY_BUNDLE_CARD_INFO_TYPE_CODE, mTypeCode);
                     bundle.putBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, isOther);
-//                    bundle.putSerializable(Constants.KEY_BUNDLE_OBJECT_VALUE, itemCompany);
                     fm.setArguments(bundle);
                     ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_IMAGE, fm);
                 }else

@@ -23,7 +23,11 @@ import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.adapter.FragCompanyAdapter;
 import com.nct.adapter.FragMemberCardAdapter;
 import com.nct.constants.Constants;
+
 import com.nct.customview.DialogNation;
+
+import com.nct.customview.TfTextView;
+
 import com.nct.dataloader.DataHelper;
 import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
@@ -48,7 +52,7 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
 
     private TextView bntCancel;
 
-    private Button bntOther;
+    private TfTextView bntOther;
     private CompanyData data;
 
     private Boolean isActiveSearch;
@@ -86,7 +90,7 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
             }
         });
 
-        bntOther = (Button) v.findViewById(R.id.frag_create_card_bt_other);
+        bntOther = (TfTextView) v.findViewById(R.id.frag_create_card_bt_other);
         bntOther.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

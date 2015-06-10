@@ -1,67 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:padding="5dp"
-    android:orientation="vertical">
-
-    <com.nct.customview.TfTextView
-        android:id="@+id/item_pos_tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/black"
-        android:textSize="@dimen/item_pos_title_size"
-        app:typeface_name="@string/font_roboto_regular"
-        app:typeface_style="bold" />
-
-    <com.nct.customview.TfTextView
-        android:id="@+id/item_pos_tv_street"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/grey_info_text_card"
-        android:textSize="@dimen/item_pos_tvstreets_size"
-        app:typeface_name="@string/font_roboto_regular" />
+    android:orientation="vertical"
+    android:paddingBottom="2dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="3dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:orientation="horizontal">
-            <com.nct.customview.TfTextView
-            android:id="@+id/item_pos_tv_phone"
-            android:gravity="center_vertical"
-            android:layout_width="0dp" android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_border"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp">
+
+        <com.nct.customview.TfTextView
+            android:id="@+id/item_pos_tv_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/icon_phone"
-            android:drawablePadding="5dp"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/item_pos_title_size"
+            app:typeface_name="@string/font_roboto_regular"
+            app:typeface_style="bold" />
+
+        <com.nct.customview.TfTextView
+            android:id="@+id/item_pos_tv_street"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:textColor="@color/grey_info_text_card"
-            android:textSize="@dimen/item_pos_tvphone"
-            app:typeface_name="@string/font_roboto_regular"
-            />
-        <com.nct.customview.TfTextView android:layout_marginLeft="10dp"
-            android:id="@+id/item_pos_tv_open"
-            android:gravity="center_vertical"
-            android:layout_width="0dp" android:layout_weight="1"
+            android:textSize="@dimen/item_pos_tvstreets_size"
+            app:typeface_name="@string/font_roboto_regular" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/open_"
-            android:textColor="@color/grey_info_text_card"
-            android:textSize="@dimen/item_pos_tvphone"
-            app:typeface_name="@string/font_roboto_regular"
-            />
-        <com.nct.customview.TfTextView android:layout_marginLeft="5dp"
-            android:id="@+id/item_pos_tv_close"
-            android:gravity="center_vertical"
-            android:layout_width="0dp" android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/close_"
-            android:textColor="@color/grey_info_text_card"
-            android:textSize="@dimen/item_pos_tvphone"
-            app:typeface_name="@string/font_roboto_regular"
-            />
+            android:orientation="horizontal">
+
+            <com.nct.customview.TfTextView
+                android:id="@+id/item_pos_tv_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/icon_phone"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="@string/app_name"
+                android:textColor="@color/blue_topbar"
+                android:textSize="@dimen/item_pos_tvphone"
+                app:typeface_name="@string/font_roboto_regular" />
+
+            <com.nct.customview.TfTextView
+                android:id="@+id/item_pos_tv_open"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/open_"
+                android:textColor="@color/grey_info_text_card"
+                android:textSize="@dimen/item_pos_tvphone"
+                app:typeface_name="@string/font_roboto_regular" />
+
+            <com.nct.customview.TfTextView
+                android:id="@+id/item_pos_tv_close"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/close_"
+                android:textColor="@color/grey_info_text_card"
+                android:textSize="@dimen/item_pos_tvphone"
+                app:typeface_name="@string/font_roboto_regular" />
+
+        </LinearLayout>
+
+        <include layout="@layout/item_line"></include>
 
     </LinearLayout>
 

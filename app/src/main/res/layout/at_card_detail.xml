@@ -76,55 +76,7 @@
 
                 </LinearLayout>
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/card_detail_marintop"
-                    android:padding="20dp">
-
-                    <LinearLayout
-                        android:id="@+id/card_detail_linear_barcode"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:visibility="gone"></LinearLayout>
-
-                    <com.nct.customview.TfTextView
-                        android:id="@+id/card_detail_img_idcode"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/card_detail_img_front_card_h"
-                        android:layout_gravity="center"
-                        android:background="@drawable/icon_border"
-                        android:gravity="center"
-                        android:text="@string/rotate"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/card_detail_text_id"
-                        app:typeface_name="@string/font_roboto_regular" />
-
-                    <ImageView
-                        android:id="@+id/card_detail_img_qrcode"
-                        android:layout_width="@dimen/card_detail_img_front_card_h"
-                        android:layout_height="@dimen/card_detail_img_front_card_h"
-                        android:layout_gravity="center" />
-
-                    <ImageView
-                        android:id="@+id/card_detail_img_front"
-                        android:layout_width="@dimen/card_detail_img_front_card_w"
-                        android:layout_height="@dimen/card_detail_img_front_card_h"
-                        android:layout_gravity="center"
-                        android:background="@color/grey_info_text_card"
-                        android:visibility="gone" />
-
-                    <ImageView
-                        android:id="@+id/card_detail_img_back"
-                        android:layout_width="@dimen/card_detail_img_front_card_w"
-                        android:layout_height="@dimen/card_detail_img_front_card_h"
-                        android:layout_gravity="center"
-                        android:background="@color/grey_info_text_card"
-                        android:visibility="gone" />
-                </FrameLayout>
+                <include layout="@layout/layout_qrcode_card_details"/>
 
 
                 <com.nct.customview.TfTextView
@@ -146,7 +98,7 @@
                     android:gravity="center"
                     android:text="@string/account_test"
                     android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     app:typeface_name="@string/font_roboto_regular"
                     app:typeface_style="bold" />
 
@@ -219,72 +171,7 @@
             </LinearLayout>
         </ScrollView>
 
-        <LinearLayout
-            android:id="@+id/card_detail_frame_maps"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:visibility="visible">
-
-            <fragment
-                android:id="@+id/map"
-                android:name="com.google.android.gms.maps.MapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-            </fragment>
-
-            <LinearLayout
-                android:id="@+id/card_detail_frame_maps_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingLeft="5dp">
-
-                <com.nct.customview.TfTextView
-                    android:id="@+id/card_detail_tv_maptitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/available_outlets"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    app:typeface_name="@string/font_roboto_regular"
-                    app:typeface_style="bold" />
-
-                <ListView
-                    android:id="@+id/card_detail_lv_maps"
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:alwaysDrawnWithCache="true"
-                    android:cacheColorHint="@android:color/transparent"
-                    android:divider="@null"
-                    android:dividerHeight="0dp"
-                    android:drawSelectorOnTop="false"
-                    android:listSelector="@android:color/transparent"
-                    android:scrollbars="none">
-
-                </ListView>
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/card_detail_bt_closemap"
-                android:layout_width="@dimen/frag_membercard_bt_w"
-                android:layout_height="@dimen/frag_membercard_bt_h"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/login_bt_face_bg"
-                android:text="@string/close"
-                android:textColor="@color/white"
-                tools:ignore="UnusedAttribute" />
-
-        </LinearLayout>
-
-
+        <include layout="@layout/layout_map_card_details"/>
     </FrameLayout>
 
 </LinearLayout>
