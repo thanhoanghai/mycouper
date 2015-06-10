@@ -5,7 +5,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/item_top_bar"></include>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/item_top_bar"></include>
+        <ImageView
+            android:id="@+id/frag_create_card_search_imgnation"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/icon_nation"
+            android:layout_width="45dp"
+            android:layout_height="25dp" />
+    </FrameLayout>
+
     
     
     <LinearLayout

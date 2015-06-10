@@ -1,6 +1,7 @@
 package com.nct.fragment;
 
 import android.annotation.SuppressLint;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -18,18 +19,23 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.adapter.FragCompanyAdapter;
 import com.nct.adapter.FragMemberCardAdapter;
 import com.nct.constants.Constants;
+import com.nct.customview.DialogNation;
 import com.nct.dataloader.DataHelper;
 import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
 import com.nct.model.CardObject;
 import com.nct.model.CompanyData;
 import com.nct.model.CompanyObject;
+import com.nct.model.CountryData;
 import com.nct.model.MemberCardObject;
 import com.nct.mv.AtCreateCard;
 import com.nct.utils.Utils;
+
+import org.apache.http.Header;
 
 import java.util.ArrayList;
 
@@ -46,6 +52,9 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
     private CompanyData data;
 
     private Boolean isActiveSearch;
+
+    private ImageView imgNation;
+    private CountryData countryData;
 
     public static FragCreateCardSearch newInstance() {
         FragCreateCardSearch f = new FragCreateCardSearch();
@@ -73,7 +82,7 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
         setTopbarLeftBtListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AtCreateCard)getActivity()).actionBackKey();
+                ((AtCreateCard) getActivity()).actionBackKey();
             }
         });
 
@@ -132,6 +141,15 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
             }
         });
 
+        imgNation = (ImageView) v.findViewById(R.id.frag_create_card_search_imgnation);
+        imgNation.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogNation();
+            }
+        });
+
+
         return v;
     }
 
@@ -145,6 +163,7 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
         }else
             setDataDefault();
 
+        loadNation();
     }
 
     @Override
@@ -166,7 +185,7 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
     @Override
     protected boolean handleLoadingDataSuccess(String result) {
         data = DataHelper.getCompanyData(result);
-        setData(data.data,false);
+        setData(data.data, false);
         return true;
     }
 
@@ -174,6 +193,36 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
     protected FragCompanyAdapter initAdapter(ArrayList<CompanyObject> list) {
         FragCompanyAdapter adapter = new FragCompanyAdapter(getActivity(), list);
         return adapter;
+    }
+
+
+    private DialogNation dialogNation;
+    private void showDialogNation()
+    {
+        if(dialogNation==null)
+        {
+            dialogNation = new DialogNation(getActivity());
+            dialogNation.setListenerFinishedDialog(new DialogNation.FinishDialogConfirmListener() {
+                @Override
+                public void onFinishConfirmDialog(int i) {
+
+                }
+            });
+            dialogNation.show();
+        }
+    }
+
+    private void loadNation()
+    {
+        DataLoader.get(URLProvider.getListNation(), new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+            }
+            @Override
+            public void onSuccess(int i, Header[] headers, String s) {
+                countryData = DataHelper.getCountryData(s);
+            }
+        });
     }
 
 }

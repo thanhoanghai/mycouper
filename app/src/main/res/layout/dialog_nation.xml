@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="80dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="wrap_content">
+
+            <com.nct.customview.TfTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/select_country"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:typeface_name="@string/font_roboto_regular" />
+
+            <com.nct.customview.TfTextView
+                android:id="@+id/dialog_nation_tv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:textColor="@color/blue_topbar"
+                android:textSize="20sp"
+                app:typeface_name="@string/font_roboto_regular" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/blue_topbar" />
+
+
+        <!--<ListView-->
+            <!--android:id="@+id/dialog_nation_lv"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="200dp"-->
+            <!--android:alwaysDrawnWithCache="true"-->
+            <!--android:cacheColorHint="@android:color/transparent"-->
+            <!--android:drawSelectorOnTop="false"-->
+            <!--android:listSelector="@android:color/transparent"-->
+            <!--android:scrollbars="none"-->
+            <!--android:visibility="invisible" />-->
+
+
+    </LinearLayout>
+
+</RelativeLayout>

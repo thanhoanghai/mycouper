@@ -171,6 +171,17 @@ public class URLProvider {
         return client;
     }
 
+    public static String getListNation() {
+        String client = PROVIDER;
+        try {
+            client += "?ac=get_all_country" ;
+            return client;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return client;
+    }
+
 
 
     public static String getMemberCardForUser(String user_id) {

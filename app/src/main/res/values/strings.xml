@@ -37,6 +37,7 @@
     <string name="expire_at">Expire at:</string>
     <string name="open_">Open:</string>
     <string name="close_">Close:</string>
+    <string name="select_country">Chọn Quốc gia</string>
 
     <string name="available_outlets">Available Outlets:</string>
 
