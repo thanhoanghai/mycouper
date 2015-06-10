@@ -400,10 +400,11 @@ public class AtCardDetail extends AtBase {
         try{
             DisplayMetrics metrics = new DisplayMetrics();
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            int bitmapWidth = metrics.widthPixels / 2;
+            int bitmapWidth = 3 * metrics.widthPixels / 4;
+			int bitmapHeight = bitmapWidth / 2;
 
             MultiFormatWriter writeBarcode = new MultiFormatWriter();
-            BitMatrix bitMatrix = writeBarcode.encode(memberCard.member_card_number, BarcodeFormat.CODE_128, 3 * bitmapWidth / 2, bitmapWidth);
+            BitMatrix bitMatrix = writeBarcode.encode(memberCard.member_card_number, BarcodeFormat.CODE_128, bitmapWidth, bitmapHeight);
             Bitmap bmp = toBitmap(bitMatrix);
             imgQRcode.setImageBitmap(bmp);
         }catch (Exception e){

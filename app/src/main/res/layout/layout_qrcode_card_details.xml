@@ -32,14 +32,15 @@
 
     <RelativeLayout
         android:id="@+id/lyImgCode"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:background="@android:color/white">
 
         <ImageView
             android:id="@+id/card_detail_img_qrcode"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/card_detail_img_front_card_h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>

@@ -25,6 +25,9 @@ import com.nct.mv.AtCreateCard;
 import com.nct.utils.Debug;
 import com.nct.utils.Utils;
 
+import info.vividcode.android.zxing.CaptureActivity;
+import info.vividcode.android.zxing.CaptureActivityIntents;
+import info.vividcode.android.zxing.CaptureResult;
 import thh.com.mycouper.R;
 
 public class FragCreateCardInfo extends BaseMainFragment {
@@ -172,9 +175,17 @@ public class FragCreateCardInfo extends BaseMainFragment {
         bntScan.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-//                intent.putExtra("SCAN_MODE", "BAR_CODE_MODE");
-                startActivityForResult(intent, 0);
+                Intent captureIntent = new Intent(getActivity(), CaptureActivity.class);
+                // Using `CaptureActivityIntents`, set parameters to an intent.
+                // (There is no requisite parameter to set to an intent.)
+                // For instance, `setPromptMessage` method set prompt message displayed on `CaptureActivity`.
+                CaptureActivityIntents.setPromptMessage(captureIntent, "Code scanning...");
+                // Start activity.
+                startActivityForResult(captureIntent, 1);
+
+//                Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+////                intent.putExtra("SCAN_MODE", "BAR_CODE_MODE");
+//                startActivityForResult(intent, 0);
             }
         });
 
@@ -273,23 +284,32 @@ public class FragCreateCardInfo extends BaseMainFragment {
     // QR_CODE
     public void activityResult(int requestCode, int resultCode, Intent intent){
         if (resultCode == getActivity().RESULT_OK) {
-            mCardCode = intent.getStringExtra("SCAN_RESULT");
-            if(mCardCode != null)
-                edtCardCode.setText(mCardCode);
-            else
-                mCardCode = "";
-            // Handle successful scan
-            String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
-            String typeCode = "";
-            if(mCardCode != null){
-                if(format != null && format.equals(TYPE_QRCODE)) {
-                    mTypeCode = TYPE_CARD_SCAN_CODE[2];
-                    typeCode = "Qrcode";
-                }else{
-                    mTypeCode = TYPE_CARD_SCAN_CODE[1];
-                    typeCode = "Barcode";
+            CaptureResult res = null;
+            String format = null;
+            try{
+                res = CaptureResult.parseResultIntent(intent);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            if(res != null){
+                mCardCode = res.getContents();
+                format = res.getFormatName();
+                if(mCardCode != null)
+                    edtCardCode.setText(mCardCode);
+                else
+                    mCardCode = "";
+                // Handle successful scan
+                String typeCode = "";
+                if(mCardCode != null){
+                    if(format != null && format.equals(TYPE_QRCODE)) {
+                        mTypeCode = TYPE_CARD_SCAN_CODE[2];
+                        typeCode = "Qrcode";
+                    }else{
+                        mTypeCode = TYPE_CARD_SCAN_CODE[1];
+                        typeCode = "Barcode";
+                    }
+                    txtTypeCode.setText(typeCode);
                 }
-                txtTypeCode.setText(mTypeCode);
             }
         } else if (resultCode == getActivity().RESULT_CANCELED) {
             // Handle cancel
