@@ -29,12 +29,14 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.loopj.android.http.TextHttpResponseHandler;
+import com.nct.adapter.CardDetailCouponAdapter;
 import com.nct.adapter.CardDetailPosAdapter;
 import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
 import com.nct.customview.AndroidBarcodeView;
 import com.nct.customview.DialogCustom;
 import com.nct.customview.DialogRate;
+import com.nct.customview.ListViewCustom;
 import com.nct.dataloader.DataHelper;
 import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
@@ -77,17 +79,16 @@ public class AtCardDetail extends AtBase {
 	private ImageView imgQRcode;
 	private LinearLayout linearBarcode;
 
-	private LinearLayout linearCoupon;
-	private ImageView couponImg;
-	private TextView couponTitle;
-	private TextView couponExpire;
-	private CouponData couponData;
-
 	private ListView lvPos;
 	private CardDetailPosAdapter lvPosAdapter;
 
 
 	private TextView tvNameMembercard;
+
+	private LinearLayout linearCoupon;
+	private CouponData couponData;
+	private ListViewCustom lvCoupon;
+	private CardDetailCouponAdapter lvCouponAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -202,10 +203,10 @@ public class AtCardDetail extends AtBase {
 				couponData = DataHelper.getCouponData(s);
 				if(couponData.statusCode == Constants.STATUS_CODE_OK && couponData!=null && couponData.data.size() > 0)
 				{
+					lvCoupon.setVisibility(View.VISIBLE);
+					lvCouponAdapter = new CardDetailCouponAdapter(AtCardDetail.this,couponData.data,memberCard.company_logo);
+					lvCoupon.setAdapter(lvCouponAdapter);
 					linearCoupon.setVisibility(View.VISIBLE);
-					displayImage(couponImg, memberCard.company_logo);
-					couponTitle.setText(couponData.data.get(0).card_name);
-					couponExpire.setText(getString(R.string.expire_at) +couponData.data.get(0).valid_to);
 				}
 			}
 		});
@@ -230,6 +231,9 @@ public class AtCardDetail extends AtBase {
 	private void initValueItem()
 	{
 
+		linearCoupon = (LinearLayout) findViewById(R.id.card_detail_linear_coupon);
+		lvCoupon = (ListViewCustom) findViewById(R.id.card_detail_lv_coupon);
+
 		tvNameMembercard = (TextView) findViewById(R.id.at_card_detail_tv_name_membercard);
 		if(memberCard!=null && !TextUtils.isEmpty(memberCard.member_card_name))
 		{
@@ -247,10 +251,6 @@ public class AtCardDetail extends AtBase {
 			}
 		});
 
-		linearCoupon = (LinearLayout) findViewById(R.id.card_detail_linear_coupon);
-		couponImg = (ImageView) findViewById(R.id.card_detail_coupon_img_icon);
-		couponTitle = (TextView) findViewById(R.id.card_detail_coupon_tv_title);
-		couponExpire = (TextView) findViewById(R.id.card_detail_coupon_tv_expire);
 
 		linearBarcode = (LinearLayout) findViewById(R.id.card_detail_linear_barcode);
 

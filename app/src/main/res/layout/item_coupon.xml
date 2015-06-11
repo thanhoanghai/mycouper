@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_info_card"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/item_coupon_img"
+            android:layout_width="@dimen/item_member_card_icon_size"
+            android:layout_height="@dimen/item_member_card_icon_size"
+            android:layout_gravity="center"
+            android:src="@color/grey_info_card" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <com.nct.customview.TfTextView
+                android:id="@+id/item_coupon_tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/coupons"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:typeface_name="@string/font_roboto_regular" />
+
+            <com.nct.customview.TfTextView
+                android:id="@+id/item_coupon_tv_expire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="@string/coupons"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:typeface_name="@string/font_roboto_regular" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/item_line"></include>
+
+
+</LinearLayout>
