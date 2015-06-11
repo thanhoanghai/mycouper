@@ -87,6 +87,8 @@ public class AtCardDetail extends AtBase {
 	private CardDetailPosAdapter lvPosAdapter;
 
 
+	private TextView tvNameMembercard;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -227,6 +229,14 @@ public class AtCardDetail extends AtBase {
 
 	private void initValueItem()
 	{
+
+		tvNameMembercard = (TextView) findViewById(R.id.at_card_detail_tv_name_membercard);
+		if(memberCard!=null && !TextUtils.isEmpty(memberCard.member_card_name))
+		{
+			tvNameMembercard.setText(memberCard.member_card_name);
+			tvNameMembercard.setVisibility(View.VISIBLE);
+		}
+
 
 		lvPos = (ListView) findViewById(R.id.card_detail_lv_maps);
 		lvPos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
