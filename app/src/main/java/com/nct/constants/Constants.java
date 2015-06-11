@@ -16,7 +16,7 @@ public class Constants {
 	public static int SCREEN_WIDTH = 480;
 	public static int SCREEN_HEIGHT = 800;
 
-	public static String API_GOOGLE_KEY = "AIzaSyB8mtKr923llplPGMNN30mdPDQACTpXfxQ";
+	public static final String API_GOOGLE_KEY = "AIzaSyB8mtKr923llplPGMNN30mdPDQACTpXfxQ";
 	
 	
 	public static final String TAB_1 = "TAB_1";
@@ -67,40 +67,42 @@ public class Constants {
 	public static final String FACEBOOK_NAMESPACE = "mycouper";
 
 
-	public static int POP_UP_ID_USER_PROFILE = 1;
-	public static int POP_UP_ID_SETTING = 2;
-	public static int POP_UP_ID_CONTACT = 3;
-	public static int POP_UP_ID_SYNCHRONIZE = 4;
-	public static int POP_UP_ID_HELP = 5;
-	public static int POP_UP_ID_COPYRIGHT = 6;
+	public static final int POP_UP_ID_USER_PROFILE = 1;
+	public static final int POP_UP_ID_SETTING = 2;
+	public static final int POP_UP_ID_CONTACT = 3;
+	public static final int POP_UP_ID_SYNCHRONIZE = 4;
+	public static final int POP_UP_ID_HELP = 5;
+	public static final int POP_UP_ID_COPYRIGHT = 6;
 
     // type code
     public static final int POP_UP_ID_CODE_ID = 1;
     public static final int POP_UP_ID_CODE_BARCODE = 2;
     public static final int POP_UP_ID_CODE_QRCODE = 3;
 
-	public static String TYPE_CARD_SCAN_CODE[] = {"ID","qrcode","barcode"};
-	public static int TYPE_CREATE_CARD_SEARCH = 0;
-	public static int TYPE_CREATE_CARD_INFO = 1;
-	public static int TYPE_CREATE_CARD_IMAGE = 2;
-	public static int TYPE_CREATE_CARD_SUCCESS = 3;
+	public static final String TYPE_CARD_SCAN_CODE[] = {"ID","qrcode","barcode"};
+	public static final int TYPE_CREATE_CARD_SEARCH = 0;
+	public static final int TYPE_CREATE_CARD_INFO = 1;
+	public static final int TYPE_CREATE_CARD_IMAGE = 2;
+	public static final int TYPE_CREATE_CARD_SUCCESS = 3;
 
-    public static String KEY_BUNDLE_BOOLEAN_VALUE = "KEY_BUNDLE_BOOLEAN_VALUE";
-    public static String KEY_BUNDLE_OBJECT_VALUE = "KEY_BUNDLE_OBJECT_VALUE";
-    public static String KEY_BUNDLE_CARD_INFO_COMPANYNAME = "KEY_BUNDLE_CARD_INFO_COMPANYNAME";
-    public static String KEY_BUNDLE_CARD_INFO_COMPANYID = "KEY_BUNDLE_CARD_INFO_COMPANYID";
-    public static String KEY_BUNDLE_CARD_INFO_COMPANYLOGO = "KEY_BUNDLE_CARD_INFO_COMPANYLOGO";
-    public static String KEY_BUNDLE_CARD_INFO_CARDCODE = "KEY_BUNDLE_CARD_INFO_CARDCODE";
-    public static String KEY_BUNDLE_CARD_INFO_CARDNAME = "KEY_BUNDLE_CARD_INFO_CARDNAME";
-    public static String KEY_BUNDLE_CARD_INFO_CARDDES = "KEY_BUNDLE_CARD_INFO_CARDDES";
-    public static String KEY_BUNDLE_CARD_INFO_TYPE_CODE = "KEY_BUNDLE_CARD_INFO_TYPE_CODE";
-    public static String KEY_BUNDLE_CARD_EDIT_CARD = "KEY_BUNDLE_CARD_EDIT_CARD";
-    public static String KEY_BUNDLE_CARD_COMPANY_CATEGORY = "KEY_BUNDLE_CARD_COMPANY_CATEGORY";
+    public static final String KEY_BUNDLE_BOOLEAN_VALUE = "KEY_BUNDLE_BOOLEAN_VALUE";
+    public static final String KEY_BUNDLE_OBJECT_VALUE = "KEY_BUNDLE_OBJECT_VALUE";
+    public static final String KEY_BUNDLE_CARD_INFO_COMPANYNAME = "KEY_BUNDLE_CARD_INFO_COMPANYNAME";
+    public static final String KEY_BUNDLE_CARD_INFO_COMPANYID = "KEY_BUNDLE_CARD_INFO_COMPANYID";
+    public static final String KEY_BUNDLE_CARD_INFO_COMPANYLOGO = "KEY_BUNDLE_CARD_INFO_COMPANYLOGO";
+    public static final String KEY_BUNDLE_CARD_INFO_CARDCODE = "KEY_BUNDLE_CARD_INFO_CARDCODE";
+    public static final String KEY_BUNDLE_CARD_INFO_CARDNAME = "KEY_BUNDLE_CARD_INFO_CARDNAME";
+    public static final String KEY_BUNDLE_CARD_INFO_CARDDES = "KEY_BUNDLE_CARD_INFO_CARDDES";
+    public static final String KEY_BUNDLE_CARD_INFO_TYPE_CODE = "KEY_BUNDLE_CARD_INFO_TYPE_CODE";
+    public static final String KEY_BUNDLE_CARD_EDIT_CARD = "KEY_BUNDLE_CARD_EDIT_CARD";
+    public static final String KEY_BUNDLE_CARD_COMPANY_CATEGORY = "KEY_BUNDLE_CARD_COMPANY_CATEGORY";
 
 	public static String AT_PREVIEW_ID_LINK_IMAGE = "AT_PREVIEW_ID_LINK_IMAGE";
 
     //Status api
-    public static int API_REQUEST_STATUS_SUCCESS = 200;
-    public static int API_REQUEST_STATUS_FAILED = 500;
+    public static final int API_REQUEST_STATUS_SUCCESS = 200;
+    public static final int API_REQUEST_STATUS_FAILED = 500;
 
+
+    public static final String ID_COUNTRY_DEFAUL_VIETNAME = "14";
 }

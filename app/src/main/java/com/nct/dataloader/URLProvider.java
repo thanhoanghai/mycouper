@@ -160,6 +160,19 @@ public class URLProvider {
         return client;
     }
 
+    public static String getMemberCardByCountry(String country_id) {
+        String client = PROVIDER;
+        try {
+            client += "?ac=get_company_member_card_by_country" ;
+            client += "&country_id=" + country_id;
+            return client;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return client;
+    }
+
+
     public static String getCompanyMemberCard() {
         String client = PROVIDER;
         try {

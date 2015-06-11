@@ -42,16 +42,18 @@
             android:background="@color/blue_topbar" />
 
 
-        <!--<ListView-->
-            <!--android:id="@+id/dialog_nation_lv"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="200dp"-->
-            <!--android:alwaysDrawnWithCache="true"-->
-            <!--android:cacheColorHint="@android:color/transparent"-->
-            <!--android:drawSelectorOnTop="false"-->
-            <!--android:listSelector="@android:color/transparent"-->
-            <!--android:scrollbars="none"-->
-            <!--android:visibility="invisible" />-->
+        <ListView
+            android:id="@+id/dialog_nation_lv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:alwaysDrawnWithCache="true"
+            android:cacheColorHint="@android:color/transparent"
+            android:drawSelectorOnTop="false"
+            android:listSelector="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:scrollbars="none"
+             />
 
 
     </LinearLayout>
