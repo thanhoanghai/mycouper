@@ -83,7 +83,7 @@
     <dimen name="frag_membercard_bt_marinbottom">20dp</dimen>
 
     <!-- ITEM COMPANY  -->
-    <dimen name="item_company_icon_size">50dp</dimen>
+    <dimen name="item_company_icon_size">40dp</dimen>
 
     <!-- ITEM MEMBER CARD  -->
     <dimen name="item_member_card_h">60dp</dimen>
