@@ -295,7 +295,7 @@ public class AtCardDetail extends AtBase {
 			}
 		});
 
-		imgIcon = (ImageView) findViewById(R.id.at_card_detail_img);
+		imgIcon = (ImageView) findViewById(R.id.item_icon_image_img);
 
 		bnt1= (RadioButton) findViewById(R.id.layout_segment_bt1);
 		bnt1.setOnClickListener(new View.OnClickListener() {

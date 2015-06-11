@@ -42,7 +42,7 @@ public class CardDetailCouponAdapter extends BaseAdapterApp<CouponObject> {
             holder = new ViewHolder();
 
             holder.tvTitle = (TextView) view.findViewById(R.id.item_coupon_tv_title);
-            holder.img = (ImageView) view.findViewById(R.id.item_coupon_img);
+            holder.img = (ImageView) view.findViewById(R.id.item_icon_image_img);
             holder.tvExpire = (TextView) view.findViewById(R.id.item_coupon_tv_expire);
 
             view.setTag(holder);

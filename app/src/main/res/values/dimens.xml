@@ -118,4 +118,7 @@
     <dimen name="item_pos_tvphone">12sp</dimen>
 
 
+    <!-- LAYOUT COUPON DETAIL  -->
+    <dimen name="layout_coupon_detail_padding">5dp</dimen>
+
 </resources>

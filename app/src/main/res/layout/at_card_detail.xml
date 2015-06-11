@@ -42,25 +42,7 @@
                         app:typeface_name="@string/font_roboto_regular" />
 
 
-                    <FrameLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal">
-
-                        <ImageView
-                            android:id="@+id/at_card_detail_img"
-                            android:layout_width="@dimen/item_member_card_icon_size"
-                            android:layout_height="@dimen/item_member_card_icon_size"
-                            android:layout_gravity="center"
-                            android:src="@color/grey_info_card" />
-
-                        <ImageView
-                            android:layout_width="@dimen/item_member_card_icon_size"
-                            android:layout_height="@dimen/item_member_card_icon_size"
-                            android:layout_gravity="center"
-                            android:background="@drawable/icon_border" />
-                    </FrameLayout>
+                    <include layout="@layout/item_icon_image"></include>
 
                     <com.nct.customview.TfTextView
                         android:id="@+id/card_detail_bt_rotate"
