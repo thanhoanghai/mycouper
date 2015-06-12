@@ -283,7 +283,7 @@ public class AtCardDetail extends AtBase {
 		couponDetailBntDelete.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
+				clickCouponDelete();
 			}
 		});
 
@@ -322,6 +322,7 @@ public class AtCardDetail extends AtBase {
 			@Override
 			public void onSuccess(int i, Header[] headers, String result) {
 				hideDialogLoading();
+				getEcoupon();
 			}
 		});
 	}
