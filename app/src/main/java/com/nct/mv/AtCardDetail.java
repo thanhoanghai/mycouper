@@ -35,6 +35,7 @@ import com.nct.adapter.CardDetailPosAdapter;
 import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
 import com.nct.customview.AndroidBarcodeView;
+import com.nct.customview.DialogCouponSaved;
 import com.nct.customview.DialogCustom;
 import com.nct.customview.DialogRate;
 import com.nct.customview.ListViewCustom;
@@ -108,6 +109,7 @@ public class AtCardDetail extends AtBase {
 	private Button couponDetailBntReceive;
 	private Button couponDetailBntDelete;
 	private Button couponDetailBntClose;
+	private CouponReceiveData couponReceiveData;
 
 
 	@Override
@@ -296,10 +298,22 @@ public class AtCardDetail extends AtBase {
 			@Override
 			public void onSuccess(int i, Header[] headers, String result) {
 				hideDialogLoading();
-				CouponReceiveData couponReceiveData = DataHelper.getCouponReceiveData(result);
+				couponReceiveData = DataHelper.getCouponReceiveData(result);
+				showDialogCouponReceiveSaved();
 			}
 		});
 	}
+
+	private void showDialogCouponReceiveSaved()
+	{
+		if(couponReceiveData!=null)
+		{
+			DialogCouponSaved dialog = new DialogCouponSaved(AtCardDetail.this, couponReceiveData.data.coupon_serial_number, couponObject.valid_from, couponObject.valid_to);
+			if (dialog != null)
+				dialog.show();
+		}
+	}
+
 	private void setDataCouponDetail()
 	{
 		couponObject = couponData.data.get(indexCoupon);
