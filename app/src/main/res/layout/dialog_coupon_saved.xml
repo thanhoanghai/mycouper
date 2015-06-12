@@ -39,6 +39,7 @@
         android:text="@string/serials_number"
         android:textColor="@color/blue_bg"
         android:textSize="24sp"
+        app:typeface_style="bold"
         app:typeface_name="@string/font_roboto_regular" />
 
 
