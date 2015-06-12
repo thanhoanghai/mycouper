@@ -7,7 +7,7 @@
     android:background="@drawable/dialog_custom_bg"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="10dp">
+    >
 
     <com.nct.customview.TfTextView
         android:layout_width="match_parent"
