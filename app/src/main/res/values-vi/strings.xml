@@ -44,6 +44,10 @@
     <string name="available_outlets">Available stores</string>
     <string name="stores_map">Stores map</string>
 
+    <string name="recieve_coupon">Nhận Coupon</string>
+    <string name="validity">Có hiệu lực</string>
+    <string name="term_and_condition">Thời hạn và điều kiện</string>
+    <string name="store">Cửa hàng</string>
 
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Nhập mã nếu thiết bị không nhận :</string>

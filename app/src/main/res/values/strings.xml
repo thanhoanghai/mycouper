@@ -42,6 +42,11 @@
     <string name="available_outlets">Available stores</string>
     <string name="stores_map">Stores map</string>
 
+    <string name="recieve_coupon">Receive Coupon</string>
+    <string name="validity">Validity</string>
+    <string name="term_and_condition">Term and Condition</string>
+    <string name="stores">Stores</string>
+
 
 
     <!-- CARD DETAIL -->

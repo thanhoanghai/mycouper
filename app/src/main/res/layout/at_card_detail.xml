@@ -137,6 +137,9 @@
         </ScrollView>
 
         <include layout="@layout/layout_map_card_details"/>
+
+        <include layout="@layout/layout_coupon_detail"/>
+
     </FrameLayout>
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.nct.mv;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -41,6 +42,8 @@ import com.nct.dataloader.DataHelper;
 import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
 import com.nct.model.CouponData;
+import com.nct.model.CouponObject;
+import com.nct.model.CouponReceiveData;
 import com.nct.model.MemberCardObject;
 import com.nct.model.PosData;
 import com.nct.model.PosObject;
@@ -90,6 +93,23 @@ public class AtCardDetail extends AtBase {
 	private ListViewCustom lvCoupon;
 	private CardDetailCouponAdapter lvCouponAdapter;
 
+
+	private LinearLayout couponDetailLinear;
+	private ImageView couponDetailImgIcon;
+	private ImageView couponDetailImgCoupon;
+	private TextView couponDetailTvCompany;
+	private TextView couponDetailTvCardName;
+	private TextView couponDetailTvExpire;
+	private TextView couponDetailTvTermDes;
+	private TextView couponDetailTvStoreDes;
+	private int indexCoupon = 0;
+	private CouponObject couponObject;
+
+	private Button couponDetailBntReceive;
+	private Button couponDetailBntDelete;
+	private Button couponDetailBntClose;
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -104,6 +124,7 @@ public class AtCardDetail extends AtBase {
 		memberCard = GlobalInstance.getInstance().memberCard;
 
 		initValueItem();
+		initCouponDetail();
 
 		initImageLoader();
 		displayImage(imgIcon, memberCard.company_logo);
@@ -127,6 +148,8 @@ public class AtCardDetail extends AtBase {
 			setStatusItem(View.INVISIBLE,View.VISIBLE,View.INVISIBLE);
 		else if(index==2)
 			setStatusItem(View.INVISIBLE,View.INVISIBLE,View.VISIBLE);
+
+		couponDetailLinear.setVisibility(View.GONE);
 	}
 
 	private void setStatusItem(int status1,int status2,int status3)
@@ -196,15 +219,16 @@ public class AtCardDetail extends AtBase {
 	{
 		DataLoader.get(URLProvider.getEcouponBymemberCompany(memberCard.company_id, GlobalInstance.getInstance().getUserID()), new TextHttpResponseHandler() {
 			@Override
-			public void onFailure(int i, Header[] headers, String s, Throwable throwable) {}
+			public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+			}
+
 			@Override
 			public void onSuccess(int i, Header[] headers, String s) {
 				Debug.logError(tag, s);
 				couponData = DataHelper.getCouponData(s);
-				if(couponData.statusCode == Constants.STATUS_CODE_OK && couponData!=null && couponData.data.size() > 0)
-				{
+				if (couponData.statusCode == Constants.STATUS_CODE_OK && couponData != null && couponData.data.size() > 0) {
 					lvCoupon.setVisibility(View.VISIBLE);
-					lvCouponAdapter = new CardDetailCouponAdapter(AtCardDetail.this,couponData.data,memberCard.company_logo);
+					lvCouponAdapter = new CardDetailCouponAdapter(AtCardDetail.this, couponData.data, memberCard.company_logo);
 					lvCoupon.setAdapter(lvCouponAdapter);
 					linearCoupon.setVisibility(View.VISIBLE);
 				}
@@ -228,11 +252,77 @@ public class AtCardDetail extends AtBase {
 		barCodeID.setText(memberCard.member_card_number);
 	}
 
+	private void initCouponDetail()
+	{
+		couponDetailLinear = (LinearLayout) findViewById(R.id.layout_coupon_detail_linear);
+		couponDetailImgIcon = (ImageView) findViewById(R.id.item_icon_image_img1);
+		couponDetailImgCoupon = (ImageView) findViewById(R.id.layout_coupon_detail_img_banner);
+		couponDetailTvCompany = (TextView) findViewById(R.id.layout_coupon_detail_tvcompany);
+		couponDetailTvCardName = (TextView) findViewById(R.id.layout_coupon_detail_tvcarname);
+		couponDetailTvExpire = (TextView) findViewById(R.id.layout_coupon_detail_tv_expire_at);
+		couponDetailTvTermDes = (TextView) findViewById(R.id.layout_coupon_detail_tv_term_des);
+		couponDetailTvStoreDes = (TextView) findViewById(R.id.layout_coupon_detail_tv_store_des);
+		couponDetailBntReceive = (Button) findViewById(R.id.layout_coupon_detail_bnt_receive);
+		couponDetailBntReceive.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				clickCouponReceiveData();
+			}
+		});
+		couponDetailBntDelete = (Button) findViewById(R.id.layout_coupon_detail_bnt_delete);
+		couponDetailBntDelete.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+			}
+		});
+
+		couponDetailBntClose = (Button) findViewById(R.id.layout_coupon_detail_bnt_close);
+		couponDetailBntClose.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				couponDetailLinear.setVisibility(View.GONE);
+			}
+		});
+	}
+
+	private void clickCouponReceiveData()
+	{
+		DataLoader.postParam(URLProvider.getParamsUpdateEcouponActivie(couponObject.coupon_id), new TextHttpResponseHandler() {
+			@Override
+			public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+				hideDialogLoading();
+			}
+			@Override
+			public void onSuccess(int i, Header[] headers, String result) {
+				hideDialogLoading();
+				CouponReceiveData couponReceiveData = DataHelper.getCouponReceiveData(result);
+			}
+		});
+	}
+	private void setDataCouponDetail()
+	{
+		couponObject = couponData.data.get(indexCoupon);
+		displayImage(couponDetailImgIcon, memberCard.company_logo);
+		if(!TextUtils.isEmpty(couponObject.front_of_the_card))
+			displayImage(couponDetailImgCoupon,couponObject.front_of_the_card);
+		couponDetailTvCompany.setText(memberCard.company_name);
+		couponDetailTvCardName.setText(memberCard.member_card_name);
+		couponDetailTvExpire.setText(getString(R.string.expire_at) + couponObject.valid_to);
+		couponDetailLinear.setVisibility(View.VISIBLE);
+	}
+
 	private void initValueItem()
 	{
-
 		linearCoupon = (LinearLayout) findViewById(R.id.card_detail_linear_coupon);
 		lvCoupon = (ListViewCustom) findViewById(R.id.card_detail_lv_coupon);
+		lvCoupon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view,
+									int position, long id) {
+				indexCoupon = position;
+				setDataCouponDetail();
+			}
+		});
 
 		tvNameMembercard = (TextView) findViewById(R.id.at_card_detail_tv_name_membercard);
 		if(memberCard!=null && !TextUtils.isEmpty(memberCard.member_card_name))
