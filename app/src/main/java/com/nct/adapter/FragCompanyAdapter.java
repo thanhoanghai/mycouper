@@ -95,8 +95,16 @@ public class FragCompanyAdapter extends BaseAdapterApp<CompanyObject> {
 			}
 			addData(tempList);
 			notifyDataSetChanged();
-		}else
+		}else {
+			clearData();
 			addData(saveList);
+		}
+	}
+
+	public void setDataSavelist(ArrayList<CompanyObject> list)
+	{
+		saveList.clear();
+		saveList.addAll(list);
 	}
 
 }

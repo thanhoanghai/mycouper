@@ -190,6 +190,10 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
     @Override
     protected boolean handleLoadingDataSuccess(String result) {
         data = DataHelper.getCompanyData(result);
+        if (!isAdapterNull())
+        {
+            ((FragCompanyAdapter)mBaseAdapter).setDataSavelist(data.data);
+        }
         setData(data.data, false);
         return true;
     }
