@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -103,6 +104,7 @@ public class AtCardDetail extends AtBase {
 	private TextView couponDetailTvExpire;
 	private TextView couponDetailTvTermDes;
 	private TextView couponDetailTvStoreDes;
+	private ScrollView couponDetailScrollview;
 	private int indexCoupon = 0;
 	private CouponObject couponObject;
 
@@ -256,6 +258,7 @@ public class AtCardDetail extends AtBase {
 
 	private void initCouponDetail()
 	{
+		couponDetailScrollview = (ScrollView) findViewById(R.id.layout_coupon_detail_scrollview);
 		couponDetailLinear = (LinearLayout) findViewById(R.id.layout_coupon_detail_linear);
 		couponDetailImgIcon = (ImageView) findViewById(R.id.item_icon_image_img1);
 		couponDetailImgCoupon = (ImageView) findViewById(R.id.layout_coupon_detail_img_banner);
@@ -323,7 +326,9 @@ public class AtCardDetail extends AtBase {
 		couponDetailTvCompany.setText(memberCard.company_name);
 		couponDetailTvCardName.setText(memberCard.member_card_name);
 		couponDetailTvExpire.setText(getString(R.string.expire_at) + couponObject.valid_to);
+		couponDetailScrollview.scrollTo(0,0);
 		couponDetailLinear.setVisibility(View.VISIBLE);
+
 	}
 
 	private void initValueItem()
