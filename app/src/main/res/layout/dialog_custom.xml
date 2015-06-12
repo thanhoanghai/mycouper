@@ -1,37 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="280dp" android:layout_height="wrap_content"
-	android:layout_gravity="center" android:background="@drawable/dialog_custom_bg"
-	android:gravity="center_horizontal" android:orientation="vertical"
-	android:padding="10dp">
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_custom_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp">
 
-	<TextView android:id="@+id/dialog_custom_title"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:textSize="18sp" android:textColor="#575757"
-		android:layout_marginTop="10dp"
-		android:text="@string/app_name" />
+    <TextView
+        android:id="@+id/dialog_custom_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/app_name"
+        android:textColor="#575757"
+        android:textSize="18sp" />
 
-	<TextView android:id="@+id/dialog_custom_des"
-		android:layout_marginTop="10dp" android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:textSize="14sp"
-		android:gravity="center" android:textColor="#797979" android:text="@string/app_name"
-		android:visibility="visible" />
+    <TextView
+        android:id="@+id/dialog_custom_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="#797979"
+        android:textSize="14sp"
+        android:visibility="visible" />
 
-	<LinearLayout android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:layout_marginBottom="10dp"
-		android:layout_marginTop="15dp" android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
 
-		<Button android:id="@+id/dialog_custom_bnt_cancel"
-			android:layout_width="100dp" android:layout_height="30dp"
-			android:textSize="14sp" android:layout_marginRight="5dp"
-			android:textColor="@color/white" android:background="@drawable/login_bt_face_bg"
-			android:text="@string/cancel" />
+        <Button
+            android:id="@+id/dialog_custom_bnt_cancel"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/login_bt_face_bg"
+            android:text="@string/cancel"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
-		<Button android:id="@+id/dialog_custom_bnt_ok"
-			android:layout_width="100dp" android:layout_height="30dp"
-			android:textSize="14sp" android:background="@drawable/login_bt_face_bg"
-			android:textColor="@color/white" android:layout_marginRight="5dp"
-			android:text="@string/ok" />
-	</LinearLayout>
+        <Button
+            android:id="@+id/dialog_custom_bnt_ok"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/login_bt_face_bg"
+            android:text="@string/ok"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.nct.mv;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.Image;
@@ -38,6 +39,7 @@ import com.nct.constants.GlobalInstance;
 import com.nct.customview.AndroidBarcodeView;
 import com.nct.customview.DialogCouponSaved;
 import com.nct.customview.DialogCustom;
+import com.nct.customview.DialogInfoCustom;
 import com.nct.customview.DialogRate;
 import com.nct.customview.ListViewCustom;
 import com.nct.dataloader.DataHelper;
@@ -50,10 +52,14 @@ import com.nct.model.MemberCardObject;
 import com.nct.model.PosData;
 import com.nct.model.PosObject;
 import com.nct.utils.Debug;
+import com.nct.utils.Pref;
 import com.nct.utils.Utils;
 
 import org.apache.http.Header;
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import thh.com.mycouper.R;
 
@@ -282,6 +288,7 @@ public class AtCardDetail extends AtBase {
 		couponDetailBntDelete.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+
 				showDialogDeleteCoupon();
 			}
 		});
@@ -589,5 +596,26 @@ public class AtCardDetail extends AtBase {
         }
         return bmp;
     }
+
+
+//	List<String> listContent = new ArrayList<String>();
+//	listContent.add("Do");
+//	listContent.add("Vinh Nghi");
+//	listContent.add("1987-03-10");
+//	listContent.add("nghido@gmail.com");
+//	listContent.add("0908554455");
+//
+//	showDialogConfirm(listContent);
+	public void showDialogConfirm(List<String> listContent){
+		DialogInfoCustom dialog = new DialogInfoCustom(AtCardDetail.this);
+		dialog.setText(getString(R.string.user_infomation),getString(R.string.user_dialog_title), listContent);
+		dialog.setListenerFinishedDialog(new DialogInfoCustom.FinishDialogConfirmListener() {
+			@Override
+			public void onFinishConfirmDialog(int i) {
+
+			}
+		});
+		dialog.show();
+	}
 
 }

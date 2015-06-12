@@ -87,6 +87,9 @@
     <string name="user_account_update_success">Thông tin cá nhân đã được cập nhật!</string>
     <string name="user_account_update_failed">Thông tin cá nhân chưa được cập nhật!</string>
     <string name="user_account_format_birthday">yyyy-mm-dd</string>
+	<string name="user_account_dateofbirthday">Ngày sinh:</string>
+    <string name="user_infomation">Thông tin</string>
+    <string name="user_dialog_title">Hoàn thành mẫu thông tin bên dưới</string>
 
     <!-- FRAG CREATE NEW CARD -->
     <string name="frag_createcard">TẠO THẺ MỚI</string>

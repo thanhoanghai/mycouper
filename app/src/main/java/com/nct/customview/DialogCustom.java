@@ -62,7 +62,7 @@ public class DialogCustom extends Dialog implements
 		setTextViewText();
 	}
 	
-	public void setText(String title,String des)
+	public void setText(String title, String des)
 	{
 		sTitle = title;
 		sDes = des;

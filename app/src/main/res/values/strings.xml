@@ -87,7 +87,9 @@
     <string name="user_account_update_success">User\'s profile have been updated!</string>
     <string name="user_account_update_failed">User\'s profile haven\'t been updated!</string>
     <string name="user_account_format_birthday">yyyy-mm-dd</string>
-
+	<string name="user_account_dateofbirthday">Date of birthday:</string>
+    <string name="user_infomation">User infomation</string>
+    <string name="user_dialog_title">Please complete the below form to register this card</string>
 
     <!-- FRAG CREATE NEW CARD -->
     <string name="frag_createcard">CREATE NEW CARD</string>
@@ -185,5 +187,6 @@
     <string name="auto">Auto</string>
     <string name="library">Library</string>
     <string name="instagram">Instagram</string>
+	
 
 </resources>
