@@ -50,7 +50,7 @@
     <string name="serials_number">Serial number</string>
     <string name="valid_from">Valid from</string>
     <string name="valid_to">Valid to</string>
-
+    <string name="do_you_want_delete_this_coupon">Do you want delete this coupon ?</string>
 
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Enter the following code if the devices does not recognize:</string>

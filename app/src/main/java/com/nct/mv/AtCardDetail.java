@@ -232,11 +232,10 @@ public class AtCardDetail extends AtBase {
 				couponData = DataHelper.getCouponData(s);
 				if (couponData.statusCode == Constants.STATUS_CODE_OK && couponData != null && couponData.data.size() > 0) {
 					lvCoupon.setVisibility(View.VISIBLE);
-					if(lvCouponAdapter==null) {
+					if (lvCouponAdapter == null) {
 						lvCouponAdapter = new CardDetailCouponAdapter(AtCardDetail.this, couponData.data, memberCard.company_logo);
 						lvCoupon.setAdapter(lvCouponAdapter);
-					}
-					else
+					} else
 						lvCouponAdapter.updateData(couponData.data);
 
 					linearCoupon.setVisibility(View.VISIBLE);
@@ -283,7 +282,7 @@ public class AtCardDetail extends AtBase {
 		couponDetailBntDelete.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				clickCouponDelete();
+				showDialogDeleteCoupon();
 			}
 		});
 
@@ -312,6 +311,19 @@ public class AtCardDetail extends AtBase {
 		});
 	}
 
+	private void showDialogDeleteCoupon()
+	{
+		DialogCustom dialog = new DialogCustom(AtCardDetail.this,2);
+		dialog.setText(getString(R.string.confirm),getString(R.string.do_you_want_delete_this_coupon));
+		dialog.setListenerFinishedDialog(new DialogCustom.FinishDialogConfirmListener() {
+			@Override
+			public void onFinishConfirmDialog(int i) {
+				if(i==1)
+					clickCouponDelete();
+			}
+		});
+		dialog.show();
+	}
 	private void clickCouponDelete()
 	{
 		DataLoader.postParam(URLProvider.getParamsUpdateEcouponDelete(couponObject.coupon_id), new TextHttpResponseHandler() {

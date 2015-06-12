@@ -51,7 +51,8 @@
     <string name="coupon_is_saved">Đã lưu coupon</string>
     <string name="serials_number">Số seri</string>
     <string name="valid_from">Hiệu lực từ</string>
-    <string name="valid_to">Hiệ lực đến</string>
+    <string name="valid_to">Hiệu lực đến</string>
+    <string name="do_you_want_delete_this_coupon">Bạn có muốn xoá coupon này ?</string>
 
 
     <!-- CARD DETAIL -->
