@@ -232,8 +232,13 @@ public class AtCardDetail extends AtBase {
 				couponData = DataHelper.getCouponData(s);
 				if (couponData.statusCode == Constants.STATUS_CODE_OK && couponData != null && couponData.data.size() > 0) {
 					lvCoupon.setVisibility(View.VISIBLE);
-					lvCouponAdapter = new CardDetailCouponAdapter(AtCardDetail.this, couponData.data, memberCard.company_logo);
-					lvCoupon.setAdapter(lvCouponAdapter);
+					if(lvCouponAdapter==null) {
+						lvCouponAdapter = new CardDetailCouponAdapter(AtCardDetail.this, couponData.data, memberCard.company_logo);
+						lvCoupon.setAdapter(lvCouponAdapter);
+					}
+					else
+						lvCouponAdapter.updateData(couponData.data);
+
 					linearCoupon.setVisibility(View.VISIBLE);
 				}
 			}
@@ -307,6 +312,20 @@ public class AtCardDetail extends AtBase {
 		});
 	}
 
+	private void clickCouponDelete()
+	{
+		DataLoader.postParam(URLProvider.getParamsUpdateEcouponDelete(couponObject.coupon_id), new TextHttpResponseHandler() {
+			@Override
+			public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+				hideDialogLoading();
+			}
+			@Override
+			public void onSuccess(int i, Header[] headers, String result) {
+				hideDialogLoading();
+			}
+		});
+	}
+
 	private void showDialogCouponReceiveSaved()
 	{
 		if(couponReceiveData!=null)
@@ -326,7 +345,7 @@ public class AtCardDetail extends AtBase {
 		couponDetailTvCompany.setText(memberCard.company_name);
 		couponDetailTvCardName.setText(memberCard.member_card_name);
 		couponDetailTvExpire.setText(getString(R.string.expire_at) + couponObject.valid_to);
-		couponDetailScrollview.scrollTo(0,0);
+		couponDetailScrollview.scrollTo(0, 0);
 		couponDetailLinear.setVisibility(View.VISIBLE);
 
 	}

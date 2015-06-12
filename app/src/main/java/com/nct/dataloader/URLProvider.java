@@ -55,6 +55,14 @@ public class URLProvider {
 
         return params;
     }
+    public static RequestParams getParamsUpdateEcouponDelete(String coupon_id)
+    {
+        RequestParams params = new RequestParams();
+        params.put("ac", "update_ecoupon_deleted");
+        params.put("coupon_id", coupon_id);
+
+        return params;
+    }
 
     public static RequestParams getParamsCreateCardWithUser(String user_id, String company_name, String member_card_name, String member_card_number, String front_of_the_card, String back_of_the_card, String description, String card_number_type)
     {
