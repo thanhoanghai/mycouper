@@ -2,6 +2,20 @@
 <items version="2" >
 
     <item
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.12/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="733494514a30e5e5c60da15444b7d720590679c4">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-41df0c4a6a6b74ce80ca52fa4273ec6e9469aee9.jar" />
+    </item>
+    <item
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-b6f7a944d920558f638fadce554e5aa009fc109c.jar" />
+    </item>
+    <item
         jar="/Users/admin/Desktop/Freelancer/MyCouper/app/libs/imageviewtouch.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -9,11 +23,18 @@
         <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/imageviewtouch-f88dbd2505637b1b81c856c6e9825a6b11350e19.jar" />
     </item>
     <item
-        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.12/jars/classes.jar"
+        jar="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="733494514a30e5e5c60da15444b7d720590679c4">
-        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-41df0c4a6a6b74ce80ca52fa4273ec6e9469aee9.jar" />
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/classes-3cc784126868ee7e09b6a585d4066ed6bee3b5a5.jar" />
+    </item>
+    <item
+        jar="/Users/admin/Desktop/DEV/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/admin/Desktop/Freelancer/MyCouper/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-19a2eb93c47a08755a166dc91b96225fedd54020.jar" />
     </item>
 
 </items>

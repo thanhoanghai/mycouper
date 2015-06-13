@@ -32,7 +32,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="match_parent" android:layout_marginTop="10dp"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -44,7 +44,6 @@
                 android:id="@+id/dialog_custom_des"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -56,17 +55,17 @@
             <LinearLayout
                 android:id="@+id/conttent1"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/frag_createcard_info_edittext_h"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/frag_createcard_info_layout_marintop"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="35"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="45"
                     android:gravity="right|center_vertical"
                     android:text="@string/user_account_firstname"
                     android:textColor="@color/grey_info_text_card"
@@ -75,9 +74,9 @@
                 <TextView
                     android:id="@+id/txt_text1"
                     android:layout_width="0dip"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
-                    android:layout_weight="65"
+                    android:layout_weight="55"
                     android:background="@color/transparent"
                     android:gravity="left|center_vertical"
                     android:singleLine="true"
@@ -90,17 +89,17 @@
             <LinearLayout
                 android:id="@+id/conttent2"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/frag_createcard_info_edittext_h"
-                android:layout_marginTop="@dimen/frag_createcard_info_layout_marintop"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="5dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="35"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="45"
                     android:gravity="right|center_vertical"
                     android:text="@string/user_account_lastname"
                     android:textColor="@color/grey_info_text_card"
@@ -109,9 +108,9 @@
                 <TextView
                     android:id="@+id/txt_text2"
                     android:layout_width="0dip"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
-                    android:layout_weight="65"
+                    android:layout_weight="55"
                     android:background="@color/transparent"
                     android:gravity="left|center_vertical"
                     android:singleLine="true"
@@ -124,17 +123,17 @@
             <LinearLayout
                 android:id="@+id/conttent3"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/frag_createcard_info_edittext_h"
-                android:layout_marginTop="@dimen/frag_createcard_info_layout_marintop"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="5dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="35"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="45"
                     android:gravity="right|center_vertical"
                     android:text="@string/user_account_dateofbirthday"
                     android:textColor="@color/grey_info_text_card"
@@ -143,9 +142,9 @@
                 <TextView
                     android:id="@+id/txt_text3"
                     android:layout_width="0dip"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
-                    android:layout_weight="65"
+                    android:layout_weight="55"
                     android:background="@color/transparent"
                     android:gravity="left|center_vertical"
                     android:singleLine="true"
@@ -158,17 +157,17 @@
             <LinearLayout
                 android:id="@+id/conttent4"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/frag_createcard_info_edittext_h"
-                android:layout_marginTop="@dimen/frag_createcard_info_layout_marintop"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="5dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="35"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="45"
                     android:gravity="right|center_vertical"
                     android:text="@string/forgot_email"
                     android:textColor="@color/grey_info_text_card"
@@ -177,12 +176,11 @@
                 <TextView
                     android:id="@+id/txt_text4"
                     android:layout_width="0dip"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
-                    android:layout_weight="65"
+                    android:layout_weight="55"
                     android:background="@color/transparent"
                     android:gravity="left|center_vertical"
-                    android:singleLine="true"
                     android:text="adb"
                     android:textColor="@color/black_gray"
                     android:textSize="@dimen/frag_createcard_info_title_size" />
@@ -192,17 +190,17 @@
             <LinearLayout
                 android:id="@+id/conttent5"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/frag_createcard_info_edittext_h"
-                android:layout_marginTop="@dimen/frag_createcard_info_layout_marintop"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="5dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="35"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="45"
                     android:gravity="right|center_vertical"
                     android:text="@string/user_account_phone"
                     android:textColor="@color/grey_info_text_card"
@@ -211,9 +209,9 @@
                 <TextView
                     android:id="@+id/txt_text5"
                     android:layout_width="0dip"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
-                    android:layout_weight="65"
+                    android:layout_weight="55"
                     android:background="@color/transparent"
                     android:gravity="left|center_vertical"
                     android:singleLine="true"
@@ -223,39 +221,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/conttent6"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/frag_createcard_info_edittext_h"
-                android:layout_marginTop="@dimen/frag_createcard_info_layout_marintop"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:visibility="gone">
 
-                <TextView
-                    android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="35"
-                    android:gravity="right|center_vertical"
-                    android:text="@string/user_account_phone"
-                    android:textColor="@color/grey_info_text_card"
-                    android:textSize="@dimen/frag_createcard_info_title_size" />
-
-                <TextView
-                    android:id="@+id/txt_text6"
-                    android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
-                    android:layout_weight="65"
-                    android:background="@color/transparent"
-                    android:gravity="left|center_vertical"
-                    android:singleLine="true"
-                    android:text="0908554455"
-                    android:textColor="@color/black_gray"
-                    android:textSize="@dimen/frag_createcard_info_title_size" />
-
-            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>

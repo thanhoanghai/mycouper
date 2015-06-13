@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.nct.constants.GlobalInstance;
+import com.nct.model.UserObject;
+
 import java.util.List;
 
 import thh.com.mycouper.R;
@@ -31,16 +34,15 @@ public class DialogInfoCustom extends Dialog implements
 	private Button bntCancel;
 	private Button bntOk;
 	private TextView tvTitle,tvDes;
-	private LinearLayout ly1, ly2, ly3, ly4, ly5, ly6;
-	private TextView txt1, txt2, txt3, txt4, txt5, txt6;
+	private LinearLayout ly1, ly2, ly3, ly4, ly5;
+	private TextView txt1, txt2, txt3, txt4, txt5;
 
 	private int typeDialog = 0;
 	private int TYPE_DIALOG_OK = 1;
 
 	private String sTitle="", sDes="";
 
-	private List<String> listContent;
-	private final int mMaxContent = 6;
+	private UserObject userObject;
 
 	public DialogInfoCustom(Context context) {
         this(context, R.style.ThemeDialogCustom);
@@ -56,6 +58,8 @@ public class DialogInfoCustom extends Dialog implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dialog_info_custom);
+
+		userObject = GlobalInstance.getInstance().userInfo;
 
 		tvTitle = (TextView) findViewById(R.id.dialog_custom_title);
 		tvDes = (TextView) findViewById(R.id.dialog_custom_des);
@@ -76,17 +80,13 @@ public class DialogInfoCustom extends Dialog implements
 		txt4 = (TextView)findViewById(R.id.txt_text4);
 		ly5 = (LinearLayout)findViewById(R.id.conttent5);
 		txt5 = (TextView)findViewById(R.id.txt_text5);
-		ly6 = (LinearLayout)findViewById(R.id.conttent6);
-		txt6 = (TextView)findViewById(R.id.txt_text6);
 		setTextViewText();
 	}
 	
-	public void setText(String title, String des, List<String> listContent)
+	public void setText(String title, String des)
 	{
 		sTitle = title;
 		sDes = des;
-		this.listContent = listContent;
-		setTextViewText();
 	}
 	
 	private void setTextViewText()
@@ -111,62 +111,12 @@ public class DialogInfoCustom extends Dialog implements
 				tvDes.setVisibility(View.GONE);
 		}
 
-		if(listContent != null && listContent.size() > 0){
-			for (int i = 0; i < listContent.size(); i++){
-				if(i < mMaxContent){
-					switch (i){
-						case 0:
-							if(listContent.get(i) != null){
-								if(ly1 != null)
-									ly1.setVisibility(View.VISIBLE);
-								if(txt1 != null)
-									txt1.setText(listContent.get(i));
-							}
-							break;
-						case 1:
-							if(listContent.get(i) != null){
-								if(ly2 != null)
-									ly2.setVisibility(View.VISIBLE);
-								if(txt2 != null)
-									txt2.setText(listContent.get(i));
-							}
-							break;
-						case 2:
-							if(listContent.get(i) != null){
-								if(ly3 != null)
-									ly3.setVisibility(View.VISIBLE);
-								if(txt3 != null)
-									txt3.setText(listContent.get(i));
-							}
-							break;
-						case 3:
-							if(listContent.get(i) != null){
-								if(ly4 != null)
-									ly4.setVisibility(View.VISIBLE);
-								if(txt4 != null)
-									txt4.setText(listContent.get(i));
-							}
-							break;
-						case 4:
-							if(listContent.get(i) != null){
-								if(ly5 != null)
-									ly5.setVisibility(View.VISIBLE);
-								if(txt5 != null)
-									txt5.setText(listContent.get(i));
-							}
-							break;
-						case 5:
-							if(listContent.get(i) != null){
-								if(ly6 != null)
-									ly6.setVisibility(View.VISIBLE);
-								if(txt6 != null)
-									txt6.setText(listContent.get(i));
-							}
-							break;
-					}
-				}else
-					break;
-			}
+		if(userObject!=null){
+		txt1.setText(userObject.first_name);
+		txt2.setText(userObject.last_name);
+		txt3.setText(userObject.birthday);
+		txt4.setText(userObject.user_email);
+		txt5.setText(userObject.phone);
 		}
 	}
 

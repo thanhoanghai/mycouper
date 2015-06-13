@@ -139,11 +139,12 @@ public class AtCardDetail extends AtBase {
 		initImageLoader();
 		displayImage(imgIcon, memberCard.company_logo);
 		displayImage(imgFront,memberCard.front_of_the_card);
-		displayImage(imgBack,memberCard.back_of_the_card);
+		displayImage(imgBack, memberCard.back_of_the_card);
 		checkTypeCard();
 
 		getPositionCompany();
 		getEcoupon();
+		
 	}
 
 
@@ -597,18 +598,9 @@ public class AtCardDetail extends AtBase {
         return bmp;
     }
 
-
-//	List<String> listContent = new ArrayList<String>();
-//	listContent.add("Do");
-//	listContent.add("Vinh Nghi");
-//	listContent.add("1987-03-10");
-//	listContent.add("nghido@gmail.com");
-//	listContent.add("0908554455");
-//
-//	showDialogConfirm(listContent);
-	public void showDialogConfirm(List<String> listContent){
+	public void showDialogInfo(){
 		DialogInfoCustom dialog = new DialogInfoCustom(AtCardDetail.this);
-		dialog.setText(getString(R.string.user_infomation),getString(R.string.user_dialog_title), listContent);
+		dialog.setText(getString(R.string.user_infomation),getString(R.string.user_dialog_title));
 		dialog.setListenerFinishedDialog(new DialogInfoCustom.FinishDialogConfirmListener() {
 			@Override
 			public void onFinishConfirmDialog(int i) {
