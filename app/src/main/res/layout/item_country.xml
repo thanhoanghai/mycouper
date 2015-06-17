@@ -24,13 +24,21 @@
             android:scaleType="fitXY" />
 
 
-        <ImageView
-            android:id="@+id/item_country_img"
-            android:layout_width="65dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/icon_nation"
-            android:scaleType="fitXY" />
+        <FrameLayout
+            android:layout_width="65dp" android:layout_marginLeft="10dp"
+            android:layout_height="35dp">
+            <ImageView
+                android:id="@+id/item_country_img"
+                android:layout_width="65dp"
+                android:layout_height="35dp"
+                android:src="@drawable/icon_nation"
+                android:scaleType="fitXY" />
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="35dp"
+                android:src="@drawable/icon_border_grey1"
+                android:scaleType="fitXY" />
+        </FrameLayout>
 
         <com.nct.customview.TfTextView
             android:id="@+id/item_country_title"

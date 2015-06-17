@@ -15,6 +15,7 @@
             android:layout_gravity="right|center_vertical"
             android:src="@drawable/icon_nation"
             android:layout_width="45dp"
+            android:scaleType="fitXY"
             android:layout_height="25dp" />
     </FrameLayout>
 

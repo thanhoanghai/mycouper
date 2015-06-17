@@ -60,6 +60,7 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
     private ImageView imgNation;
     private CountryData countryData;
     private String idCountry=Constants.ID_COUNTRY_DEFAUL_VIETNAME;
+    private String linkFlag = "";
 
     public static FragCreateCardSearch newInstance() {
         FragCreateCardSearch f = new FragCreateCardSearch();
@@ -213,8 +214,10 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
                 dialogNation = new DialogNation(getActivity(), countryData.data);
                 dialogNation.setListenerFinishedDialog(new DialogNation.FinishDialognation() {
                     @Override
-                    public void onFinishConfirmDialog(String idCtr) {
+                    public void onFinishConfirmDialog(String idCtr,String flag) {
                         idCountry = idCtr;
+                        linkFlag = flag;
+                        setFlagNation();
                         onRefresh();
                     }
                 });
@@ -223,6 +226,17 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
         }else
         {
             loadNation();
+        }
+    }
+
+    private void setFlagNation()
+    {
+        if(idCountry.equals("0"))
+        {
+            imgNation.setImageResource(R.drawable.icon_border_grey1);
+        }else
+        {
+            displayImage(imgNation,linkFlag);
         }
     }
 

@@ -30,7 +30,7 @@ public class DialogNation extends Dialog implements
 		View.OnClickListener {
 
 	public interface FinishDialognation {
-		void onFinishConfirmDialog(String idCountry);
+		void onFinishConfirmDialog(String idCountry,String linkImage);
 	}
 
 	private FinishDialognation mListener;
@@ -72,7 +72,7 @@ public class DialogNation extends Dialog implements
 	private void clickItem(int pos)
 	{
 		adapter.setIndexSelect(pos);
-		mListener.onFinishConfirmDialog(adapter.getIDCountry(pos));
+		mListener.onFinishConfirmDialog(adapter.getIDCountry(pos),adapter.getFlagCountry(pos));
 		this.dismiss();
 	}
 

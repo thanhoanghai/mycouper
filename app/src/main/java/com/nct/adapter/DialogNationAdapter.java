@@ -51,6 +51,14 @@ public class DialogNationAdapter extends BaseAdapterApp<CountryObject> {
 		CountryObject item = getItem(position);
 		holder.tvTitle.setText(item.country_name);
 
+		if(item.country_code.equals("0"))
+		{
+			holder.img.setImageResource(R.drawable.icon_border_grey1);
+		}else if(!TextUtils.isEmpty(item.country_flag))
+		{
+			displayImage(holder.img,item.country_flag);
+		}
+
 		if(isFirst)
 		{
 			if(item.country_id.equals(Constants.ID_COUNTRY_DEFAUL_VIETNAME))
@@ -81,6 +89,13 @@ public class DialogNationAdapter extends BaseAdapterApp<CountryObject> {
 		CountryObject item = getItem(pos);
 		return item.country_id;
 	}
+
+	public String getFlagCountry(int pos)
+	{
+		CountryObject item = getItem(pos);
+		return item.country_flag;
+	}
+
 
 	private static class ViewHolder {
 		TextView tvTitle;
