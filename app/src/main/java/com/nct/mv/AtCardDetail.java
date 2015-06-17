@@ -1,6 +1,7 @@
 package com.nct.mv;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.Image;
@@ -86,6 +87,7 @@ public class AtCardDetail extends AtBase {
 	private FrameLayout frameMaps;
 	private Button bntCloseMap;
 	private TextView btOpenmap;
+	private TextView btRotate;
 	private PosData posData;
 	private PosObject posObject;
 
@@ -113,6 +115,7 @@ public class AtCardDetail extends AtBase {
 	private TextView couponDetailTvExpire;
 	private TextView couponDetailTvTermDes;
 	private TextView couponDetailTvStoreDes;
+
 	private ScrollView couponDetailScrollview;
 	private int indexCoupon = 0;
 	private CouponObject couponObject;
@@ -415,6 +418,17 @@ public class AtCardDetail extends AtBase {
 			@Override
 			public void onClick(View v) {
 				frameMaps.setVisibility(View.VISIBLE);
+			}
+		});
+
+		btRotate = (TextView) findViewById(R.id.card_detail_bt_rotate);
+		btRotate.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(AtCardDetail.this.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+					AtCardDetail.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+				else
+					AtCardDetail.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 			}
 		});
 
