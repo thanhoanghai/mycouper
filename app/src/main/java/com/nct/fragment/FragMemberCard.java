@@ -30,6 +30,8 @@ import org.apache.http.Header;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import thh.com.mycouper.R;
 
@@ -94,8 +96,13 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 	protected boolean handleLoadingDataSuccess(String result) {
 
 		MemberCardData object = DataHelper.getMemberCardData(result);
+		Collections.sort(object.data, new Comparator<MemberCardObject>() {
+			@Override
+			public int compare(MemberCardObject s1, MemberCardObject s2) {
+				return s1.company_name.compareToIgnoreCase(s2.company_name);
+			}
+		});
 		setData(object.data,false);
-
 		return true;
 	}
 
