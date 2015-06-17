@@ -159,7 +159,7 @@
 
 
     <!-- ITEM COPYWRIGHT -->
-    <string name="item_copywright">Copywright 2015 by myCouper</string>
+    <string name="item_copywright">Copyright 2015 by myCouper</string>
 
     <!-- Camera-->
     <string name="camera_take_photo">Take a photo</string>

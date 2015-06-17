@@ -7,8 +7,8 @@
     android:gravity="center"
     android:orientation="vertical"
     android:paddingBottom="2dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
     android:paddingTop="3dp">
 
     <LinearLayout
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:textColor="@color/grey_info_text_card"
-            android:textSize="@dimen/item_pos_tvstreets_size"
+            android:textSize="@dimen/item_pos_tvphone"
             app:typeface_name="@string/font_roboto_regular" />
 
         <LinearLayout

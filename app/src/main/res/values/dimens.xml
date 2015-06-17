@@ -93,6 +93,7 @@
     <dimen name="item_member_card_icon_size">50dp</dimen>
     <dimen name="item_member_card_icon_size_large">90dp</dimen>
     <dimen name="item_member_card_text_size">15sp</dimen>
+    <dimen name="item_member_card_text_size_small">13sp</dimen>
 
 
     <!-- ITEM COPYWRIGHT -->
@@ -120,5 +121,6 @@
 
     <!-- LAYOUT COUPON DETAIL  -->
     <dimen name="layout_coupon_detail_padding">5dp</dimen>
+    <dimen name="layout_coupon_detail_padding_small">3dp</dimen>
 
 </resources>

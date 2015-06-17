@@ -3,6 +3,7 @@ package com.nct.mv;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -11,10 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nct.application.MVapplication;
+import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
 import com.nct.customview.TfTextView;
 import com.nct.customview.ViewResultLoad;
 import com.nct.customview.ViewResultLoad.InterfaceNetworkListener;
+import com.nct.utils.FontUtils;
 import com.nct.utils.Utils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -29,6 +32,8 @@ public class AtBase extends FragmentActivity {
 	// /////UINIVERSAL IMAGE LOADER///////////////
 	public ImageLoader mImageLoader;
 	public DisplayImageOptions options;
+
+	public Typeface mRoboRegular, mRoboLight, mRoboMedium;
 
 	public void initImageLoader() {
 		mImageLoader = ((MVapplication) getApplicationContext())
@@ -162,5 +167,11 @@ public class AtBase extends FragmentActivity {
 			getBaseContext().getResources().updateConfiguration(config,
 					getBaseContext().getResources().getDisplayMetrics());
 		}
+	}
+
+	public void setupFonts() {
+		mRoboRegular = FontUtils.getFonts(this, Constants.FONT_ROBO_REGULAR);
+		mRoboLight = FontUtils.getFonts(this, Constants.FONT_ROBO_LIGHT);
+		mRoboMedium = FontUtils.getFonts(this, Constants.FONT_ROBO_MEDIUM);
 	}
 }

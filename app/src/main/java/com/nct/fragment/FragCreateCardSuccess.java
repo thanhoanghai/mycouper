@@ -83,7 +83,7 @@ public class FragCreateCardSuccess extends BaseMainFragment {
             imageView = (ImageView) v.findViewById(R.id.frag_create_card_info_img);
             txtCompanyName = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_title);
             txtCompanyDes = (TfTextView) v.findViewById(R.id.frag_create_card_info_tv_des);
-            txtCompanyDes.setText(mCardDes);
+//            txtCompanyDes.setText(mCardDes);
             if(mCompanyLogo != null){
                 displayImage(imageView, mCompanyLogo);
             }

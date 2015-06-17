@@ -28,6 +28,11 @@ public class Constants {
 
     public static final String TAB_CAMERA_CAMERA = "TAB_CAMERA_CAMERA";
 
+    public static final String FONT_ROBO_BOLD = "fonts/Roboto-Bold.ttf";
+    public static final String FONT_ROBO_LIGHT = "fonts/Roboto-Light.ttf";
+    public static final String FONT_ROBO_REGULAR = "fonts/Roboto-Regular.ttf";
+    public static final String FONT_ROBO_MEDIUM = "fonts/Roboto-Medium.ttf";
+
     /**
      * Folder is used to save down load image in SDCard.
      */

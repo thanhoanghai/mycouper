@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_coupon_detail_linear"
@@ -89,7 +89,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue_bg"
-                    android:padding="@dimen/layout_coupon_detail_padding"
+                    android:paddingLeft="@dimen/layout_coupon_detail_padding"
+                    android:paddingTop="@dimen/layout_coupon_detail_padding_small"
+                    android:paddingBottom="@dimen/layout_coupon_detail_padding_small"
                     android:text="@string/validity"
                     android:textColor="@color/white"
                     android:textSize="15sp"
@@ -118,7 +120,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue_bg"
-                    android:padding="@dimen/layout_coupon_detail_padding"
+                    android:paddingLeft="@dimen/layout_coupon_detail_padding"
+                    android:paddingTop="@dimen/layout_coupon_detail_padding_small"
+                    android:paddingBottom="@dimen/layout_coupon_detail_padding_small"
                     android:text="@string/term_and_condition"
                     android:textColor="@color/white"
                     android:textSize="15sp"
@@ -147,7 +151,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue_bg"
-                    android:padding="@dimen/layout_coupon_detail_padding"
+                    android:paddingLeft="@dimen/layout_coupon_detail_padding"
+                    android:paddingTop="@dimen/layout_coupon_detail_padding_small"
+                    android:paddingBottom="@dimen/layout_coupon_detail_padding_small"
                     android:text="@string/stores"
                     android:textColor="@color/white"
                     android:textSize="15sp"
@@ -165,33 +171,45 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/layout_coupon_detail_bnt_delete"
-                android:layout_width="@dimen/login_bt_w"
-                android:layout_height="@dimen/login_bt_h"
-                android:layout_marginBottom="@dimen/login_bt_marin_bt"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bt_logout_bg"
-                android:text="@string/delete"
-                android:textColor="@color/white"
-                android:textSize="@dimen/login_bt_textsize" />
 
-
-            <Button
-                android:id="@+id/layout_coupon_detail_bnt_close"
-                android:layout_width="@dimen/login_bt_w"
-                android:layout_height="@dimen/login_bt_h"
-                android:layout_marginBottom="@dimen/login_bt_marin_bt"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bt_logout_bg"
-                android:text="@string/close"
-                android:textColor="@color/white"
-                android:textSize="@dimen/login_bt_textsize" />
 
 
         </LinearLayout>
 
     </ScrollView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
 
-</LinearLayout>
+        <Button
+            android:id="@+id/layout_coupon_detail_bnt_delete"
+            android:layout_width="@dimen/login_bt_w"
+            android:layout_height="@dimen/login_bt_h"
+            android:layout_marginBottom="@dimen/login_bt_marin_bt"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bt_logout_bg"
+            android:text="@string/delete"
+            android:textColor="@color/white"
+            android:alpha="0.7"
+            android:textSize="@dimen/login_bt_textsize" />
+
+
+        <Button
+            android:id="@+id/layout_coupon_detail_bnt_close"
+            android:layout_width="@dimen/login_bt_w"
+            android:layout_height="@dimen/login_bt_h"
+            android:layout_marginBottom="@dimen/login_bt_marin_bt"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bt_logout_bg"
+            android:text="@string/close"
+            android:textColor="@color/white"
+            android:alpha="0.7"
+            android:textSize="@dimen/login_bt_textsize" />
+
+    </LinearLayout>
+
+</RelativeLayout>

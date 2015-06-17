@@ -64,24 +64,28 @@ public class AtLogin extends AtBase {
 
         new Device(this);
 
+        setupFonts();
+
         edtUsername = (EditText) findViewById(R.id.login_edt_username);
         edtUsername.setText("hoang.test.001@gmail.com");
         edtPass = (EditText) findViewById(R.id.login_edt_password);
         edtPass.setText("1234567xx");
 
         btLogin = (Button) findViewById(R.id.login_bt_login);
+        btLogin.setTypeface(mRoboLight);
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 typeLogin = TYPE_LOGIN.LoginEmail;
                 String result = checkLogin();
-                if(result.equals(""))
+                if (result.equals(""))
                     getLogin();
                 else
                     Debug.toast(AtLogin.this, result);
             }
         });
         btLoginFace = (Button) findViewById(R.id.login_bt_login_fb);
+        btLoginFace.setTypeface(mRoboLight);
         btLoginFace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

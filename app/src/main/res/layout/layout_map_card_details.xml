@@ -22,9 +22,9 @@
             android:background="@color/blue_topbar"
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:paddingLeft="3dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
             app:typeface_name="@string/font_roboto_regular"
             app:typeface_style="bold" />
 
@@ -44,7 +44,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:paddingTop="10dp"
             android:orientation="vertical">
 
             <com.nct.customview.TfTextView
@@ -55,9 +54,9 @@
                 android:background="@color/blue_topbar"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
+                android:paddingLeft="3dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
                 app:typeface_name="@string/font_roboto_regular"
                 app:typeface_style="bold" />
 

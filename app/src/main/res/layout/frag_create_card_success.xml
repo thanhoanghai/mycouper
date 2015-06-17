@@ -78,6 +78,7 @@
             android:lines="1"
             android:textColor="@color/black"
             android:textSize="@dimen/frag_createcard_info_title_size"
+            android:visibility="gone"
             app:typeface_name="@string/font_roboto_regular" />
 
     </RelativeLayout>

@@ -64,6 +64,9 @@ import java.util.List;
 import thh.com.mycouper.R;
 
 public class AtCardDetail extends AtBase {
+
+	private final int CONSTANT_ZOOM_MAP = 15;
+
 	private static final String tag = "AtCardDetail";
 
 	private MemberCardObject memberCard;
@@ -102,7 +105,7 @@ public class AtCardDetail extends AtBase {
 	private ListViewCustom lvCoupon;
 	private CardDetailCouponAdapter lvCouponAdapter;
 
-	private LinearLayout couponDetailLinear;
+	private RelativeLayout couponDetailLinear;
 	private ImageView couponDetailImgIcon;
 	private ImageView couponDetailImgCoupon;
 	private TextView couponDetailTvCompany;
@@ -219,7 +222,7 @@ public class AtCardDetail extends AtBase {
 		marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 		googleMap.addMarker(marker);
 		CameraPosition cameraPosition = new CameraPosition.Builder().target(
-				new LatLng(posObject.latitude, posObject.longitude)).zoom(12).build();
+				new LatLng(posObject.latitude, posObject.longitude)).zoom(CONSTANT_ZOOM_MAP).build();
 		googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 		frameMapInfo.setVisibility(View.VISIBLE);
@@ -270,7 +273,7 @@ public class AtCardDetail extends AtBase {
 	private void initCouponDetail()
 	{
 		couponDetailScrollview = (ScrollView) findViewById(R.id.layout_coupon_detail_scrollview);
-		couponDetailLinear = (LinearLayout) findViewById(R.id.layout_coupon_detail_linear);
+		couponDetailLinear = (RelativeLayout) findViewById(R.id.layout_coupon_detail_linear);
 		couponDetailImgIcon = (ImageView) findViewById(R.id.item_icon_image_img1);
 		couponDetailImgCoupon = (ImageView) findViewById(R.id.layout_coupon_detail_img_banner);
 		couponDetailTvCompany = (TextView) findViewById(R.id.layout_coupon_detail_tvcompany);
