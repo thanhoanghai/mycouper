@@ -42,6 +42,8 @@ import com.nct.utils.Utils;
 import org.apache.http.Header;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import thh.com.mycouper.R;
 
@@ -53,7 +55,7 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
     private TextView bntCancel;
 
     private TfTextView bntOther;
-    private CompanyData data;
+    //private CompanyData data;
 
     private Boolean isActiveSearch;
 
@@ -190,7 +192,13 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
 
     @Override
     protected boolean handleLoadingDataSuccess(String result) {
-        data = DataHelper.getCompanyData(result);
+        CompanyData data = DataHelper.getCompanyData(result);
+        Collections.sort(data.data, new Comparator<CompanyObject>() {
+            @Override
+            public int compare(CompanyObject s1, CompanyObject s2) {
+                return s1.company_name.compareToIgnoreCase(s2.company_name);
+            }
+        });
         if (!isAdapterNull())
         {
             ((FragCompanyAdapter)mBaseAdapter).setDataSavelist(data.data);
