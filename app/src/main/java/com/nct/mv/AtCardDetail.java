@@ -57,10 +57,8 @@ import com.nct.utils.Pref;
 import com.nct.utils.Utils;
 
 import org.apache.http.Header;
-import org.w3c.dom.Text;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 import thh.com.mycouper.R;
 
@@ -316,6 +314,7 @@ public class AtCardDetail extends AtBase {
 			public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
 				hideDialogLoading();
 			}
+
 			@Override
 			public void onSuccess(int i, Header[] headers, String result) {
 				hideDialogLoading();
@@ -371,7 +370,20 @@ public class AtCardDetail extends AtBase {
 			displayImage(couponDetailImgCoupon,couponObject.front_of_the_card);
 		couponDetailTvCompany.setText(memberCard.company_name);
 		couponDetailTvCardName.setText(memberCard.member_card_name);
-		couponDetailTvExpire.setText(getString(R.string.expire_at) + couponObject.valid_to);
+		String timeTo = "";
+		if(couponObject.valid_to != null){
+			Date mTimeTo = Utils.dateTimeFromString(couponObject.valid_to);
+			timeTo = Utils.formatDateTime(mTimeTo);
+		}
+		couponDetailTvExpire.setText(getString(R.string.expire_at) + " " + timeTo);
+
+		String timeFrom = "";
+		if(couponObject.valid_from != null){
+			Date mTimeTo = Utils.dateTimeFromString(couponObject.valid_from);
+			timeFrom = Utils.formatDateTime(mTimeTo);
+		}
+		couponDetailTvTermDes.setText(getString(R.string.expire_at) + " " + timeFrom);
+
 		couponDetailScrollview.scrollTo(0, 0);
 		couponDetailLinear.setVisibility(View.VISIBLE);
 

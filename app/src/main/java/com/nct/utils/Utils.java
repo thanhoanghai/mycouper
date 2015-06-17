@@ -4,8 +4,10 @@ import java.math.BigDecimal;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -15,7 +17,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
@@ -24,9 +25,7 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import android.text.style.TtsSpan;
 import android.util.Base64;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 
@@ -317,7 +316,7 @@ public class Utils {
     public static Bitmap scaleDownBitmap(String imgPath){
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(imgPath,options);
+        BitmapFactory.decodeFile(imgPath, options);
         options.inSampleSize = calculateInSampleSize(options , Constants.CB_IMAGE_WIDTH, Constants.CB_IMAGE_HEIGHT);
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeFile(imgPath, options);
@@ -356,6 +355,25 @@ public class Utils {
 
 	public static float pxFromDp(final Context context, final float dp) {
 		return dp * context.getResources().getDisplayMetrics().density;
+	}
+
+	public static Date dateTimeFromString(String dateString) {
+		return dateTimeFromString(dateString, Constants.CALENDAR_DATE_FORMATTER);
+	}
+
+	public static Date dateTimeFromString(String dateString, String format) {
+		if(dateString==null) return null;
+		ParsePosition pos = new ParsePosition(0);
+		SimpleDateFormat simpledateformat = new SimpleDateFormat(format);
+		Date stringDate = simpledateformat.parse(dateString, pos);
+		return stringDate;
+	}
+
+	public static String formatDateTime(Date dateTime) {
+		if(dateTime == null) return "";
+		SimpleDateFormat formatter = new SimpleDateFormat(Constants.CALENDAR_DATE_FORMATTER_DDMMYYYY, Locale.getDefault());
+
+		return formatter.format(dateTime);
 	}
 
 }

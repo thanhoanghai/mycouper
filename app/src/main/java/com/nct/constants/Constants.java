@@ -33,6 +33,9 @@ public class Constants {
     public static final String FONT_ROBO_REGULAR = "fonts/Roboto-Regular.ttf";
     public static final String FONT_ROBO_MEDIUM = "fonts/Roboto-Medium.ttf";
 
+    public static final String CALENDAR_DATE_FORMATTER = "yyyy-MM-dd";
+    public static final String CALENDAR_DATE_FORMATTER_DDMMYYYY = "dd-MM-yyyy";
+
     /**
      * Folder is used to save down load image in SDCard.
      */
