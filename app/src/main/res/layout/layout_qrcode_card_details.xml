@@ -35,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:visibility="invisible"
         android:background="@android:color/white">
 
         <ImageView
@@ -45,19 +46,33 @@
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/card_detail_img_front"
-        android:layout_width="@dimen/card_detail_img_front_card_w"
-        android:layout_height="@dimen/card_detail_img_front_card_h"
-        android:layout_gravity="center"
-        android:background="@color/grey_info_text_card"
-        android:visibility="gone" />
+    <RelativeLayout
+        android:id="@+id/lyImgcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/card_detail_img_back"
-        android:layout_width="@dimen/card_detail_img_front_card_w"
-        android:layout_height="@dimen/card_detail_img_front_card_h"
-        android:layout_gravity="center"
-        android:background="@color/grey_info_text_card"
-        android:visibility="gone" />
+        <ImageView
+            android:id="@+id/card_detail_img_front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/card_detail_img_front_card_w"
+            android:minHeight="@dimen/card_detail_img_front_card_h"
+            android:layout_gravity="center"
+            android:background="@color/grey_info_text_card"
+            android:scaleType="fitXY"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/card_detail_img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/card_detail_img_front_card_w"
+            android:minHeight="@dimen/card_detail_img_front_card_h"
+            android:layout_gravity="center"
+            android:background="@color/grey_info_text_card"
+            android:scaleType="fitXY"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
 </FrameLayout>

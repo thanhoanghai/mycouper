@@ -74,6 +74,7 @@ public class AtCardDetail extends AtBase {
 
 	private TextView imgCode;
 	private ImageView imgFront,imgBack;
+	private RelativeLayout lyImageCard;
 
 	// Google Map
 	private GoogleMap googleMap;
@@ -100,7 +101,6 @@ public class AtCardDetail extends AtBase {
 	private CouponData couponData;
 	private ListViewCustom lvCoupon;
 	private CardDetailCouponAdapter lvCouponAdapter;
-
 
 	private LinearLayout couponDetailLinear;
 	private ImageView couponDetailImgIcon;
@@ -469,7 +469,18 @@ public class AtCardDetail extends AtBase {
 		});
 
 		imgCode = (TextView) findViewById(R.id.card_detail_img_idcode);
+
+		lyImageCard = (RelativeLayout) findViewById(R.id.lyImgcard);
+
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		int bitmapWidth = metrics.widthPixels - metrics.widthPixels / 10;
+		int bitmapHeight = 3 * bitmapWidth / 4;
+
 		imgFront = (ImageView) findViewById(R.id.card_detail_img_front);
+		RelativeLayout.LayoutParams ly = (RelativeLayout.LayoutParams) imgFront.getLayoutParams();
+		ly.width = bitmapWidth;
+		ly.height = bitmapHeight;
 		imgFront.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -477,7 +488,11 @@ public class AtCardDetail extends AtBase {
 					Utils.gotoScreenPreviewImage(AtCardDetail.this,memberCard.front_of_the_card);
 			}
 		});
+
 		imgBack = (ImageView) findViewById(R.id.card_detail_img_back);
+		RelativeLayout.LayoutParams ly1 = (RelativeLayout.LayoutParams) imgBack.getLayoutParams();
+		ly1.width = bitmapWidth;
+		ly1.height = bitmapHeight;
 		imgBack.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
