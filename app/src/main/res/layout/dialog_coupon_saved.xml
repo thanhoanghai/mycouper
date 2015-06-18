@@ -72,6 +72,7 @@
         android:layout_width="150dp"
         android:layout_height="35dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/login_bt_face_bg"
         android:text="@string/ok"
         android:textColor="@color/white"

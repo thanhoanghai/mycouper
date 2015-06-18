@@ -14,8 +14,6 @@ import android.widget.TextView;
 import com.nct.constants.GlobalInstance;
 import com.nct.model.UserObject;
 
-import java.util.List;
-
 import thh.com.mycouper.R;
 
 public class DialogInfoCustom extends Dialog implements

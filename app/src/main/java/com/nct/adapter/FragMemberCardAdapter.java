@@ -4,6 +4,7 @@
 package com.nct.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -39,6 +40,8 @@ public class FragMemberCardAdapter extends BaseAdapterApp<MemberCardObject> {
 					.findViewById(R.id.item_membercard_tv_title);
 			holder.tvDes = (TextView) view
 					.findViewById(R.id.item_membercard_tv_des);
+			holder.tvNumber = (TextView) view
+					.findViewById(R.id.item_membercard_tv_number_news);
 
 			view.setTag(holder);
 		} else {
@@ -46,9 +49,16 @@ public class FragMemberCardAdapter extends BaseAdapterApp<MemberCardObject> {
 		}
 
 		MemberCardObject item = getItem(position);
-		displayImage(holder.imgThumb,item.company_logo);
+		displayImage(holder.imgThumb, item.company_logo);
 		holder.tvTitle.setText(item.company_name);
 		holder.tvDes.setText(item.card_name);
+		if(TextUtils.isEmpty(item.number) || item.number.equals("0")) {
+			holder.tvNumber.setVisibility(View.INVISIBLE);
+		}
+		else{
+			holder.tvNumber.setVisibility(View.VISIBLE);
+			holder.tvNumber.setText(item.number);
+		}
 
 		view.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -65,6 +75,7 @@ public class FragMemberCardAdapter extends BaseAdapterApp<MemberCardObject> {
 		ImageView imgThumb;
 		TextView tvTitle;
 		TextView tvDes;
+		TextView tvNumber;
 	}
 
 }

@@ -112,5 +112,4 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 		return adapter;
 	}
 
-
 }

@@ -286,7 +286,7 @@ public class AtCardDetail extends AtBase {
 		couponDetailBntReceive.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				clickCouponReceiveData();
+				showDialogInfo();
 			}
 		});
 		couponDetailBntDelete = (Button) findViewById(R.id.layout_coupon_detail_bnt_delete);
@@ -648,7 +648,8 @@ public class AtCardDetail extends AtBase {
 		dialog.setListenerFinishedDialog(new DialogInfoCustom.FinishDialogConfirmListener() {
 			@Override
 			public void onFinishConfirmDialog(int i) {
-
+				if(i==1)
+					clickCouponReceiveData();
 			}
 		});
 		dialog.show();

@@ -222,6 +222,9 @@ public class FragCreateCardInfo extends BaseMainFragment {
                     bundle.putBoolean(Constants.KEY_BUNDLE_BOOLEAN_VALUE, isOther);
                     fm.setArguments(bundle);
                     ((AtCreateCard)getActivity()).changeFragment(Constants.TYPE_CREATE_CARD_IMAGE, fm);
+
+                    Utils.keyBoardForceHide(getActivity());
+
                 }else
                     Debug.toast(getActivity(), result);
             }

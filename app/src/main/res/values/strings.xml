@@ -146,7 +146,7 @@
     <!-- LOGIN -->
     <string name="login_login">Log in</string>
     <string name="login_login_with_facebook">Log in with Facebook</string>
-    <string name="login_copywright">Copywright 2015 by myCouper</string>
+    <string name="login_copywright">Copywright @2015 by myCouper</string>
     <string name="login_forgot_pass">Forgot password</string>
     <string name="login_signup">Sign up</string>
     <string name="login_message_user_is_empty">Field username is not empty!</string>

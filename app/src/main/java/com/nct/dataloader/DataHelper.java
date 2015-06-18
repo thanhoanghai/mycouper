@@ -11,12 +11,24 @@ import com.nct.model.CouponData;
 import com.nct.model.CouponObject;
 import com.nct.model.CouponReceiveData;
 import com.nct.model.MemberCardData;
+import com.nct.model.NewsCouponData;
 import com.nct.model.PosData;
 import com.nct.model.StatusObject;
 import com.nct.model.UserData;
 
 public class DataHelper {
 
+    public static NewsCouponData getNewsCouponData(String result) {
+        NewsCouponData data;
+        try {
+            Gson gson = new Gson();
+            data = gson.fromJson(result, NewsCouponData.class);
+            return data;
+        } catch (Exception ex) {
+            data = null;
+        }
+        return data;
+    }
 
     public static CouponReceiveData getCouponReceiveData(String result) {
         CouponReceiveData data;

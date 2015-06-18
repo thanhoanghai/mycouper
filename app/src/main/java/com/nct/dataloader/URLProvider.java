@@ -163,6 +163,19 @@ public class URLProvider {
     }
 
 
+    public static String getNewNumberNewCoupon(String user_id)
+    {
+        String client = PROVIDER;
+        try {
+            client += "?ac=get_new_number_news_coupon" ;
+            client += "&user_id=" + user_id;
+            return client;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return client;
+    }
+
 
     public static String getPosCompany(String company_id)
     {
