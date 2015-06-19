@@ -158,11 +158,11 @@ public class AtCardDetail extends AtBase {
 			frameMaps.setVisibility(View.GONE);
 
 		if(index==0)
-			setStatusItem(View.VISIBLE,View.INVISIBLE,View.INVISIBLE);
+			setStatusItem(View.VISIBLE,View.GONE,View.GONE);
 		else if(index ==1)
-			setStatusItem(View.INVISIBLE,View.VISIBLE,View.INVISIBLE);
+			setStatusItem(View.GONE,View.VISIBLE,View.GONE);
 		else if(index==2)
-			setStatusItem(View.INVISIBLE,View.INVISIBLE,View.VISIBLE);
+			setStatusItem(View.GONE,View.GONE,View.VISIBLE);
 
 		couponDetailLinear.setVisibility(View.GONE);
 	}
@@ -171,11 +171,11 @@ public class AtCardDetail extends AtBase {
 	{
 		if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[0])) {
 			imgCode.setVisibility(status1);
-			lyImgCode.setVisibility(View.INVISIBLE);
+			lyImgCode.setVisibility(View.GONE);
 		}else
 		{
 			lyImgCode.setVisibility(status1);
-			imgCode.setVisibility(View.INVISIBLE);
+			imgCode.setVisibility(View.GONE);
 		}
 		imgFront.setVisibility(status2);
 		imgBack.setVisibility(status3);
@@ -189,6 +189,11 @@ public class AtCardDetail extends AtBase {
 			// check if map is created successfully or not
 			if (googleMap == null) {
 				Debug.toast(AtCardDetail.this, "Sorry! unable to create maps");
+			}else {
+				googleMap.setMyLocationEnabled(true);
+				googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+				googleMap.getUiSettings().setZoomControlsEnabled(true);
+				googleMap.getUiSettings().setMapToolbarEnabled(false);
 			}
 		}
 	}
@@ -210,6 +215,9 @@ public class AtCardDetail extends AtBase {
 						lvPosAdapter = new CardDetailPosAdapter(AtCardDetail.this,posData.data);
 						lvPos.setAdapter(lvPosAdapter);
 						showPosCompany();
+					}else
+					{
+						showPostDefault();
 					}
 
 				}
@@ -227,6 +235,13 @@ public class AtCardDetail extends AtBase {
 		googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 		frameMapInfo.setVisibility(View.VISIBLE);
+	}
+
+	private void showPostDefault()
+	{
+		CameraPosition cameraPosition = new CameraPosition.Builder().target(
+				new LatLng(10.771330, 106.704611)).zoom(CONSTANT_ZOOM_MAP).build();
+		googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 	}
 
 

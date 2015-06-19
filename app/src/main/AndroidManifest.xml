@@ -4,7 +4,6 @@
     package="thh.com.mycouper" >
 
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
-
     <uses-permission android:name="com.visikard.ui.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
