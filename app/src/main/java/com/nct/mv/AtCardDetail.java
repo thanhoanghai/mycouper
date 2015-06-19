@@ -112,7 +112,8 @@ public class AtCardDetail extends AtBase {
 	private TextView couponDetailTvCardName;
 	private TextView couponDetailTvExpire;
 	private TextView couponDetailTvTermDes;
-	private TextView couponDetailTvStoreDes;
+	//private TextView couponDetailTvStoreDes;
+	private ListView couponDetailLvStore;
 
 	private ScrollView couponDetailScrollview;
 	private int indexCoupon = 0;
@@ -288,6 +289,7 @@ public class AtCardDetail extends AtBase {
 
 	private void initCouponDetail()
 	{
+		couponDetailLvStore = (ListViewCustom) findViewById(R.id.layout_coupon_detail_lv_store);
 		couponDetailScrollview = (ScrollView) findViewById(R.id.layout_coupon_detail_scrollview);
 		couponDetailLinear = (RelativeLayout) findViewById(R.id.layout_coupon_detail_linear);
 		couponDetailImgIcon = (ImageView) findViewById(R.id.item_icon_image_img1);
@@ -296,7 +298,7 @@ public class AtCardDetail extends AtBase {
 		couponDetailTvCardName = (TextView) findViewById(R.id.layout_coupon_detail_tvcarname);
 		couponDetailTvExpire = (TextView) findViewById(R.id.layout_coupon_detail_tv_expire_at);
 		couponDetailTvTermDes = (TextView) findViewById(R.id.layout_coupon_detail_tv_term_des);
-		couponDetailTvStoreDes = (TextView) findViewById(R.id.layout_coupon_detail_tv_store_des);
+		//couponDetailTvStoreDes = (TextView) findViewById(R.id.layout_coupon_detail_tv_store_des);
 		couponDetailBntReceive = (Button) findViewById(R.id.layout_coupon_detail_bnt_receive);
 		couponDetailBntReceive.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -362,6 +364,7 @@ public class AtCardDetail extends AtBase {
 			@Override
 			public void onSuccess(int i, Header[] headers, String result) {
 				hideDialogLoading();
+				couponDetailLinear.setVisibility(View.GONE);
 				getEcoupon();
 			}
 		});
@@ -372,8 +375,15 @@ public class AtCardDetail extends AtBase {
 		if(couponReceiveData!=null)
 		{
 			DialogCouponSaved dialog = new DialogCouponSaved(AtCardDetail.this, couponReceiveData.data.coupon_serial_number, couponObject.valid_from, couponObject.valid_to);
+			dialog.setListenerFinishedDialog(new DialogCouponSaved.FinishDialogConfirmListener() {
+				@Override
+				public void onFinishConfirmDialog(int i) {
+					couponDetailLinear.setVisibility(View.GONE);
+				}
+			});
 			if (dialog != null)
 				dialog.show();
+
 		}
 	}
 
@@ -397,10 +407,16 @@ public class AtCardDetail extends AtBase {
 			Date mTimeTo = Utils.dateTimeFromString(couponObject.valid_from);
 			timeFrom = Utils.formatDateTime(mTimeTo);
 		}
-		couponDetailTvTermDes.setText(getString(R.string.expire_at) + " " + timeFrom);
+		couponDetailTvTermDes.setText(couponObject.coupon_condition);
 
 		couponDetailScrollview.scrollTo(0, 0);
 		couponDetailLinear.setVisibility(View.VISIBLE);
+
+		if(lvPosAdapter!=null)
+		{
+			couponDetailLvStore.setVisibility(View.VISIBLE);
+			couponDetailLvStore.setAdapter(lvPosAdapter);
+		}
 
 	}
 

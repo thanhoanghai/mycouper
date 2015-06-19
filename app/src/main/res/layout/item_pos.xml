@@ -85,7 +85,7 @@
 
         </LinearLayout>
 
-        <include layout="@layout/item_line"></include>
+        <!--<include layout="@layout/item_line"></include>-->
 
     </LinearLayout>
 

@@ -24,6 +24,13 @@ import thh.com.mycouper.R;
 public class DialogCouponSaved extends Dialog implements
 		View.OnClickListener {
 
+	public interface FinishDialogConfirmListener {
+		void onFinishConfirmDialog(int i);
+	}
+	private FinishDialogConfirmListener mListener;
+	public void setListenerFinishedDialog(FinishDialogConfirmListener t) {
+		mListener = t;
+	}
 
 	private TextView tvSerial,tvValidFrome,tvValidTo;
 	private String sSerial,sValidFrome,sValidTo;
@@ -75,6 +82,8 @@ public class DialogCouponSaved extends Dialog implements
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.dialog_coupoin_saved_bt_ok:
+			if (mListener != null)
+				mListener.onFinishConfirmDialog(0);
 			break;
 		default:
 			break;

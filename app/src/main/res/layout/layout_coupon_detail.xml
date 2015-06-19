@@ -159,15 +159,18 @@
                     android:textSize="15sp"
                     app:typeface_name="@string/font_roboto_regular" />
 
-                <com.nct.customview.TfTextView
-                    android:id="@+id/layout_coupon_detail_tv_store_des"
+
+                <com.nct.customview.ListViewCustom
+                    android:id="@+id/layout_coupon_detail_lv_store"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/layout_coupon_detail_padding"
-                    android:text="@string/stores"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    app:typeface_name="@string/font_roboto_regular" />
+                    android:alwaysDrawnWithCache="true"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:drawSelectorOnTop="false"
+                    android:listSelector="@android:color/transparent"
+                    android:scrollbars="none"
+                    android:visibility="gone"
+                    ></com.nct.customview.ListViewCustom>
 
             </LinearLayout>
 
