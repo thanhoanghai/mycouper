@@ -379,6 +379,7 @@ public class AtCardDetail extends AtBase {
 				@Override
 				public void onFinishConfirmDialog(int i) {
 					couponDetailLinear.setVisibility(View.GONE);
+					getEcoupon();
 				}
 			});
 			if (dialog != null)
