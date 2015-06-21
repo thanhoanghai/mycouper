@@ -34,12 +34,25 @@ public class AtMain extends AtBase {
 
     private QuickAction quickAction;
     private PopupActionItem bntUserProfile;
+    private PopupActionItem bntLanguage;
     private PopupActionItem bntSetting;
     private PopupActionItem bntContact;
     private PopupActionItem bntSynchronize;
     private PopupActionItem bntHelp;
     private PopupActionItem bntCopyRight;
 
+
+    private Boolean isResetLanguage = false;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(isResetLanguage)
+        {
+            initListPopUpMenu();
+            setTopbarTitle(getString(R.string.frag_membercard));
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,7 +180,8 @@ public class AtMain extends AtBase {
     {
         quickAction = new QuickAction(AtMain.this, QuickAction.VERTICAL);
         quickAction.setStatusBackround(false);
-        bntUserProfile = new PopupActionItem(Constants.POP_UP_ID_USER_PROFILE, "User profile", null);
+        bntUserProfile = new PopupActionItem(Constants.POP_UP_ID_USER_PROFILE, getString(R.string.user_profile), null);
+        bntLanguage = new PopupActionItem(Constants.POP_UP_ID_USER_LANGUAGE, getString(R.string.language), null);
         bntSetting = new PopupActionItem(Constants.POP_UP_ID_SETTING, "Setting", null);
         bntContact = new PopupActionItem(Constants.POP_UP_ID_CONTACT, "Contact", null);
         bntSynchronize = new PopupActionItem(Constants.POP_UP_ID_SYNCHRONIZE , "Synchronize", null);
@@ -175,6 +189,7 @@ public class AtMain extends AtBase {
         bntCopyRight = new PopupActionItem(Constants.POP_UP_ID_COPYRIGHT , "Copyright", null);
 
         quickAction.addActionItem(bntUserProfile);
+        quickAction.addActionItem(bntLanguage);
         quickAction.addActionItem(bntSetting);
         quickAction.addActionItem(bntContact);
         quickAction.addActionItem(bntSynchronize);
@@ -186,6 +201,10 @@ public class AtMain extends AtBase {
             public void onItemClick(QuickAction source, int pos, int actionId) {
                 if (actionId == Constants.POP_UP_ID_USER_PROFILE) {
                     Utils.gotoScreenUserProfile(AtMain.this);
+                }else
+                if (actionId == Constants.POP_UP_ID_USER_LANGUAGE) {
+                    Utils.gotoScreenLanguage(AtMain.this);
+                    isResetLanguage = true;
                 }
             }
         });

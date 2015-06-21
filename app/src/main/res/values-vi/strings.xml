@@ -56,6 +56,8 @@
     <string name="valid_to">Hiệu lực đến</string>
     <string name="do_you_want_delete_this_coupon">Bạn có muốn xoá coupon này ?</string>
 
+    <string name="language">Ngôn ngữ</string>
+
 
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Nhập mã nếu thiết bị không nhận :</string>

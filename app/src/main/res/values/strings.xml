@@ -54,6 +54,7 @@
     <string name="valid_to">Valid to</string>
     <string name="do_you_want_delete_this_coupon">Do you want delete this coupon ?</string>
 
+    <string name="language">Language</string>
 
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Enter the following code if the devices does not recognize:</string>
@@ -75,7 +76,8 @@
 
 
     <!-- USER PROFILE -->
-    <string name="user_profile">User Profile</string>
+    <string name="user_profile">Account</string>
+    <string name="user_account_normal">ACCOUNT</string>
     <string name="user_account">ACCOUNT</string>
     <string name="user_account_firstname">First name:</string>
     <string name="user_account_lastname">Last name:</string>

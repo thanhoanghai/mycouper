@@ -65,6 +65,7 @@
         <activity android:name="com.nct.mv.AtChangePass" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
         <activity android:name="com.nct.mv.AtCardDetail" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
         <activity android:name="com.nct.mv.AtPreviewImage" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
+        <activity android:name="com.nct.mv.AtLanguage" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
 
         <activity
             android:name="com.nct.mv.AtWacCamera"

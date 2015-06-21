@@ -35,6 +35,7 @@ import com.nct.mv.AtChangePass;
 
 import com.nct.mv.AtCreateCard;
 import com.nct.mv.AtForgotPass;
+import com.nct.mv.AtLanguage;
 import com.nct.mv.AtLogin;
 import com.nct.mv.AtMain;
 import com.nct.mv.AtPreviewImage;
@@ -48,6 +49,10 @@ public class Utils {
 
 	private static final String TAG = "Utils";
 
+	public static void gotoScreenLanguage(Context mContext) {
+		Intent search = new Intent(mContext,AtLanguage.class);
+		mContext.startActivity(search);
+	}
 
 	public static void gotoScreenPreviewImage(Context mContext,String linkImage) {
 		Intent search = new Intent(mContext, AtPreviewImage.class);
@@ -59,8 +64,6 @@ public class Utils {
 		Intent search = new Intent(mContext, AtCardDetail.class);
 		mContext.startActivity(search);
 	}
-
-
 
 	public static void gotoScreenChangepass(Context mContext) {
 		Intent search = new Intent(mContext, AtChangePass.class);

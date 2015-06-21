@@ -16,12 +16,16 @@ public class Constants {
 	public static int SCREEN_WIDTH = 480;
 	public static int SCREEN_HEIGHT = 800;
 
-	public static final String API_GOOGLE_KEY = "AIzaSyB8mtKr923llplPGMNN30mdPDQACTpXfxQ";
+	public static final String API_GOOGLEKEY = "AIzaSyB8mtKr923llplPGMNN30mdPDQACTpXfxQ";
 	
 	
 	public static final String TAB_1 = "TAB_1";
 	public static final String TAB_2 = "TAB_2";
 	public static final String TAB_3 = "TAB_3";
+
+
+    public static final String ID_LANGUAGE[] = {"en","vi"};
+    public static final String SAVE_ID_LANGUAGE = "SAVE_ID_LANGUAGE";
 
 	public static final String ID_SAVE_LOGIN = "ID_SAVE_LOGIN";
 	public static final String TAB_CREATE_CARD = "TAB_CREATE_CARD";
@@ -81,6 +85,7 @@ public class Constants {
 	public static final int POP_UP_ID_SYNCHRONIZE = 4;
 	public static final int POP_UP_ID_HELP = 5;
 	public static final int POP_UP_ID_COPYRIGHT = 6;
+    public static final int POP_UP_ID_USER_LANGUAGE = 7;
 
     // type code
     public static final int POP_UP_ID_CODE_ID = 1;

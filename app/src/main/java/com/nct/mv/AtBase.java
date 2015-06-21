@@ -114,10 +114,10 @@ public class AtBase extends FragmentActivity {
 	public void initTopbar(String title)
 	{
 		topBartitle = (TextView) findViewById(R.id.item_topbar_tv_title);
-		topBartitle.setText(title);
 		topBarbtLeft = (ImageView) findViewById(R.id.item_topbar_bt_leftmenu);
 		topBarBtRight = (ImageView) findViewById(R.id.item_topbar_bt_rightmenu);
         topBarTxtRight = (TfTextView) findViewById(R.id.item_topbar_tv_right);
+		topBartitle.setText(title);
 	}
 	public void setTopbarTitle(String text)
 	{

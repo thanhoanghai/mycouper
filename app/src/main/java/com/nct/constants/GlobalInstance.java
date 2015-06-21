@@ -10,6 +10,7 @@ public class GlobalInstance {
     public UserObject userInfo;
 	public MemberCardObject memberCard;
 
+
 	public static GlobalInstance getInstance() {
 		if (mGlobalInstance == null) {
 			mGlobalInstance = new GlobalInstance();
