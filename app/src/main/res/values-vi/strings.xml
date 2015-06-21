@@ -7,6 +7,8 @@
     <string name="status_chuacodulieu">Chưa có dữ liệu</string>
     
     <string name="app_name">myCouper</string>
+    <string name="splash_des">A mobile wallet \n for all your membership cards</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
@@ -180,6 +182,8 @@
     <string name="font_roboto_medium">Roboto-Medium</string>
     <string name="font_roboto_medium_italic">Roboto-MediumItalic</string>
     <string name="font_roboto_regular">Roboto-Regular</string>
+    <string name="font_georgia_bold_italic">GeorgiaBoldItalic</string>
+    <string name="font_raleway_bold">Raleway-Bold</string>
 
     <!-- camera 24 -->
     <string name="on">On</string>

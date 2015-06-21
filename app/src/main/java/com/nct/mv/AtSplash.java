@@ -24,7 +24,7 @@ public class AtSplash extends AtBase {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.at_splash);
 
-		moveActivity.postDelayed(moveRunnable, 2000);
+		moveActivity.postDelayed(moveRunnable, 3000);
 		String hash = Utils.showHashKeyFacebook(AtSplash.this);
 		Debug.logData(tag,hash);
 	}

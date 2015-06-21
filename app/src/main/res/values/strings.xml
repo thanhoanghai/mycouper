@@ -7,6 +7,8 @@
     <string name="status_chuacodulieu">No data</string>
     
     <string name="app_name">myCouper</string>
+    <string name="splash_des">A mobile wallet \n for all your membership cards</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
@@ -51,6 +53,7 @@
     <string name="valid_from">Valid from</string>
     <string name="valid_to">Valid to</string>
     <string name="do_you_want_delete_this_coupon">Do you want delete this coupon ?</string>
+
 
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Enter the following code if the devices does not recognize:</string>
@@ -180,6 +183,8 @@
     <string name="font_roboto_medium">Roboto-Medium</string>
     <string name="font_roboto_medium_italic">Roboto-MediumItalic</string>
     <string name="font_roboto_regular">Roboto-Regular</string>
+    <string name="font_georgia_bold_italic">GeorgiaBoldItalic</string>
+    <string name="font_raleway_bold">Raleway-Bold</string>
 
     <!-- camera 24 -->
     <string name="on">On</string>
