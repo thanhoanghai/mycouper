@@ -37,8 +37,8 @@ import thh.com.mycouper.R;
 
 public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 
-
 	private TfTextView bntAddmore;
+	private String idLang=GlobalInstance.getInstance().idLanguage;
 
 	public static FragMemberCard newInstance() {
 		FragMemberCard f = new FragMemberCard();
@@ -48,6 +48,16 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		if(!idLang.equals(GlobalInstance.getInstance().idLanguage))
+		{
+			idLang = GlobalInstance.getInstance().idLanguage;
+			bntAddmore.setText(getString(R.string.frag_membercard_addmore));
+		}
 	}
 
 	@Override
