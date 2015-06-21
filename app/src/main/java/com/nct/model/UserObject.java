@@ -13,6 +13,7 @@ public class UserObject {
     public String create_time;
     public String last_update;
     public String last_login_time;
+    public String session_id;
 
     public UserObject(String user_id, String user_email){
         this.user_id = user_id;

@@ -6,6 +6,7 @@ import android.webkit.MimeTypeMap;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
+import com.nct.constants.GlobalInstance;
 import com.nct.utils.HttpsUtils;
 
 import org.apache.http.HttpResponse;
@@ -36,6 +37,7 @@ public class URLProvider {
         RequestParams params = new RequestParams();
         params.put("ac", "create_member_card_by_category");
         params.put("user_id", user_id);
+        params.put("session_id", GlobalInstance.getInstance().getSessionID());
         params.put("company_id", company_id);
         params.put("member_card_name", member_card_name);
         params.put("member_card_number", member_card_number);
@@ -52,6 +54,8 @@ public class URLProvider {
         RequestParams params = new RequestParams();
         params.put("ac", "update_ecoupon_active");
         params.put("coupon_id", coupon_id);
+        params.put("user_id", GlobalInstance.getInstance().getUserID());
+        params.put("session_id", GlobalInstance.getInstance().getSessionID());
 
         return params;
     }
@@ -60,7 +64,8 @@ public class URLProvider {
         RequestParams params = new RequestParams();
         params.put("ac", "update_ecoupon_deleted");
         params.put("coupon_id", coupon_id);
-
+        params.put("user_id", GlobalInstance.getInstance().getUserID());
+        params.put("session_id", GlobalInstance.getInstance().getSessionID());
         return params;
     }
 
@@ -69,6 +74,7 @@ public class URLProvider {
         RequestParams params = new RequestParams();
         params.put("ac", "create_member_card_by_user");
         params.put("user_id", user_id);
+        params.put("session_id", GlobalInstance.getInstance().getSessionID());
         params.put("company_name", company_name);
         params.put("member_card_name", member_card_name);
         params.put("member_card_number", member_card_number);
@@ -92,6 +98,7 @@ public class URLProvider {
         params.put("back_of_the_card", back_of_the_card);
         params.put("company_name", company_name);
         params.put("user_id", user_id);
+        params.put("session_id", GlobalInstance.getInstance().getSessionID());
         return params;
     }
 
@@ -110,6 +117,8 @@ public class URLProvider {
         RequestParams params = new RequestParams();
         params.put("ac", "delete_member_card");
         params.put("member_card_id", member_card_id);
+        params.put("user_id", GlobalInstance.getInstance().getUserID());
+        params.put("session_id", GlobalInstance.getInstance().getSessionID());
         return params;
     }
 
@@ -155,6 +164,7 @@ public class URLProvider {
             client += "?ac=get_ecoupon_by_member" ;
             client += "&company_id=" + company_id;
             client += "&user_id=" + user_id;
+            client += "&session_id=" + GlobalInstance.getInstance().getSessionID();
             return client;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -169,6 +179,7 @@ public class URLProvider {
         try {
             client += "?ac=get_new_number_news_coupon" ;
             client += "&user_id=" + user_id;
+            client += "&session_id=" + GlobalInstance.getInstance().getSessionID();
             return client;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -232,6 +243,7 @@ public class URLProvider {
         try {
             client += "?ac=get_member_card_for_user" ;
             client += "&user_id=" + user_id ;
+            client += "&session_id=" + GlobalInstance.getInstance().getSessionID();
             return client;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -284,6 +296,7 @@ public class URLProvider {
         params.put("phone", phone);
         params.put("civility", civility);
         params.put("birthday", birthday);
+        params.put("session_id", GlobalInstance.getInstance().getSessionID());
         return params;
     }
 

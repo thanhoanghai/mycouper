@@ -96,12 +96,15 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 	protected boolean handleLoadingDataSuccess(String result) {
 
 		MemberCardData object = DataHelper.getMemberCardData(result);
-		Collections.sort(object.data, new Comparator<MemberCardObject>() {
-			@Override
-			public int compare(MemberCardObject s1, MemberCardObject s2) {
-				return s1.company_name.compareToIgnoreCase(s2.company_name);
+		if(object!=null && object.data!=null)
+			if(object.data.size() > 0) {
+				Collections.sort(object.data, new Comparator<MemberCardObject>() {
+					@Override
+					public int compare(MemberCardObject s1, MemberCardObject s2) {
+						return s1.company_name.compareToIgnoreCase(s2.company_name);
+					}
+				});
 			}
-		});
 		setData(object.data,false);
 		return true;
 	}

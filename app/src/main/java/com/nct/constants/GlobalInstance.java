@@ -23,6 +23,12 @@ public class GlobalInstance {
 			return userInfo.user_id;
 		return "";
 	}
+	public String getSessionID()
+	{
+		if(userInfo!=null)
+			return userInfo.session_id;
+		return "";
+	}
 
 
 }

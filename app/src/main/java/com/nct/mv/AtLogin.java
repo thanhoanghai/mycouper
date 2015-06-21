@@ -163,6 +163,7 @@ public class AtLogin extends AtBase {
         if (object != null && object.statusCode == Constants.STATUS_CODE_OK) {
             GlobalInstance.getInstance().userInfo = object.data;
             Utils.gotoScreenMain(AtLogin.this);
+            Debug.toastDebug(AtLogin.this,GlobalInstance.getInstance().getSessionID());
             finish();
         }else
             Debug.toast(AtLogin.this,object.errorMessage);

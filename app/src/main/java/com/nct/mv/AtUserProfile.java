@@ -214,6 +214,7 @@ public class AtUserProfile extends AtBase {
 
                     @Override
                     public void onSuccess(int i, Header[] headers, String s) {
+                        Utils.keyBoardForceHide(AtUserProfile.this);
                         isEditing = false;
                         hideDialogLoading();
                         String lastUpdate = "" + System.currentTimeMillis();
