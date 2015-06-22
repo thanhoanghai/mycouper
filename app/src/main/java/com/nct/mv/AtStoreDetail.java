@@ -4,19 +4,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.nct.utils.Utils;
-
 import thh.com.mycouper.R;
 
-public class AtStore extends AtBase {
-	private static final String tag = "AtIntroduce";
+public class AtStoreDetail extends AtBase {
+	private static final String tag = "AtStoreDetail";
 
-	private Button bntLogin;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.at_store);
+		setContentView(R.layout.at_store_detail);
 
 		setLanguge();
 		initTopbar(getString(R.string.stores));
@@ -28,15 +25,6 @@ public class AtStore extends AtBase {
 				finish();
 			}
 		});
-
-		bntLogin = (Button) findViewById(R.id.at_store_bnt_login);
-		bntLogin.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Utils.gotoScreenStoreDetail(AtStore.this);
-			}
-		});
-
 
 	}
 

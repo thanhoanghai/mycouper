@@ -39,9 +39,9 @@
 
 
     <Button
+        android:id="@+id/at_store_bnt_login"
         android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/at_store_bnt_login"
         android:layout_width="@dimen/frag_membercard_bt_w"
         android:layout_height="@dimen/frag_membercard_bt_h"
         android:layout_marginBottom="20dp"

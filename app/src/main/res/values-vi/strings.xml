@@ -90,6 +90,7 @@
     <!-- USER PROFILE -->
     <string name="user_profile">Tài khoản</string>
     <string name="user_account">TÀI KHOẢN</string>
+    <string name="user_account_normal">TÀI KHOẢN</string>
     <string name="user_account_firstname">Tên:</string>
     <string name="user_account_lastname">Họ:</string>
     <string name="user_account_birthday">Ngày sinh:</string>
