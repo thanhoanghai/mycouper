@@ -30,6 +30,7 @@ import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 
 import com.nct.constants.Constants;
+import com.nct.mv.AtAsk;
 import com.nct.mv.AtCardDetail;
 import com.nct.mv.AtChangePass;
 
@@ -41,6 +42,7 @@ import com.nct.mv.AtLogin;
 import com.nct.mv.AtMain;
 import com.nct.mv.AtPreviewImage;
 import com.nct.mv.AtSignUp;
+import com.nct.mv.AtTutorials;
 import com.nct.mv.AtUserProfile;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
@@ -49,6 +51,16 @@ import thh.com.mycouper.R;
 public class Utils {
 
 	private static final String TAG = "Utils";
+
+	public static void gotoScreenAsk(Context mContext) {
+		Intent search = new Intent(mContext,AtAsk.class);
+		mContext.startActivity(search);
+	}
+
+	public static void gotoScreenTutorials(Context mContext) {
+		Intent search = new Intent(mContext,AtTutorials.class);
+		mContext.startActivity(search);
+	}
 
 	public static void gotoScreenContact(Context mContext) {
 		Intent search = new Intent(mContext,AtContact.class);

@@ -67,6 +67,8 @@
         <activity android:name="com.nct.mv.AtPreviewImage" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
         <activity android:name="com.nct.mv.AtLanguage" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
         <activity android:name="com.nct.mv.AtContact" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
+        <activity android:name="com.nct.mv.AtTutorials" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
+        <activity android:name="com.nct.mv.AtAsk" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
 
         <activity
             android:name="com.nct.mv.AtWacCamera"
