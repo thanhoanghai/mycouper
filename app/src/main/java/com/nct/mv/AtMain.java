@@ -215,6 +215,9 @@ public class AtMain extends AtBase {
                 }else
                 if (actionId == Constants.POP_UP_ID_ASK) {
                     Utils.gotoScreenAsk(AtMain.this);
+                }else
+                if (actionId == Constants.POP_UP_ID_INFORMATION) {
+                    Utils.gotoScreenInfomation(AtMain.this);
                 }
             }
         });

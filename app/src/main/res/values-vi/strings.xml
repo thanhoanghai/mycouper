@@ -65,6 +65,10 @@
     <string name="contact_email_info">sale@mycouper.com</string>
     <string name="contact_phone_info">+84902292626</string>
 
+    <string name="version_user">Phiên bản sử dụng :</string>
+    <string name="introduce">Giới thiệu</string>
+    <string name="term_of_use">Điều khoản sử dụng</string>
+
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Nhập mã nếu thiết bị không nhận :</string>
 

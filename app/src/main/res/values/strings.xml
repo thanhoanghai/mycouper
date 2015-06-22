@@ -64,6 +64,10 @@
     <string name="contact_email_info">sale@mycouper.com</string>
     <string name="contact_phone_info">+84902292626</string>
 
+    <string name="version_user">Version :</string>
+    <string name="introduce">Introduce</string>
+    <string name="term_of_use">Term of use</string>
+
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Enter the following code if the devices does not recognize:</string>
 
