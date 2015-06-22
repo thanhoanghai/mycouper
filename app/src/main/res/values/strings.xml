@@ -55,6 +55,14 @@
     <string name="do_you_want_delete_this_coupon">Do you want delete this coupon ?</string>
 
     <string name="language">Language</string>
+    <string name="tutorials">Tutorials</string>
+    <string name="ask">Ask</string>
+    <string name="infomation">Infomation</string>
+    <string name="contact">Contact</string>
+    <string name="contact_us">If you want to cooperate with us please contact us</string>
+
+    <string name="contact_email_info">sale@mycouper.com</string>
+    <string name="contact_phone_info">+84902292626</string>
 
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Enter the following code if the devices does not recognize:</string>
@@ -140,6 +148,7 @@
     <string name="signup_failed">Signup failed!</string>
 
     <!-- FORGOT PASSWORD -->
+    <string name="forgot_email_dot">Email :</string>
     <string name="forgot_email">Email</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="forgot_please_enter_your">( Please enter your registered email !)</string>

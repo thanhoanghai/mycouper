@@ -86,6 +86,10 @@ public class Constants {
 	public static final int POP_UP_ID_HELP = 5;
 	public static final int POP_UP_ID_COPYRIGHT = 6;
     public static final int POP_UP_ID_USER_LANGUAGE = 7;
+    public static final int POP_UP_ID_TUTORIALS = 8;
+    public static final int POP_UP_ID_ASK= 9;
+    public static final int POP_UP_ID_INFORMATION= 10;
+    public static final int POP_UP_ID_STORE= 11;
 
     // type code
     public static final int POP_UP_ID_CODE_ID = 1;

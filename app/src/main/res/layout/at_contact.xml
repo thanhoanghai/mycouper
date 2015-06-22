@@ -1,0 +1,99 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/item_top_bar" />
+
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/icon_couper_white_round" />
+
+
+    <include
+        layout="@layout/item_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp" />
+
+    <com.nct.customview.TfTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/contact_us"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:typeface_name="@string/font_roboto_regular" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.nct.customview.TfTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_email_dot"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:typeface_name="@string/font_roboto_regular"
+            app:typeface_style="italic" />
+
+        <com.nct.customview.TfTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/contact_email_info"
+            android:textColor="@color/blue_bg"
+            android:textSize="18sp"
+            app:typeface_name="@string/font_roboto_regular"
+            app:typeface_style="italic" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.nct.customview.TfTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_account_phone"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:typeface_name="@string/font_roboto_regular"
+            app:typeface_style="italic" />
+
+        <com.nct.customview.TfTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/contact_phone_info"
+            android:textColor="@color/blue_bg"
+            android:textSize="18sp"
+            app:typeface_name="@string/font_roboto_regular"
+            app:typeface_style="italic" />
+    </LinearLayout>
+
+</LinearLayout>

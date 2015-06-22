@@ -57,7 +57,13 @@
     <string name="do_you_want_delete_this_coupon">Bạn có muốn xoá coupon này ?</string>
 
     <string name="language">Ngôn ngữ</string>
-
+    <string name="tutorials">Hướng dẫn</string>
+    <string name="ask">Hỏi đáp</string>
+    <string name="infomation">Thông tin ứng dụng</string>
+    <string name="contact">Liên hệ</string>
+    <string name="contact_us">Nếu bạn muốn hợp tác với chúng tôi vui lòng liên hệ</string>
+    <string name="contact_email_info">sale@mycouper.com</string>
+    <string name="contact_phone_info">+84902292626</string>
 
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Nhập mã nếu thiết bị không nhận :</string>
@@ -140,6 +146,7 @@
     <string name="signup_failed">Đăng ký tài khoản không thành công!</string>
 
     <!-- FORGOT PASSWORD -->
+    <string name="forgot_email_dot">Email :</string>
     <string name="forgot_email">Email</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="forgot_please_enter_your">( Please enter your registered email !)</string>

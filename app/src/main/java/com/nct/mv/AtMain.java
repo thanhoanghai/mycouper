@@ -35,11 +35,11 @@ public class AtMain extends AtBase {
     private QuickAction quickAction;
     private PopupActionItem bntUserProfile;
     private PopupActionItem bntLanguage;
-    private PopupActionItem bntSetting;
+    private PopupActionItem bntTutorials;
+    private PopupActionItem bntAsk;
+    private PopupActionItem bntInfomation;
     private PopupActionItem bntContact;
-    private PopupActionItem bntSynchronize;
-    private PopupActionItem bntHelp;
-    private PopupActionItem bntCopyRight;
+    private PopupActionItem bntStore;
 
 
     private Boolean isResetLanguage = false;
@@ -182,19 +182,20 @@ public class AtMain extends AtBase {
         quickAction.setStatusBackround(false);
         bntUserProfile = new PopupActionItem(Constants.POP_UP_ID_USER_PROFILE, getString(R.string.user_profile), null);
         bntLanguage = new PopupActionItem(Constants.POP_UP_ID_USER_LANGUAGE, getString(R.string.language), null);
-        bntSetting = new PopupActionItem(Constants.POP_UP_ID_SETTING, "Setting", null);
-        bntContact = new PopupActionItem(Constants.POP_UP_ID_CONTACT, "Contact", null);
-        bntSynchronize = new PopupActionItem(Constants.POP_UP_ID_SYNCHRONIZE , "Synchronize", null);
-        bntHelp = new PopupActionItem(Constants.POP_UP_ID_HELP , "Help", null);
-        bntCopyRight = new PopupActionItem(Constants.POP_UP_ID_COPYRIGHT , "Copyright", null);
+        bntTutorials = new PopupActionItem(Constants.POP_UP_ID_TUTORIALS, getString(R.string.tutorials), null);
+        bntAsk = new PopupActionItem(Constants.POP_UP_ID_ASK, getString(R.string.ask), null);
+        bntInfomation = new PopupActionItem(Constants.POP_UP_ID_INFORMATION, getString(R.string.infomation), null);
+        bntContact = new PopupActionItem(Constants.POP_UP_ID_CONTACT, getString(R.string.contact), null);
+        bntStore = new PopupActionItem(Constants.POP_UP_ID_STORE, getString(R.string.stores), null);
+
 
         quickAction.addActionItem(bntUserProfile);
         quickAction.addActionItem(bntLanguage);
-        quickAction.addActionItem(bntSetting);
+        quickAction.addActionItem(bntTutorials);
+        quickAction.addActionItem(bntAsk);
+        quickAction.addActionItem(bntInfomation);
         quickAction.addActionItem(bntContact);
-        quickAction.addActionItem(bntSynchronize);
-        quickAction.addActionItem(bntHelp);
-        quickAction.addActionItem(bntCopyRight);
+        quickAction.addActionItem(bntStore);
 
         quickAction.setOnActionItemClickListener(new QuickAction.OnActionItemClickListener() {
             @Override
@@ -205,6 +206,9 @@ public class AtMain extends AtBase {
                 if (actionId == Constants.POP_UP_ID_USER_LANGUAGE) {
                     Utils.gotoScreenLanguage(AtMain.this);
                     isResetLanguage = true;
+                }else
+                if (actionId == Constants.POP_UP_ID_CONTACT) {
+                    Utils.gotoScreenContact(AtMain.this);
                 }
             }
         });

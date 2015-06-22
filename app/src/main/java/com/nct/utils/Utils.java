@@ -33,6 +33,7 @@ import com.nct.constants.Constants;
 import com.nct.mv.AtCardDetail;
 import com.nct.mv.AtChangePass;
 
+import com.nct.mv.AtContact;
 import com.nct.mv.AtCreateCard;
 import com.nct.mv.AtForgotPass;
 import com.nct.mv.AtLanguage;
@@ -48,6 +49,11 @@ import thh.com.mycouper.R;
 public class Utils {
 
 	private static final String TAG = "Utils";
+
+	public static void gotoScreenContact(Context mContext) {
+		Intent search = new Intent(mContext,AtContact.class);
+		mContext.startActivity(search);
+	}
 
 	public static void gotoScreenLanguage(Context mContext) {
 		Intent search = new Intent(mContext,AtLanguage.class);
