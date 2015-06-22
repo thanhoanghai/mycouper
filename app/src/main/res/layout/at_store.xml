@@ -38,5 +38,17 @@
         app:typeface_name="@string/font_roboto_regular" />
 
 
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/at_store_bnt_login"
+        android:layout_width="@dimen/frag_membercard_bt_w"
+        android:layout_height="@dimen/frag_membercard_bt_h"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bt_logout_bg"
+        android:text="@string/login_login"
+        android:textColor="@color/white"
+         />
+
 
 </LinearLayout>
