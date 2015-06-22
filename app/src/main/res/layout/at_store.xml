@@ -31,7 +31,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
-        android:text="@string/introduce"
+        android:gravity="center_horizontal"
+        android:text="@string/login_to_use_tools"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:typeface_name="@string/font_roboto_regular" />

@@ -69,6 +69,8 @@
     <string name="introduce">Giới thiệu</string>
     <string name="term_of_use">Điều khoản sử dụng</string>
 
+    <string name="login_to_use_tools">Đăng nhập để sử dụng công cụ di dộng dành cho cửa hàng</string>
+
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Nhập mã nếu thiết bị không nhận :</string>
 
