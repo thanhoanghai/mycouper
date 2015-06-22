@@ -44,6 +44,7 @@ import com.nct.mv.AtLogin;
 import com.nct.mv.AtMain;
 import com.nct.mv.AtPreviewImage;
 import com.nct.mv.AtSignUp;
+import com.nct.mv.AtStore;
 import com.nct.mv.AtTutorials;
 import com.nct.mv.AtUserProfile;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -54,8 +55,14 @@ public class Utils {
 
 	private static final String TAG = "Utils";
 
-	public static void gotoScreenIntroduce(Context mContext) {
+	public static void gotoScreenStore(Context mContext) {
+		Intent search = new Intent(mContext,AtStore.class);
+		mContext.startActivity(search);
+	}
+
+	public static void gotoScreenIntroduce(Context mContext,int index) {
 		Intent search = new Intent(mContext,AtIntroduce.class);
+		search.putExtra(Constants.AT_INTRODUCE_INDEX,index);
 		mContext.startActivity(search);
 	}
 

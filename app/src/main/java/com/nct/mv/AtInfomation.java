@@ -43,14 +43,14 @@ public class AtInfomation extends AtBase {
 		tvIntroduce.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Utils.gotoScreenIntroduce(AtInfomation.this);
+				Utils.gotoScreenIntroduce(AtInfomation.this,0);
 			}
 		});
 		tvTerm = (TfTextView) findViewById(R.id.at_infomation_tv_term);
 		tvTerm.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Utils.gotoScreenIntroduce(AtInfomation.this);
+				Utils.gotoScreenIntroduce(AtInfomation.this,1);
 			}
 		});
 

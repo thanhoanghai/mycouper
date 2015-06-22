@@ -115,6 +115,7 @@ public class Constants {
     public static final String KEY_BUNDLE_CARD_COMPANY_CATEGORY = "KEY_BUNDLE_CARD_COMPANY_CATEGORY";
 
 	public static String AT_PREVIEW_ID_LINK_IMAGE = "AT_PREVIEW_ID_LINK_IMAGE";
+    public static String AT_INTRODUCE_INDEX = "AT_INTRODUCE_INDEX";
 
     //Status api
     public static final int API_REQUEST_STATUS_SUCCESS = 200;

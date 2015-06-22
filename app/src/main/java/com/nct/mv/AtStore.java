@@ -3,28 +3,18 @@ package com.nct.mv;
 import android.os.Bundle;
 import android.view.View;
 
-import com.nct.constants.Constants;
-import com.nct.customview.TfTextView;
-import com.nct.utils.Utils;
-
 import thh.com.mycouper.R;
 
-public class AtIntroduce extends AtBase {
+public class AtStore extends AtBase {
 	private static final String tag = "AtIntroduce";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.at_introduce);
-
-		Bundle extras = getIntent().getExtras();
-		int index = extras.getInt(Constants.AT_INTRODUCE_INDEX);
+		setContentView(R.layout.at_store);
 
 		setLanguge();
-		if(index==0)
-			initTopbar(getString(R.string.introduce));
-		else
-			initTopbar(getString(R.string.term_and_condition));
+		initTopbar(getString(R.string.stores));
 		setTopbarBtLeftImage(R.drawable.icon_back);
 		setTopbarBtRightVisible(View.INVISIBLE);
 		setTopbarLeftBtListener(new View.OnClickListener() {
