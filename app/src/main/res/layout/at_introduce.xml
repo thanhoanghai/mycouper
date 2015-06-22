@@ -15,20 +15,6 @@
         android:src="@drawable/icon_couper_white_round" />
 
 
-    <com.nct.customview.TfTextView
-        android:id="@+id/at_infomation_tvversion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/version_user"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:typeface_name="@string/font_roboto_regular" />
-
-
     <include
         layout="@layout/item_line"
         android:layout_width="match_parent"
@@ -47,21 +33,6 @@
         android:layout_marginTop="15dp"
         android:text="@string/introduce"
         android:textColor="@color/black"
-        android:drawableRight="@drawable/icon_arrow_right"
-        android:textSize="20sp"
-        app:typeface_name="@string/font_roboto_regular" />
-
-
-    <com.nct.customview.TfTextView
-        android:id="@+id/at_infomation_tv_term"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/term_and_condition"
-        android:textColor="@color/black"
-        android:drawableRight="@drawable/icon_arrow_right"
         android:textSize="20sp"
         app:typeface_name="@string/font_roboto_regular" />
 

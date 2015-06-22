@@ -38,6 +38,7 @@ import com.nct.mv.AtContact;
 import com.nct.mv.AtCreateCard;
 import com.nct.mv.AtForgotPass;
 import com.nct.mv.AtInfomation;
+import com.nct.mv.AtIntroduce;
 import com.nct.mv.AtLanguage;
 import com.nct.mv.AtLogin;
 import com.nct.mv.AtMain;
@@ -52,6 +53,11 @@ import thh.com.mycouper.R;
 public class Utils {
 
 	private static final String TAG = "Utils";
+
+	public static void gotoScreenIntroduce(Context mContext) {
+		Intent search = new Intent(mContext,AtIntroduce.class);
+		mContext.startActivity(search);
+	}
 
 	public static void gotoScreenInfomation(Context mContext) {
 		Intent search = new Intent(mContext,AtInfomation.class);

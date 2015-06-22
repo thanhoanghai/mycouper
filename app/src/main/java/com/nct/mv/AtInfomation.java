@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.nct.customview.TfTextView;
 import com.nct.utils.Utils;
 
 import org.w3c.dom.Text;
@@ -11,10 +12,10 @@ import org.w3c.dom.Text;
 import thh.com.mycouper.R;
 
 public class AtInfomation extends AtBase {
-	private static final String tag = "AtContact";
+	private static final String tag = "AtInfomation";
 
-	private TextView tvVersion;
-	private TextView tvIntroduce,tvTerm;
+	private TfTextView tvVersion;
+	private TfTextView tvIntroduce,tvTerm;
 
 
 	@Override
@@ -34,22 +35,22 @@ public class AtInfomation extends AtBase {
 		});
 
 
-		tvVersion = (TextView) findViewById(R.id.at_infomation_tvversion);
+		tvVersion = (TfTextView) findViewById(R.id.at_infomation_tvversion);
 		String version = Utils.getVersionName(AtInfomation.this);
 		tvVersion.setText(getString(R.string.version_user) + version);
 
-		tvIntroduce = (TextView) findViewById(R.id.at_infomation_tv_introduce);
+		tvIntroduce = (TfTextView) findViewById(R.id.at_infomation_tv_introduce);
 		tvIntroduce.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
+				Utils.gotoScreenIntroduce(AtInfomation.this);
 			}
 		});
-		tvTerm = (TextView) findViewById(R.id.at_infomation_tv_term);
+		tvTerm = (TfTextView) findViewById(R.id.at_infomation_tv_term);
 		tvTerm.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
+				Utils.gotoScreenIntroduce(AtInfomation.this);
 			}
 		});
 
