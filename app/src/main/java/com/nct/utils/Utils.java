@@ -43,6 +43,7 @@ import com.nct.mv.AtLanguage;
 import com.nct.mv.AtLogin;
 import com.nct.mv.AtMain;
 import com.nct.mv.AtPreviewImage;
+import com.nct.mv.AtQRCodeDetail;
 import com.nct.mv.AtSignUp;
 import com.nct.mv.AtStore;
 import com.nct.mv.AtStoreDetail;
@@ -55,6 +56,11 @@ import thh.com.mycouper.R;
 public class Utils {
 
 	private static final String TAG = "Utils";
+
+	public static void gotoScreenStoreQRCodeDetail(Context mContext) {
+		Intent search = new Intent(mContext, AtQRCodeDetail.class);
+		mContext.startActivity(search);
+	}
 
 	public static void gotoScreenStoreDetail(Context mContext) {
 		Intent search = new Intent(mContext,AtStoreDetail.class);

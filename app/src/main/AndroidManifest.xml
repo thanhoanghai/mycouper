@@ -73,6 +73,7 @@
         <activity android:name="com.nct.mv.AtIntroduce" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
         <activity android:name="com.nct.mv.AtStore" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
         <activity android:name="com.nct.mv.AtStoreDetail" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
+        <activity android:name="com.nct.mv.AtQRCodeDetail" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"/>
         <activity
             android:name="com.nct.mv.AtWacCamera"
             android:label="@string/app_name"

@@ -208,6 +208,18 @@
     <string name="auto">Auto</string>
     <string name="library">Library</string>
     <string name="instagram">Instagram</string>
-	
+
+    <!-- Store -->
+    <string name="stores_account">Account :</string>
+    <string name="stores_password">Password :</string>
+    <string name="stores_qrcode_title">QRCode on mobile</string>
+    <string name="stores_qrcode_coupon">Coupon</string>
+    <string name="stores_qrcode_loyalty_cards">Loyalty cards</string>
+    <string name="stores_qrcode_name">Coupon:</string>
+    <string name="stores_qrcode_store">Store:</string>
+    <string name="stores_qrcode_date">Qrcode date:</string>
+    <string name="stores_qrcode_create">Qrcode date:</string>
+    <string name="stores_qrcode_save_gallery">Save to gallery</string>
+
 
 </resources>

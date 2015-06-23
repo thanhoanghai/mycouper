@@ -1,0 +1,288 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/item_top_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/frag_create_card_info_linear_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/store_card_icon_img"
+                    android:layout_width="@dimen/item_member_card_icon_size_large"
+                    android:layout_height="@dimen/item_member_card_icon_size_large"
+                    android:background="@drawable/bg_icon_border"
+                    android:padding="1dp"
+                    android:scaleType="centerInside" />
+
+                <com.nct.customview.TfTextView
+                    android:id="@+id/frag_create_card_info_tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/store_card_icon_img"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/store_card_icon_img"
+                    android:ellipsize="end"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/frag_createcard_info_camera_title_size"
+                    app:typeface_name="@string/font_roboto_regular" />
+
+                <Button
+                    android:id="@+id/stores_bt_logout"
+                    android:layout_width="@dimen/frag_membercard_bt_w"
+                    android:layout_height="@dimen/frag_membercard_bt_h"
+                    android:layout_alignBottom="@id/store_card_icon_img"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/store_card_icon_img"
+                    android:background="@drawable/bt_logout_bg"
+                    android:text="@string/user_account_logout"
+                    android:textColor="@color/white"
+                    tools:ignore="UnusedAttribute" />
+
+            </RelativeLayout>
+
+
+            <include
+                layout="@layout/item_line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp" />
+
+            <com.nct.customview.TfTextView
+                android:id="@+id/stores_tv_introduce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/stores_card_bg"
+                android:gravity="center_horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/stores_qrcode_title"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:typeface_name="@string/font_roboto_regular" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:gravity="center"
+                android:background="@drawable/stores_card_bg"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.nct.customview.TfTextView
+                        android:id="@+id/stores_tab_square"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/stores_qrcode_loyalty_cards"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        app:typeface_name="@string/font_roboto_regular" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="23dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/black" />
+
+                    <com.nct.customview.TfTextView
+                        android:id="@+id/stores_tab_coupon"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/stores_qrcode_coupon"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        app:typeface_name="@string/font_roboto_regular" />
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lyImgCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/stores_img_qrcode"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/qrcode"
+                        android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/conttent1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/frag_createcard_info_layout_marintop"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|center_vertical"
+                        android:text="@string/stores_qrcode_name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/frag_createcard_info_title_size" />
+
+                    <TextView
+                        android:id="@+id/txt_text1"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:gravity="left|center_vertical"
+                        android:singleLine="true"
+                        android:text="Tên thẻ"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/frag_createcard_info_title_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/conttent2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|center_vertical"
+                        android:text="@string/stores_qrcode_store"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/frag_createcard_info_title_size" />
+
+                    <TextView
+                        android:id="@+id/txt_text2"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:gravity="left|center_vertical"
+                        android:singleLine="true"
+                        android:text="Tên cửa hàng"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/frag_createcard_info_title_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/conttent3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|center_vertical"
+                        android:text="@string/stores_qrcode_date"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/frag_createcard_info_title_size" />
+
+                    <TextView
+                        android:id="@+id/txt_text3"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:gravity="left|center_vertical"
+                        android:singleLine="true"
+                        android:text="03-10-1986"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/frag_createcard_info_title_size" />
+
+                </LinearLayout>
+
+                <com.nct.customview.TfTextView
+                    android:id="@+id/stores_tv_create"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_yallow_gray_bg"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/stores_qrcode_create"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:typeface_name="@string/font_roboto_regular" />
+
+                <com.nct.customview.TfTextView
+                    android:id="@+id/stores_tv_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_yallow_gray_bg"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/stores_qrcode_save_gallery"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:typeface_name="@string/font_roboto_regular" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

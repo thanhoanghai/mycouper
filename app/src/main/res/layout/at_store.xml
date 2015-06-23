@@ -6,49 +6,154 @@
 
     <include layout="@layout/item_top_bar" />
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/icon_couper_white_round" />
-
-
-    <include
-        layout="@layout/item_line"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_couper_white_round" />
 
 
-    <com.nct.customview.TfTextView
-        android:id="@+id/at_infomation_tv_introduce"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center_horizontal"
-        android:text="@string/login_to_use_tools"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:typeface_name="@string/font_roboto_regular" />
+            <include
+                layout="@layout/item_line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp" />
 
 
-    <Button
-        android:id="@+id/at_store_bnt_login"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="@dimen/frag_membercard_bt_w"
-        android:layout_height="@dimen/frag_membercard_bt_h"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/bt_logout_bg"
-        android:text="@string/login_login"
-        android:textColor="@color/white"
-         />
+            <com.nct.customview.TfTextView
+                android:id="@+id/at_infomation_tv_introduce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/stores_card_bg"
+                android:gravity="center_horizontal"
+                android:text="@string/login_to_use_tools"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:typeface_name="@string/font_roboto_regular" />
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stores_card_bg"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingLeft="5dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/frag_createcard_info_edittext_h"
+                    android:layout_marginTop="@dimen/frag_createcard_info_layout_marintop"
+                    android:orientation="horizontal">
+
+                    <com.nct.customview.TfTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="right|center_vertical"
+                        android:text="@string/stores_account"
+                        android:textColor="@color/grey_info_text_card"
+                        android:textSize="@dimen/frag_createcard_info_title_size"
+                        app:typeface_name="@string/font_roboto_regular" />
+
+                    <EditText
+                        android:id="@+id/store_account"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:gravity="left|center_vertical"
+                        android:inputType="textCapSentences"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="@color/grey_info_text_card"
+                        android:textSize="@dimen/frag_createcard_info_title_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/frag_createcard_info_edittext_h"
+                    android:layout_marginTop="@dimen/frag_createcard_info_layout_marintop"
+                    android:layout_marginBottom="@dimen/frag_createcard_info_layout_marintop"
+                    android:orientation="horizontal">
+
+                    <com.nct.customview.TfTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="right|center_vertical"
+                        android:text="@string/stores_password"
+                        android:textColor="@color/grey_info_text_card"
+                        android:textSize="@dimen/frag_createcard_info_title_size"
+                        app:typeface_name="@string/font_roboto_regular" />
+
+                    <EditText
+                        android:id="@+id/store_password"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/frag_createcard_info_edittext_marinleft"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:gravity="left|center_vertical"
+                        android:inputType="textCapSentences"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="@color/grey_info_text_card"
+                        android:textSize="@dimen/frag_createcard_info_title_size" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/at_store_bnt_login"
+                android:layout_width="@dimen/frag_membercard_bt_w"
+                android:layout_height="@dimen/frag_membercard_bt_h"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bt_logout_bg"
+                android:text="@string/login_login"
+                android:textColor="@color/white" />
+
+            <com.nct.customview.TfTextView
+                android:id="@+id/at_register_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/stores_card_bg"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:typeface_name="@string/font_roboto_regular" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

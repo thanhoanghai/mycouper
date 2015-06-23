@@ -208,4 +208,9 @@
     <string name="library">Library</string>
     <string name="instagram">Instagram</string>
 
+    <!-- Store -->
+    <string name="stores_account">Tài khoản :</string>
+    <string name="stores_password">Mật khẩu :</string>
+    <string name="stores_qrcode_title">QRCode trên di động</string>
+
 </resources>
