@@ -132,7 +132,7 @@ public class FragCreateCardInfo extends BaseMainFragment {
                 mCompanyLogo = memberCard.company_logo;
                 displayImage(imageView, mCompanyLogo);
                 mCompanyID = memberCard.company_id;
-                if(memberCard.company_name != null)
+                if(memberCard.company_name != null && !memberCard.company_name.equals("NULL"))
                     txtCompanyName.setText(memberCard.company_name);
                 else
                     txtCompanyName.setText("");
@@ -141,7 +141,7 @@ public class FragCreateCardInfo extends BaseMainFragment {
                     mCompanyLogo = itemCompany.company_logo;
                     displayImage(imageView, mCompanyLogo);
                     mCompanyID = itemCompany.company_id;
-                    if(itemCompany.company_name != null)
+                    if(itemCompany.company_name != null && !itemCompany.company_name.equals("NULL"))
                         txtCompanyName.setText(itemCompany.company_name);
                     else
                         txtCompanyName.setText("");
@@ -182,19 +182,15 @@ public class FragCreateCardInfo extends BaseMainFragment {
                 CaptureActivityIntents.setPromptMessage(captureIntent, "Code scanning...");
                 // Start activity.
                 startActivityForResult(captureIntent, 1);
-
-//                Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-////                intent.putExtra("SCAN_MODE", "BAR_CODE_MODE");
-//                startActivityForResult(intent, 0);
             }
         });
 
         if(isEditCard){
             if(memberCard.member_card_number != null)
                 edtCardCode.setText(memberCard.member_card_number);
-            if(memberCard.member_card_name != null)
+            if(memberCard.member_card_name != null && !memberCard.member_card_name.equals("NULL"))
                 edtCardName.setText(memberCard.member_card_name);
-            if(memberCard.description != null)
+            if(memberCard.description != null && !memberCard.description.equals("NULL"))
                 edtCardDes.setText(memberCard.description);
         }else{
             edtCardCode.setEnabled(true);

@@ -5,7 +5,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <!-- SPLASH -->
-    <dimen name="splash_icon_size">140dp</dimen>
+    <dimen name="splash_icon_size">130dp</dimen>
 
 
     <!--CARD DETAIL -->
