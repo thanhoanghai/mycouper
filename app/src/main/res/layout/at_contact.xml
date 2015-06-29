@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_main"
     android:orientation="vertical">
 
     <include layout="@layout/item_top_bar" />
@@ -11,10 +13,16 @@
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/icon_couper_white_round" />
+        android:background="@drawable/splash_icon" />
+
+    <com.nct.customview.TfTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:typeface_name="@string/font_raleway_bold"
+        app:typeface_style="bold" />
 
 
     <include
@@ -32,9 +40,10 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/contact_us"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:gravity="center"
         android:textSize="18sp"
+        app:typeface_style="bold"
         app:typeface_name="@string/font_roboto_regular" />
 
     <LinearLayout
@@ -50,12 +59,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/forgot_email_dot"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:typeface_name="@string/font_roboto_regular"
             app:typeface_style="italic" />
 
         <com.nct.customview.TfTextView
+            android:id="@+id/at_contact_tv_mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -81,12 +91,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/user_account_phone"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:typeface_name="@string/font_roboto_regular"
             app:typeface_style="italic" />
 
         <com.nct.customview.TfTextView
+            android:id="@+id/at_contact_tv_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"

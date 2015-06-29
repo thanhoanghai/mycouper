@@ -123,4 +123,7 @@ public class Constants {
 
 
     public static final String ID_COUNTRY_DEFAUL_VIETNAME = "14";
+
+    public static final String MAIL_SUPPORT = "sale@mycouper.com";
+    public static final String PHONE_SUPPORT = "+84902292626";
 }
