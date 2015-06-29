@@ -19,6 +19,21 @@ import com.nct.customview.TfTextView;
 import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
 import com.nct.utils.Debug;
+
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.TextHttpResponseHandler;
+import com.nct.constants.Constants;
+import com.nct.constants.GlobalInstance;
+import com.nct.customview.TfTextView;
+import com.nct.dataloader.DataHelper;
+import com.nct.dataloader.DataLoader;
+import com.nct.dataloader.URLProvider;
+import com.nct.model.StoresData;
+import com.nct.model.StoresObject;
+import com.nct.model.UserData;
+import com.nct.utils.Debug;
+import com.nct.utils.Pref;
+
 import com.nct.utils.Utils;
 
 import org.apache.http.Header;
@@ -30,6 +45,10 @@ public class AtStore extends AtBase {
 
 	private Button bntLogin;
 	private TfTextView txtRegister;
+	private EditText edtUsername;
+	private EditText edtPass;
+
+	private String sEmail,sPass;
 
 	private EditText edtAccount,edtPassword;
 
@@ -51,11 +70,22 @@ public class AtStore extends AtBase {
 			}
 		});
 
+		edtUsername = (EditText) findViewById(R.id.store_account);
+		edtUsername.setText("company7@gmail.com");
+		edtPass = (EditText) findViewById(R.id.store_password);
+		edtPass.setText("123");
+
 		bntLogin = (Button) findViewById(R.id.at_store_bnt_login);
 		bntLogin.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				loginCompany();
+
+				String result = checkLogin();
+				if (result.equals(""))
+					getLogin();
+				else
+					Debug.toast(AtStore.this, result);
+
 			}
 		});
 
@@ -82,6 +112,56 @@ public class AtStore extends AtBase {
 		edtPassword = (EditText) findViewById(R.id.store_password);
 		edtPassword.setText("123");
 
+	}
+
+	private String checkLogin(){
+		String result = "";
+		sEmail = edtUsername.getText().toString();
+		sPass = edtPass.getText().toString();
+		if(TextUtils.isEmpty(sEmail)){
+			return result = getResources().getString(R.string.login_message_user_is_empty);
+		}
+		if(TextUtils.isEmpty(sPass)){
+			return result = getResources().getString(R.string.login_message_pass_is_empty);
+		}
+		return result;
+	}
+
+	private void getLogin()
+	{
+		RequestParams params = URLProvider.getParamStoreLogin(sEmail, sPass);
+
+		Utils.keyBoardForceHide(AtStore.this);
+		showDialogLoading();
+		DataLoader.postParam(params, new TextHttpResponseHandler() {
+			@Override
+			public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+				hideDialogLoading();
+			}
+
+			@Override
+			public void onSuccess(int i, Header[] headers, String s) {
+				Debug.logData(tag, s);
+				Pref.SaveStringObject(Constants.ID_SAVE_STORE_LOGIN, s, AtStore.this);
+				handleLogin(s);
+				hideDialogLoading();
+			}
+		});
+	}
+
+	private void handleLogin(String s)
+	{
+		StoresData object = DataHelper.getStoresData(s);
+		if (object != null && object.company_id != null && !object.company_id.equals("")) {
+			GlobalInstance.getInstance().storesInfo = object;
+			Utils.gotoScreenStoreDetail(AtStore.this);
+			Debug.toastDebug(AtStore.this,GlobalInstance.getInstance().getSessionID());
+			finish();
+		}else
+			Debug.toast(AtStore.this,object.errorMessage);
+//			Debug.toast(AtStore.this, "Login failed");
+
+//		{"statusCode":"500","error":"company_email","errorMessage":"Incorrect Email"}
 	}
 
 	protected void makeLinkClickable(SpannableStringBuilder strBuilder, final URLSpan span)

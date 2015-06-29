@@ -1,6 +1,8 @@
 package com.nct.constants;
 
 import com.nct.model.MemberCardObject;
+import com.nct.model.StoresData;
+import com.nct.model.StoresObject;
 import com.nct.model.UserObject;
 
 public class GlobalInstance {
@@ -8,6 +10,7 @@ public class GlobalInstance {
 	private static GlobalInstance mGlobalInstance;
 	public String idLanguage = "en";
     public UserObject userInfo;
+	public StoresData storesInfo;
 	public MemberCardObject memberCard;
 
 

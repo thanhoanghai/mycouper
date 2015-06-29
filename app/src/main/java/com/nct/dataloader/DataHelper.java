@@ -14,6 +14,8 @@ import com.nct.model.MemberCardData;
 import com.nct.model.NewsCouponData;
 import com.nct.model.PosData;
 import com.nct.model.StatusObject;
+import com.nct.model.StoresData;
+import com.nct.model.StoresObject;
 import com.nct.model.UserData;
 
 public class DataHelper {
@@ -115,6 +117,19 @@ public class DataHelper {
         }
         return data;
     }
+
+    public static StoresData getStoresData(String result) {
+        StoresData data = null;
+        try {
+            Gson gson = new Gson();
+            data = gson.fromJson(result, StoresData.class);
+            return data;
+        } catch (Exception ex) {
+            data = null;
+        }
+        return data;
+    }
+
     public static StatusObject getStatusObject(String result) {
         StatusObject data;
         try {

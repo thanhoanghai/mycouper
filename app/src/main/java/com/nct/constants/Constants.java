@@ -30,6 +30,8 @@ public class Constants {
 	public static final String ID_SAVE_LOGIN = "ID_SAVE_LOGIN";
 	public static final String TAB_CREATE_CARD = "TAB_CREATE_CARD";
 
+    public static final String ID_SAVE_STORE_LOGIN = "ID_SAVE_STORE_LOGIN";
+
     public static final String TAB_CAMERA_CAMERA = "TAB_CAMERA_CAMERA";
 
     public static final String FONT_ROBO_BOLD = "fonts/Roboto-Bold.ttf";

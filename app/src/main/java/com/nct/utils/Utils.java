@@ -63,7 +63,7 @@ public class Utils {
 	}
 
 	public static void gotoScreenStoreDetail(Context mContext) {
-		Intent search = new Intent(mContext,AtStoreDetail.class);
+		Intent search = new Intent(mContext, AtStoreDetail.class);
 		mContext.startActivity(search);
 	}
 

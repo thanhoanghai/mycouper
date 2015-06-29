@@ -247,7 +247,24 @@ public class URLProvider {
         return client;
     }
 
+    public static RequestParams getParamStoreLogout(String company_id, String session_id, String session_id_code)
+    {
+        RequestParams params = new RequestParams();
+        params.put("ac", "company_logout");
+        params.put("company_id", company_id);
+        params.put("session_id", session_id);
+        params.put("session_id_code", session_id_code);
+        return params;
+    }
 
+    public static RequestParams getParamStoreLogin(String email, String password)
+    {
+        RequestParams params = new RequestParams();
+        params.put("ac", "company_login");
+        params.put("company_email", email);
+        params.put("password", password);
+        return params;
+    }
 
     public static String getMemberCardForUser(String user_id) {
         String client = PROVIDER;

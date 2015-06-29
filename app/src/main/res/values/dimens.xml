@@ -47,6 +47,7 @@
     <dimen name="login_bt_marintop">30dp</dimen>
     <dimen name="login_bt_marin_bt">10dp</dimen>
     <dimen name="login_bt_radius_corner">20dp</dimen>
+    <dimen name="bt_radius_corner">5dp</dimen>
 
     <dimen name="login_text_sign_size">14sp</dimen>
 
@@ -122,5 +123,9 @@
     <!-- LAYOUT COUPON DETAIL  -->
     <dimen name="layout_coupon_detail_padding">5dp</dimen>
     <dimen name="layout_coupon_detail_padding_small">3dp</dimen>
+
+    <!-- Stores -->
+    <dimen name="stores_coupon_bt_w">120dp</dimen>
+    <dimen name="stores_coupon_bt_h">35dp</dimen>
 
 </resources>

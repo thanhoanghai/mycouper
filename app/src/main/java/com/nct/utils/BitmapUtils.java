@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
@@ -13,6 +14,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Environment;
 
+import com.google.zxing.common.BitMatrix;
 import com.nct.constants.Constants;
 
 import java.io.ByteArrayOutputStream;
@@ -408,7 +410,7 @@ public class BitmapUtils {
     public static Bitmap scaleDownBitmap(String imgPath, int mWidth, int mHeight){
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(imgPath,options);
+        BitmapFactory.decodeFile(imgPath, options);
         options.inSampleSize = calculateInSampleSize(options, mWidth, mHeight);
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeFile(imgPath, options);
@@ -444,4 +446,16 @@ public class BitmapUtils {
 
         return inSampleSize;
     }
+
+	public static Bitmap toBitmap(BitMatrix matrix){
+		int height = matrix.getHeight();
+		int width = matrix.getWidth();
+		Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+		for (int x = 0; x < width; x++){
+			for (int y = 0; y < height; y++){
+				bmp.setPixel(x, y, matrix.get(x,y) ? Color.BLACK : Color.WHITE);
+			}
+		}
+		return bmp;
+	}
 }

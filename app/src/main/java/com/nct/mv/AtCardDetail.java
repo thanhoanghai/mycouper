@@ -52,6 +52,7 @@ import com.nct.model.CouponReceiveData;
 import com.nct.model.MemberCardObject;
 import com.nct.model.PosData;
 import com.nct.model.PosObject;
+import com.nct.utils.BitmapUtils;
 import com.nct.utils.Debug;
 import com.nct.utils.Pref;
 import com.nct.utils.Utils;
@@ -640,7 +641,7 @@ public class AtCardDetail extends AtBase {
 
             MultiFormatWriter writeBarcode = new MultiFormatWriter();
             BitMatrix bitMatrix = writeBarcode.encode(memberCard.member_card_number, BarcodeFormat.CODE_128, bitmapWidth, bitmapHeight);
-            Bitmap bmp = toBitmap(bitMatrix);
+            Bitmap bmp = BitmapUtils.toBitmap(bitMatrix);
             imgQRcode.setImageBitmap(bmp);
         }catch (Exception e){
             e.printStackTrace();
@@ -655,23 +656,11 @@ public class AtCardDetail extends AtBase {
 
             QRCodeWriter writeCode = new QRCodeWriter();
             BitMatrix bitMatrix = writeCode.encode(memberCard.member_card_number, BarcodeFormat.QR_CODE, bitmapWidth, bitmapWidth);
-            Bitmap bmp = toBitmap(bitMatrix);
+            Bitmap bmp = BitmapUtils.toBitmap(bitMatrix);
             imgQRcode.setImageBitmap(bmp);
         }catch (Exception e){
             e.printStackTrace();
         }
-    }
-
-    public static Bitmap toBitmap(BitMatrix matrix){
-        int height = matrix.getHeight();
-        int width = matrix.getWidth();
-        Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-        for (int x = 0; x < width; x++){
-            for (int y = 0; y < height; y++){
-                bmp.setPixel(x, y, matrix.get(x,y) ? Color.BLACK : Color.WHITE);
-            }
-        }
-        return bmp;
     }
 
 	public void showDialogInfo(){
