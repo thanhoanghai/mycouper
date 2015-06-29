@@ -2,6 +2,8 @@ package com.nct.mv;
 
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.nct.constants.Constants;
 import com.nct.customview.TfTextView;
@@ -11,6 +13,8 @@ import thh.com.mycouper.R;
 
 public class AtIntroduce extends AtBase {
 	private static final String tag = "AtIntroduce";
+
+	private WebView webview;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,15 @@ public class AtIntroduce extends AtBase {
 		});
 
 
+		webview = (WebView) findViewById(R.id.at_introduce_web);
+		webview.getSettings().setJavaScriptEnabled(true);
+		webview.setWebViewClient(new WebViewClient() {
+
+			public void onPageFinished(WebView view, String url) {
+
+			}
+		});
+		webview.loadUrl("https://www.google.com/");
 	}
 
 }
