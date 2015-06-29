@@ -49,6 +49,17 @@ public class URLProvider {
         return params;
     }
 
+
+    public static RequestParams getParamsCompanyLogin(String company_email,String password)
+    {
+        RequestParams params = new RequestParams();
+        params.put("ac", "company_login");
+        params.put("company_email", company_email);
+        params.put("password", password);
+
+        return params;
+    }
+
     public static RequestParams getParamsUpdateEcouponActivie(String coupon_id)
     {
         RequestParams params = new RequestParams();

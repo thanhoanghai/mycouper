@@ -6,14 +6,22 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
+import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.customview.TfTextView;
+import com.nct.dataloader.DataLoader;
+import com.nct.dataloader.URLProvider;
+import com.nct.utils.Debug;
 import com.nct.utils.Utils;
+
+import org.apache.http.Header;
 
 import thh.com.mycouper.R;
 
@@ -22,6 +30,10 @@ public class AtStore extends AtBase {
 
 	private Button bntLogin;
 	private TfTextView txtRegister;
+
+	private EditText edtAccount,edtPassword;
+
+	private String userName,pass;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +55,7 @@ public class AtStore extends AtBase {
 		bntLogin.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Utils.gotoScreenStoreDetail(AtStore.this);
+				loginCompany();
 			}
 		});
 
@@ -64,6 +76,11 @@ public class AtStore extends AtBase {
 		txtRegister.setMovementMethod(LinkMovementMethod.getInstance());
 		txtRegister.setText(strBuilder);
 		txtRegister.setTextColor(Color.BLACK);
+
+		edtAccount = (EditText) findViewById(R.id.store_account);
+		edtAccount.setText("company7@gmail.com");
+		edtPassword = (EditText) findViewById(R.id.store_password);
+		edtPassword.setText("123");
 
 	}
 
@@ -87,6 +104,28 @@ public class AtStore extends AtBase {
 		};
 		strBuilder.setSpan(clickable, start, end, flags);
 		strBuilder.removeSpan(span);
+	}
+
+	private void loginCompany()
+	{
+		userName = edtAccount.getText().toString();
+		pass = edtPassword.getText().toString();
+		if(!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(pass))
+		{
+			showDialogLoading();
+			DataLoader.postParam(URLProvider.getParamsCompanyLogin(userName, pass), new TextHttpResponseHandler() {
+				@Override
+				public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+					hideDialogLoading();
+				}
+				@Override
+				public void onSuccess(int i, Header[] headers, String s) {
+					hideDialogLoading();
+					Debug.logData(tag, s);
+					//Utils.gotoScreenStoreDetail(AtStore.this);
+				}
+			});
+		}
 	}
 
 }
