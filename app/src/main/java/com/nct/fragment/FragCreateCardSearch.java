@@ -193,12 +193,15 @@ public class FragCreateCardSearch extends BaseGridFragment<CompanyObject> {
     @Override
     protected boolean handleLoadingDataSuccess(String result) {
         CompanyData data = DataHelper.getCompanyData(result);
-        Collections.sort(data.data, new Comparator<CompanyObject>() {
-            @Override
-            public int compare(CompanyObject s1, CompanyObject s2) {
-                return s1.company_name.compareToIgnoreCase(s2.company_name);
-            }
-        });
+        if(data!=null && data.data!=null && data.data.size() > 0)
+        {
+            Collections.sort(data.data, new Comparator<CompanyObject>() {
+                @Override
+                public int compare(CompanyObject s1, CompanyObject s2) {
+                    return s1.company_name.compareToIgnoreCase(s2.company_name);
+                }
+            });
+        }
         if (!isAdapterNull())
         {
             ((FragCompanyAdapter)mBaseAdapter).setDataSavelist(data.data);
