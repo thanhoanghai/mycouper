@@ -7,5 +7,7 @@
 
     <include layout="@layout/item_top_bar" />
 
+    <include layout="@layout/layout_showcase" />
+
 
 </LinearLayout>
