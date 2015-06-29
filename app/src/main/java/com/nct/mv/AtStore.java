@@ -159,9 +159,6 @@ public class AtStore extends AtBase {
 			finish();
 		}else
 			Debug.toast(AtStore.this,object.errorMessage);
-//			Debug.toast(AtStore.this, "Login failed");
-
-//		{"statusCode":"500","error":"company_email","errorMessage":"Incorrect Email"}
 	}
 
 	protected void makeLinkClickable(SpannableStringBuilder strBuilder, final URLSpan span)
@@ -184,28 +181,6 @@ public class AtStore extends AtBase {
 		};
 		strBuilder.setSpan(clickable, start, end, flags);
 		strBuilder.removeSpan(span);
-	}
-
-	private void loginCompany()
-	{
-		userName = edtAccount.getText().toString();
-		pass = edtPassword.getText().toString();
-		if(!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(pass))
-		{
-			showDialogLoading();
-			DataLoader.postParam(URLProvider.getParamsCompanyLogin(userName, pass), new TextHttpResponseHandler() {
-				@Override
-				public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
-					hideDialogLoading();
-				}
-				@Override
-				public void onSuccess(int i, Header[] headers, String s) {
-					hideDialogLoading();
-					Debug.logData(tag, s);
-					//Utils.gotoScreenStoreDetail(AtStore.this);
-				}
-			});
-		}
 	}
 
 }
