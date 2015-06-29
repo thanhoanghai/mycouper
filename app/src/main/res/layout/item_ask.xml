@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_member_card_h"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+
+    <com.nct.customview.TfTextView
+        android:id="@+id/item_ask_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" android:layout_weight="1"
+        android:layout_marginLeft="@dimen/item_member_card_padding"
+        android:gravity="center_vertical"
+        android:ellipsize="end"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/item_member_card_text_size"
+        app:typeface_name="@string/font_roboto_regular" />
+
+
+    <include layout="@layout/item_line"></include>
+
+
+</LinearLayout>

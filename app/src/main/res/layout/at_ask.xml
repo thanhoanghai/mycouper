@@ -7,5 +7,16 @@
 
     <include layout="@layout/item_top_bar" />
 
+    <ListView
+        android:id="@+id/at_ask_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alwaysDrawnWithCache="true"
+        android:cacheColorHint="@android:color/transparent"
+        android:drawSelectorOnTop="false"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none"
+        />
+
 
 </LinearLayout>
