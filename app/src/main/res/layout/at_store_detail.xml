@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/lyContent"
+    android:id="@+id/at_store_detail_linear"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,6 +9,7 @@
     <include layout="@layout/item_top_bar" />
 
     <ScrollView
+        android:id="@+id/at_store_detail_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -135,35 +136,33 @@
 
                 </LinearLayout>
 
-                <!--<com.nct.customview.ViewPagerContainer-->
-                    <!--xmlns:vpc="http://schemas.android.com/apk/res-auto"-->
-                    <!--android:id="@+id/containerQrcode"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="10dp"-->
-                    <!--android:layout_gravity="center_horizontal"-->
-                    <!--android:background="@color/transparent" >-->
 
-                    <!--<android.support.v4.view.ViewPager-->
-                        <!--android:id="@+id/viewPager"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="center"-->
-                        <!--android:minHeight="200dip"-->
-                        <!--android:minWidth="200dip" />-->
-                <!--</com.nct.customview.ViewPagerContainer>-->
-
-                <LinearLayout
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <android.support.v4.view.ViewPager
-                        android:id="@+id/viewPager"
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:minHeight="200dp"
-                        android:minWidth="200dp" />
-                </LinearLayout>
+                        android:layout_height="wrap_content">
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/viewPager"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:minHeight="200dp"
+                            android:minWidth="200dp" />
+                    </LinearLayout>
+                    
+                    <ImageView
+                        android:layout_width="30dp" android:layout_gravity="center_vertical"
+                        android:layout_height="30dp" android:src="@drawable/icon_circle_arrow_left" />
+                    <ImageView
+                        android:layout_width="30dp" android:layout_gravity="center_vertical|right"
+                        android:layout_height="30dp" android:src="@drawable/icon_circle_arrow_right" />
+
+
+                </FrameLayout>
+
 
 
 

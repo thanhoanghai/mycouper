@@ -3,6 +3,7 @@ package com.nct.mv;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
@@ -45,6 +47,9 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	private TextView txtTitleName, txtName, txtStoreName, txtDate;
 	private TfTextView btnCreate, btnSaveToGallery;
 
+	private LinearLayout linearContent;
+	private ScrollView scrollview;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,6 +67,10 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		});
 
 		initImageLoader();
+
+		linearContent = (LinearLayout) findViewById(R.id.at_store_detail_linear);
+		scrollview = (ScrollView) findViewById(R.id.at_store_detail_scrollview);
+		scrollview.setVisibility(View.INVISIBLE);
 
 		companyLogo = (ImageView) findViewById(R.id.store_card_icon_img);
 		if(GlobalInstance.getInstance().storesInfo.company_logo != null)
@@ -92,8 +101,6 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		txtStoreName = (TextView) findViewById(R.id.txt_text2);
 		txtDate = (TextView) findViewById(R.id.txt_text3);
 
-		adapter = new QrcodePagerAdapter(this, GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos);
-		viewPager.setAdapter(adapter);
 		viewPager.setOffscreenPageLimit(GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos.size());
 		viewPager.setClipChildren(false);
 		viewPager.setPageMargin(-20);
@@ -110,15 +117,15 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 
 				StampQrcode item = GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos.get(position);
 
-				if(GlobalInstance.getInstance().storesInfo.company_name != null && !GlobalInstance.getInstance().storesInfo.equals("NULL"))
+				if (GlobalInstance.getInstance().storesInfo.company_name != null && !GlobalInstance.getInstance().storesInfo.equals("NULL"))
 					txtStoreName.setText(GlobalInstance.getInstance().storesInfo.company_name);
 				else
 					txtStoreName.setText("");
-				if(item.pos_name != null && !item.pos_name.equals("NULL"))
+				if (item.pos_name != null && !item.pos_name.equals("NULL"))
 					txtName.setText(item.pos_name);
 				else
 					txtName.setText("");
-				if(item.last_update != null && !item.last_update.equals("NULL"))
+				if (item.last_update != null && !item.last_update.equals("NULL"))
 					txtDate.setText(Utils.formatDate(item.last_update));
 				else
 					txtDate.setText("");
@@ -129,6 +136,17 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 
 			}
 		});
+
+		showDialogLoading();
+		DelayTimeStart(100);
+	}
+
+	@Override
+	public void DelayTimeFinish() {
+		adapter = new QrcodePagerAdapter(AtStoreDetail.this, GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos);
+		viewPager.setAdapter(adapter);
+		hideDialogLoading();
+		scrollview.setVisibility(View.VISIBLE);
 	}
 
 	public void onPagerPromotionItemClick(int position) {
@@ -164,9 +182,8 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	}
 
 	public Bitmap takeScreenshot() {
-		View rootView = findViewById(R.id.lyContent).getRootView();
-		rootView.setDrawingCacheEnabled(true);
-		return rootView.getDrawingCache();
+		linearContent.setDrawingCacheEnabled(true);
+		return linearContent.getDrawingCache();
 	}
 
 	public void saveBitmap(Bitmap bitmap) {
@@ -214,4 +231,6 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 			}
 		});
 	}
+
+
 }
