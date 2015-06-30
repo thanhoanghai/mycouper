@@ -138,6 +138,7 @@
 
 
                 <FrameLayout
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -163,14 +164,10 @@
 
                 </FrameLayout>
 
-
-
-
                 <LinearLayout
                     android:id="@+id/conttent1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/frag_createcard_info_layout_marintop"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
@@ -195,7 +192,6 @@
                         android:layout_weight="1"
                         android:background="@color/transparent"
                         android:gravity="left|center_vertical"
-                        android:singleLine="true"
                         android:text="Tên thẻ"
                         android:textColor="@color/black"
                         android:textSize="@dimen/frag_createcard_info_title_size" />
@@ -265,7 +261,6 @@
                         android:layout_weight="1"
                         android:background="@color/transparent"
                         android:gravity="left|center_vertical"
-                        android:singleLine="true"
                         android:textColor="@color/black"
                         android:textSize="@dimen/frag_createcard_info_title_size" />
 
