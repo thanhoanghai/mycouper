@@ -41,7 +41,6 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	private static final String tag = "AtStoreDetail";
 	private ImageView companyLogo, imgQrcode;
 	private TfTextView txtCompanyName;
-	private Button btnLogout;
 	private ViewPager viewPager;
 	private QrcodePagerAdapter adapter;
 	private TextView txtTitleName, txtName, txtStoreName, txtDate;
@@ -58,11 +57,18 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		setLanguge();
 		initTopbar(getString(R.string.stores));
 		setTopbarBtLeftImage(R.drawable.icon_back);
-		setTopbarBtRightVisible(View.INVISIBLE);
 		setTopbarLeftBtListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				finish();
+			}
+		});
+
+		setTopbarBtRightImage(R.drawable.icon_logout_store);
+		setTopbarRighttBtListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showDialogConfirmLogout();
 			}
 		});
 
@@ -80,9 +86,6 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		if(GlobalInstance.getInstance().storesInfo.company_name != null
 				&& !GlobalInstance.getInstance().storesInfo.company_name.equals(""))
 			txtCompanyName.setText(GlobalInstance.getInstance().storesInfo.company_name);
-
-		btnLogout = (Button) findViewById(R.id.stores_bt_logout);
-		btnLogout.setOnClickListener(this);
 
 		btnCreate = (TfTextView) findViewById(R.id.stores_tv_create);
 		btnCreate.setOnClickListener(this);
@@ -169,14 +172,10 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()){
 			case R.id.stores_tv_create:
-
 				break;
 			case R.id.stores_tv_save:
 				Bitmap bitmap = takeScreenshot();
 				saveBitmap(bitmap);
-				break;
-			case R.id.stores_bt_logout:
-				showDialogConfirmLogout();
 				break;
 		}
 	}

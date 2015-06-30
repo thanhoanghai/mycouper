@@ -47,18 +47,6 @@
                     android:textSize="@dimen/frag_createcard_info_camera_title_size"
                     app:typeface_name="@string/font_roboto_regular" />
 
-                <Button
-                    android:id="@+id/stores_bt_logout"
-                    android:layout_width="@dimen/stores_coupon_bt_w"
-                    android:layout_height="@dimen/stores_coupon_bt_h"
-                    android:layout_alignBottom="@id/store_card_icon_img"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/store_card_icon_img"
-                    android:background="@drawable/btn_bg_red"
-                    android:text="@string/user_account_logout"
-                    android:textColor="@color/white"
-                    tools:ignore="UnusedAttribute" />
-
             </RelativeLayout>
 
 
