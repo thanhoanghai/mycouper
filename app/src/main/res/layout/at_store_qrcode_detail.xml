@@ -81,7 +81,6 @@
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:gravity="center"
-                    android:singleLine="true"
                     android:text="Tên thẻ"
                     android:textColor="@color/black"
                     android:textSize="18dp" />
@@ -116,7 +115,6 @@
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:gravity="center"
-                    android:singleLine="true"
                     android:text="Tên cửa hàng"
                     android:textColor="@color/black"
                     android:textSize="18dp" />

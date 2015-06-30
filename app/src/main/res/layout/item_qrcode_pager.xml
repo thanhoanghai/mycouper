@@ -3,8 +3,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
-    android:layout_marginLeft="-20dp"
-    android:layout_marginRight="-20dp">
+    android:layout_marginLeft="-40dp"
+    android:layout_marginRight="-40dp">
 
     <ImageView
         android:id="@+id/stores_img_qrcode"

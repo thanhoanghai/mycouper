@@ -19,11 +19,11 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_margin="10dp"
-                android:background="@drawable/icon_border_grey1"
                 android:id="@+id/frag_create_card_info_linear_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/icon_border_grey1"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="10dp">
@@ -70,77 +70,49 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:padding="10dp"
-                android:gravity="center"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/stores_card_bg"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <com.nct.customview.TfTextView
-                        android:id="@+id/stores_tab_square"
-                        android:layout_width="0dip"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"
-                        android:text="@string/stores_qrcode_loyalty_cards"
-                        android:gravity="center"
-                        android:textColor="@color/black"
-                        android:textSize="18dp"
-                        app:typeface_name="@string/font_roboto_regular" />
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="23dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:background="@color/black" />
-
-                    <com.nct.customview.TfTextView
-                        android:id="@+id/stores_tab_coupon"
-                        android:layout_width="0dip"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/stores_qrcode_coupon"
-                        android:textColor="@color/black"
-                        android:textSize="18dp"
-                        app:typeface_name="@string/font_roboto_regular" />
-
-
-                </LinearLayout>
+                <include layout="@layout/tab_menu_stores" />
 
 
                 <FrameLayout
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
 
                     <LinearLayout
+                        android:id="@+id/containPager"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-40dp"
+                        android:layout_marginRight="-40dp">
+
                         <android.support.v4.view.ViewPager
                             android:id="@+id/viewPager"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:minHeight="200dp"
                             android:minWidth="200dp" />
                     </LinearLayout>
-                    
+
                     <ImageView
-                        android:layout_width="30dp" android:layout_gravity="center_vertical"
-                        android:layout_height="30dp" android:src="@drawable/icon_circle_arrow_left" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/icon_circle_arrow_left" />
+
                     <ImageView
-                        android:layout_width="30dp" android:layout_gravity="center_vertical|right"
-                        android:layout_height="30dp" android:src="@drawable/icon_circle_arrow_right" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical|right"
+                        android:src="@drawable/icon_circle_arrow_right" />
 
 
                 </FrameLayout>
@@ -149,11 +121,11 @@
                     android:id="@+id/conttent1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:visibility="visible">
 
                     <TextView
@@ -183,12 +155,12 @@
                     android:id="@+id/conttent2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:visibility="visible">
 
                     <TextView
@@ -218,12 +190,12 @@
                     android:id="@+id/conttent3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:visibility="visible">
 
                     <TextView

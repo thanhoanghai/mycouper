@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
-import com.nct.model.StampQrcode;
+import com.nct.model.CouponCategory;
 import com.nct.mv.AtStoreDetail;
 import com.nct.utils.BitmapUtils;
 
@@ -25,13 +25,13 @@ import thh.com.mycouper.R;
 /**
  * Created by nghidv on 6/29/2015.
  */
-public class QrcodePagerAdapter extends PagerAdapter {
+public class CouponCardPagerAdapter extends PagerAdapter {
 
-    private ArrayList<StampQrcode> listData;
+    private ArrayList<CouponCategory> listData;
     private LayoutInflater mLayoutInflater;
     private Activity mContext;
 
-    public QrcodePagerAdapter(Activity context, ArrayList<StampQrcode> listData){
+    public CouponCardPagerAdapter(Activity context, ArrayList<CouponCategory> listData){
         this.mContext = context;
         this.listData = listData;
         this.mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -52,10 +52,10 @@ public class QrcodePagerAdapter extends PagerAdapter {
         View view = mLayoutInflater.inflate(R.layout.item_qrcode_pager, null);
 
         ImageView imgv = (ImageView) view.findViewById(R.id.stores_img_qrcode);
-        StampQrcode item = listData.get(position);
+        CouponCategory item = listData.get(position);
         if(item != null){
             try{
-                String idQrcode = item.qrcode;
+                String idQrcode = item.qrcode_id;
                 DisplayMetrics metrics = new DisplayMetrics();
                 mContext.getWindowManager().getDefaultDisplay().getMetrics(metrics);
                 int bitmapWidth = metrics.widthPixels * 6 / 10;
@@ -74,7 +74,7 @@ public class QrcodePagerAdapter extends PagerAdapter {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                ((AtStoreDetail) mContext).onPagerPromotionItemClick(position);
+                ((AtStoreDetail) mContext).onPagerPromotionItemClick(position, true);
             }
         });
 
