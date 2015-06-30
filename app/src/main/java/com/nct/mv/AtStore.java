@@ -102,10 +102,10 @@ public class AtStore extends AtBase {
 			makeLinkClickable(strBuilder, span);
 		}
 		txtRegister.setLinksClickable(true);
-		txtRegister.setLinkTextColor(Color.BLUE);
+		txtRegister.setLinkTextColor(Color.parseColor("#F16421"));
 		txtRegister.setMovementMethod(LinkMovementMethod.getInstance());
 		txtRegister.setText(strBuilder);
-		txtRegister.setTextColor(Color.BLACK);
+		txtRegister.setTextColor(Color.WHITE);
 
 		edtAccount = (EditText) findViewById(R.id.store_account);
 		edtAccount.setText("company7@gmail.com");
