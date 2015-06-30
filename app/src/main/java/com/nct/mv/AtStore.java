@@ -156,7 +156,6 @@ public class AtStore extends AtBase {
 			GlobalInstance.getInstance().storesInfo = object;
 			Utils.gotoScreenStoreDetail(AtStore.this);
 			Debug.toastDebug(AtStore.this, GlobalInstance.getInstance().getSessionID());
-			finish();
 		}else
 			Debug.toast(AtStore.this,object.errorMessage);
 	}
