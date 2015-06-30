@@ -19,6 +19,8 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_margin="10dp"
+                android:background="@drawable/icon_border_grey1"
                 android:id="@+id/frag_create_card_info_linear_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,21 +52,12 @@
             </LinearLayout>
 
 
-            <include
-                layout="@layout/item_line"
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                 />
-
             <com.nct.customview.TfTextView
                 android:id="@+id/stores_tv_introduce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/stores_card_bg"
                 android:gravity="center_horizontal"
                 android:paddingBottom="5dp"
