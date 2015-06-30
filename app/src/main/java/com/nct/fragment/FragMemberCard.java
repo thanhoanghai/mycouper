@@ -23,6 +23,7 @@ import com.nct.gridview.SuperListview;
 import com.nct.model.CardObject;
 import com.nct.model.MemberCardData;
 import com.nct.model.MemberCardObject;
+import com.nct.utils.Pref;
 import com.nct.utils.Utils;
 
 
@@ -92,7 +93,12 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 	}
 
 	public void DelayTimeFinish() {
-		loadData();
+		if(Utils.isNetworkAvailable(getActivity()))
+			loadData();
+		else
+		{
+			loadDataOffline();
+		}
 	}
 
 	@Override
@@ -105,6 +111,20 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 	@Override
 	protected boolean handleLoadingDataSuccess(String result) {
 
+		Pref.SaveStringObject(Constants.FRAG_MEMBER_CARD_SAVE_DATA, result, getActivity());
+		showDataApp(result);
+		return true;
+	}
+
+	@Override
+	protected FragMemberCardAdapter initAdapter(ArrayList<MemberCardObject> list) {
+		FragMemberCardAdapter adapter = new FragMemberCardAdapter(getActivity(), list);
+		return adapter;
+	}
+
+
+	private void showDataApp(String result)
+	{
 		MemberCardData object = DataHelper.getMemberCardData(result);
 		if(object!=null && object.data!=null)
 			if(object.data.size() > 0) {
@@ -116,13 +136,13 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 				});
 			}
 		setData(object.data,false);
-		return true;
 	}
 
-	@Override
-	protected FragMemberCardAdapter initAdapter(ArrayList<MemberCardObject> list) {
-		FragMemberCardAdapter adapter = new FragMemberCardAdapter(getActivity(), list);
-		return adapter;
+	private void loadDataOffline()
+	{
+		String result = Pref.getStringObject(Constants.FRAG_MEMBER_CARD_SAVE_DATA,getActivity());
+		if(!TextUtils.isEmpty(result))
+			showDataApp(result);
 	}
 
 }
