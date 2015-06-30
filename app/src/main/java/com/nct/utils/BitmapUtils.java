@@ -1,5 +1,6 @@
 package com.nct.utils;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -12,7 +13,9 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore;
 
 import com.google.zxing.common.BitMatrix;
 import com.nct.constants.Constants;
@@ -329,7 +332,7 @@ public class BitmapUtils {
 	}
 
     public static File saveBitmapInSDCard(Context ctx, String fileName, Bitmap bmp) {
-        createMoMoFolder(ctx);
+		createCouperFolder(ctx);
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.PNG, 100, bytes);
 
@@ -356,9 +359,20 @@ public class BitmapUtils {
         }
     }
 
+	public static Uri addImageToGallery(Context context, String filepath, String title, String description) {
+		ContentValues values = new ContentValues();
+		values.put(MediaStore.Images.Media.TITLE, title);
+		values.put(MediaStore.Images.Media.DESCRIPTION, description);
+		values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
+		values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+		values.put(MediaStore.MediaColumns.DATA, filepath);
+
+		return context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+	}
+
     public static final String FOLDER_NAME_MYCOUPER = "mycouper";
     public static final String FOLDER_NAME_INCLUDE_PHOTO = "couper_photo";
-    public static void createMoMoFolder(Context ctx) {
+    public static void createCouperFolder(Context ctx) {
         File folder = new File(getRootPath(ctx) + File.separator + FOLDER_NAME_MYCOUPER + File.separator + FOLDER_NAME_INCLUDE_PHOTO);
         if (!folder.exists()) {
             folder.mkdirs();

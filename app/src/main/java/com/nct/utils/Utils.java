@@ -3,7 +3,9 @@ package com.nct.utils;
 import java.math.BigDecimal;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -428,4 +430,18 @@ public class Utils {
 		return formatter.format(dateTime);
 	}
 
+	public static String formatDate(String dateTime) {
+		String mTime = "";
+		if(dateTime == null || dateTime.equals("NULL")) return "";
+		SimpleDateFormat formatter = new SimpleDateFormat(Constants.CALENDAR_DATE_FORMATTER_DDMMYYYY, Locale.getDefault());
+		try {
+			long time = Long.parseLong(dateTime);
+			Date date = new Date(time);
+			mTime = formatter.format(date);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mTime;
+	}
 }

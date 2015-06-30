@@ -155,7 +155,7 @@ public class AtStore extends AtBase {
 		if (object != null && object.company_id != null && !object.company_id.equals("")) {
 			GlobalInstance.getInstance().storesInfo = object;
 			Utils.gotoScreenStoreDetail(AtStore.this);
-			Debug.toastDebug(AtStore.this,GlobalInstance.getInstance().getSessionID());
+			Debug.toastDebug(AtStore.this, GlobalInstance.getInstance().getSessionID());
 			finish();
 		}else
 			Debug.toast(AtStore.this,object.errorMessage);

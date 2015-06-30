@@ -217,7 +217,10 @@
     <string name="stores_qrcode_name">Coupon:</string>
     <string name="stores_qrcode_store">Store:</string>
     <string name="stores_qrcode_date">Qrcode date:</string>
-    <string name="stores_qrcode_create">Qrcode date:</string>
-    <string name="stores_qrcode_save_gallery">Save to gallery</string>
+    <string name="stores_qrcode_create">Tạo mới</string>
+    <string name="stores_qrcode_save_gallery">Lưu vào Gallary</string>
+
+    <string name="stores_message_save_gallery_success">Lưu vào Gallary thành công!</string>
+    <string name="stores_message_save_gallery_failed">Lưu vào Gallary không thành công!</string>
 
 </resources>

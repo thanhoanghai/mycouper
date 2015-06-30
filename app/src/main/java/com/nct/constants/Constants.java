@@ -116,6 +116,11 @@ public class Constants {
     public static final String KEY_BUNDLE_CARD_EDIT_CARD = "KEY_BUNDLE_CARD_EDIT_CARD";
     public static final String KEY_BUNDLE_CARD_COMPANY_CATEGORY = "KEY_BUNDLE_CARD_COMPANY_CATEGORY";
 
+    public static final String KEY_BUNDLE_STORE_QRCODE_ID = "KEY_BUNDLE_STORE_QRCODE_ID";
+    public static final String KEY_BUNDLE_STORE_QRCODE_NAME = "KEY_BUNDLE_STORE_QRCODE_NAME";
+    public static final String KEY_BUNDLE_STORE_NAME = "KEY_BUNDLE_STORE_NAME";
+    public static final String KEY_BUNDLE_STORE_QRCODE_DATE = "KEY_BUNDLE_STORE_QRCODE_DATE";
+
 	public static String AT_PREVIEW_ID_LINK_IMAGE = "AT_PREVIEW_ID_LINK_IMAGE";
     public static String AT_INTRODUCE_INDEX = "AT_INTRODUCE_INDEX";
 
