@@ -37,10 +37,11 @@ public class DialogPosName extends Dialog implements
 	private TextView bntCancel;
 	private ListView lv;
 	private DialogPosNameAdapter adapter;
-
-	public DialogPosName(Context context, ArrayList<String> list) {
+	private String nameTitle;
+	public DialogPosName(Context context, ArrayList<String> list,String name) {
 		super(context, R.style.ThemeDialogCustom);
 		adapter = new DialogPosNameAdapter(context,list);
+		nameTitle = name;
 	}
 
 	@Override

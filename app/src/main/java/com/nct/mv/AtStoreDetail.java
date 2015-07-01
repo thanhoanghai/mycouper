@@ -468,18 +468,34 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		});
 	}
 
-
-
-	private StampCategory listStapCatgory;
-
 	private int indexDialogStore = 0;
 	private DialogPosName dialogStore;
 	private void showDialogPosName()
 	{
 		if(dialogStore ==null)
 		{
+			ArrayList<String> listTitle = new ArrayList<>();
+			StampCategory listStapCatgory = storesInfo.stamp_category.get(indexDialogStore);
+			if(listStapCatgory!=null && listStapCatgory.stamp_pos!=null && listStapCatgory.stamp_pos.size() > 0)
+			{
+				for(StampQrcode item : listStapCatgory.stamp_pos)
+				{
+					listTitle.add(item.pos_name);
+				}
+			}
+			if(listTitle.size() > 0)
+			{
+				dialogStore = new DialogPosName(AtStoreDetail.this,listTitle,"Select Store");
+				dialogStore.setListenerFinishedDialog(new DialogPosName.FinishDialognation() {
+					@Override
+					public void onFinishConfirmDialog(int index) {
 
+					}
+				});
+			}
 		}
+		if(dialogStore!=null)
+			dialogStore.show();
 	}
 
 }
