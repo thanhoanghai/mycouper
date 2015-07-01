@@ -213,10 +213,11 @@
     <string name="stores_password">Mật khẩu :</string>
     <string name="stores_qrcode_title">QRCode trên di động</string>
     <string name="stores_qrcode_coupon">Coupon</string>
+    <string name="stores_qrcode_cards">Thẻ</string>
     <string name="stores_qrcode_loyalty_cards">Loyalty cards</string>
     <string name="stores_qrcode_name">Coupon:</string>
-    <string name="stores_qrcode_store">Store:</string>
-    <string name="stores_qrcode_date">Qrcode date:</string>
+    <string name="stores_qrcode_store">Cửa hàng:</string>
+    <string name="stores_qrcode_date">Ngày cập nhật:</string>
     <string name="stores_qrcode_create">Tạo mới</string>
     <string name="stores_qrcode_save_gallery">Lưu vào Gallary</string>
 

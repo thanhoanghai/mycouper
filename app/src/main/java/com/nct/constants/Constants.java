@@ -41,6 +41,7 @@ public class Constants {
 
     public static final String CALENDAR_DATE_FORMATTER = "yyyy-MM-dd";
     public static final String CALENDAR_DATE_FORMATTER_DDMMYYYY = "dd-MM-yyyy";
+    public static final String CALENDAR_DATE_FORMATTER_HHMMSS_DDMMYYYY = "HH:mm:ss dd-MM-yyyy";
 
     /**
      * Folder is used to save down load image in SDCard.

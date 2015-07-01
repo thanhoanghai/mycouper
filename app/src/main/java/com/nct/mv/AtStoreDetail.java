@@ -21,10 +21,13 @@ import com.nct.constants.GlobalInstance;
 import com.nct.customview.DialogCustom;
 import com.nct.customview.NavigationStateRelativeLayout;
 import com.nct.customview.TfTextView;
+import com.nct.dataloader.DataHelper;
 import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
 import com.nct.model.CouponCategory;
+import com.nct.model.QrcodeNew;
 import com.nct.model.StampQrcode;
+import com.nct.model.StoresData;
 import com.nct.utils.BitmapUtils;
 import com.nct.utils.Debug;
 import com.nct.utils.Pref;
@@ -33,6 +36,7 @@ import com.nct.utils.Utils;
 import org.apache.http.Header;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -57,6 +61,10 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 
 	private enum TAB_CARD {StampCard, CouponCard};
 	private TAB_CARD tab_card = TAB_CARD.StampCard;
+	private int itemSelect = 0;
+
+	private ArrayList<StampQrcode> stamp_pos;
+	private ArrayList<CouponCategory> coupon_category;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +90,14 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		});
 
 		initImageLoader();
+
+		stamp_pos = GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos;
+		if(stamp_pos == null)
+			stamp_pos = new ArrayList<>();
+
+		coupon_category = GlobalInstance.getInstance().storesInfo.coupon_category;
+		if(coupon_category == null)
+			coupon_category = new ArrayList<>();
 
 		linearContent = (LinearLayout) findViewById(R.id.at_store_detail_linear);
 		scrollview = (ScrollView) findViewById(R.id.at_store_detail_scrollview);
@@ -137,10 +153,11 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 			@Override
 			public void onPageSelected(int position) {
 				if(tab_card == TAB_CARD.StampCard){
-					StampQrcode item = GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos.get(position);
+					itemSelect = position;
+					StampQrcode item = stamp_pos.get(position);
 					showInfoStampCard(item);
 				}else{
-					CouponCategory item = GlobalInstance.getInstance().storesInfo.coupon_category.get(0);
+					CouponCategory item = coupon_category.get(0);
 					showInfoCouponCard(item);
 				}
 			}
@@ -157,37 +174,44 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 
 	@Override
 	public void DelayTimeFinish() {
-		adapter = new StampCardPagerAdapter(this, GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos);
-		couponCardPagerAdapter = new CouponCardPagerAdapter(this, GlobalInstance.getInstance().storesInfo.coupon_category);
+		adapter = new StampCardPagerAdapter(this, stamp_pos);
+		couponCardPagerAdapter = new CouponCardPagerAdapter(this, coupon_category);
 		loadStampCard();
 		hideDialogLoading();
 		scrollview.setVisibility(View.VISIBLE);
 	}
 
 	private void loadStampCard(){
-		StampQrcode item = GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos.get(0);
+		btnCreate.setVisibility(View.VISIBLE);
+		itemSelect = 0;
+		txtTitleName.setText(getString(R.string.stores_qrcode_cards));
+		if (GlobalInstance.getInstance().storesInfo.stamp_category.get(0).sc_name != null
+				&& !GlobalInstance.getInstance().storesInfo.stamp_category.get(0).sc_name.equals("NULL"))
+			txtName.setText(GlobalInstance.getInstance().storesInfo.stamp_category.get(0).sc_name);
+		else
+			txtName.setText("");
+		StampQrcode item = stamp_pos.get(0);
 		showInfoStampCard(item);
 		viewPager.setAdapter(adapter);
-		viewPager.setOffscreenPageLimit(GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos.size());
+		viewPager.setOffscreenPageLimit(stamp_pos.size());
 		viewPager.setCurrentItem(0);
 	}
 
 	private void showInfoStampCard(StampQrcode item){
-		if (item.pos_name != null && !item.pos_name.equals("NULL"))
-			txtName.setText(item.pos_name);
-		else
-			txtName.setText("");
+
 		if (item.last_update != null && !item.last_update.equals("NULL"))
-			txtDate.setText(Utils.formatDate(item.last_update));
+			txtDate.setText(item.last_update);
 		else
 			txtDate.setText("");
 	}
 
 	private void loadCouponCard(){
-		CouponCategory item = GlobalInstance.getInstance().storesInfo.coupon_category.get(0);
+
+		txtTitleName.setText(getString(R.string.stores_qrcode_coupon));
+		CouponCategory item = coupon_category.get(0);
 		showInfoCouponCard(item);
 		viewPager.setAdapter(couponCardPagerAdapter);
-		viewPager.setOffscreenPageLimit(GlobalInstance.getInstance().storesInfo.coupon_category.size());
+		viewPager.setOffscreenPageLimit(coupon_category.size());
 		viewPager.setCurrentItem(0);
 	}
 
@@ -207,18 +231,16 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		Intent intent = new Intent(this, AtQRCodeDetail.class);
 		intent.putExtra(Constants.KEY_BUNDLE_STORE_NAME, GlobalInstance.getInstance().storesInfo.company_name);
 		if(isCoupon){
-			if(GlobalInstance.getInstance().storesInfo.coupon_category != null
-					&& GlobalInstance.getInstance().storesInfo.coupon_category.size() > 0){
-				CouponCategory item = GlobalInstance.getInstance().storesInfo.coupon_category.get(position);
+			if(coupon_category.size() > 0){
+				CouponCategory item = coupon_category.get(position);
 				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_NAME, item.card_name);
 				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_DATE, item.last_update);
 				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_ID, item.qrcode_id);
 			}
 
 		}else{
-			if (GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos != null) {
-				StampQrcode tmpItem = GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos.get(position
-						% GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos.size());
+			if (stamp_pos.size() > 0) {
+				StampQrcode tmpItem = stamp_pos.get(position % stamp_pos.size());
 				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_NAME, tmpItem.pos_name);
 				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_DATE, tmpItem.last_update);
 				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_ID, tmpItem.qrcode);
@@ -232,6 +254,10 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()){
 			case R.id.stores_tv_create:
+				if(tab_card == TAB_CARD.StampCard && stamp_pos.size() > 0){
+					StampQrcode item = stamp_pos.get(itemSelect);
+					genNewQrcode(item, itemSelect);
+				}
 				break;
 			case R.id.stores_tv_save:
 				Bitmap bitmap = takeScreenshot();
@@ -240,6 +266,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 			case R.id.stores_tab_square:
 				tab_card = TAB_CARD.StampCard;
 				setActiveView(v.getId());
+				btnCreate.setVisibility(View.VISIBLE);
 				new Timer().schedule(new TimerTask() {
 					@Override
 					public void run() {
@@ -256,6 +283,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 			case R.id.stores_tab_coupon:
 				tab_card = TAB_CARD.CouponCard;
 				setActiveView(v.getId());
+				btnCreate.setVisibility(View.GONE);
 				new Timer().schedule(new TimerTask() {
 					@Override
 					public void run() {
@@ -339,5 +367,38 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		});
 	}
 
+	private void genNewQrcode(StampQrcode item, final int position){
+		RequestParams params = URLProvider.getParamGenQrcode(GlobalInstance.getInstance().storesInfo.company_id,
+				GlobalInstance.getInstance().storesInfo.session_id, GlobalInstance.getInstance().storesInfo.session_id_code,
+				item.stamp_pos_id);
+
+		showDialogLoading();
+		DataLoader.postParam(params, new TextHttpResponseHandler() {
+			@Override
+			public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+				hideDialogLoading();
+			}
+
+			@Override
+			public void onSuccess(int i, Header[] headers, String s) {
+				QrcodeNew object = DataHelper.getGenQrcode(s);
+				if (object != null && object.data != null) {
+					stamp_pos.get(position).qrcode = object.data.qrcode;
+					String date = "";
+					if(object.data.last_update != null && !object.data.last_update.equals("NULL"))
+						date = Utils.formatStampCardDate(object.data.last_update);
+					stamp_pos.get(position).last_update = date;
+					GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos = stamp_pos;
+					adapter.notifyDataSetChanged();
+					loadStampCard();
+					viewPager.setCurrentItem(position);
+				}
+
+//				String data = GlobalInstance.getInstance().storesInfo.toString();
+//				Pref.SaveStringObject(Constants.ID_SAVE_STORE_LOGIN, data, AtStoreDetail.this);
+				hideDialogLoading();
+			}
+		});
+	}
 
 }

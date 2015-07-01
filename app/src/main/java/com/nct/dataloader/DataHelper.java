@@ -13,6 +13,7 @@ import com.nct.model.CouponReceiveData;
 import com.nct.model.MemberCardData;
 import com.nct.model.NewsCouponData;
 import com.nct.model.PosData;
+import com.nct.model.QrcodeNew;
 import com.nct.model.StatusObject;
 import com.nct.model.StoresData;
 import com.nct.model.StoresObject;
@@ -142,5 +143,16 @@ public class DataHelper {
         return data;
     }
 
+    public static QrcodeNew getGenQrcode(String result) {
+        QrcodeNew data = null;
+        try {
+            Gson gson = new Gson();
+            data = gson.fromJson(result, QrcodeNew.class);
+            return data;
+        } catch (Exception ex) {
+            data = null;
+        }
+        return data;
+    }
 
 }

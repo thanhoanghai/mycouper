@@ -444,4 +444,18 @@ public class Utils {
 		}
 		return mTime;
 	}
+
+	public static String formatStampCardDate(String dateTime) {
+		String mTime = "";
+		if(dateTime == null || dateTime.equals("NULL")) return "";
+		SimpleDateFormat formatter = new SimpleDateFormat(Constants.CALENDAR_DATE_FORMATTER_DDMMYYYY, Locale.getDefault());
+		try {
+			Date date = dateTimeFromString(dateTime, Constants.CALENDAR_DATE_FORMATTER_HHMMSS_DDMMYYYY);
+			mTime = formatter.format(date);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mTime;
+	}
 }
