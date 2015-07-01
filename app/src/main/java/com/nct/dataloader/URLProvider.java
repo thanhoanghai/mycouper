@@ -268,6 +268,17 @@ public class URLProvider {
         return params;
     }
 
+    public static RequestParams getParamGenQrcodeCard(String company_id, String session_id, String session_id_code, String cc_id)
+    {
+        RequestParams params = new RequestParams();
+        params.put("ac", "gen_new_qrcode");
+        params.put("company_id", company_id);
+        params.put("session_id", session_id);
+        params.put("session_id_code", session_id_code);
+        params.put("cc_id", cc_id);
+        return params;
+    }
+
     public static RequestParams getParamStoreLogin(String email, String password)
     {
         RequestParams params = new RequestParams();

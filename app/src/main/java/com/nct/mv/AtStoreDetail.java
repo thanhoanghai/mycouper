@@ -64,6 +64,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	private enum TAB_CARD {StampCard, CouponCard};
 	private TAB_CARD tab_card = TAB_CARD.StampCard;
 	private int itemSelect = 0;
+	private int itemSelectCoupon = 0;
 
 	private ArrayList<StampQrcode> stamp_pos;
 	private ArrayList<CouponCategory> coupon_category;
@@ -169,6 +170,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 					StampQrcode item = stamp_pos.get(position);
 					showInfoStampCard(item);
 				}else{
+					itemSelectCoupon = position;
 					CouponCategory item = coupon_category.get(0);
 					showInfoCouponCard(item);
 				}
@@ -194,7 +196,6 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	}
 
 	private void loadStampCard(){
-		btnCreate.setVisibility(View.VISIBLE);
 		itemSelect = 0;
 		txtTitleName.setText(getString(R.string.stores_qrcode_cards));
 		if (storesInfo.stamp_category.get(0).sc_name != null
@@ -218,7 +219,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	}
 
 	private void loadCouponCard(){
-
+		itemSelectCoupon = 0;
 		txtTitleName.setText(getString(R.string.stores_qrcode_coupon));
 		CouponCategory item = coupon_category.get(0);
 		showInfoCouponCard(item);
@@ -266,10 +267,15 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()){
 			case R.id.stores_tv_create:
-				if(tab_card == TAB_CARD.StampCard && stamp_pos.size() > 0){
-					StampQrcode item = stamp_pos.get(itemSelect);
-					genNewQrcode(item, itemSelect);
+				boolean checkError = false;
+				if(tab_card == TAB_CARD.StampCard && stamp_pos.size() <= 0){
+					checkError = true;
 				}
+				if(tab_card == TAB_CARD.CouponCard && coupon_category.size() <= 0){
+					checkError = true;
+				}
+				if(!checkError)
+					showDialogConfirmGenCode();
 				break;
 			case R.id.stores_tv_save:
 				Bitmap bitmap = takeScreenshot();
@@ -278,7 +284,6 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 			case R.id.stores_tab_square:
 				tab_card = TAB_CARD.StampCard;
 				setActiveView(v.getId());
-				btnCreate.setVisibility(View.VISIBLE);
 				new Timer().schedule(new TimerTask() {
 					@Override
 					public void run() {
@@ -289,13 +294,12 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 							}
 						});
 					}
-				}, 1000);
+				}, 100);
 
 				break;
 			case R.id.stores_tab_coupon:
 				tab_card = TAB_CARD.CouponCard;
 				setActiveView(v.getId());
-				btnCreate.setVisibility(View.GONE);
 				new Timer().schedule(new TimerTask() {
 					@Override
 					public void run() {
@@ -306,7 +310,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 							}
 						});
 					}
-				}, 1000);
+				}, 100);
 
 				break;
 		}
@@ -379,11 +383,30 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		});
 	}
 
+	private void showDialogConfirmGenCode(){
+		DialogCustom dialog = new DialogCustom(AtStoreDetail.this);
+		dialog.setText(getString(R.string.confirm),getString(R.string.stores_message_gen_qrcode));
+		dialog.setListenerFinishedDialog(new DialogCustom.FinishDialogConfirmListener() {
+			@Override
+			public void onFinishConfirmDialog(int i) {
+				if (i == 1) {
+					if (tab_card == TAB_CARD.StampCard && stamp_pos.size() > 0){
+						StampQrcode item = stamp_pos.get(itemSelect);
+						genNewQrcode(item, itemSelect);
+					}else{
+						CouponCategory item = coupon_category.get(itemSelectCoupon);
+						genNewQrcodeCoupon(item, itemSelectCoupon);
+					}
+				}
+			}
+		});
+		dialog.show();
+	}
+
 	private void genNewQrcode(StampQrcode item, final int position){
 		RequestParams params = URLProvider.getParamGenQrcode(storesInfo.company_id,
 				storesInfo.session_id, storesInfo.session_id_code,
 				item.stamp_pos_id);
-
 		showDialogLoading();
 		DataLoader.postParam(params, new TextHttpResponseHandler() {
 			@Override
@@ -397,17 +420,49 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 				if (object != null && object.data != null) {
 					stamp_pos.get(position).qrcode = object.data.qrcode;
 					String date = "";
-					if(object.data.last_update != null && !object.data.last_update.equals("NULL"))
+					if (object.data.last_update != null && !object.data.last_update.equals("NULL"))
 						date = Utils.formatStampCardDate(object.data.last_update);
 					stamp_pos.get(position).last_update = date;
 					storesInfo.stamp_category.get(0).stamp_pos = stamp_pos;
 					adapter.notifyDataSetChanged();
-					loadStampCard();
-					viewPager.setCurrentItem(position);
+					if (tab_card == TAB_CARD.StampCard && stamp_pos.size() > 0) {
+						loadStampCard();
+						viewPager.setCurrentItem(position);
+					}
 				}
+				hideDialogLoading();
+			}
+		});
+	}
 
-//				String data = GlobalInstance.getInstance().storesInfo.toString();
-//				Pref.SaveStringObject(Constants.ID_SAVE_STORE_LOGIN, data, AtStoreDetail.this);
+	private void genNewQrcodeCoupon(CouponCategory item, final int position){
+		RequestParams params = URLProvider.getParamGenQrcodeCard(GlobalInstance.getInstance().storesInfo.company_id,
+				GlobalInstance.getInstance().storesInfo.session_id, GlobalInstance.getInstance().storesInfo.session_id_code,
+				item.cc_id);
+
+		showDialogLoading();
+		DataLoader.postParam(params, new TextHttpResponseHandler() {
+			@Override
+			public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+				hideDialogLoading();
+			}
+
+			@Override
+			public void onSuccess(int i, Header[] headers, String s) {
+				QrcodeNew object = DataHelper.getGenQrcode(s);
+				if (object != null && object.data != null) {
+					coupon_category.get(position).qrcode_id = object.data.qrcode;
+					String date = System.currentTimeMillis() + "";
+					coupon_category.get(position).last_update = date;
+					GlobalInstance.getInstance().storesInfo.coupon_category = coupon_category;
+					couponCardPagerAdapter.notifyDataSetChanged();
+					if(tab_card == TAB_CARD.CouponCard && coupon_category.size() > 0){
+						loadCouponCard();
+						viewPager.setCurrentItem(position);
+					}else{
+
+					}
+				}
 				hideDialogLoading();
 			}
 		});
