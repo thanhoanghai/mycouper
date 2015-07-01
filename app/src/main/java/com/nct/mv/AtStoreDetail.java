@@ -19,6 +19,7 @@ import com.nct.adapter.StampCardPagerAdapter;
 import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
 import com.nct.customview.DialogCustom;
+import com.nct.customview.DialogPosName;
 import com.nct.customview.NavigationStateRelativeLayout;
 import com.nct.customview.TfTextView;
 import com.nct.dataloader.DataHelper;
@@ -26,6 +27,7 @@ import com.nct.dataloader.DataLoader;
 import com.nct.dataloader.URLProvider;
 import com.nct.model.CouponCategory;
 import com.nct.model.QrcodeNew;
+import com.nct.model.StampCategory;
 import com.nct.model.StampQrcode;
 import com.nct.model.StoresData;
 import com.nct.utils.BitmapUtils;
@@ -66,6 +68,8 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	private ArrayList<StampQrcode> stamp_pos;
 	private ArrayList<CouponCategory> coupon_category;
 
+	private StoresData storesInfo;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -91,11 +95,13 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 
 		initImageLoader();
 
-		stamp_pos = GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos;
+		storesInfo = GlobalInstance.getInstance().storesInfo;
+
+		stamp_pos = storesInfo.stamp_category.get(0).stamp_pos;
 		if(stamp_pos == null)
 			stamp_pos = new ArrayList<>();
 
-		coupon_category = GlobalInstance.getInstance().storesInfo.coupon_category;
+		coupon_category = storesInfo.coupon_category;
 		if(coupon_category == null)
 			coupon_category = new ArrayList<>();
 
@@ -104,13 +110,13 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		scrollview.setVisibility(View.INVISIBLE);
 
 		companyLogo = (ImageView) findViewById(R.id.store_card_icon_img);
-		if(GlobalInstance.getInstance().storesInfo.company_logo != null)
-			displayImage(companyLogo, GlobalInstance.getInstance().storesInfo.company_logo);
+		if(storesInfo.company_logo != null)
+			displayImage(companyLogo, storesInfo.company_logo);
 
 		txtCompanyName = (TfTextView) findViewById(R.id.frag_create_card_info_tv_title);
-		if(GlobalInstance.getInstance().storesInfo.company_name != null
-				&& !GlobalInstance.getInstance().storesInfo.company_name.equals(""))
-			txtCompanyName.setText(GlobalInstance.getInstance().storesInfo.company_name);
+		if(storesInfo.company_name != null
+				&& !storesInfo.company_name.equals(""))
+			txtCompanyName.setText(storesInfo.company_name);
 
 		btnCreate = (TfTextView) findViewById(R.id.stores_tv_create);
 		btnCreate.setOnClickListener(this);
@@ -129,6 +135,12 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 
 		txtTitleName = (TextView) findViewById(R.id.txt_title1);
 		txtName = (TextView) findViewById(R.id.txt_text1);
+		txtName.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+			}
+		});
 		txtStoreName = (TextView) findViewById(R.id.txt_text2);
 		txtDate = (TextView) findViewById(R.id.txt_text3);
 
@@ -139,8 +151,8 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		btnCoupon = (NavigationStateRelativeLayout) findViewById(R.id.stores_tab_coupon);
 		btnCoupon.setOnClickListener(this);
 
-		if (GlobalInstance.getInstance().storesInfo.company_name != null && !GlobalInstance.getInstance().storesInfo.equals("NULL"))
-			txtStoreName.setText(GlobalInstance.getInstance().storesInfo.company_name);
+		if (storesInfo.company_name != null && !storesInfo.equals("NULL"))
+			txtStoreName.setText(storesInfo.company_name);
 		else
 			txtStoreName.setText("");
 
@@ -185,9 +197,9 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		btnCreate.setVisibility(View.VISIBLE);
 		itemSelect = 0;
 		txtTitleName.setText(getString(R.string.stores_qrcode_cards));
-		if (GlobalInstance.getInstance().storesInfo.stamp_category.get(0).sc_name != null
-				&& !GlobalInstance.getInstance().storesInfo.stamp_category.get(0).sc_name.equals("NULL"))
-			txtName.setText(GlobalInstance.getInstance().storesInfo.stamp_category.get(0).sc_name);
+		if (storesInfo.stamp_category.get(0).sc_name != null
+				&& !storesInfo.stamp_category.get(0).sc_name.equals("NULL"))
+			txtName.setText(storesInfo.stamp_category.get(0).sc_name);
 		else
 			txtName.setText("");
 		StampQrcode item = stamp_pos.get(0);
@@ -229,7 +241,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	public void onPagerPromotionItemClick(int position, boolean isCoupon) {
 
 		Intent intent = new Intent(this, AtQRCodeDetail.class);
-		intent.putExtra(Constants.KEY_BUNDLE_STORE_NAME, GlobalInstance.getInstance().storesInfo.company_name);
+		intent.putExtra(Constants.KEY_BUNDLE_STORE_NAME, storesInfo.company_name);
 		if(isCoupon){
 			if(coupon_category.size() > 0){
 				CouponCategory item = coupon_category.get(position);
@@ -346,8 +358,8 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	}
 
 	private void callLogout(){
-		RequestParams params = URLProvider.getParamStoreLogout(GlobalInstance.getInstance().storesInfo.company_id,
-				GlobalInstance.getInstance().storesInfo.session_id, GlobalInstance.getInstance().storesInfo.session_id_code);
+		RequestParams params = URLProvider.getParamStoreLogout(storesInfo.company_id,
+				storesInfo.session_id, storesInfo.session_id_code);
 
 		showDialogLoading();
 		DataLoader.postParam(params, new TextHttpResponseHandler() {
@@ -368,8 +380,8 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	}
 
 	private void genNewQrcode(StampQrcode item, final int position){
-		RequestParams params = URLProvider.getParamGenQrcode(GlobalInstance.getInstance().storesInfo.company_id,
-				GlobalInstance.getInstance().storesInfo.session_id, GlobalInstance.getInstance().storesInfo.session_id_code,
+		RequestParams params = URLProvider.getParamGenQrcode(storesInfo.company_id,
+				storesInfo.session_id, storesInfo.session_id_code,
 				item.stamp_pos_id);
 
 		showDialogLoading();
@@ -388,7 +400,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 					if(object.data.last_update != null && !object.data.last_update.equals("NULL"))
 						date = Utils.formatStampCardDate(object.data.last_update);
 					stamp_pos.get(position).last_update = date;
-					GlobalInstance.getInstance().storesInfo.stamp_category.get(0).stamp_pos = stamp_pos;
+					storesInfo.stamp_category.get(0).stamp_pos = stamp_pos;
 					adapter.notifyDataSetChanged();
 					loadStampCard();
 					viewPager.setCurrentItem(position);
@@ -399,6 +411,20 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 				hideDialogLoading();
 			}
 		});
+	}
+
+
+
+	private StampCategory listStapCatgory;
+
+	private int indexDialogStore = 0;
+	private DialogPosName dialogStore;
+	private void showDialogPosName()
+	{
+		if(dialogStore ==null)
+		{
+
+		}
 	}
 
 }

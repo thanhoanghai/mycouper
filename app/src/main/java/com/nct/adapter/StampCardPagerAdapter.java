@@ -17,6 +17,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.nct.model.StampQrcode;
 import com.nct.mv.AtStoreDetail;
 import com.nct.utils.BitmapUtils;
+import com.nct.utils.Debug;
 
 import java.util.ArrayList;
 
@@ -50,6 +51,8 @@ public class StampCardPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
         View view = mLayoutInflater.inflate(R.layout.item_qrcode_pager, null);
+
+        Debug.logError("cardpager" ,"position=" + position);
 
         ImageView imgv = (ImageView) view.findViewById(R.id.stores_img_qrcode);
         StampQrcode item = listData.get(position);

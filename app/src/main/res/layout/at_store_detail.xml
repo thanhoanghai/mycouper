@@ -179,7 +179,6 @@
                         android:layout_weight="1"
                         android:background="@color/transparent"
                         android:gravity="left|center_vertical"
-                        android:singleLine="true"
                         android:text="Tên cửa hàng"
                         android:textColor="@color/black"
                         android:textSize="@dimen/frag_createcard_info_title_size" />
