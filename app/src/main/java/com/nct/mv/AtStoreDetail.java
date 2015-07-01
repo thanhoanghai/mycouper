@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.facebook.AccessTokenSource;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.nct.adapter.CouponCardPagerAdapter;
@@ -38,6 +39,7 @@ import com.nct.utils.Utils;
 import org.apache.http.Header;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -139,10 +141,16 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		txtName.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
+				showDialogCard();
 			}
 		});
 		txtStoreName = (TextView) findViewById(R.id.txt_text2);
+		txtStoreName.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showDialogPosName();
+			}
+		});
 		txtDate = (TextView) findViewById(R.id.txt_text3);
 
 		contentTab = (LinearLayout) findViewById(R.id.lyContentTab);
@@ -165,6 +173,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 
 			@Override
 			public void onPageSelected(int position) {
+				indexDialogStore = position;
 				if(tab_card == TAB_CARD.StampCard){
 					itemSelect = position;
 					StampQrcode item = stamp_pos.get(position);
@@ -485,8 +494,39 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 			}
 			if(listTitle.size() > 0)
 			{
-				dialogStore = new DialogPosName(AtStoreDetail.this,listTitle,"Select Store");
+				dialogStore = new DialogPosName(AtStoreDetail.this,listTitle,getString(R.string.select_store));
 				dialogStore.setListenerFinishedDialog(new DialogPosName.FinishDialognation() {
+					@Override
+					public void onFinishConfirmDialog(int index) {
+						viewPager.setCurrentItem(index,true);
+					}
+				});
+			}
+		}
+
+		if(dialogStore!=null) {
+			dialogStore.setIndexItem(indexDialogStore);
+			dialogStore.show();
+		}
+	}
+
+	private DialogPosName dialogCard;
+	private void showDialogCard()
+	{
+		if(dialogCard==null)
+		{
+			ArrayList<String> list = new ArrayList<>();
+			if(storesInfo.stamp_category!=null)
+			{
+				for(StampCategory item : storesInfo.stamp_category)
+				{
+					list.add(item.sc_name);
+				}
+			}
+			if(list.size() > 0)
+			{
+				dialogCard = new DialogPosName(AtStoreDetail.this,list,getString(R.string.select_stamp_card));
+				dialogCard.setListenerFinishedDialog(new DialogPosName.FinishDialognation() {
 					@Override
 					public void onFinishConfirmDialog(int index) {
 
@@ -494,8 +534,8 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 				});
 			}
 		}
-		if(dialogStore!=null)
-			dialogStore.show();
+		if(dialogCard!=null)
+			dialogCard.show();
 	}
 
 }

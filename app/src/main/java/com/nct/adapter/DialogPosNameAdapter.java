@@ -32,8 +32,8 @@ public class DialogPosNameAdapter extends BaseAdapterApp<String> {
                     false);
             holder = new ViewHolder();
 
-            holder.tvTitle = (TextView) view.findViewById(R.id.item_country_title);
-            holder.radio = (ImageView) view.findViewById(R.id.item_country_img_radio);
+            holder.tvTitle = (TextView) view.findViewById(R.id.item_pos_name_title);
+            holder.radio = (ImageView) view.findViewById(R.id.item_pos_name_img_radio);
 
             view.setTag(holder);
         } else {

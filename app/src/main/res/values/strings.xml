@@ -69,6 +69,8 @@
     <string name="term_of_use">Term of use</string>
     <string name="login_to_use_tools">Login to use mobile tool for stores</string>
 
+    <string name="select_store">Select store</string>
+    <string name="select_stamp_card">Select stamp card</string>
     <!-- CARD DETAIL -->
     <string name="card_detail_enter_the_following">Enter the following code if the devices does not recognize:</string>
 

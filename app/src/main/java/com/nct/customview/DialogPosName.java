@@ -69,9 +69,11 @@ public class DialogPosName extends Dialog implements
 
 	private void clickItem(int pos)
 	{
-		adapter.setIndexSelect(pos);
-		mListener.onFinishConfirmDialog(pos);
-		this.dismiss();
+		if(adapter!=null) {
+			adapter.setIndexSelect(pos);
+			mListener.onFinishConfirmDialog(pos);
+			this.dismiss();
+		}
 	}
 
 	@Override
@@ -83,5 +85,11 @@ public class DialogPosName extends Dialog implements
 			break;
 		}
 		this.dismiss();
+	}
+
+	public void setIndexItem(int pos)
+	{
+		if(adapter!=null)
+			adapter.setIndexSelect(pos);
 	}
 }
