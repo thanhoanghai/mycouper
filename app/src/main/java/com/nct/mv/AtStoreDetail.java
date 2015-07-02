@@ -277,6 +277,8 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		showInfoCouponCard(item);
 		viewPager.setAdapter(couponCardPagerAdapter);
 		viewPager.setCurrentItem(0);
+		saveSizeListStore = couponCardPagerAdapter.getCount();
+		checkStatusShowArrow();
 	}
 
 	private void showInfoCouponCard(CouponCategory item){
