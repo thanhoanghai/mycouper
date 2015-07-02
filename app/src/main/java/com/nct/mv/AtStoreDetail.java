@@ -160,11 +160,6 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		btnCoupon = (NavigationStateRelativeLayout) findViewById(R.id.stores_tab_coupon);
 		btnCoupon.setOnClickListener(this);
 
-		if (storesInfo.company_name != null && !storesInfo.equals("NULL"))
-			txtStoreName.setText(storesInfo.company_name);
-		else
-			txtStoreName.setText("");
-
 		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			@Override
 			public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -219,6 +214,10 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	}
 
 	private void showInfoStampCard(StampQrcode item){
+		if (item.pos_name != null && !item.pos_name.equals("NULL"))
+			txtStoreName.setText(item.pos_name);
+		else
+			txtStoreName.setText("");
 
 		if (item.last_update != null && !item.last_update.equals("NULL"))
 			txtDate.setText(item.last_update);
@@ -240,6 +239,10 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 			txtName.setText(item.card_name);
 		else
 			txtName.setText("");
+		if (storesInfo.company_name != null && !storesInfo.equals("NULL"))
+			txtStoreName.setText(storesInfo.company_name);
+		else
+			txtStoreName.setText("");
 		if (item.last_update != null && !item.last_update.equals("NULL"))
 			txtDate.setText(Utils.formatDate(item.last_update));
 		else
