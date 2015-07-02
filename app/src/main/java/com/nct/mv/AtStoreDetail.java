@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -72,6 +73,8 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	private ArrayList<CouponCategory> coupon_category;
 
 	private StoresData storesInfo;
+
+	private ImageView bntArrowLeft,bntArrowRight;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -169,11 +172,11 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 			@Override
 			public void onPageSelected(int position) {
 				saveIndexSelectItemStore = position;
-				if(tab_card == TAB_CARD.StampCard){
+				if (tab_card == TAB_CARD.StampCard) {
 					itemSelect = position;
 					StampQrcode item = stamp_pos.get(position);
 					showInfoStampCard(item);
-				}else{
+				} else {
 					itemSelectCoupon = position;
 					CouponCategory item = coupon_category.get(0);
 					showInfoCouponCard(item);
@@ -183,6 +186,23 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 			@Override
 			public void onPageScrollStateChanged(int state) {
 
+			}
+		});
+
+		bntArrowLeft = (ImageView) findViewById(R.id.at_store_detail_bt_arrowleft);
+		bntArrowLeft.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(saveIndexSelectItemStore-1 >=0)
+					viewPager.setCurrentItem(saveIndexSelectItemStore-1);
+			}
+		});
+		bntArrowRight = (ImageView) findViewById(R.id.at_store_detail_bt_arrowright);
+		bntArrowRight.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(saveIndexSelectItemStore+1 < saveSizeListStore)
+					viewPager.setCurrentItem(saveIndexSelectItemStore+1);
 			}
 		});
 
@@ -211,6 +231,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		showInfoStampCard(item);
 		viewPager.setAdapter(adapter);
 		viewPager.setCurrentItem(0);
+		saveSizeListStore = adapter.getCount();
 	}
 
 	private void showInfoStampCard(StampQrcode item){
@@ -456,6 +477,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		});
 	}
 
+	private int saveSizeListStore = 0;
 	private int indexDialogStore = 0;
 	private int saveIndexSelectItemStore = 0;
 	private DialogPosName dialogStore;
@@ -467,6 +489,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 			StampCategory listStapCatgory = storesInfo.stamp_category.get(indexDialogStore);
 			if(listStapCatgory!=null && listStapCatgory.stamp_pos!=null && listStapCatgory.stamp_pos.size() > 0)
 			{
+				saveSizeListStore = listStapCatgory.stamp_pos.size();
 				for(StampQrcode item : listStapCatgory.stamp_pos)
 				{
 					listTitle.add(item.pos_name);
