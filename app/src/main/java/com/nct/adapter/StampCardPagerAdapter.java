@@ -38,6 +38,11 @@ public class StampCardPagerAdapter extends PagerAdapter {
         this.mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    public void setListData(ArrayList<StampQrcode> data){
+        listData = data;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         return listData.size();

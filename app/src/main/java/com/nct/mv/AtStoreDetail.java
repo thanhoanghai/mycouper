@@ -100,7 +100,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 
 		storesInfo = GlobalInstance.getInstance().storesInfo;
 
-		stamp_pos = storesInfo.stamp_category.get(0).stamp_pos;
+		stamp_pos = storesInfo.stamp_category.get(indexDialogStore).stamp_pos;
 		if(stamp_pos == null)
 			stamp_pos = new ArrayList<>();
 
@@ -511,6 +511,14 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 					public void onFinishConfirmDialog(int index) {
 						indexDialogStore = index;
 						saveIndexSelectItemStore = 0;
+
+						stamp_pos = storesInfo.stamp_category.get(indexDialogStore).stamp_pos;
+						adapter.setListData(stamp_pos);
+						if(tab_card == TAB_CARD.StampCard){
+							viewPager.setCurrentItem(0);
+							StampQrcode item = stamp_pos.get(0);
+							showInfoStampCard(item);
+						}
 						dialogStore = null;
 					}
 				});
