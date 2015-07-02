@@ -48,6 +48,7 @@
     <string name="validity">Validity</string>
     <string name="term_and_condition">Term and Condition</string>
     <string name="stores">Stores</string>
+    <string name="qrcode_on_mobile">QRCode on mobile</string>
     <string name="coupon_is_saved">Coupon is saved</string>
     <string name="serials_number">Serial number</string>
     <string name="valid_from">Valid from</string>

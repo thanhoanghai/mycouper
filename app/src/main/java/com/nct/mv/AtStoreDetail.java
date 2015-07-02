@@ -299,10 +299,12 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	public void onPagerPromotionItemClick(int position, boolean isCoupon) {
 
 		Intent intent = new Intent(this, AtQRCodeDetail.class);
-		intent.putExtra(Constants.KEY_BUNDLE_STORE_NAME, storesInfo.company_name);
+
 		if(isCoupon){
 			if(coupon_category.size() > 0){
 				CouponCategory item = coupon_category.get(position);
+				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_TITLE, getString(R.string.stores_qrcode_coupon));
+				intent.putExtra(Constants.KEY_BUNDLE_STORE_NAME, storesInfo.company_name);
 				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_NAME, item.card_name);
 				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_DATE, item.last_update);
 				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_ID, item.qrcode_id);
@@ -311,7 +313,10 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		}else{
 			if (stamp_pos.size() > 0) {
 				StampQrcode tmpItem = stamp_pos.get(position % stamp_pos.size());
-				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_NAME, tmpItem.pos_name);
+				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_TITLE, getString(R.string.stores_qrcode_cards));
+				intent.putExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, true);
+				intent.putExtra(Constants.KEY_BUNDLE_STORE_NAME, tmpItem.pos_name);
+				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_NAME, storesInfo.stamp_category.get(0).sc_name);
 				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_DATE, tmpItem.last_update);
 				intent.putExtra(Constants.KEY_BUNDLE_STORE_QRCODE_ID, tmpItem.qrcode);
 			}

@@ -20,10 +20,10 @@ import thh.com.mycouper.R;
 public class AtQRCodeDetail extends AtBase {
 	private static final String tag = "AtStoreDetail";
 
-	private String nameQrcode, nameStore, qrcodeId, qrcodeDate;
+	private String mTitle, nameQrcode, nameStore, qrcodeId, qrcodeDate;
 	private ImageView imgQrcode;
-	private TextView txtName, txtStoreName, txtDate;
-
+	private TextView txtTitle, txtName, txtStoreName, txtDate;
+	private boolean isStampCard = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,8 @@ public class AtQRCodeDetail extends AtBase {
 		setContentView(R.layout.at_store_qrcode_detail);
 
 		if(getIntent() != null){
+			isStampCard = getIntent().getBooleanExtra(Constants.KEY_BUNDLE_BOOLEAN_VALUE, false);
+			mTitle = getIntent().getStringExtra(Constants.KEY_BUNDLE_STORE_QRCODE_TITLE);
 			nameQrcode = getIntent().getStringExtra(Constants.KEY_BUNDLE_STORE_QRCODE_NAME);
 			nameStore = getIntent().getStringExtra(Constants.KEY_BUNDLE_STORE_NAME);
 			qrcodeId = getIntent().getStringExtra(Constants.KEY_BUNDLE_STORE_QRCODE_ID);
@@ -38,7 +40,7 @@ public class AtQRCodeDetail extends AtBase {
 		}
 
 		setLanguge();
-		initTopbar(getString(R.string.stores));
+		initTopbar(getString(R.string.qrcode_on_mobile));
 		setTopbarBtLeftImage(R.drawable.icon_back);
 		setTopbarBtRightVisible(View.INVISIBLE);
 		setTopbarLeftBtListener(new View.OnClickListener() {
@@ -51,6 +53,9 @@ public class AtQRCodeDetail extends AtBase {
 		imgQrcode = (ImageView) findViewById(R.id.stores_img_qrcode);
 		if(qrcodeId != null && !qrcodeId.equals("NULL"))
 			generateQRCode();
+
+		txtTitle = (TextView) findViewById(R.id.txt_title1);
+		txtTitle.setText(mTitle);
 		txtName = (TextView) findViewById(R.id.txt_text1);
 		if(nameQrcode != null && !nameQrcode.equals("NULL"))
 			txtName.setText(nameQrcode);
@@ -62,9 +67,12 @@ public class AtQRCodeDetail extends AtBase {
 		else
 			txtStoreName.setText("");
 		txtDate = (TextView) findViewById(R.id.txt_text3);
-		if(qrcodeDate != null && !qrcodeDate.equals("NULL"))
-			txtDate.setText(Utils.formatDate(qrcodeDate));
-		else
+		if(qrcodeDate != null && !qrcodeDate.equals("NULL")) {
+			if(isStampCard)
+				txtDate.setText(qrcodeDate);
+			else
+				txtDate.setText(Utils.formatDate(qrcodeDate));
+		}else
 			txtDate.setText("");
 
 	}
