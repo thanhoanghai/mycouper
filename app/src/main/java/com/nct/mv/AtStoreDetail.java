@@ -215,7 +215,6 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		StampQrcode item = stamp_pos.get(0);
 		showInfoStampCard(item);
 		viewPager.setAdapter(adapter);
-		viewPager.setOffscreenPageLimit(stamp_pos.size());
 		viewPager.setCurrentItem(0);
 	}
 
@@ -233,7 +232,6 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		CouponCategory item = coupon_category.get(0);
 		showInfoCouponCard(item);
 		viewPager.setAdapter(couponCardPagerAdapter);
-		viewPager.setOffscreenPageLimit(coupon_category.size());
 		viewPager.setCurrentItem(0);
 	}
 
@@ -293,34 +291,12 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 			case R.id.stores_tab_square:
 				tab_card = TAB_CARD.StampCard;
 				setActiveView(v.getId());
-				new Timer().schedule(new TimerTask() {
-					@Override
-					public void run() {
-						runOnUiThread(new Runnable() {
-							@Override
-							public void run() {
-								loadStampCard();
-							}
-						});
-					}
-				}, 100);
-
+				loadStampCard();
 				break;
 			case R.id.stores_tab_coupon:
 				tab_card = TAB_CARD.CouponCard;
 				setActiveView(v.getId());
-				new Timer().schedule(new TimerTask() {
-					@Override
-					public void run() {
-						runOnUiThread(new Runnable() {
-							@Override
-							public void run() {
-								loadCouponCard();
-							}
-						});
-					}
-				}, 100);
-
+				loadCouponCard();
 				break;
 		}
 	}
