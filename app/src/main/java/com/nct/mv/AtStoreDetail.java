@@ -508,7 +508,8 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 				dialogCard.setListenerFinishedDialog(new DialogPosName.FinishDialognation() {
 					@Override
 					public void onFinishConfirmDialog(int index) {
-
+						indexDialogStore = index;
+						dialogStore = null;
 					}
 				});
 			}
