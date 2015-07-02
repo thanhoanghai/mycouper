@@ -181,6 +181,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 					CouponCategory item = coupon_category.get(0);
 					showInfoCouponCard(item);
 				}
+				checkStatusShowArrow();
 			}
 
 			@Override
@@ -197,6 +198,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 					viewPager.setCurrentItem(saveIndexSelectItemStore-1);
 			}
 		});
+		bntArrowLeft.setVisibility(View.INVISIBLE);
 		bntArrowRight = (ImageView) findViewById(R.id.at_store_detail_bt_arrowright);
 		bntArrowRight.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -208,6 +210,27 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 
 		showDialogLoading();
 		DelayTimeStart(100);
+	}
+
+	private void checkStatusShowArrow()
+	{
+		if(saveSizeListStore==1)
+		{
+			bntArrowLeft.setVisibility(View.INVISIBLE);
+			bntArrowRight.setVisibility(View.INVISIBLE);
+		}else if(saveSizeListStore > 1)
+		{
+			if(saveIndexSelectItemStore==0)
+				bntArrowLeft.setVisibility(View.INVISIBLE);
+			else
+				bntArrowLeft.setVisibility(View.VISIBLE);
+
+			if(saveIndexSelectItemStore == saveSizeListStore - 1)
+				bntArrowRight.setVisibility(View.INVISIBLE);
+			else
+				bntArrowRight.setVisibility(View.VISIBLE);
+		}
+
 	}
 
 	@Override
@@ -232,6 +255,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		viewPager.setAdapter(adapter);
 		viewPager.setCurrentItem(0);
 		saveSizeListStore = adapter.getCount();
+		checkStatusShowArrow();
 	}
 
 	private void showInfoStampCard(StampQrcode item){

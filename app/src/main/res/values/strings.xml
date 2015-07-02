@@ -221,7 +221,7 @@
     <string name="stores_qrcode_name">Coupon:</string>
     <string name="stores_qrcode_store">Store:</string>
     <string name="stores_qrcode_date">Qrcode date:</string>
-    <string name="stores_qrcode_create">Create</string>
+    <string name="stores_qrcode_create">Gen new Qrcode</string>
     <string name="stores_qrcode_save_gallery">Save to gallery</string>
 
     <string name="stores_message_save_gallery_success">Save to gallery successfully!</string>
