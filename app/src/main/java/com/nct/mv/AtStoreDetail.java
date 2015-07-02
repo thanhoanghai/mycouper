@@ -168,7 +168,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 
 			@Override
 			public void onPageSelected(int position) {
-				indexDialogStore = position;
+				saveIndexSelectItemStore = position;
 				if(tab_card == TAB_CARD.StampCard){
 					itemSelect = position;
 					StampQrcode item = stamp_pos.get(position);
@@ -457,6 +457,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	}
 
 	private int indexDialogStore = 0;
+	private int saveIndexSelectItemStore = 0;
 	private DialogPosName dialogStore;
 	private void showDialogPosName()
 	{
@@ -484,7 +485,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		}
 
 		if(dialogStore!=null) {
-			dialogStore.setIndexItem(indexDialogStore);
+			dialogStore.setIndexItem(saveIndexSelectItemStore);
 			dialogStore.show();
 		}
 	}
@@ -509,6 +510,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 					@Override
 					public void onFinishConfirmDialog(int index) {
 						indexDialogStore = index;
+						saveIndexSelectItemStore = 0;
 						dialogStore = null;
 					}
 				});
