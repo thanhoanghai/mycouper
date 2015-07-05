@@ -55,7 +55,7 @@ public class AtTutorials extends AtBase {
 
 	private void initDataLink()
 	{
-		ArrayList<String> list = new ArrayList<>();
+		ArrayList<String> list = new ArrayList<String>();
 		list.add("http://cdn.savings.com/img/Kmart-Coupon.jpeg");
 		list.add("http://cdn.savings.com/img/Kmart-Coupon.jpeg");
 		list.add("http://cdn.savings.com/img/Kmart-Coupon.jpeg");

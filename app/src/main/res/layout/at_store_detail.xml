@@ -129,6 +129,7 @@
                     android:layout_marginRight="10dp"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
+                    android:gravity="center_vertical"
                     android:paddingRight="10dp"
                     android:visibility="visible">
 
@@ -152,6 +153,13 @@
                         android:text="Tên thẻ"
                         android:textColor="@color/black"
                         android:textSize="@dimen/frag_createcard_info_title_size" />
+
+                    <ImageView
+                        android:id="@+id/at_store_detail_bt_arrow_namecoupon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/icon_circle_arrow_down" />
 
                 </LinearLayout>
 
@@ -186,6 +194,13 @@
                         android:text="Tên cửa hàng"
                         android:textColor="@color/black"
                         android:textSize="@dimen/frag_createcard_info_title_size" />
+
+                    <ImageView
+                        android:id="@+id/at_store_detail_bt_arrow_namestore"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/icon_circle_arrow_down" />
 
                 </LinearLayout>
 

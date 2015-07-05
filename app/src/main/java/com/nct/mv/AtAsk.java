@@ -34,7 +34,7 @@ public class AtAsk extends AtBase {
 
 		lv = (ListView) findViewById(R.id.at_ask_lv);
 
-		ArrayList<String> list = new ArrayList<>();
+		ArrayList<String> list = new ArrayList<String>();
 		list.add("a");
 		list.add("a");
 		list.add("a");

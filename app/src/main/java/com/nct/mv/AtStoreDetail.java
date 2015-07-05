@@ -73,8 +73,11 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	private ArrayList<CouponCategory> coupon_category;
 
 	private StoresData storesInfo;
-
 	private ImageView bntArrowLeft,bntArrowRight;
+
+
+	private ImageView bntArrowFilterName, bntArrowFilterStore;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -105,11 +108,11 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 
 		stamp_pos = storesInfo.stamp_category.get(indexDialogStore).stamp_pos;
 		if(stamp_pos == null)
-			stamp_pos = new ArrayList<>();
+			stamp_pos = new ArrayList<StampQrcode>();
 
 		coupon_category = storesInfo.coupon_category;
 		if(coupon_category == null)
-			coupon_category = new ArrayList<>();
+			coupon_category = new ArrayList<CouponCategory>();
 
 		linearContent = (LinearLayout) findViewById(R.id.at_store_detail_linear);
 		scrollview = (ScrollView) findViewById(R.id.at_store_detail_scrollview);
@@ -141,19 +144,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 
 		txtTitleName = (TextView) findViewById(R.id.txt_title1);
 		txtName = (TextView) findViewById(R.id.txt_text1);
-		txtName.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showDialogCard();
-			}
-		});
 		txtStoreName = (TextView) findViewById(R.id.txt_text2);
-		txtStoreName.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showDialogPosName();
-			}
-		});
 		txtDate = (TextView) findViewById(R.id.txt_text3);
 
 		contentTab = (LinearLayout) findViewById(R.id.lyContentTab);
@@ -194,8 +185,8 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		bntArrowLeft.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(saveIndexSelectItemStore-1 >=0)
-					viewPager.setCurrentItem(saveIndexSelectItemStore-1);
+				if (saveIndexSelectItemStore - 1 >= 0)
+					viewPager.setCurrentItem(saveIndexSelectItemStore - 1);
 			}
 		});
 		bntArrowLeft.setVisibility(View.INVISIBLE);
@@ -203,13 +194,28 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		bntArrowRight.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(saveIndexSelectItemStore+1 < saveSizeListStore)
-					viewPager.setCurrentItem(saveIndexSelectItemStore+1);
+				if (saveIndexSelectItemStore + 1 < saveSizeListStore)
+					viewPager.setCurrentItem(saveIndexSelectItemStore + 1);
 			}
 		});
 
 		showDialogLoading();
 		DelayTimeStart(100);
+
+		bntArrowFilterName = (ImageView) findViewById(R.id.at_store_detail_bt_arrow_namecoupon);
+		bntArrowFilterName.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showDialogCard();
+			}
+		});
+		bntArrowFilterStore = (ImageView) findViewById(R.id.at_store_detail_bt_arrow_namestore);
+		bntArrowFilterStore.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showDialogPosName();
+			}
+		});
 	}
 
 	private void checkStatusShowArrow()
@@ -516,7 +522,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	{
 		if(dialogStore ==null)
 		{
-			ArrayList<String> listTitle = new ArrayList<>();
+			ArrayList<String> listTitle = new ArrayList<String>();
 			StampCategory listStapCatgory = storesInfo.stamp_category.get(indexDialogStore);
 			if(listStapCatgory!=null && listStapCatgory.stamp_pos!=null && listStapCatgory.stamp_pos.size() > 0)
 			{
@@ -549,7 +555,7 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	{
 		if(dialogCard==null)
 		{
-			ArrayList<String> list = new ArrayList<>();
+			ArrayList<String> list = new ArrayList<String>();
 			if(storesInfo.stamp_category!=null)
 			{
 				for(StampCategory item : storesInfo.stamp_category)
