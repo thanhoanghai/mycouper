@@ -71,7 +71,8 @@ public class DialogPosName extends Dialog implements
 	{
 		if(adapter!=null) {
 			adapter.setIndexSelect(pos);
-			mListener.onFinishConfirmDialog(pos);
+			if(mListener!=null)
+				mListener.onFinishConfirmDialog(pos);
 			this.dismiss();
 		}
 	}

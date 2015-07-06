@@ -353,13 +353,21 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 				tab_card = TAB_CARD.StampCard;
 				setActiveView(v.getId());
 				loadStampCard();
+				setVisibleArrowDownFilter(View.VISIBLE);
 				break;
 			case R.id.stores_tab_coupon:
 				tab_card = TAB_CARD.CouponCard;
 				setActiveView(v.getId());
 				loadCouponCard();
+				setVisibleArrowDownFilter(View.INVISIBLE);
 				break;
 		}
+	}
+
+	private void setVisibleArrowDownFilter(int view)
+	{
+		bntArrowFilterName.setVisibility(view);
+		bntArrowFilterStore.setVisibility(view);
 	}
 
 	private void setActiveView(int selectID){
@@ -571,15 +579,19 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 					public void onFinishConfirmDialog(int index) {
 						indexDialogStore = index;
 						saveIndexSelectItemStore = 0;
-
 						stamp_pos = storesInfo.stamp_category.get(indexDialogStore).stamp_pos;
-						adapter.setListData(stamp_pos);
-						if(tab_card == TAB_CARD.StampCard){
-							viewPager.setCurrentItem(0);
-							StampQrcode item = stamp_pos.get(0);
-							showInfoStampCard(item);
-						}
-						dialogStore = null;
+						if(stamp_pos!=null) {
+							adapter.setListData(stamp_pos);
+							saveSizeListStore = adapter.getCount();
+							if (tab_card == TAB_CARD.StampCard) {
+								viewPager.setCurrentItem(0);
+								StampQrcode item = stamp_pos.get(0);
+								showInfoStampCard(item);
+								checkStatusShowArrow();
+							}
+							dialogStore = null;
+						}else
+							Debug.toast(AtStoreDetail.this,"No data");
 					}
 				});
 			}
