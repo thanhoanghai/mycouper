@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <include layout="@layout/item_top_bar"></include>
@@ -65,19 +66,19 @@
                     android:id="@+id/at_card_detail_tv_name_membercard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/card_detail_marintop"
                     android:gravity="center"
                     android:text="@string/card_detail_enter_the_following"
                     android:textColor="@color/grey_info_text_card"
                     android:textSize="18sp"
                     android:visibility="gone"
+                    android:background="@color/blue"
+                    android:layout_marginBottom="10dp"
                     app:typeface_style="bold"
                     app:typeface_name="@string/font_roboto_regular" />
 
                 <com.nct.customview.TfTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/card_detail_marintop"
                     android:gravity="center"
                     android:text="@string/card_detail_enter_the_following"
                     android:textColor="@color/grey_info_text_card"

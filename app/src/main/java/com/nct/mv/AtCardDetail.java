@@ -125,11 +125,21 @@ public class AtCardDetail extends AtBase {
 	private Button couponDetailBntClose;
 	private CouponReceiveData couponReceiveData;
 
+	private int bitmapWidth=0,bitmapHeight=0;
+	private int SCRW = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.at_card_detail);
+
+		if(Constants.SCREEN_WIDTH < Constants.SCREEN_HEIGHT)
+			SCRW = Constants.SCREEN_WIDTH;
+		else
+			SCRW = Constants.SCREEN_HEIGHT;
+
+			bitmapWidth = SCRW - SCRW / 10;
+			bitmapHeight = 3 * bitmapWidth / 4;
 
 		try {
 			// Loading map
@@ -152,7 +162,6 @@ public class AtCardDetail extends AtBase {
 		getEcoupon();
 		
 	}
-
 
 	private void setVisibleItemSegment(int index)
 	{
@@ -435,7 +444,7 @@ public class AtCardDetail extends AtBase {
 		});
 
 		tvNameMembercard = (TextView) findViewById(R.id.at_card_detail_tv_name_membercard);
-		if(memberCard!=null && !TextUtils.isEmpty(memberCard.member_card_name))
+		if(memberCard!=null && !TextUtils.isEmpty(memberCard.member_card_name) && !memberCard.member_card_name.equals(" "))
 		{
 			tvNameMembercard.setText(memberCard.member_card_name);
 			tvNameMembercard.setVisibility(View.VISIBLE);
@@ -534,11 +543,6 @@ public class AtCardDetail extends AtBase {
 
 		lyImageCard = (RelativeLayout) findViewById(R.id.lyImgcard);
 
-		DisplayMetrics metrics = new DisplayMetrics();
-		getWindowManager().getDefaultDisplay().getMetrics(metrics);
-		int bitmapWidth = metrics.widthPixels - metrics.widthPixels / 10;
-		int bitmapHeight = 3 * bitmapWidth / 4;
-
 		imgFront = (ImageView) findViewById(R.id.card_detail_img_front);
 		RelativeLayout.LayoutParams ly = (RelativeLayout.LayoutParams) imgFront.getLayoutParams();
 		ly.width = bitmapWidth;
@@ -634,9 +638,7 @@ public class AtCardDetail extends AtBase {
 
     private void generateBarCode(){
         try{
-            DisplayMetrics metrics = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            int bitmapWidth = 3 * metrics.widthPixels / 4;
+            int bitmapWidth = 3 * SCRW / 4;
 			int bitmapHeight = bitmapWidth / 2;
 
             MultiFormatWriter writeBarcode = new MultiFormatWriter();
@@ -650,9 +652,7 @@ public class AtCardDetail extends AtBase {
 
     private void generateQRCode(){
         try{
-            DisplayMetrics metrics = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            int bitmapWidth = metrics.widthPixels / 2;
+            bitmapWidth = SCRW / 2;
 
             QRCodeWriter writeCode = new QRCodeWriter();
             BitMatrix bitMatrix = writeCode.encode(memberCard.member_card_number, BarcodeFormat.QR_CODE, bitmapWidth, bitmapWidth);
