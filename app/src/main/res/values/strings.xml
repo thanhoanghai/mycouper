@@ -145,7 +145,7 @@
 
     <!-- FRAG MEMBER CARD -->
     <string name="frag_membercard_addmore">+   Add more card</string>
-    <string name="frag_membercard">MEMBER CARDS</string>
+    <string name="frag_membercard">MEMBER CARD</string>
 
     <!-- SIGN UP -->
     <string name="signup_couper_will_help">( Couper will help you keep all the cards when switching phone )</string>
