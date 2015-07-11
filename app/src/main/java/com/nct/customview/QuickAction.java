@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.nct.constants.Constants;
 import com.nct.utils.DisplayHelper;
 
 import thh.com.mycouper.R;
@@ -67,6 +68,12 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 	public static final int ANIM_AUTO = 5;
 
 	private Boolean isShowBackground = true;
+	private Boolean isSetWidthItem = false;
+
+	public void setEnableWidthItem(Boolean status)
+	{
+		isSetWidthItem = status;
+	}
 
 	public void setStatusBackround(Boolean status)
 	{
@@ -94,6 +101,26 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 	public QuickAction(Context context, int orientation) {
 		super(context);
 
+		mOrientation = orientation;
+
+		mInflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+		if (mOrientation == HORIZONTAL) {
+			setRootViewId(R.layout.popup_horizontal);
+		} else {
+			setRootViewId(R.layout.popup_vertical);
+		}
+
+		mAnimStyle = ANIM_AUTO;
+		mChildPos = 0;
+
+		movePos = DisplayHelper.dip2Pixel(20, mContext);
+	}
+
+	public QuickAction(Context context, int orientation,Boolean statusEnableWidth) {
+		super(context);
+		isSetWidthItem = statusEnableWidth;
 		mOrientation = orientation;
 
 		mInflater = (LayoutInflater) context
@@ -139,6 +166,8 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 		mTrack = (ViewGroup) mRootView.findViewById(R.id.tracks);
 
 		mScroller = (ScrollView) mRootView.findViewById(R.id.scroller);
+
+
 
 		mRootView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 				LayoutParams.WRAP_CONTENT));
@@ -189,6 +218,9 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 
 		ImageView img = (ImageView) container.findViewById(R.id.iv_icon);
 		TextView text = (TextView) container.findViewById(R.id.tv_title);
+		if(isSetWidthItem) {
+			text.getLayoutParams().width = Constants.SCREEN_WIDTH /2;
+		}
 
 		if (icon != null) {
 			img.setImageDrawable(icon);

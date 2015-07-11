@@ -178,7 +178,8 @@ public class AtMain extends AtBase {
 
     private void initListPopUpMenu()
     {
-        quickAction = new QuickAction(AtMain.this, QuickAction.VERTICAL);
+        quickAction = new QuickAction(AtMain.this, QuickAction.VERTICAL,true);
+        quickAction.setEnableWidthItem(true);
         quickAction.setStatusBackround(false);
         bntUserProfile = new PopupActionItem(Constants.POP_UP_ID_USER_PROFILE, getString(R.string.user_profile), null);
         bntLanguage = new PopupActionItem(Constants.POP_UP_ID_USER_LANGUAGE, getString(R.string.language), null);
