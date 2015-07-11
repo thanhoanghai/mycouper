@@ -283,16 +283,17 @@ public class AtCardDetail extends AtBase {
 
 	private void checkTypeCard()
 	{
-		if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[0]))
-		{
-			imgCode.setText(memberCard.member_card_number);
-			lyImgCode.setVisibility(View.INVISIBLE);
-		}else if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[1]) || memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[2]))
+		if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[1]) || memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[2]))
 		{
 			imgCode.setVisibility(View.INVISIBLE);
 			lyImgCode.setVisibility(View.VISIBLE);
 			showImgQRcode();
 
+		}else
+		{
+			//if(memberCard.card_number_type.equals(Constants.TYPE_CARD_SCAN_CODE[0]))
+				imgCode.setText(memberCard.member_card_number);
+				lyImgCode.setVisibility(View.INVISIBLE);
 		}
 		barCodeID.setText(memberCard.member_card_number);
 	}
@@ -619,6 +620,7 @@ public class AtCardDetail extends AtBase {
 
 			@Override
 			public void onSuccess(int i, Header[] headers, String s) {
+				GlobalInstance.getInstance().isReloadMemberCard = true;
 				hideDialogLoading();
 				//Debug.toast(AtCardDetail.this, s);
 				finish();

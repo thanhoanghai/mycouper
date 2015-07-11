@@ -137,4 +137,6 @@ public class Constants {
     public static final String PHONE_SUPPORT = "+84902292626";
 
     public static final String FRAG_MEMBER_CARD_SAVE_DATA = "FRAG_MEMBER_CARD_SAVE_DATA";
+
+    public static final String ITEM_NULL = "NULL";
 }

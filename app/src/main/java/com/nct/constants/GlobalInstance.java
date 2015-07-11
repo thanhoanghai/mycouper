@@ -13,6 +13,8 @@ public class GlobalInstance {
 	public StoresData storesInfo;
 	public MemberCardObject memberCard;
 
+	public Boolean isReloadMemberCard = false;
+
 
 	public static GlobalInstance getInstance() {
 		if (mGlobalInstance == null) {

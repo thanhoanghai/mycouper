@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.nct.constants.Constants;
 import com.nct.constants.GlobalInstance;
 import com.nct.model.MemberCardObject;
 import com.nct.utils.Utils;
@@ -51,7 +53,11 @@ public class FragMemberCardAdapter extends BaseAdapterApp<MemberCardObject> {
 		MemberCardObject item = getItem(position);
 		displayImage(holder.imgThumb, item.company_logo);
 		holder.tvTitle.setText(item.company_name);
-		holder.tvDes.setText(item.card_name);
+		if(!TextUtils.isEmpty(item.card_name) && !Constants.ITEM_NULL.equals(item.card_name))
+			holder.tvDes.setText(item.card_name);
+		else
+			holder.tvDes.setText("");
+
 		if(TextUtils.isEmpty(item.number) || item.number.equals("0")) {
 			holder.tvNumber.setVisibility(View.INVISIBLE);
 		}

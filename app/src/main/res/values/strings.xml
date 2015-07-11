@@ -125,7 +125,7 @@
     <string name="frag_createcard_info_cardcode">Card code:</string>
     <string name="frag_createcard_info_required">(required)</string>
     <string name="frag_createcard_info_typecode">Code type:</string>
-    <string name="frag_createcard_info_cardname">Name on Card:</string>
+        <string name="frag_createcard_info_cardname">Name on Card:</string>
     <string name="frag_createcard_info_optional">(optional)</string>
     <string name="frag_createcard_info_description">Description:</string>
     <string name="frag_createcard_info_caompanyname">Company name:</string>
@@ -228,7 +228,8 @@
     <string name="stores_message_save_gallery_success">Save to gallery successfully!</string>
     <string name="stores_message_save_gallery_failed">Save to gallery failed!</string>
 
-    <string name="stores_message_gen_qrcode">When generating new QRcode, all of current one will be invalided.\n Are you sure want to generate?</string>
+    <string name="stores_no_account">No account? Please visit </string>
+    <string name="stores_to_register">to register </string>
 
 
 </resources>

@@ -91,9 +91,9 @@ public class AtStore extends AtBase {
 
 		txtRegister = (TfTextView) findViewById(R.id.at_register_tv);
 
-		String strHtml = "No account? Please visit "
-				+ "<font color='blue'><a href='GoRegister'><i>www.mycouper.com</i></a></font>"
-				+ " to register. ";
+		String strHtml = getString(R.string.stores_no_account)
+				+ " <font color='blue'><a href='GoRegister'><i>www.mycouper.com</i></a></font> "
+				+ getString(R.string.stores_to_register);
 
 		CharSequence sequence = Html.fromHtml(strHtml);
 		SpannableStringBuilder strBuilder = new SpannableStringBuilder(sequence);

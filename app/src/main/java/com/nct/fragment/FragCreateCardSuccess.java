@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.nct.constants.Constants;
+import com.nct.constants.GlobalInstance;
 import com.nct.customview.TfTextView;
 import com.nct.model.CompanyObject;
 import com.nct.model.ItemCreateKard;
@@ -100,6 +101,7 @@ public class FragCreateCardSuccess extends BaseMainFragment {
         bntDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GlobalInstance.getInstance().isReloadMemberCard = true;
                 ItemCreateKard.clear();
                 getActivity().finish();
             }
@@ -110,6 +112,7 @@ public class FragCreateCardSuccess extends BaseMainFragment {
             btnAgain.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    GlobalInstance.getInstance().isReloadMemberCard = true;
                     ItemCreateKard.clear();
                     getActivity().finish();
                 }

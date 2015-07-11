@@ -59,6 +59,11 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 			idLang = GlobalInstance.getInstance().idLanguage;
 			bntAddmore.setText(getString(R.string.frag_membercard_addmore));
 		}
+		if(GlobalInstance.getInstance().isReloadMemberCard)
+		{
+			GlobalInstance.getInstance().isReloadMemberCard = false;
+			DelayTimeFinish();
+		}
 	}
 
 	@Override
@@ -144,5 +149,7 @@ public class FragMemberCard extends BaseGridFragment<MemberCardObject> {
 		if(!TextUtils.isEmpty(result))
 			showDataApp(result);
 	}
+
+
 
 }
