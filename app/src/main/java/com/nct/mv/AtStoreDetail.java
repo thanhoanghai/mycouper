@@ -2,6 +2,7 @@ package com.nct.mv;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -79,6 +80,10 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	private ImageView bntArrowFilterName, bntArrowFilterStore;
 
 
+	private LinearLayout linearLogo;
+	private LinearLayout linearSaveImage;
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -105,6 +110,10 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		initImageLoader();
 
 		storesInfo = GlobalInstance.getInstance().storesInfo;
+
+		linearSaveImage = (LinearLayout) findViewById(R.id.at_store_detail_linear_saveimage);
+		linearLogo = (LinearLayout) findViewById(R.id.item_logo_setting_linear);
+		linearLogo.setVisibility(View.GONE);
 
 		stamp_pos = storesInfo.stamp_category.get(indexDialogStore).stamp_pos;
 		if(stamp_pos == null)
@@ -346,8 +355,9 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 					showDialogConfirmGenCode();
 				break;
 			case R.id.stores_tv_save:
-				Bitmap bitmap = takeScreenshot();
-				saveBitmap(bitmap);
+				showDialogLoading();
+				linearLogo.setVisibility(View.VISIBLE);
+				new asyncSaveImage().execute("");
 				break;
 			case R.id.stores_tab_square:
 				tab_card = TAB_CARD.StampCard;
@@ -387,8 +397,8 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 	}
 
 	public Bitmap takeScreenshot() {
-		linearContent.setDrawingCacheEnabled(true);
-		return linearContent.getDrawingCache();
+		linearSaveImage.setDrawingCacheEnabled(true);
+		return linearSaveImage.getDrawingCache();
 	}
 
 	public void saveBitmap(Bitmap bitmap) {
@@ -396,7 +406,6 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		File filePath = BitmapUtils.saveBitmapInSDCard(this, fileName, bitmap);
 		if(filePath != null) {
 			BitmapUtils.addImageToGallery(this, filePath.getPath(), "", "");
-			Debug.toastDebug(this, getResources().getString(R.string.stores_message_save_gallery_success));
 		}else
 			Debug.toastDebug(this, getResources().getString(R.string.stores_message_save_gallery_failed));
 	}
@@ -598,6 +607,36 @@ public class AtStoreDetail extends AtBase implements View.OnClickListener {
 		}
 		if(dialogCard!=null)
 			dialogCard.show();
+	}
+
+
+
+
+	private class asyncSaveImage extends AsyncTask<String, Void, String> {
+		@Override
+		protected String doInBackground(String... params) {
+			try {
+				Thread.sleep(500);
+				Bitmap bitmap = takeScreenshot();
+				saveBitmap(bitmap);
+			}catch (Exception ex){}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			hideDialogLoading();
+			linearLogo.setVisibility(View.GONE);
+			Debug.toast(AtStoreDetail.this, getResources().getString(R.string.stores_message_save_gallery_success));
+		}
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		@Override
+		protected void onProgressUpdate(Void... values) {
+		}
 	}
 
 }

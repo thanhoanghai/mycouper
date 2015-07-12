@@ -67,18 +67,24 @@
                 android:textSize="20sp"
                 app:typeface_name="@string/font_roboto_regular" />
 
+
+            <include android:layout_width="match_parent" android:layout_height="40dp"
+                android:layout_margin="10dp"
+                layout="@layout/tab_menu_stores" />
+
             <LinearLayout
+                android:id="@+id/at_store_detail_linear_saveimage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/stores_card_bg"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <include layout="@layout/tab_menu_stores" />
+
+                <include layout="@layout/item_logo_setting"></include>
 
 
                 <FrameLayout
@@ -237,38 +243,41 @@
 
                 </LinearLayout>
 
-                <com.nct.customview.TfTextView
-                    android:id="@+id/stores_tv_create"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/btn_yallow_gray_bg"
-                    android:gravity="center_horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:text="@string/stores_qrcode_create"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:typeface_name="@string/font_roboto_regular" />
-
-                <com.nct.customview.TfTextView
-                    android:id="@+id/stores_tv_save"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/btn_yallow_gray_bg"
-                    android:gravity="center_horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:text="@string/stores_qrcode_save_gallery"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:typeface_name="@string/font_roboto_regular" />
             </LinearLayout>
+
+            <com.nct.customview.TfTextView
+                android:id="@+id/stores_tv_create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_yallow_gray_bg"
+                android:gravity="center_horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/stores_qrcode_create"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:typeface_name="@string/font_roboto_regular" />
+
+            <com.nct.customview.TfTextView
+                android:id="@+id/stores_tv_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/btn_yallow_gray_bg"
+                android:gravity="center_horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/stores_qrcode_save_gallery"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:typeface_name="@string/font_roboto_regular" />
+
         </LinearLayout>
 
     </ScrollView>
