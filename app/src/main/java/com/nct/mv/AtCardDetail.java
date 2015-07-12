@@ -445,7 +445,8 @@ public class AtCardDetail extends AtBase {
 		});
 
 		tvNameMembercard = (TextView) findViewById(R.id.at_card_detail_tv_name_membercard);
-		if(memberCard!=null && !TextUtils.isEmpty(memberCard.member_card_name) && !memberCard.member_card_name.equals(" "))
+		if(memberCard!=null && !TextUtils.isEmpty(memberCard.member_card_name) && !memberCard.member_card_name.equals(" ")
+				&& !Constants.ITEM_NULL.equals(memberCard.member_card_name))
 		{
 			tvNameMembercard.setText(memberCard.member_card_name);
 			tvNameMembercard.setVisibility(View.VISIBLE);

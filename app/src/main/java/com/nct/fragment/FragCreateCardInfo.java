@@ -275,8 +275,8 @@ public class FragCreateCardInfo extends BaseMainFragment {
             return result = getResources().getString(R.string.frag_createcard_info_caompanyname_is_empty);
         if(TextUtils.isEmpty(mCardCode))
             return result = getResources().getString(R.string.frag_createcard_info_cardcode_is_empty);
-        if(TextUtils.isEmpty(mCardName))
-            return result = getResources().getString(R.string.frag_createcard_info_cardname_requiret);
+        //if(TextUtils.isEmpty(mCardName))
+            //return result = getResources().getString(R.string.frag_createcard_info_cardname_requiret);
 
         return result;
     }
