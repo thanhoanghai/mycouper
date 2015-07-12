@@ -225,8 +225,11 @@
     <string name="stores_qrcode_create">Gen new Qrcode</string>
     <string name="stores_qrcode_save_gallery">Save to gallery</string>
 
+
     <string name="stores_message_save_gallery_success">Save to gallery successfully!</string>
     <string name="stores_message_save_gallery_failed">Save to gallery failed!</string>
+
+    <string name="stores_message_gen_qrcode">When generating new QRcode, all of current one will be invalided.\n Are you sure want to generate?</string>
 
     <string name="stores_no_account">No account? Please visit </string>
     <string name="stores_to_register">to register </string>
