@@ -204,7 +204,7 @@ public class FragCreateCardImage extends BaseMainFragment implements OnClickList
                 fontUrl = ItemCreateKard.frontUrl;
             if(backUrl.equals("") && ItemCreateKard.backUrl != null)
                 backUrl = ItemCreateKard.backUrl;
-            ((AtCreateCard) getActivity()).updateCard(GlobalInstance.getInstance().userInfo.user_id, ItemCreateKard.mCardID, note, mCompanyName, mCardName, fontUrl, backUrl, mCardDes);
+            ((AtCreateCard) getActivity()).updateCard(GlobalInstance.getInstance().userInfo.user_id, ItemCreateKard.mCardID, note, mCompanyName, mCardName, fontUrl, backUrl, mCardDes, mTypeCode);
         }else{
             String mCompany = "";
             if(!isOther){

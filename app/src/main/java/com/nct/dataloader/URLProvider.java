@@ -97,7 +97,7 @@ public class URLProvider {
         return params;
     }
 
-    public static RequestParams getParamsUpdateCard(String user_id, String cardID, String note, String company_name, String member_card_name, String front_of_the_card, String back_of_the_card, String description)
+    public static RequestParams getParamsUpdateCard(String user_id, String cardID, String note, String company_name, String member_card_name, String front_of_the_card, String back_of_the_card, String description, String card_number_type)
     {
         RequestParams params = new RequestParams();
         params.put("ac", "change_member_card");
@@ -109,6 +109,7 @@ public class URLProvider {
         params.put("back_of_the_card", back_of_the_card);
         params.put("company_name", company_name);
         params.put("user_id", user_id);
+        params.put("card_number_type", card_number_type);
         params.put("session_id", GlobalInstance.getInstance().getSessionID());
         return params;
     }

@@ -255,9 +255,9 @@ public class AtCreateCard extends AtBase {
     }
 
     public void updateCard(String user_id, String cardID, String note, String company_name, String member_card_name,
-                           String front_of_the_card, String back_of_the_card, String description){
+                           String front_of_the_card, String back_of_the_card, String description, String card_number_type){
         DataLoader.postParam(URLProvider.getParamsUpdateCard(user_id, cardID, note, company_name,
-                member_card_name, front_of_the_card, back_of_the_card, description), new TextHttpResponseHandler() {
+                member_card_name, front_of_the_card, back_of_the_card, description, card_number_type), new TextHttpResponseHandler() {
             @Override
             public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
                 hideDialogLoading();
